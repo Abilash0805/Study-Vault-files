@@ -1,0 +1,3146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electrochemistry - Complete Board Notes | Abilash V</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;500&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --bg3: #1c2333;
+  --card: #21262d;
+  --border: #30363d;
+  --accent: #58a6ff;
+  --accent2: #3fb950;
+  --accent3: #f78166;
+  --accent4: #ffa657;
+  --accent5: #d2a8ff;
+  --accent6: #79c0ff;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --yellow: #f0db4f;
+  --pink: #ff79c6;
+  --cyan: #56d0f0;
+  --glow: 0 0 20px rgba(88,166,255,0.3);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius:4px; }
+
+/* HEADER */
+.hero {
+  background: linear-gradient(135deg, #0d1117 0%, #1a1f3e 50%, #0d1117 100%);
+  padding: 60px 20px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(88,166,255,0.15) 0%, transparent 70%);
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(88,166,255,0.15);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #58a6ff, #d2a8ff, #79c0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.hero-sub {
+  color: var(--muted);
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.hero-stat {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.hero-stat span { color: var(--accent4); }
+
+/* NAV */
+.toc-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(13,17,23,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 20px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.toc-nav a {
+  display: inline-block;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  margin-right: 4px;
+}
+.toc-nav a:hover { background: var(--bg3); color: var(--accent); }
+
+/* MAIN */
+.container { max-width: 960px; margin: 0 auto; padding: 0 20px 60px; }
+
+/* SECTION */
+.section {
+  margin: 40px 0;
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding: 20px 24px;
+  background: var(--bg2);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+}
+.section-header .emoji { font-size: 2rem; }
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--accent);
+}
+.section-header .section-num {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* CARDS */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--accent); }
+.card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--accent4);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* DEF BOX */
+.def-box {
+  background: linear-gradient(135deg, rgba(88,166,255,0.08), rgba(210,168,255,0.08));
+  border: 1px solid rgba(88,166,255,0.4);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 14px 0;
+}
+.def-box .def-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent5);
+  margin-bottom: 6px;
+}
+.def-box p { color: var(--text); font-size: 15px; }
+
+/* FORMULA BOX */
+.formula-box {
+  background: rgba(63,185,80,0.08);
+  border: 1px solid rgba(63,185,80,0.4);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 14px 0;
+  font-family: 'Fira Code', monospace;
+}
+.formula-box .f-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent2);
+  margin-bottom: 10px;
+  font-family: 'Nunito', sans-serif;
+}
+.formula-box .formula {
+  font-size: 1.1rem;
+  color: var(--yellow);
+  text-align: center;
+  padding: 8px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.formula-box ul { list-style: none; padding: 0; }
+.formula-box ul li { font-size: 13px; color: var(--muted); padding: 2px 0; font-family: 'Nunito', sans-serif; }
+.formula-box ul li strong { color: var(--cyan); }
+
+/* MEMORY BOX */
+.memory-box {
+  background: linear-gradient(135deg, rgba(255,166,87,0.1), rgba(247,129,102,0.1));
+  border: 1px solid var(--accent4);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 14px 0;
+}
+.memory-box .m-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent4);
+  margin-bottom: 6px;
+}
+.memory-box .trick { font-size: 1.3rem; font-weight: 800; color: var(--yellow); }
+
+/* EXAMPLE BOX */
+.example-box {
+  background: rgba(86,208,240,0.06);
+  border: 1px solid rgba(86,208,240,0.3);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 14px 0;
+}
+.example-box .e-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+
+/* WARN BOX */
+.warn-box {
+  background: rgba(247,129,102,0.08);
+  border: 1px solid var(--accent3);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin: 14px 0;
+}
+.warn-box .w-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--accent3);
+  margin-bottom: 6px;
+}
+
+/* GRID */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+@media(max-width:640px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin: 14px 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+th {
+  background: rgba(88,166,255,0.15);
+  color: var(--accent);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 800;
+}
+td {
+  padding: 9px 14px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+}
+tr:hover td { background: rgba(255,255,255,0.03); }
+
+/* STEP BOX */
+.steps { counter-reset: step; }
+.step {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 14px;
+  counter-increment: step;
+}
+.step::before {
+  content: counter(step);
+  min-width: 32px;
+  height: 32px;
+  background: var(--accent);
+  color: var(--bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* SVG DIAGRAM CONTAINER */
+.diagram-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  margin: 18px 0;
+  overflow-x: auto;
+}
+.diagram-wrap .d-title {
+  text-align: center;
+  font-weight: 800;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.diagram-wrap svg { display: block; margin: 0 auto; max-width: 100%; }
+
+/* QUESTION BLOCK */
+.q-block {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+.q-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 700;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+.q-header:hover { background: rgba(255,255,255,0.05); }
+.q-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.q-badge.pyq { background: rgba(255,166,87,0.2); color: var(--accent4); border: 1px solid var(--accent4); }
+.q-badge.hots { background: rgba(247,129,102,0.2); color: var(--accent3); border: 1px solid var(--accent3); }
+.q-badge.num { background: rgba(88,166,255,0.2); color: var(--accent); border: 1px solid var(--accent); }
+.q-badge.theory { background: rgba(63,185,80,0.2); color: var(--accent2); border: 1px solid var(--accent2); }
+.q-arrow { margin-left: auto; transition: transform 0.3s; }
+.q-body {
+  padding: 0 16px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s;
+}
+.q-body.open { max-height: 1000px; padding: 0 16px 16px; }
+.q-ans {
+  background: rgba(63,185,80,0.06);
+  border: 1px solid rgba(63,185,80,0.3);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.q-ans .ans-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--accent2);
+  margin-bottom: 6px;
+}
+
+/* MARKS BADGE */
+.marks { display:inline-block; background:rgba(210,168,255,0.15); color:var(--accent5); border:1px solid var(--accent5); border-radius:8px; font-size:11px; font-weight:800; padding:2px 8px; margin-left:8px; }
+
+/* CARTOON CHARACTER */
+.mascot-box {
+  background: linear-gradient(135deg, var(--bg2), var(--bg3));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 18px 0;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.mascot-svg { flex-shrink: 0; }
+.mascot-speech {
+  flex: 1;
+  background: rgba(88,166,255,0.08);
+  border: 1px solid rgba(88,166,255,0.3);
+  border-radius: 12px;
+  padding: 14px;
+  position: relative;
+  font-size: 14px;
+}
+.mascot-speech::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 18px;
+  border: 6px solid transparent;
+  border-right-color: rgba(88,166,255,0.3);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 40px;
+}
+footer strong { color: var(--accent4); }
+
+/* REACTION EQ */
+.reaction {
+  font-family: 'Fira Code', monospace;
+  background: rgba(0,0,0,0.4);
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin: 6px 0;
+  font-size: 14px;
+  color: var(--cyan);
+  display: block;
+}
+
+/* HIGHLIGHT */
+.hl { background: rgba(255,166,87,0.2); color: var(--accent4); padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+.hlb { background: rgba(88,166,255,0.15); color: var(--accent); padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+.hlg { background: rgba(63,185,80,0.15); color: var(--accent2); padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+.hlp { background: rgba(210,168,255,0.15); color: var(--accent5); padding: 1px 5px; border-radius: 4px; font-weight: 700; }
+
+/* BOARD TAG */
+.board-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255,166,87,0.1);
+  border: 1px solid var(--accent4);
+  color: var(--accent4);
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* PROGRESS BAR */
+.topic-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.topic-bar .t-name { font-size: 13px; font-weight: 700; min-width: 180px; }
+.topic-bar .t-bar { flex: 1; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.topic-bar .t-fill { height: 100%; border-radius: 3px; background: var(--accent); }
+.topic-bar .t-marks { font-size: 12px; color: var(--muted); min-width: 60px; text-align: right; }
+
+/* CHAPTER OVERVIEW CARDS */
+.overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 16px 0; }
+.overview-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+  display: block;
+}
+.overview-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+.overview-item .o-icon { font-size: 2rem; margin-bottom: 8px; }
+.overview-item .o-title { font-weight: 800; font-size: 14px; color: var(--text); }
+.overview-item .o-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+
+/* ═══ CONSOLIDATED ADDITIONS & MOBILE ═══ */
+:root { --accent: #58a6ff; --accent-orange: #ffa657; --accent-green: #3fb950; --teal: #00c9a7; --pur: #b47aff; }
+
+/* Full mobile responsiveness */
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.9rem !important; }
+  .hero-stats { gap: 8px; }
+  .hero-stat { font-size: 12px; padding: 6px 12px; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px 16px; }
+  .section-header h2 { font-size: 1.3rem; }
+  .container { padding: 0 12px 40px; }
+  .card { padding: 14px 16px; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr !important; }
+  .overview-grid { grid-template-columns: 1fr 1fr !important; }
+  table { font-size: 12px; }
+  th, td { padding: 7px 9px; }
+  .formula-box .formula { font-size: 0.95rem; }
+  .q-header { font-size: 13px; }
+  .toc-nav { padding: 8px 12px; }
+  .toc-nav a { font-size: 12px; padding: 5px 9px; }
+  .mascot-box { flex-direction: column; }
+  .diagram-wrap { padding: 12px; }
+  .diagram-wrap svg { width: 100% !important; }
+}
+@media (max-width: 768px) {
+  .hero { padding: 50px 16px 30px; }
+  .hero h1 { font-size: 2.4rem; }
+  .container { padding: 0 14px 40px; }
+  .section { margin: 28px 0; }
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .diagram-wrap svg { width: 100% !important; height: auto !important; }
+  .toc-nav { padding: 8px 14px; }
+  .mascot-box { flex-wrap: wrap; }
+  .reaction { font-size: 12px; word-break: break-word; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container { max-width: 800px; }
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+}
+
+/* Scroll progress bar */
+#scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-orange));
+  z-index: 9999; width: 0%; transition: width 0.1s; pointer-events: none;
+}
+
+/* Analogy boxes from file3 */
+.ana-box {
+  background: rgba(63,185,80,0.07); border: 1px solid rgba(63,185,80,0.25);
+  border-radius: 12px; padding: 14px 18px; margin: 12px 0;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.ana-box .a-icon { font-size: 1.6rem; flex-shrink: 0; }
+.ana-box .a-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-green); margin-bottom: 4px; font-family: 'Playfair Display', serif; }
+.ana-box p { font-size: 14px; color: var(--text); }
+
+/* SHE box */
+.she-box { background: rgba(210,168,255,0.07); border: 1px solid rgba(210,168,255,0.3); border-radius: 12px; padding: 14px 18px; margin: 12px 0; }
+.she-box .s-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: var(--pur); text-transform: uppercase; margin-bottom: 6px; }
+
+/* Gibbs triangle highlight */
+.golden-triangle { background: rgba(255,166,87,0.08); border: 1px solid rgba(255,166,87,0.3); border-radius: 12px; padding: 14px 18px; margin: 12px 0; }
+.golden-triangle .g-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: var(--accent4); text-transform: uppercase; margin-bottom: 6px; }
+
+/* Quick revision from file3 */
+.qf { display:flex; align-items:flex-start; gap:10px; padding:9px 0; border-bottom:1px solid rgba(255,255,255,.05); }
+.qf:last-child { border-bottom:none; }
+.qf .e { font-size:1.2rem; flex-shrink:0; margin-top:2px; }
+.qf p { font-size:13.5px; color:var(--text); margin:0; }
+
+/* PYQ card from file3 */
+.pyq3-card { background: rgba(255,71,87,0.06); border: 1px solid rgba(255,71,87,0.25); border-radius: 12px; padding: 16px 18px; margin: 10px 0; }
+.pyq3-label { font-size: 10px; font-weight: 800; letter-spacing: 2px; color: #ff4757; text-transform: uppercase; margin-bottom: 6px; }
+.pyq3-card p { color: var(--text); font-size: 14px; }
+.pyq3-ans { margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,71,87,0.2); font-size: 13.5px; color: var(--muted); }
+.pyq3-ans strong { color: var(--accent2); }
+details summary { cursor:pointer; color:var(--accent); font-size:.85rem; font-weight:600; padding:4px 0; list-style:none; margin-top:7px; }
+details summary::-webkit-details-marker { display:none; }
+details summary::before { content:'▶  Show Answer'; }
+details[open] summary::before { content:'▼  Hide'; }
+details .ans { background:rgba(88,166,255,.05); border-radius:8px; padding:12px; margin-top:6px; color:var(--muted); font-size:.88rem; line-height:1.7; }
+details .ans p, details .ans strong { color: var(--muted); }
+details .ans strong { color: var(--accent2); }
+
+/* Conductance type cards from file2 */
+.cond-type { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:18px 20px; }
+.cond-type h3 { font-size:1rem; font-weight:800; color:var(--accent4); margin-bottom:10px; }
+.cond-type .badge2 { font-size:11px; background:rgba(86,208,240,0.1); color:var(--cyan); border:1px solid rgba(86,208,240,0.3); padding:2px 8px; border-radius:6px; margin-bottom:8px; display:inline-block; }
+
+/* conductivity table highlight */
+.hi { color: var(--accent2); font-weight: 700; }
+.hi2 { color: var(--accent); font-weight: 700; }
+
+/* Kohlrausch discovery callout */
+.kohl-story { background: linear-gradient(135deg,rgba(210,168,255,0.08),rgba(86,208,240,0.06)); border:1px solid rgba(210,168,255,0.3); border-radius:14px; padding:16px 20px; margin:12px 0; }
+.kohl-story h4 { color:var(--accent5); margin-bottom:8px; font-size:1rem; }
+
+/* λ° table */
+.ion-table th { background:rgba(86,208,240,0.12); color:var(--cyan); }
+.ion-table .star { color:var(--yellow); font-weight:700; }
+
+/* Nav update for new sections */
+.toc-nav a.active { background: var(--bg3); color: var(--accent); }
+
+code { font-family: 'Fira Code', monospace; font-size: 0.85em; background:rgba(88,166,255,0.1); color:var(--accent); padding:2px 5px; border-radius:4px; }
+
+</style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📚 NCERT Class 12 · Chapter 2</div>
+  <h1>Electrochemistry</h1>
+  <p class="hero-sub">The Ultimate Board Exam Study Guide — Taught from Scratch, Remembered Forever</p>
+  <div class="hero-stats">
+    <div class="hero-stat">⚡ <span>5-7 Marks</span> in Board Exam</div>
+    <div class="hero-stat">📝 <span>8 Major Topics</span> Covered</div>
+    <div class="hero-stat">🧮 <span>All Formulas</span> & Derivations</div>
+    <div class="hero-stat">🎯 <span>PYQ + HOTS</span> Included</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="toc-nav">
+  <a href="#overview">🗺️ Overview</a>
+  <a href="#basics">⚡ Basics</a>
+  <a href="#electrolytic">🔌 Electrolytic</a>
+  <a href="#faraday">⚗️ Faraday's Laws</a>
+  <a href="#batteries">🔋 Batteries</a>
+  <a href="#fuel">🚀 Fuel Cells</a>
+  <a href="#corrosion">🦀 Corrosion</a>
+  <a href="#conductance">📡 Conductance</a>
+  <a href="#nernst-gibbs">🔗 Nernst &amp; Gibbs</a>
+  <a href="#formulas">📐 All Formulas</a>
+  <a href="#questions">❓ Questions</a>
+</nav>
+
+<div class="container">
+
+<!-- OVERVIEW -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="emoji">🗺️</div>
+    <div>
+      <div class="section-num">CHAPTER MAP</div>
+      <h2>Chapter At A Glance</h2>
+    </div>
+  </div>
+
+  <div class="mascot-box">
+    <svg class="mascot-svg" width="80" height="80" viewBox="0 0 80 80">
+      <!-- Scientist mascot -->
+      <circle cx="40" cy="28" r="18" fill="#ffd700" stroke="#e6a800" stroke-width="2"/>
+      <circle cx="33" cy="24" r="3" fill="#1a1a2e"/>
+      <circle cx="47" cy="24" r="3" fill="#1a1a2e"/>
+      <circle cx="34" cy="23" r="1" fill="white"/>
+      <circle cx="48" cy="23" r="1" fill="white"/>
+      <path d="M 33 34 Q 40 40 47 34" stroke="#e6a800" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Lab coat -->
+      <rect x="22" y="46" width="36" height="28" rx="4" fill="white" stroke="#ddd" stroke-width="1"/>
+      <rect x="34" y="46" width="12" height="28" rx="2" fill="#58a6ff" opacity="0.3"/>
+      <!-- Beaker in hand -->
+      <path d="M 60 55 L 55 55 L 53 68 L 67 68 L 65 55 Z" fill="rgba(86,208,240,0.6)" stroke="#56d0f0" stroke-width="1.5"/>
+      <line x1="55" y1="55" x2="65" y2="55" stroke="#56d0f0" stroke-width="1.5"/>
+      <!-- Lab goggles -->
+      <path d="M 30 22 Q 33 18 36 22 Q 40 26 44 22 Q 47 18 50 22" stroke="#58a6ff" stroke-width="2" fill="none"/>
+      <!-- Hair -->
+      <path d="M 25 20 Q 28 12 40 10 Q 52 12 55 20" fill="#4a3000" stroke="#3a2000" stroke-width="1"/>
+    </svg>
+    <div class="mascot-speech">
+      <strong style="color:var(--accent4)">Hey Abilash! 👋</strong><br>
+      I'm your Chemistry buddy — think of me as the scientist who discovered all this stuff. Electrochemistry sounds scary, but it's literally just <strong>chemistry that involves electricity!</strong> Your phone battery? Electrochemistry. Rusted iron gate? Electrochemistry. Aluminium foil? Made using electrochemistry! Let's make this super easy. By the end, you'll own this chapter 💪
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🎯 What is Electrochemistry in ONE Line?</h3>
+    <p>Electrochemistry = the study of the <span class="hl">relationship between chemical energy and electrical energy</span>. It deals with cells that either <span class="hlg">produce electricity from chemical reactions</span> (like batteries) or <span class="hlp">use electricity to drive chemical reactions</span> (like copper purification).</p>
+  </div>
+
+  <div class="overview-grid">
+    <a href="#basics" class="overview-item">
+      <div class="o-icon">⚡</div>
+      <div class="o-title">Electrochemical Cells</div>
+      <div class="o-sub">Galvanic vs Electrolytic</div>
+    </a>
+    <a href="#electrolytic" class="overview-item">
+      <div class="o-icon">🔌</div>
+      <div class="o-title">Electrolytic Cells</div>
+      <div class="o-sub">Electrolysis & Products</div>
+    </a>
+    <a href="#faraday" class="overview-item">
+      <div class="o-icon">⚗️</div>
+      <div class="o-title">Faraday's Laws</div>
+      <div class="o-sub">Quantitative Aspects</div>
+    </a>
+    <a href="#batteries" class="overview-item">
+      <div class="o-icon">🔋</div>
+      <div class="o-title">Batteries</div>
+      <div class="o-sub">Primary & Secondary</div>
+    </a>
+    <a href="#fuel" class="overview-item">
+      <div class="o-icon">🚀</div>
+      <div class="o-title">Fuel Cells</div>
+      <div class="o-sub">Green Energy</div>
+    </a>
+    <a href="#corrosion" class="overview-item">
+      <div class="o-icon">🦀</div>
+      <div class="o-title">Corrosion</div>
+      <div class="o-sub">Rusting & Prevention</div>
+    </a>
+  </div>
+
+  <div class="card">
+    <h3>📊 Weightage in Board Exams (CBSE 2020-2025)</h3>
+    <div class="topic-bar"><div class="t-name">Faraday's Laws & Numericals</div><div class="t-bar"><div class="t-fill" style="width:85%; background:var(--accent3)"></div></div><div class="t-marks">~3 Marks</div></div>
+    <div class="topic-bar"><div class="t-name">Batteries (Lead, Dry Cell)</div><div class="t-bar"><div class="t-fill" style="width:70%"></div></div><div class="t-marks">~2 Marks</div></div>
+    <div class="topic-bar"><div class="t-name">Corrosion</div><div class="t-bar"><div class="t-fill" style="width:60%; background:var(--accent2)"></div></div><div class="t-marks">~1-2 Marks</div></div>
+    <div class="topic-bar"><div class="t-name">Electrolysis Products</div><div class="t-bar"><div class="t-fill" style="width:65%; background:var(--accent5)"></div></div><div class="t-marks">~1-2 Marks</div></div>
+    <div class="topic-bar"><div class="t-name">Fuel Cells</div><div class="t-bar"><div class="t-fill" style="width:40%; background:var(--accent4)"></div></div><div class="t-marks">~1 Mark</div></div>
+  </div>
+</div>
+
+<!-- SECTION 1: BASICS -->
+<div class="section" id="basics">
+  <div class="section-header">
+    <div class="emoji">⚡</div>
+    <div>
+      <div class="section-num">SECTION 1</div>
+      <h2>Electrochemical Cells — The Big Picture</h2>
+    </div>
+  </div>
+
+
+  <div class="ana-box" style="margin-bottom:16px;">
+    <div class="a-icon">🧒</div>
+    <div>
+      <div class="a-label">🟢 Explain Like I'm 10</div>
+      <p>Two buckets with different liquids, connected by a straw (salt bridge) and copper wires. Chemicals react and <strong>push electrons through the wire by themselves</strong> = galvanic cell (like a battery). Force electrons <em>in</em> from a power plug = electrolytic cell (like charging your phone). Same hardware — two completely different modes! 🔋↔️🔌</p>
+    </div>
+  </div>
+  <div class="mascot-box">
+    <svg class="mascot-svg" width="70" height="70" viewBox="0 0 80 80">
+      <circle cx="40" cy="28" r="18" fill="#ffd700" stroke="#e6a800" stroke-width="2"/>
+      <circle cx="33" cy="24" r="3" fill="#1a1a2e"/>
+      <circle cx="47" cy="24" r="3" fill="#1a1a2e"/>
+      <path d="M 34 34 Q 40 39 46 34" stroke="#e6a800" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 25 20 Q 28 12 40 10 Q 52 12 55 20" fill="#4a3000" stroke="#3a2000" stroke-width="1"/>
+      <rect x="22" y="46" width="36" height="28" rx="4" fill="white" stroke="#ddd"/>
+      <!-- Lightning bolt on shirt -->
+      <path d="M 36 52 L 42 58 L 38 58 L 44 68 L 38 62 L 42 62 Z" fill="#ffd700"/>
+    </svg>
+    <div class="mascot-speech">
+      <strong style="color:var(--accent)">Think of it like this:</strong><br>
+      An electrochemical cell is basically a <strong>magic box</strong> — you put chemicals in, electricity comes out (Galvanic cell) OR you put electricity in, chemical change happens (Electrolytic cell). Simple as that!
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📖 EXAM-READY DEFINITION</div>
+    <p>An <strong>electrochemical cell</strong> is a device that consists of two metallic electrodes dipping in an electrolytic solution. It interconverts chemical energy and electrical energy.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card" style="border-color: var(--accent2)">
+      <h3>⚡ Galvanic Cell (Voltaic Cell)</h3>
+      <p>Converts <span class="hlg">chemical energy → electrical energy</span></p>
+      <p style="margin-top:10px; font-size:14px; color:var(--muted)">The reaction is <strong style="color:var(--accent2)">SPONTANEOUS</strong> (happens on its own)</p>
+      <div class="example-box" style="margin-top:10px;">
+        <div class="e-title">REAL LIFE</div>
+        <p style="font-size:13px">TV remote battery, car battery, phone battery — all galvanic cells! 🔋</p>
+      </div>
+    </div>
+    <div class="card" style="border-color: var(--accent3)">
+      <h3>🔌 Electrolytic Cell</h3>
+      <p>Converts <span style="background:rgba(247,129,102,0.15); color:var(--accent3); padding:1px 5px; border-radius:4px; font-weight:700">electrical energy → chemical energy</span></p>
+      <p style="margin-top:10px; font-size:14px; color:var(--muted)">The reaction is <strong style="color:var(--accent3)">NON-SPONTANEOUS</strong> (needs a push)</p>
+      <div class="example-box" style="margin-top:10px;">
+        <div class="e-title">REAL LIFE</div>
+        <p style="font-size:13px">Gold plating jewellery, making pure copper, aluminium production 🏭</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALVANIC CELL DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="d-title">📐 Galvanic Cell (Daniell Cell) — Zn | Cu System</div>
+    <svg width="680" height="300" viewBox="0 0 680 300">
+      <!-- Background -->
+      <rect width="680" height="300" fill="#161b22" rx="10"/>
+
+      <!-- Left beaker (Zinc) -->
+      <rect x="80" y="100" width="140" height="150" rx="4" fill="rgba(88,166,255,0.08)" stroke="#58a6ff" stroke-width="1.5"/>
+      <text x="150" y="90" text-anchor="middle" fill="#58a6ff" font-size="13" font-weight="bold">ANODE (−)</text>
+      <text x="150" y="270" text-anchor="middle" fill="#8b949e" font-size="11">ZnSO₄ solution</text>
+
+      <!-- Right beaker (Copper) -->
+      <rect x="460" y="100" width="140" height="150" rx="4" fill="rgba(63,185,80,0.08)" stroke="#3fb950" stroke-width="1.5"/>
+      <text x="530" y="90" text-anchor="middle" fill="#3fb950" font-size="13" font-weight="bold">CATHODE (+)</text>
+      <text x="530" y="270" text-anchor="middle" fill="#8b949e" font-size="11">CuSO₄ solution</text>
+
+      <!-- Zinc electrode -->
+      <rect x="138" y="105" width="24" height="130" rx="4" fill="#b0b0b0" stroke="#888"/>
+      <text x="150" y="175" text-anchor="middle" fill="#1a1a2e" font-size="10" font-weight="bold">Zn</text>
+
+      <!-- Copper electrode -->
+      <rect x="518" y="105" width="24" height="130" rx="4" fill="#f0a000" stroke="#c07800"/>
+      <text x="530" y="175" text-anchor="middle" fill="#1a1a2e" font-size="10" font-weight="bold">Cu</text>
+
+      <!-- Salt bridge -->
+      <rect x="230" y="120" width="220" height="40" rx="20" fill="#1c2333" stroke="#d2a8ff" stroke-width="2"/>
+      <text x="340" y="145" text-anchor="middle" fill="#d2a8ff" font-size="12" font-weight="bold">SALT BRIDGE (KCl/KNO₃)</text>
+
+      <!-- Wire on top -->
+      <path d="M 150 70 L 150 50 L 530 50 L 530 70" stroke="#ffa657" stroke-width="3" fill="none"/>
+
+      <!-- Voltmeter -->
+      <circle cx="340" cy="42" r="22" fill="#21262d" stroke="#ffa657" stroke-width="2"/>
+      <text x="340" y="38" text-anchor="middle" fill="#ffa657" font-size="10" font-weight="bold">V</text>
+      <text x="340" y="52" text-anchor="middle" fill="#8b949e" font-size="8">meter</text>
+      <line x1="150" y1="50" x2="318" y2="42" stroke="#ffa657" stroke-width="2"/>
+      <line x1="530" y1="50" x2="362" y2="42" stroke="#ffa657" stroke-width="2"/>
+
+      <!-- Electron flow arrows -->
+      <path d="M 155 55 L 185 55" stroke="#f78166" stroke-width="2.5" marker-end="url(#arr)"/>
+      <path d="M 495 55 L 465 55" stroke="#f78166" stroke-width="2" marker-end="url(#arr2)"/>
+      <text x="200" y="48" fill="#f78166" font-size="10" font-weight="bold">e⁻ flow →</text>
+
+      <!-- Ion flow in salt bridge -->
+      <text x="260" y="155" fill="#56d0f0" font-size="10">← K⁺</text>
+      <text x="380" y="155" fill="#f78166" font-size="10">Cl⁻ →</text>
+
+      <!-- Reactions -->
+      <text x="150" y="195" text-anchor="middle" fill="#58a6ff" font-size="11">Zn → Zn²⁺ + 2e⁻</text>
+      <text x="150" y="210" text-anchor="middle" fill="#58a6ff" font-size="10">(OXIDATION)</text>
+
+      <text x="530" y="195" text-anchor="middle" fill="#3fb950" font-size="11">Cu²⁺ + 2e⁻ → Cu</text>
+      <text x="530" y="210" text-anchor="middle" fill="#3fb950" font-size="10">(REDUCTION)</text>
+
+      <!-- Zn ions in solution -->
+      <text x="110" y="240" fill="#58a6ff" font-size="10">Zn²⁺ ions</text>
+      <text x="110" y="255" fill="#58a6ff" font-size="10">forming...</text>
+
+      <!-- Cu deposit -->
+      <rect x="516" y="185" width="28" height="12" rx="2" fill="#f0a000" opacity="0.6"/>
+      <text x="555" y="195" fill="#3fb950" font-size="10">Cu deposits</text>
+
+      <defs>
+        <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#f78166"/>
+        </marker>
+        <marker id="arr2" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto">
+          <path d="M8,0 L8,6 L0,3 z" fill="#f78166"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>🔑 Key Terms — Anode & Cathode</h3>
+      <table>
+        <tr><th>Property</th><th>Anode</th><th>Cathode</th></tr>
+        <tr><td>Process</td><td style="color:var(--accent3)">Oxidation</td><td style="color:var(--accent2)">Reduction</td></tr>
+        <tr><td>Charge (Galvanic)</td><td>Negative (−)</td><td>Positive (+)</td></tr>
+        <tr><td>Charge (Electrolytic)</td><td>Positive (+)</td><td>Negative (−)</td></tr>
+        <tr><td>What happens</td><td>Loses electrons</td><td>Gains electrons</td></tr>
+      </table>
+    </div>
+    <div class="memory-box" style="display:flex; flex-direction:column; justify-content:center;">
+      <div class="m-title">🧠 MEMORY TRICK — Never Forget!</div>
+      <div class="trick">AN OX = RED CAT</div>
+      <p style="margin-top:10px; font-size:14px;"><strong style="color:var(--accent3)">AN</strong>ode → <strong style="color:var(--accent3)">OX</strong>idation</p>
+      <p style="font-size:14px;"><strong style="color:var(--accent2)">RED</strong>uction → <strong style="color:var(--accent2)">CAT</strong>hode</p>
+      <p style="margin-top:8px; font-size:13px; color:var(--muted)">Like: "An ox (bull) is red, it goes to a cat" 🐂🐱</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🧂 Why is a Salt Bridge Needed?</h3>
+    <p>Think of the salt bridge as a <strong>traffic cop</strong> 🚦 between the two solutions. Without it:</p>
+    <ul style="margin:10px 0 0 20px; font-size:14px;">
+      <li>The anode solution would become <span class="hl">positively charged</span> (too many Zn²⁺ ions) → reaction STOPS</li>
+      <li>The cathode solution would become <span class="hlp">negatively charged</span> (SO₄²⁻ left behind) → reaction STOPS</li>
+    </ul>
+    <p style="margin-top:10px; font-size:14px;">The salt bridge <strong>maintains electrical neutrality</strong> by allowing K⁺ ions to move toward cathode and Cl⁻/NO₃⁻ ions to move toward anode. This completes the circuit! ✅</p>
+    <div class="def-box" style="margin-top:12px;">
+      <div class="def-title">📖 EXAM DEFINITION</div>
+      <p>A <strong>salt bridge</strong> is a U-shaped tube containing saturated solution of an inert electrolyte like KCl or KNO₃ set in agar-agar gel. It maintains electrical neutrality of the electrode compartments and completes the circuit.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>✍️ Cell Notation (Standard Way to Write a Cell)</h3>
+    <p style="font-size:14px; margin-bottom:10px;">Boards love asking you to write cell notation! The rules:</p>
+    <div class="formula-box">
+      <div class="f-title">CELL NOTATION FORMAT</div>
+      <div class="formula">Anode | Anode solution || Cathode solution | Cathode</div>
+      <ul>
+        <li><strong>|</strong> = single line = phase boundary (solid/liquid interface)</li>
+        <li><strong>||</strong> = double line = salt bridge</li>
+        <li>Anode is always written on the LEFT</li>
+        <li>Cathode is always written on the RIGHT</li>
+      </ul>
+    </div>
+    <div class="example-box">
+      <div class="e-title">EXAMPLE — Daniell Cell</div>
+      <div class="reaction">Zn(s) | Zn²⁺(aq) || Cu²⁺(aq) | Cu(s)         E°cell = +1.10 V</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🌡️ Standard Electrode Potential (E°)</h3>
+    <div class="def-box">
+      <div class="def-title">📖 EXAM DEFINITION</div>
+      <p>The <strong>standard electrode potential</strong> (E°) of an electrode is the potential developed by the electrode when it is dipped in a solution of its own ions of unit concentration (1M), at 298K and 1 atm pressure, measured against the Standard Hydrogen Electrode (SHE) taken as zero.</p>
+    </div>
+    <div class="formula-box" style="margin-top:12px;">
+      <div class="f-title">KEY FORMULAS</div>
+      <div class="formula">E°cell = E°cathode − E°anode</div>
+      <div class="formula" style="margin-top:8px;">ΔrG° = −nFE°cell</div>
+      <div class="formula" style="margin-top:8px;">ΔrG° = −RT ln K</div>
+      <ul>
+        <li><strong>n</strong> = number of electrons transferred</li>
+        <li><strong>F</strong> = Faraday's constant = 96500 C mol⁻¹</li>
+        <li><strong>K</strong> = equilibrium constant of the cell reaction</li>
+      </ul>
+    </div>
+    <div class="warn-box">
+      <div class="w-title">⚠️ BOARD EXAM TRAP</div>
+      <p style="font-size:14px;">If E°cell is <strong>positive</strong> → ΔrG° is <strong>negative</strong> → reaction is <strong>spontaneous</strong> ✅<br>
+      If E°cell is <strong>negative</strong> → ΔrG° is <strong>positive</strong> → reaction is <strong>non-spontaneous</strong> ❌</p>
+    </div>
+  
+  <!-- ★ FROM FILE 3: What happens when external voltage applied -->
+  <div class="card" style="margin-top:16px;">
+    <h3>🔄 What Happens When External Voltage Is Applied to Daniell Cell?</h3>
+    <table>
+      <tr><th>Condition</th><th>What Happens</th></tr>
+      <tr><td>E_ext &lt; 1.10 V</td><td>Cell works normally: Zn dissolves, Cu deposits, electrons flow Zn→Cu</td></tr>
+      <tr><td>E_ext = 1.10 V</td><td>No current, no reaction — perfectly balanced (equilibrium)</td></tr>
+      <tr><td>E_ext &gt; 1.10 V</td><td>Reversal! Cu dissolves, Zn deposits — now acting as electrolytic cell!</td></tr>
+    </table>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;">💡 This beautifully shows how a galvanic cell becomes an electrolytic cell when you force a higher external voltage!</p>
+  </div>
+
+  <!-- ★ FROM FILE 3: Half-cell reactions building blocks -->
+  <div class="card" style="margin-top:16px;">
+    <h3>🔤 Half-Cell Reactions — The Building Blocks</h3>
+    <p style="font-size:14px;">Every cell reaction is two half-reactions combined:</p>
+    <div class="steps" style="margin-top:10px;">
+      <div class="step"><strong>Step 1 — Cathode (reduction):</strong> Electrons on LEFT. <span class="reaction">Cu²⁺(aq) + 2e⁻ → Cu(s)</span></div>
+      <div class="step"><strong>Step 2 — Anode (oxidation):</strong> Electrons on RIGHT. <span class="reaction">Zn(s) → Zn²⁺(aq) + 2e⁻</span></div>
+      <div class="step"><strong>Step 3 — Overall:</strong> Add them. <span class="reaction">Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s)  &nbsp; E°cell = +1.10 V</span></div>
+    </div>
+    <div class="real-world" style="margin-top:10px;">
+      <div class="real-world-tag">🌍 Try This at Home!</div>
+      <p style="font-size:13px;">Put a zinc nail in blue CuSO₄ solution — the nail turns copper-colored and the blue fades! That's Zn displacing Cu because Zn is more active. You made a Daniell cell! 🔬</p>
+    </div>
+  </div>
+
+
+
+  <!-- ★ FROM FILE 3: SHE Diagram -->
+  <div class="diagram-wrap" style="margin-top:16px;">
+    <div class="d-title">📐 Standard Hydrogen Electrode (SHE) — The Universal Reference</div>
+    <svg width="430" height="270" viewBox="0 0 430 270" xmlns="http://www.w3.org/2000/svg" font-family="Nunito,sans-serif" style="max-width:100%">
+      <rect width="430" height="270" fill="#161b22" rx="10"/>
+      <rect x="110" y="98" width="210" height="148" rx="6" fill="#0f1f38" stroke="#1e3a5f" stroke-width="1.5"/>
+      <text x="215" y="228" text-anchor="middle" fill="#94a3b8" font-size="12">1.00 M H⁺(aq) — acidic solution</text>
+      <rect x="196" y="52" width="13" height="180" rx="3" fill="#b8b8b8"/>
+      <text x="202" y="44" text-anchor="middle" fill="#c8c8c8" font-size="12" font-weight="700">Pt</text>
+      <circle cx="200" cy="160" r="2.5" fill="#444"/><circle cx="205" cy="172" r="2" fill="#444"/>
+      <circle cx="198" cy="182" r="2.5" fill="#444"/><circle cx="204" cy="193" r="2" fill="#444"/>
+      <text x="143" y="177" fill="#94a3b8" font-size="9" text-anchor="middle">Pt-black</text>
+      <text x="143" y="189" fill="#94a3b8" font-size="9" text-anchor="middle">coated</text>
+      <rect x="200" y="18" width="22" height="60" rx="5" fill="none" stroke="#58a6ff" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <text x="237" y="38" fill="#58a6ff" font-size="11">H₂(g)</text>
+      <text x="237" y="52" fill="#58a6ff" font-size="10">1 bar</text>
+      <circle cx="205" cy="112" r="4.5" fill="none" stroke="#58a6ff" stroke-width="1" opacity=".7"/>
+      <circle cx="200" cy="128" r="3" fill="none" stroke="#58a6ff" stroke-width="1" opacity=".5"/>
+      <circle cx="207" cy="143" r="5.5" fill="none" stroke="#58a6ff" stroke-width="1" opacity=".6"/>
+      <rect x="285" y="108" width="125" height="55" rx="8" fill="#1e3a5f" stroke="#ffd700" stroke-width="1.5"/>
+      <text x="347" y="129" text-anchor="middle" fill="#ffd700" font-size="15" font-weight="700">E° = 0.00 V</text>
+      <text x="347" y="148" text-anchor="middle" fill="#94a3b8" font-size="10">At ALL temperatures</text>
+      <text x="347" y="160" text-anchor="middle" fill="#94a3b8" font-size="10">By international convention</text>
+      <text x="215" y="256" text-anchor="middle" fill="#ffd700" font-size="11">H⁺(aq) + e⁻ ⇌ ½H₂(g)</text>
+      <text x="215" y="15" text-anchor="middle" fill="#475569" font-size="9.5">Standard Hydrogen Electrode (SHE) — Universal Reference</text>
+    </svg>
+    <div class="diagram-caption">SHE: Pt electrode in 1M H⁺, H₂ at 1 bar, 298K. E° = 0.00V by definition. All E° values measured vs SHE.</div>
+  </div>
+
+  <div class="she-box">
+    <div class="s-label">⚠️ Must-Know SHE Facts</div>
+    <ul style="font-size:14px;">
+      <li>E°(SHE) = 0.00 V at ALL temperatures — international convention</li>
+      <li>Half-reaction: <code>H⁺(aq) + e⁻ → ½H₂(g)</code></li>
+      <li>Conditions: [H⁺] = 1M, P(H₂) = 1 bar, T = 298K</li>
+      <li>Platinum used: inert, excellent conductor, adsorbs H₂ gas</li>
+      <li>Pt-black coating: finely divided Pt = huge surface area = rapid equilibrium</li>
+      <li>Individual electrode potentials CANNOT be measured alone — only DIFFERENCES (cell EMF)</li>
+    </ul>
+  </div>
+
+  <!-- NERNST EQUATION -->
+  <div class="card">
+    <h3>📐 Nernst Equation — Effect of Concentration on EMF</h3>
+    <p style="font-size:14px; margin-bottom:12px;">The Nernst equation tells us how EMF changes when concentrations are NOT standard (not 1M). Think of it as the "real world" correction!</p>
+    <div class="formula-box">
+      <div class="f-title">NERNST EQUATION</div>
+      <div class="formula">E = E° − (RT/nF) × ln Q</div>
+      <div class="formula" style="margin-top:8px;">At 298K: E = E° − (0.0592/n) × log Q</div>
+      <ul>
+        <li><strong>R</strong> = 8.314 J K⁻¹ mol⁻¹ (gas constant)</li>
+        <li><strong>T</strong> = temperature in Kelvin</li>
+        <li><strong>n</strong> = moles of electrons transferred</li>
+        <li><strong>F</strong> = 96500 C mol⁻¹</li>
+        <li><strong>Q</strong> = reaction quotient [Products]/[Reactants]</li>
+      </ul>
+    </div>
+    <div class="example-box" style="margin-top:12px;">
+      <div class="e-title">💡 HOW TO APPLY (Step by Step)</div>
+      <div class="steps">
+        <div class="step">Write the cell reaction and identify n</div>
+        <div class="step">Write Q = [products]/[reactants] (don't include pure solids/liquids)</div>
+        <div class="step">Substitute E° and Q in the Nernst equation</div>
+        <div class="step">Calculate E</div>
+      </div>
+      <div class="reaction" style="margin-top:10px;">Example: Zn | Zn²⁺(0.001M) || Cu²⁺(0.0001M) | Cu
+E = 1.10 − (0.0592/2) × log([Zn²⁺]/[Cu²⁺])
+E = 1.10 − 0.0296 × log(0.001/0.0001)
+E = 1.10 − 0.0296 × 1 = 1.07 V</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: ELECTROLYTIC CELLS -->
+<div class="section" id="electrolytic">
+  <div class="section-header">
+    <div class="emoji">🔌</div>
+    <div>
+      <div class="section-num">SECTION 2</div>
+      <h2>Electrolytic Cells & Electrolysis</h2>
+    </div>
+  </div>
+
+  <div class="mascot-box">
+    <svg class="mascot-svg" width="70" height="70" viewBox="0 0 80 80">
+      <circle cx="40" cy="28" r="18" fill="#ffd700" stroke="#e6a800" stroke-width="2"/>
+      <circle cx="33" cy="25" r="3" fill="#1a1a2e"/>
+      <circle cx="47" cy="25" r="3" fill="#1a1a2e"/>
+      <path d="M 34 36 Q 40 40 46 36" stroke="#e6a800" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 25 20 Q 28 12 40 10 Q 52 12 55 20" fill="#4a3000"/>
+      <rect x="22" y="46" width="36" height="28" rx="4" fill="white" stroke="#ddd"/>
+      <!-- Electric bolt animated feel -->
+      <path d="M 35 50 L 42 57 L 38 57 L 45 66 L 38 61 L 42 61 Z" fill="#ffd700"/>
+      <!-- Surprised eyes (wide) -->
+      <circle cx="33" cy="25" r="4" fill="#1a1a2e" stroke="#ffd700" stroke-width="1"/>
+      <circle cx="47" cy="25" r="4" fill="#1a1a2e" stroke="#ffd700" stroke-width="1"/>
+      <circle cx="34" cy="24" r="1.5" fill="white"/>
+      <circle cx="48" cy="24" r="1.5" fill="white"/>
+    </svg>
+    <div class="mascot-speech">
+      <strong style="color:var(--accent3)">Now the REVERSE!</strong><br>
+      Instead of the cell making electricity, we're now <strong>forcing electricity INTO a solution</strong> to make a reaction happen. Like charging a dead battery! The most important thing here: the <span class="hl">external DC source forces electrons to flow</span>. The negative terminal of the battery pushes electrons into the cathode, and pulls them away from the anode!
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📖 EXAM DEFINITION</div>
+    <p>An <strong>electrolytic cell</strong> is a device in which electrical energy from an external source is used to bring about a non-spontaneous chemical reaction. The process is called <strong>electrolysis</strong>.</p>
+  </div>
+
+  <!-- ELECTROLYTIC CELL DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="d-title">📐 Electrolytic Cell — Copper Purification</div>
+    <svg width="600" height="280" viewBox="0 0 600 280">
+      <rect width="600" height="280" fill="#161b22" rx="10"/>
+
+      <!-- Battery/DC source -->
+      <rect x="240" y="20" width="120" height="40" rx="8" fill="#21262d" stroke="#ffa657" stroke-width="2"/>
+      <text x="300" y="37" text-anchor="middle" fill="#ffa657" font-size="11" font-weight="bold">DC SOURCE</text>
+      <text x="300" y="52" text-anchor="middle" fill="#ffa657" font-size="10">⚡ External Battery</text>
+      <!-- + and - terminals -->
+      <text x="245" y="35" fill="#f78166" font-size="14" font-weight="bold">+</text>
+      <text x="348" y="35" fill="#58a6ff" font-size="14" font-weight="bold">−</text>
+
+      <!-- Beaker -->
+      <rect x="130" y="100" width="340" height="155" rx="6" fill="rgba(86,208,240,0.06)" stroke="#56d0f0" stroke-width="2"/>
+      <text x="300" y="262" text-anchor="middle" fill="#8b949e" font-size="12">CuSO₄ Solution (Electrolyte)</text>
+
+      <!-- Anode (impure copper) - connected to + -->
+      <rect x="175" y="105" width="28" height="135" rx="4" fill="#c07000" stroke="#a05000" stroke-width="2"/>
+      <text x="189" y="98" text-anchor="middle" fill="#ffa657" font-size="11" font-weight="bold">ANODE (+)</text>
+      <text x="189" y="178" text-anchor="middle" fill="#fff" font-size="9">Impure</text>
+      <text x="189" y="190" text-anchor="middle" fill="#fff" font-size="9">Cu</text>
+
+      <!-- Cathode (pure copper) - connected to - -->
+      <rect x="397" y="105" width="28" height="135" rx="4" fill="#f0b030" stroke="#d09010" stroke-width="2"/>
+      <text x="411" y="98" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="bold">CATHODE (−)</text>
+      <text x="411" y="178" text-anchor="middle" fill="#1a1a2e" font-size="9">Pure</text>
+      <text x="411" y="190" text-anchor="middle" fill="#1a1a2e" font-size="9">Cu</text>
+
+      <!-- Wire connections -->
+      <line x1="189" y1="60" x2="189" y2="105" stroke="#ffa657" stroke-width="3"/>
+      <line x1="189" y1="60" x2="253" y2="45" stroke="#ffa657" stroke-width="3"/>
+      <line x1="411" y1="60" x2="411" y2="105" stroke="#58a6ff" stroke-width="3"/>
+      <line x1="411" y1="60" x2="347" y2="45" stroke="#58a6ff" stroke-width="3"/>
+
+      <!-- Electron flow arrows on wire -->
+      <path d="M 290 53 L 260 53" stroke="#f78166" stroke-width="2" marker-end="url(#earr)"/>
+      <text x="270" y="46" fill="#f78166" font-size="9">e⁻</text>
+      <path d="M 310 53 L 340 53" stroke="#f78166" stroke-width="2" marker-end="url(#earr2)"/>
+
+      <!-- Cu ions in solution -->
+      <circle cx="260" cy="160" r="8" fill="rgba(88,166,255,0.3)" stroke="#58a6ff"/>
+      <text x="260" y="164" text-anchor="middle" fill="#58a6ff" font-size="8">Cu²⁺</text>
+      <circle cx="300" cy="190" r="8" fill="rgba(88,166,255,0.3)" stroke="#58a6ff"/>
+      <text x="300" y="194" text-anchor="middle" fill="#58a6ff" font-size="8">Cu²⁺</text>
+      <circle cx="340" cy="155" r="8" fill="rgba(88,166,255,0.3)" stroke="#58a6ff"/>
+      <text x="340" y="159" text-anchor="middle" fill="#58a6ff" font-size="8">Cu²⁺</text>
+
+      <!-- SO4 ions -->
+      <circle cx="250" cy="210" r="9" fill="rgba(247,129,102,0.2)" stroke="#f78166"/>
+      <text x="250" y="214" text-anchor="middle" fill="#f78166" font-size="7">SO₄²⁻</text>
+      <circle cx="330" cy="215" r="9" fill="rgba(247,129,102,0.2)" stroke="#f78166"/>
+      <text x="330" y="219" text-anchor="middle" fill="#f78166" font-size="7">SO₄²⁻</text>
+
+      <!-- Arrow: ions moving -->
+      <path d="M 280 165 L 400 165" stroke="#3fb950" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#garr)"/>
+      <text x="320" y="158" fill="#3fb950" font-size="9">Cu²⁺ → cathode</text>
+
+      <!-- Reaction labels -->
+      <text x="140" y="230" fill="#ffa657" font-size="10">Cu → Cu²⁺ + 2e⁻</text>
+      <text x="140" y="244" fill="#ffa657" font-size="10">(Oxidation)</text>
+      <text x="370" y="230" fill="#58a6ff" font-size="10">Cu²⁺ + 2e⁻ → Cu</text>
+      <text x="370" y="244" fill="#58a6ff" font-size="10">(Reduction)</text>
+
+      <!-- Dissolving at anode animation hint -->
+      <rect x="169" y="185" width="10" height="10" rx="1" fill="#c07000" opacity="0.5"/>
+      <rect x="166" y="200" width="8" height="8" rx="1" fill="#c07000" opacity="0.3"/>
+
+      <defs>
+        <marker id="earr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#f78166"/>
+        </marker>
+        <marker id="earr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#f78166"/>
+        </marker>
+        <marker id="garr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#3fb950"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="card">
+    <h3>🏭 Copper Purification — Industrial Process</h3>
+    <p style="font-size:14px;">This is one of the most important applications of electrolysis! Here's how it works:</p>
+    <div class="steps" style="margin-top:12px;">
+      <div class="step">Impure copper is made the <strong>ANODE</strong> (connected to +ve terminal)</div>
+      <div class="step">Pure copper sheet is made the <strong>CATHODE</strong> (connected to −ve terminal)</div>
+      <div class="step">CuSO₄ solution is used as the electrolyte</div>
+      <div class="step">On passing DC current: impure Cu dissolves at anode, pure Cu deposits at cathode</div>
+    </div>
+    <div class="grid-2" style="margin-top:12px;">
+      <div class="reaction">Anode: Cu(s) → Cu²⁺(aq) + 2e⁻ (Oxidation)</div>
+      <div class="reaction">Cathode: Cu²⁺(aq) + 2e⁻ → Cu(s) (Reduction)</div>
+    </div>
+    <p style="font-size:13px; color:var(--muted); margin-top:10px;">💡 Impurities like gold, silver, platinum that don't dissolve fall below the anode as "anode mud" — this is actually valuable!</p>
+  </div>
+
+  <div class="card">
+    <h3>⚗️ Electrolysis of Aqueous NaCl — Chlor-Alkali Process</h3>
+    <p style="font-size:14px; margin-bottom:12px;">This is SUPER important for boards! When NaCl is dissolved in water, we have Na⁺, Cl⁻, H⁺ (from water), and OH⁻ ions. Multiple species compete at each electrode:</p>
+
+    <div class="warn-box">
+      <div class="w-title">⚠️ COMPETITION AT CATHODE</div>
+      <table>
+        <tr><th>Reaction</th><th>E°</th><th>Winner?</th></tr>
+        <tr><td>Na⁺ + e⁻ → Na(s)</td><td style="color:var(--accent3)">−2.71 V</td><td>❌ Loses</td></tr>
+        <tr><td>H⁺ + e⁻ → ½H₂(g)</td><td style="color:var(--accent2)">0.00 V</td><td>✅ Wins</td></tr>
+      </table>
+      <p style="font-size:13px; margin-top:8px; color:var(--muted)">Higher E° is preferred at cathode → H⁺ is reduced → H₂ gas produced</p>
+    </div>
+
+    <div class="warn-box" style="margin-top:10px;">
+      <div class="w-title">⚠️ COMPETITION AT ANODE</div>
+      <table>
+        <tr><th>Reaction</th><th>E°</th><th>Expected?</th></tr>
+        <tr><td>2H₂O → O₂ + 4H⁺ + 4e⁻</td><td>+1.23 V</td><td>Should win (lower E°)</td></tr>
+        <tr><td>2Cl⁻ → Cl₂ + 2e⁻</td><td>+1.36 V</td><td>Actually wins!</td></tr>
+      </table>
+      <p style="font-size:13px; margin-top:8px; color:var(--muted)">Lower E° should be preferred at anode. But <strong style="color:var(--accent4)">OVERPOTENTIAL</strong> of oxygen makes Cl₂ discharge easier in practice!</p>
+    </div>
+
+    <div class="formula-box" style="margin-top:12px;">
+      <div class="f-title">OVERALL REACTION — NaCl Electrolysis</div>
+      <div class="reaction" style="font-size:12px;">Cathode: H₂O(l) + e⁻ → ½H₂(g) + OH⁻(aq)</div>
+      <div class="reaction" style="font-size:12px;">Anode: Cl⁻(aq) → ½Cl₂(g) + e⁻</div>
+      <div class="reaction" style="font-size:12px; color:var(--yellow)">Net: NaCl(aq) + H₂O(l) → NaOH(aq) + ½H₂(g) + ½Cl₂(g)</div>
+    </div>
+    <div class="example-box">
+      <div class="e-title">🏭 INDUSTRIAL IMPORTANCE</div>
+      <p style="font-size:13px;">NaOH (used in soap making), Cl₂ (water purification, bleach), H₂ (fuel, ammonia production) — all from sea water! This is why it's called the <strong>Chlor-Alkali Process</strong> 🌊</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🌡️ Overpotential — Quick Concept</h3>
+    <div class="def-box">
+      <div class="def-title">📖 DEFINITION</div>
+      <p><strong>Overpotential</strong> is the extra potential (beyond the theoretical E°) that must be applied to make a slow electrode reaction occur at a reasonable rate. Oxygen has high overpotential, which is why Cl₂ is produced instead of O₂ even though O₂ should theoretically be preferred.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🏗️ Metals Extracted by Electrolysis</h3>
+    <p style="font-size:14px; margin-bottom:10px;">Metals that cannot be reduced by carbon or other reducing agents are extracted by electrolysis of their molten (fused) salts:</p>
+    <table>
+      <tr><th>Metal</th><th>Source</th><th>Process</th></tr>
+      <tr><td>Sodium (Na)</td><td>Molten NaCl</td><td>Down's Process</td></tr>
+      <tr><td>Magnesium (Mg)</td><td>Molten MgCl₂</td><td>Electrolysis of fused salt</td></tr>
+      <tr><td>Aluminium (Al)</td><td>Al₂O₃ (Bauxite)</td><td>Hall-Héroult Process (with cryolite Na₃AlF₆)</td></tr>
+    </table>
+    <div class="example-box" style="margin-top:10px;">
+      <div class="e-title">💡 WHY MOLTEN AND NOT AQUEOUS?</div>
+      <p style="font-size:13px;">If we use aqueous solution of NaCl, water gets reduced (H₂ forms at cathode) instead of Na metal, because Na⁺ has more negative E° than water. In molten state, only Na⁺ is available → Na metal deposits! 🎯</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: FARADAY'S LAWS -->
+<div class="section" id="faraday">
+  <div class="section-header">
+    <div class="emoji">⚗️</div>
+    <div>
+      <div class="section-num">SECTION 3</div>
+      <h2>Faraday's Laws of Electrolysis</h2>
+    </div>
+  </div>
+
+  <div class="mascot-box">
+    <svg class="mascot-svg" width="70" height="70" viewBox="0 0 80 80">
+      <circle cx="40" cy="28" r="18" fill="#ffd700" stroke="#e6a800" stroke-width="2"/>
+      <circle cx="33" cy="25" r="3" fill="#1a1a2e"/>
+      <circle cx="47" cy="25" r="3" fill="#1a1a2e"/>
+      <path d="M 34 35 Q 40 40 46 35" stroke="#e6a800" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 22 22 Q 28 10 40 10 Q 52 10 55 22" fill="#555" stroke="#444"/>
+      <!-- Sideburns like Faraday -->
+      <rect x="23" y="20" width="8" height="18" rx="4" fill="#8b6914"/>
+      <rect x="49" y="20" width="8" height="18" rx="4" fill="#8b6914"/>
+      <rect x="22" y="46" width="36" height="28" rx="4" fill="#1a3a1a" stroke="#3fb950"/>
+      <text x="40" y="63" text-anchor="middle" fill="#3fb950" font-size="8" font-weight="bold">FARADAY</text>
+    </svg>
+    <div class="mascot-speech">
+      <strong style="color:var(--accent2)">Michael Faraday — The GOAT of Electrolysis!</strong><br>
+      In 1833-34, Faraday discovered the quantitative laws of electrolysis. Think of it this way: if you want to plate more gold on a ring, you need to pass more electricity AND more time. Faraday measured exactly HOW MUCH. He's the reason we have a unit called <strong>Faraday (F) = 96500 C/mol</strong>!
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card" style="border-color:var(--accent2)">
+      <h3>⚡ First Law of Electrolysis</h3>
+      <div class="def-box">
+        <div class="def-title">📖 DEFINITION</div>
+        <p>The amount of substance deposited or dissolved at an electrode during electrolysis is <strong>directly proportional to the quantity of electricity</strong> passed through the electrolyte.</p>
+      </div>
+      <div class="formula-box" style="margin-top:10px;">
+        <div class="f-title">MATHEMATICAL FORM</div>
+        <div class="formula">w ∝ Q → w = ZQ = ZIt</div>
+        <ul>
+          <li><strong>w</strong> = mass deposited (grams)</li>
+          <li><strong>Z</strong> = electrochemical equivalent</li>
+          <li><strong>Q</strong> = charge passed (Coulombs)</li>
+          <li><strong>I</strong> = current (Amperes)</li>
+          <li><strong>t</strong> = time (seconds)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="border-color:var(--accent4)">
+      <h3>⚖️ Second Law of Electrolysis</h3>
+      <div class="def-box">
+        <div class="def-title">📖 DEFINITION</div>
+        <p>When the same quantity of electricity is passed through different electrolytes connected in series, the masses of substances deposited are <strong>proportional to their equivalent weights</strong> (molar mass ÷ n-factor).</p>
+      </div>
+      <div class="formula-box" style="margin-top:10px;">
+        <div class="f-title">MATHEMATICAL FORM</div>
+        <div class="formula">w₁/w₂ = E₁/E₂</div>
+        <ul>
+          <li><strong>E</strong> = Equivalent weight = Molar mass / n</li>
+          <li><strong>n</strong> = electrons per ion</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🔢 Faraday's Constant — The Magic Number</h3>
+    <p style="font-size:14px; margin-bottom:12px;">One Faraday = charge on one mole of electrons. Let's derive it:</p>
+    <div class="formula-box">
+      <div class="f-title">DERIVATION</div>
+      <div class="formula">Charge on 1 electron = 1.6021 × 10⁻¹⁹ C</div>
+      <div class="formula" style="margin-top:6px;">Charge on 1 mole of electrons = Nₐ × e</div>
+      <div class="formula" style="margin-top:6px;">= 6.022 × 10²³ × 1.6021 × 10⁻¹⁹</div>
+      <div class="formula" style="margin-top:6px; color:var(--yellow); font-size:1.2rem;">F = 96487 C mol⁻¹ ≈ 96500 C mol⁻¹</div>
+    </div>
+    <div class="example-box" style="margin-top:12px;">
+      <div class="e-title">🎯 HOW TO USE FARADAY'S CONSTANT</div>
+      <p style="font-size:14px;">To deposit <strong>1 mole of any metal</strong>, you need <strong>n × F coulombs</strong>, where n = charge on the metal ion.</p>
+      <table style="margin-top:8px;">
+        <tr><th>Metal ion</th><th>Electrons needed</th><th>Charge required</th></tr>
+        <tr><td>Ag⁺ → Ag</td><td>1</td><td>1F = 96500 C</td></tr>
+        <tr><td>Cu²⁺ → Cu</td><td>2</td><td>2F = 193000 C</td></tr>
+        <tr><td>Al³⁺ → Al</td><td>3</td><td>3F = 289500 C</td></tr>
+        <tr><td>Mg²⁺ → Mg</td><td>2</td><td>2F = 193000 C</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🧮 Numerical Problem Solving — Master Formula</h3>
+    <div class="formula-box">
+      <div class="f-title">THE MASTER FORMULA FOR NUMERICALS</div>
+      <div class="formula">Mass deposited = (Molar Mass × I × t) / (n × F)</div>
+      <div class="formula" style="margin-top:8px;">Or equivalently: w = (M × Q) / (n × 96500)</div>
+      <ul>
+        <li><strong>M</strong> = molar mass of the element (g/mol)</li>
+        <li><strong>I</strong> = current (amperes)</li>
+        <li><strong>t</strong> = time (seconds)</li>
+        <li><strong>n</strong> = number of electrons in half-reaction</li>
+      </ul>
+    </div>
+
+    <div class="example-box" style="margin-top:14px;">
+      <div class="e-title">📝 SOLVED EXAMPLE (NCERT 2.10) — Board Level</div>
+      <p style="font-size:14px;"><strong>Q: A CuSO₄ solution is electrolysed for 10 min with 1.5A current. Find mass of Cu deposited.</strong></p>
+      <div class="steps" style="margin-top:10px;">
+        <div class="step"><strong>Given:</strong> I = 1.5 A, t = 10 min = 600 s, M(Cu) = 63 g/mol, n = 2 (Cu²⁺)</div>
+        <div class="step"><strong>Q = I × t</strong> = 1.5 × 600 = 900 C</div>
+        <div class="step"><strong>Use formula:</strong> w = (M × Q)/(n × F) = (63 × 900)/(2 × 96500)</div>
+        <div class="step"><strong>w = 56700/193000 = 0.2938 g ≈ 0.294 g</strong> ✅</div>
+      </div>
+    </div>
+
+    <div class="example-box" style="margin-top:14px;">
+      <div class="e-title">📝 SOLVED EXAMPLE — Board 2022 Type</div>
+      <p style="font-size:14px;"><strong>Q: How much electricity is required to produce 20.0g of Ca from molten CaCl₂? (M of Ca = 40)</strong></p>
+      <div class="steps" style="margin-top:10px;">
+        <div class="step"><strong>Reaction:</strong> Ca²⁺ + 2e⁻ → Ca, so n = 2</div>
+        <div class="step"><strong>Moles of Ca</strong> = 20/40 = 0.5 mol</div>
+        <div class="step"><strong>Faradays needed</strong> = 0.5 × 2 = 1.0 F</div>
+        <div class="step"><strong>Q = 1.0 × 96500 = 96500 C</strong> ✅</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: BATTERIES -->
+<div class="section" id="batteries">
+  <div class="section-header">
+    <div class="emoji">🔋</div>
+    <div>
+      <div class="section-num">SECTION 4</div>
+      <h2>Batteries — Primary & Secondary</h2>
+    </div>
+  </div>
+
+  <div class="mascot-box">
+    <svg class="mascot-svg" width="70" height="70" viewBox="0 0 80 80">
+      <circle cx="40" cy="28" r="18" fill="#ffd700" stroke="#e6a800" stroke-width="2"/>
+      <circle cx="33" cy="25" r="3" fill="#1a1a2e"/>
+      <circle cx="47" cy="25" r="3" fill="#1a1a2e"/>
+      <path d="M 34 35 Q 40 40 46 35" stroke="#e6a800" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 25 20 Q 28 12 40 10 Q 52 12 55 20" fill="#4a3000"/>
+      <!-- Battery themed shirt -->
+      <rect x="22" y="46" width="36" height="28" rx="4" fill="#21262d" stroke="#3fb950"/>
+      <rect x="30" y="52" width="20" height="16" rx="2" fill="#3fb950" opacity="0.6"/>
+      <rect x="37" y="49" width="6" height="4" rx="1" fill="#3fb950"/>
+      <text x="40" y="63" text-anchor="middle" fill="#1a1a2e" font-size="9" font-weight="bold">100%</text>
+    </svg>
+    <div class="mascot-speech">
+      <strong style="color:var(--accent2)">Batteries = Portable Galvanic Cells!</strong><br>
+      Remember: ALL batteries are galvanic cells. The difference is just <strong>Primary</strong> (use once, throw away — like your TV remote AAA batteries) vs <strong>Secondary</strong> (rechargeable — like your phone battery!). Let's understand each one deeply.
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card" style="border-color:var(--accent3)">
+      <h3>🔴 Primary Batteries</h3>
+      <div class="def-box">
+        <div class="def-title">📖 DEFINITION</div>
+        <p>In primary batteries, the electrode reactions <strong>occur only once</strong>. Once discharged, they cannot be recharged. The reaction is irreversible.</p>
+      </div>
+      <p style="font-size:13px; margin-top:8px; color:var(--muted)">Examples: Dry cell (Leclanche), Mercury cell</p>
+    </div>
+    <div class="card" style="border-color:var(--accent2)">
+      <h3>🟢 Secondary Batteries</h3>
+      <div class="def-box">
+        <div class="def-title">📖 DEFINITION</div>
+        <p>Secondary batteries can be <strong>recharged</strong> by passing current in the opposite direction. They undergo many charge-discharge cycles.</p>
+      </div>
+      <p style="font-size:13px; margin-top:8px; color:var(--muted)">Examples: Lead storage battery, Nickel-cadmium cell</p>
+    </div>
+  </div>
+
+  <!-- DRY CELL DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="d-title">📐 Dry Cell (Leclanche Cell) — Your TV Remote Battery!</div>
+    <svg width="580" height="260" viewBox="0 0 580 260">
+      <rect width="580" height="260" fill="#161b22" rx="10"/>
+
+      <!-- Battery outer casing (Zinc = anode) -->
+      <rect x="180" y="30" width="220" height="200" rx="12" fill="#b0b0b0" stroke="#888" stroke-width="3"/>
+      <text x="290" y="18" text-anchor="middle" fill="#8b949e" font-size="11">Cross-section view</text>
+
+      <!-- Inside fill - paste -->
+      <rect x="190" y="40" width="200" height="185" rx="8" fill="#4a3500"/>
+
+      <!-- Carbon rod (cathode) in center -->
+      <rect x="276" y="40" width="28" height="185" rx="6" fill="#333" stroke="#555" stroke-width="2"/>
+      <text x="290" y="100" text-anchor="middle" fill="#aaa" font-size="9">Carbon</text>
+      <text x="290" y="112" text-anchor="middle" fill="#aaa" font-size="9">Rod</text>
+      <text x="290" y="124" text-anchor="middle" fill="#aaa" font-size="9">(Cathode)</text>
+
+      <!-- MnO2 + Carbon powder (around rod) -->
+      <path d="M 220 45 Q 276 45 276 45 L 276 220 Q 220 220 220 220 Z" fill="#2a2a2a" opacity="0.8"/>
+      <text x="248" y="120" text-anchor="middle" fill="#aaa" font-size="9">MnO₂ +</text>
+      <text x="248" y="132" text-anchor="middle" fill="#aaa" font-size="9">Carbon</text>
+      <text x="248" y="144" text-anchor="middle" fill="#aaa" font-size="9">powder</text>
+
+      <!-- NH4Cl paste (between MnO2 and Zn) -->
+      <text x="348" y="120" text-anchor="middle" fill="#c0a000" font-size="9">NH₄Cl +</text>
+      <text x="348" y="132" text-anchor="middle" fill="#c0a000" font-size="9">ZnCl₂</text>
+      <text x="348" y="144" text-anchor="middle" fill="#c0a000" font-size="9">paste</text>
+
+      <!-- Zinc container label -->
+      <text x="480" y="120" fill="#b0b0b0" font-size="11" font-weight="bold">Zinc Container</text>
+      <text x="480" y="135" fill="#b0b0b0" font-size="10">(Acts as Anode)</text>
+      <line x1="470" y1="128" x2="398" y2="128" stroke="#b0b0b0" stroke-width="1" stroke-dasharray="3,2"/>
+
+      <!-- Carbon rod label -->
+      <text x="480" y="165" fill="#aaa" font-size="11" font-weight="bold">Graphite Rod</text>
+      <text x="480" y="180" fill="#aaa" font-size="10">(Cathode)</text>
+      <line x1="470" y1="173" x2="306" y2="140" stroke="#aaa" stroke-width="1" stroke-dasharray="3,2"/>
+
+      <!-- + terminal on top -->
+      <rect x="280" y="20" width="20" height="20" rx="3" fill="#ffa657" stroke="#ff8000"/>
+      <text x="290" y="34" text-anchor="middle" fill="#1a1a2e" font-size="11" font-weight="bold">+</text>
+
+      <!-- - terminal on bottom (Zinc base) -->
+      <rect x="280" y="225" width="20" height="15" rx="3" fill="#b0b0b0" stroke="#888"/>
+      <text x="290" y="236" text-anchor="middle" fill="#1a1a2e" font-size="10" font-weight="bold">−</text>
+
+      <!-- Cell potential label -->
+      <rect x="30" y="100" width="130" height="60" rx="8" fill="#21262d" stroke="#ffa657"/>
+      <text x="95" y="125" text-anchor="middle" fill="#ffa657" font-size="14" font-weight="bold">~1.5 V</text>
+      <text x="95" y="143" text-anchor="middle" fill="#8b949e" font-size="11">Cell Potential</text>
+
+    </svg>
+  </div>
+
+  <div class="card">
+    <h3>🔴 Dry Cell (Leclanche Cell) — Complete Analysis</h3>
+    <table>
+      <tr><th>Component</th><th>Material</th><th>Role</th></tr>
+      <tr><td>Anode</td><td>Zinc container</td><td>Oxidised (Zn → Zn²⁺)</td></tr>
+      <tr><td>Cathode</td><td>Carbon (graphite) rod</td><td>Site of reduction</td></tr>
+      <tr><td>Electrolyte</td><td>NH₄Cl + ZnCl₂ (moist paste)</td><td>Ion conductor</td></tr>
+      <tr><td>Depolarizer</td><td>MnO₂ + Carbon powder</td><td>Oxidises H₂ to prevent polarization</td></tr>
+      <tr><td>EMF</td><td colspan="2" style="color:var(--yellow)">~1.5 V</td></tr>
+    </table>
+    <div class="formula-box" style="margin-top:12px;">
+      <div class="f-title">ELECTRODE REACTIONS</div>
+      <div class="reaction">Anode: Zn(s) → Zn²⁺ + 2e⁻</div>
+      <div class="reaction">Cathode: MnO₂ + NH₄⁺ + e⁻ → MnO(OH) + NH₃</div>
+    </div>
+    <p style="font-size:13px; color:var(--muted); margin-top:10px;">💡 NH₃ produced forms complex [Zn(NH₃)₄]²⁺ with Zn²⁺. Mn is reduced from +4 to +3 oxidation state!</p>
+  </div>
+
+  <div class="card">
+    <h3>🩺 Mercury Cell — For Hearing Aids & Watches</h3>
+    <div class="grid-2">
+      <div>
+        <table>
+          <tr><th>Component</th><th>Material</th></tr>
+          <tr><td>Anode</td><td>Zinc-mercury amalgam</td></tr>
+          <tr><td>Cathode</td><td>Paste of HgO + Carbon</td></tr>
+          <tr><td>Electrolyte</td><td>KOH + ZnO (paste)</td></tr>
+          <tr><td>EMF</td><td style="color:var(--yellow)">~1.35 V (constant!)</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="formula-box">
+          <div class="f-title">REACTIONS</div>
+          <div class="reaction" style="font-size:12px;">Anode: Zn(Hg) + 2OH⁻ → ZnO(s) + H₂O + 2e⁻</div>
+          <div class="reaction" style="font-size:12px;">Cathode: HgO + H₂O + 2e⁻ → Hg(l) + 2OH⁻</div>
+          <div class="reaction" style="font-size:12px; color:var(--yellow)">Overall: Zn(Hg) + HgO → ZnO + Hg(l)</div>
+        </div>
+      </div>
+    </div>
+    <div class="memory-box" style="margin-top:12px;">
+      <div class="m-title">🧠 WHY IS VOLTAGE CONSTANT?</div>
+      <p style="font-size:14px;">The overall reaction doesn't involve any ions in solution whose concentration can change — it's a solid-to-solid reaction! So the Nernst equation Q stays constant → E stays constant! 🎯</p>
+    </div>
+  </div>
+
+  <!-- LEAD ACID BATTERY DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="d-title">📐 Lead Storage Battery (Lead-Acid Battery) — Your Car Battery!</div>
+    <svg width="620" height="280" viewBox="0 0 620 280">
+      <rect width="620" height="280" fill="#161b22" rx="10"/>
+
+      <!-- Battery outer case -->
+      <rect x="60" y="50" width="500" height="200" rx="10" fill="#21262d" stroke="#555" stroke-width="3"/>
+
+      <!-- Multiple cells (6 cells in series for 12V) -->
+      <!-- Cell 1 -->
+      <rect x="80" y="70" width="55" height="160" rx="4" fill="#1c2333" stroke="#30363d"/>
+      <!-- Cell 2 -->
+      <rect x="145" y="70" width="55" height="160" rx="4" fill="#1c2333" stroke="#30363d"/>
+      <!-- Cell 3 -->
+      <rect x="210" y="70" width="55" height="160" rx="4" fill="#1c2333" stroke="#30363d"/>
+      <!-- ... -->
+      <text x="310" y="152" text-anchor="middle" fill="#8b949e" font-size="20" font-weight="bold">...</text>
+      <!-- Cell 6 -->
+      <rect x="450" y="70" width="90" height="160" rx="4" fill="#1c2333" stroke="#30363d"/>
+
+      <!-- Plates inside cell 3 (zoomed-in view) -->
+      <!-- Lead plate (anode) -->
+      <rect x="218" y="80" width="10" height="140" rx="2" fill="#888"/>
+      <!-- PbO2 plate (cathode) -->
+      <rect x="247" y="80" width="10" height="140" rx="2" fill="#654321"/>
+      <!-- Lead plate -->
+      <rect x="230" y="80" width="10" height="140" rx="2" fill="#888"/>
+
+      <!-- H2SO4 filling -->
+      <rect x="80" y="175" width="375" height="50" rx="0" fill="rgba(255,255,100,0.06)" stroke="none"/>
+      <text x="265" y="208" text-anchor="middle" fill="#f0db4f" font-size="11">38% H₂SO₄ solution (Electrolyte)</text>
+
+      <!-- Labels -->
+      <text x="107" y="152" text-anchor="middle" fill="#888" font-size="9">Pb</text>
+      <text x="107" y="162" text-anchor="middle" fill="#888" font-size="9">anode</text>
+      <text x="165" y="148" text-anchor="middle" fill="#654321" font-size="9">PbO₂</text>
+      <text x="165" y="160" text-anchor="middle" fill="#654321" font-size="9">cathode</text>
+
+      <!-- Terminals -->
+      <rect x="100" y="35" width="40" height="20" rx="4" fill="#888" stroke="#666"/>
+      <text x="120" y="49" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">− Pb</text>
+      <rect x="480" y="35" width="40" height="20" rx="4" fill="#654321" stroke="#543210"/>
+      <text x="500" y="49" text-anchor="middle" fill="#fff" font-size="10" font-weight="bold">+ PbO₂</text>
+
+      <!-- 12V label -->
+      <rect x="255" y="10" width="110" height="28" rx="8" fill="#21262d" stroke="#ffa657"/>
+      <text x="310" y="28" text-anchor="middle" fill="#ffa657" font-size="14" font-weight="bold">12 Volts</text>
+
+      <!-- Spec boxes -->
+      <text x="80" y="260" fill="#3fb950" font-size="11">✓ Rechargeable</text>
+      <text x="200" y="260" fill="#3fb950" font-size="11">✓ High current output</text>
+      <text x="340" y="260" fill="#f78166" font-size="11">✗ Heavy (lead)</text>
+      <text x="450" y="260" fill="#f78166" font-size="11">✗ H₂SO₄ corrosive</text>
+    </svg>
+  </div>
+
+  <div class="card">
+    <h3>🚗 Lead Storage Battery — Complete Analysis</h3>
+    <table>
+      <tr><th>Property</th><th>Details</th></tr>
+      <tr><td>Anode</td><td>Lead (Pb)</td></tr>
+      <tr><td>Cathode</td><td>Lead grid packed with PbO₂</td></tr>
+      <tr><td>Electrolyte</td><td>38% Sulphuric acid (H₂SO₄)</td></tr>
+      <tr><td>EMF per cell</td><td style="color:var(--yellow)">~2 V</td></tr>
+      <tr><td>Car battery</td><td>6 cells in series = 12 V</td></tr>
+    </table>
+    <div class="formula-box" style="margin-top:12px;">
+      <div class="f-title">DISCHARGE REACTIONS (When battery is in USE)</div>
+      <div class="reaction">Anode: Pb(s) + SO₄²⁻(aq) → PbSO₄(s) + 2e⁻</div>
+      <div class="reaction">Cathode: PbO₂(s) + SO₄²⁻(aq) + 4H⁺(aq) + 2e⁻ → PbSO₄(s) + 2H₂O(l)</div>
+      <div class="reaction" style="color:var(--yellow)">Overall: Pb(s) + PbO₂(s) + 2H₂SO₄(aq) → 2PbSO₄(s) + 2H₂O(l)</div>
+    </div>
+    <div class="formula-box" style="margin-top:10px; border-color:rgba(86,208,240,0.4)">
+      <div class="f-title" style="color:var(--cyan)">CHARGING REACTIONS (REVERSE — when plugged into charger)</div>
+      <div class="reaction" style="color:var(--cyan)">2PbSO₄(s) + 2H₂O(l) → Pb(s) + PbO₂(s) + 2H₂SO₄(aq)</div>
+    </div>
+    <div class="warn-box" style="margin-top:10px;">
+      <div class="w-title">⚠️ BOARD EXAM TRICK QUESTION</div>
+      <p style="font-size:14px;">Q: Why does battery become "dead" in extreme cold? A: H₂SO₄ viscosity increases in cold → ions move slower → conductivity decreases → battery appears dead (but works fine when warmed)!</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🔋 Nickel-Cadmium Cell (Ni-Cd)</h3>
+    <div class="grid-2">
+      <div>
+        <table>
+          <tr><th>Component</th><th>Material</th></tr>
+          <tr><td>Anode</td><td>Cadmium (Cd)</td></tr>
+          <tr><td>Cathode</td><td>Ni(OH)₃</td></tr>
+          <tr><td>Advantage</td><td>Longer life than lead battery</td></tr>
+          <tr><td>Disadvantage</td><td>More expensive</td></tr>
+        </table>
+      </div>
+      <div class="formula-box">
+        <div class="f-title">OVERALL DISCHARGE REACTION</div>
+        <div class="reaction" style="font-size:12px;">Cd(s) + 2Ni(OH)₃(s) → CdO(s) + 2Ni(OH)₂(s) + H₂O(l)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: FUEL CELLS -->
+<div class="section" id="fuel">
+  <div class="section-header">
+    <div class="emoji">🚀</div>
+    <div>
+      <div class="section-num">SECTION 5</div>
+      <h2>Fuel Cells — The Future of Energy</h2>
+    </div>
+  </div>
+
+  <div class="mascot-box">
+    <svg class="mascot-svg" width="70" height="70" viewBox="0 0 80 80">
+      <circle cx="40" cy="28" r="18" fill="#ffd700" stroke="#e6a800" stroke-width="2"/>
+      <circle cx="33" cy="25" r="3" fill="#1a1a2e"/>
+      <circle cx="47" cy="25" r="3" fill="#1a1a2e"/>
+      <!-- Star eyes (excited) -->
+      <path d="M 31 23 L 33 21 L 35 23 L 33 25 Z" fill="#ffd700" opacity="0.8"/>
+      <path d="M 45 23 L 47 21 L 49 23 L 47 25 Z" fill="#ffd700" opacity="0.8"/>
+      <path d="M 34 35 Q 40 40 46 35" stroke="#e6a800" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 25 20 Q 28 12 40 10 Q 52 12 55 20" fill="#4a3000"/>
+      <rect x="22" y="46" width="36" height="28" rx="4" fill="#0a1a3a" stroke="#58a6ff"/>
+      <!-- Rocket on shirt -->
+      <path d="M 36 70 L 40 50 L 44 70 Z" fill="#56d0f0"/>
+      <path d="M 37 70 L 36 73 L 40 71 L 44 73 L 43 70 Z" fill="#f78166"/>
+    </svg>
+    <div class="mascot-speech">
+      <strong style="color:var(--cyan)">Fuel Cells = Clean Energy of the Future!</strong><br>
+      Unlike batteries that store energy, fuel cells <strong>continuously generate electricity</strong> as long as fuel is supplied. They're like a power plant in a box — but with ZERO pollution! The NASA Apollo astronauts used these in space and even drank the water produced! 🚀💧
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📖 EXAM-READY DEFINITION</div>
+    <p>A <strong>fuel cell</strong> is a galvanic cell that is designed to convert the energy of combustion of fuels like hydrogen, methane, methanol, etc. directly into electrical energy. Reactants are fed continuously to the electrodes and products are removed continuously from the electrolyte compartment.</p>
+  </div>
+
+  <!-- FUEL CELL DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="d-title">📐 Hydrogen-Oxygen Fuel Cell</div>
+    <svg width="600" height="300" viewBox="0 0 600 300">
+      <rect width="600" height="300" fill="#161b22" rx="10"/>
+
+      <!-- Electrolyte (NaOH) central -->
+      <rect x="220" y="60" width="160" height="200" rx="4" fill="rgba(86,208,240,0.08)" stroke="#56d0f0" stroke-width="2"/>
+      <text x="300" y="158" text-anchor="middle" fill="#56d0f0" font-size="11">Concentrated</text>
+      <text x="300" y="172" text-anchor="middle" fill="#56d0f0" font-size="11">NaOH Solution</text>
+      <text x="300" y="186" text-anchor="middle" fill="#56d0f0" font-size="11">(Electrolyte)</text>
+
+      <!-- Anode (left) porous carbon -->
+      <rect x="155" y="60" width="30" height="200" rx="4" fill="rgba(255,166,87,0.15)" stroke="#ffa657" stroke-width="2"/>
+      <text x="170" y="155" text-anchor="middle" fill="#ffa657" font-size="9">Porous</text>
+      <text x="170" y="167" text-anchor="middle" fill="#ffa657" font-size="9">Carbon</text>
+      <text x="170" y="180" text-anchor="middle" fill="#ffa657" font-size="9">Anode</text>
+
+      <!-- Cathode (right) porous carbon -->
+      <rect x="415" y="60" width="30" height="200" rx="4" fill="rgba(88,166,255,0.15)" stroke="#58a6ff" stroke-width="2"/>
+      <text x="430" y="155" text-anchor="middle" fill="#58a6ff" font-size="9">Porous</text>
+      <text x="430" y="167" text-anchor="middle" fill="#58a6ff" font-size="9">Carbon</text>
+      <text x="430" y="180" text-anchor="middle" fill="#58a6ff" font-size="9">Cathode</text>
+
+      <!-- H2 input (left) -->
+      <path d="M 80 150 L 155 150" stroke="#ffa657" stroke-width="3" marker-end="url(#farr)"/>
+      <rect x="20" y="130" width="60" height="40" rx="6" fill="#21262d" stroke="#ffa657" stroke-width="1.5"/>
+      <text x="50" y="148" text-anchor="middle" fill="#ffa657" font-size="11" font-weight="bold">H₂</text>
+      <text x="50" y="162" text-anchor="middle" fill="#8b949e" font-size="9">Fuel</text>
+
+      <!-- O2 input (right) -->
+      <path d="M 520 150 L 445 150" stroke="#58a6ff" stroke-width="3" marker-end="url(#farr2)"/>
+      <rect x="520" y="130" width="60" height="40" rx="6" fill="#21262d" stroke="#58a6ff" stroke-width="1.5"/>
+      <text x="550" y="148" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="bold">O₂</text>
+      <text x="550" y="162" text-anchor="middle" fill="#8b949e" font-size="9">Air</text>
+
+      <!-- Water output -->
+      <path d="M 300 260 L 300 285" stroke="#56d0f0" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="300" y="295" text-anchor="middle" fill="#56d0f0" font-size="11">H₂O produced</text>
+
+      <!-- Wire on top -->
+      <path d="M 170 60 L 170 35 L 430 35 L 430 60" stroke="#3fb950" stroke-width="3" fill="none"/>
+      <!-- Load symbol (external circuit) -->
+      <rect x="262" y="18" width="76" height="24" rx="6" fill="#21262d" stroke="#3fb950" stroke-width="1.5"/>
+      <text x="300" y="34" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">⚡ LOAD</text>
+
+      <!-- Electron flow -->
+      <path d="M 180 38 L 240 38" stroke="#f78166" stroke-width="2" marker-end="url(#farr3)"/>
+      <path d="M 360 38 L 420 38" stroke="#f78166" stroke-width="2" marker-end="url(#farr4)"/>
+      <text x="205" y="30" fill="#f78166" font-size="9">e⁻ →</text>
+      <text x="365" y="30" fill="#f78166" font-size="9">e⁻ →</text>
+
+      <!-- OH- ion flow through electrolyte -->
+      <path d="M 380 160 L 240 190" stroke="#d2a8ff" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#parr)"/>
+      <text x="310" y="215" fill="#d2a8ff" font-size="9">OH⁻ flow</text>
+
+      <!-- Reaction labels -->
+      <text x="120" y="230" text-anchor="middle" fill="#ffa657" font-size="9">2H₂ + 4OH⁻ → 4H₂O + 4e⁻</text>
+      <text x="480" y="230" text-anchor="middle" fill="#58a6ff" font-size="9">O₂ + 2H₂O + 4e⁻ → 4OH⁻</text>
+
+      <!-- Efficiency badge -->
+      <rect x="240" y="95" width="120" height="35" rx="8" fill="rgba(63,185,80,0.15)" stroke="#3fb950" stroke-width="1"/>
+      <text x="300" y="110" text-anchor="middle" fill="#3fb950" font-size="11" font-weight="bold">~70% Efficiency</text>
+      <text x="300" y="124" text-anchor="middle" fill="#8b949e" font-size="9">vs 40% thermal plant</text>
+
+      <defs>
+        <marker id="farr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#ffa657"/></marker>
+        <marker id="farr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#58a6ff"/></marker>
+        <marker id="farr3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f78166"/></marker>
+        <marker id="farr4" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#f78166"/></marker>
+        <marker id="parr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#d2a8ff"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="card">
+    <h3>🚀 Hydrogen-Oxygen Fuel Cell — Complete Details</h3>
+    <div class="formula-box">
+      <div class="f-title">ELECTRODE REACTIONS (In NaOH solution)</div>
+      <div class="reaction">Cathode: O₂(g) + 2H₂O(l) + 4e⁻ → 4OH⁻(aq)</div>
+      <div class="reaction">Anode: 2H₂(g) + 4OH⁻(aq) → 4H₂O(l) + 4e⁻</div>
+      <div class="reaction" style="color:var(--yellow)">Overall: 2H₂(g) + O₂(g) → 2H₂O(l)</div>
+    </div>
+    <table style="margin-top:12px;">
+      <tr><th>Feature</th><th>Detail</th></tr>
+      <tr><td>Electrodes</td><td>Porous carbon with Pt or Pd catalyst</td></tr>
+      <tr><td>Electrolyte</td><td>Concentrated aqueous NaOH</td></tr>
+      <tr><td>Efficiency</td><td style="color:var(--accent2)">~70% (vs 40% for thermal plants)</td></tr>
+      <tr><td>Byproduct</td><td>Water (H₂O) — used by astronauts!</td></tr>
+      <tr><td>Historical use</td><td>NASA Apollo space programme</td></tr>
+      <tr><td>Pollution</td><td style="color:var(--accent2)">ZERO ✅</td></tr>
+    </table>
+    <div class="memory-box" style="margin-top:12px;">
+      <div class="m-title">🧠 THE HYDROGEN ECONOMY</div>
+      <p style="font-size:14px;">Burning fossil fuels → CO₂ → Greenhouse Effect → Melting ice → Rising sea levels (Maldives might drown!). Solution: Use Hydrogen as fuel → burns to give only water → No pollution! Hydrogen produced from solar energy by electrolysis of water. This vision = <strong>Hydrogen Economy</strong> 🌍</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: CORROSION -->
+<div class="section" id="corrosion">
+  <div class="section-header">
+    <div class="emoji">🦀</div>
+    <div>
+      <div class="section-num">SECTION 6</div>
+      <h2>Corrosion — An Electrochemical Phenomenon</h2>
+    </div>
+  </div>
+
+  <div class="mascot-box">
+    <svg class="mascot-svg" width="70" height="70" viewBox="0 0 80 80">
+      <circle cx="40" cy="28" r="18" fill="#ffd700" stroke="#e6a800" stroke-width="2"/>
+      <!-- Worried eyes -->
+      <path d="M 30 22 Q 33 19 36 22" stroke="#1a1a2e" stroke-width="2" fill="none"/>
+      <circle cx="33" cy="24" r="3" fill="#1a1a2e"/>
+      <path d="M 44 22 Q 47 19 50 22" stroke="#1a1a2e" stroke-width="2" fill="none"/>
+      <circle cx="47" cy="24" r="3" fill="#1a1a2e"/>
+      <!-- Sad mouth -->
+      <path d="M 34 37 Q 40 34 46 37" stroke="#e6a800" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <path d="M 25 20 Q 28 12 40 10 Q 52 12 55 20" fill="#4a3000"/>
+      <rect x="22" y="46" width="36" height="28" rx="4" fill="#8b4513"/>
+      <!-- Rust patches -->
+      <circle cx="32" cy="57" r="5" fill="#c04000" opacity="0.7"/>
+      <circle cx="48" cy="60" r="4" fill="#c04000" opacity="0.6"/>
+      <circle cx="40" cy="52" r="3" fill="#c04000" opacity="0.5"/>
+    </svg>
+    <div class="mascot-speech">
+      <strong style="color:var(--accent3)">Corrosion = Slow Destruction! 😰</strong><br>
+      Every year India loses <strong>crores of rupees</strong> due to corrosion. That rusty iron gate, tarnished silver, green copper statue — all electrochemical reactions! The key insight: corrosion creates a tiny galvanic cell on the metal surface. One spot becomes anode (corrodes), another becomes cathode. Mind-blowing right? 🤯
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📖 EXAM-READY DEFINITION</div>
+    <p><strong>Corrosion</strong> is the process of slow deterioration of a metal due to its attack by atmospheric gases (O₂, CO₂, H₂S, etc.) or moisture. It is essentially an electrochemical phenomenon where the metal is oxidised at the anodic spots.</p>
+  </div>
+
+  <!-- CORROSION DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="d-title">📐 Mechanism of Rusting of Iron — Electrochemical Process</div>
+    <svg width="620" height="280" viewBox="0 0 620 280">
+      <rect width="620" height="280" fill="#161b22" rx="10"/>
+
+      <!-- Iron piece -->
+      <rect x="100" y="100" width="420" height="100" rx="8" fill="#888" stroke="#666" stroke-width="3"/>
+      <text x="310" y="158" text-anchor="middle" fill="#ccc" font-size="14" font-weight="bold">IRON OBJECT</text>
+
+      <!-- Anodic spot (corroding) -->
+      <circle cx="180" cy="100" r="25" fill="rgba(247,129,102,0.2)" stroke="#f78166" stroke-width="2" stroke-dasharray="5,3"/>
+      <text x="180" y="72" text-anchor="middle" fill="#f78166" font-size="11" font-weight="bold">ANODE SPOT</text>
+      <text x="180" y="85" text-anchor="middle" fill="#f78166" font-size="10">(Oxidation)</text>
+      <!-- Pit at anode spot -->
+      <ellipse cx="180" cy="102" rx="18" ry="8" fill="#654321"/>
+      <text x="180" y="106" text-anchor="middle" fill="#f0a000" font-size="9">pit forming</text>
+
+      <!-- Cathodic spot -->
+      <circle cx="440" cy="100" r="25" fill="rgba(88,166,255,0.2)" stroke="#58a6ff" stroke-width="2" stroke-dasharray="5,3"/>
+      <text x="440" y="72" text-anchor="middle" fill="#58a6ff" font-size="11" font-weight="bold">CATHODE SPOT</text>
+      <text x="440" y="85" text-anchor="middle" fill="#58a6ff" font-size="10">(Reduction)</text>
+
+      <!-- Electron flow through iron -->
+      <path d="M 200 130 C 310 160 310 160 420 130" stroke="#ffa657" stroke-width="2.5" fill="none" stroke-dasharray="6,3" marker-end="url(#corr)"/>
+      <text x="310" y="175" text-anchor="middle" fill="#ffa657" font-size="10">e⁻ flow through metal →</text>
+
+      <!-- Water film on surface -->
+      <rect x="100" y="95" width="420" height="8" rx="0" fill="rgba(86,208,240,0.2)" stroke="none"/>
+      <text x="560" y="103" fill="#56d0f0" font-size="9">H₂O film</text>
+
+      <!-- CO2/H2CO3 in water -->
+      <text x="300" y="55" text-anchor="middle" fill="#8b949e" font-size="11">Atmosphere: O₂ + CO₂ + H₂O</text>
+      <path d="M 180 55 L 180 75" stroke="#8b949e" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#darr)"/>
+      <path d="M 440 55 L 440 75" stroke="#8b949e" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#darr2)"/>
+
+      <!-- Rust forming -->
+      <ellipse cx="310" cy="93" rx="60" ry="10" fill="rgba(180,80,0,0.4)" stroke="#c04000" stroke-width="1.5"/>
+      <text x="310" y="97" text-anchor="middle" fill="#f0a000" font-size="9" font-weight="bold">Fe₂O₃·xH₂O (RUST)</text>
+
+      <!-- Reactions -->
+      <rect x="30" y="200" width="220" height="65" rx="8" fill="#21262d" stroke="#f78166"/>
+      <text x="140" y="218" text-anchor="middle" fill="#f78166" font-size="10" font-weight="bold">AT ANODE:</text>
+      <text x="140" y="233" text-anchor="middle" fill="#f78166" font-size="10">2Fe → 2Fe²⁺ + 4e⁻</text>
+      <text x="140" y="247" text-anchor="middle" fill="#f78166" font-size="9">E° = −0.44 V</text>
+
+      <rect x="370" y="200" width="220" height="65" rx="8" fill="#21262d" stroke="#58a6ff"/>
+      <text x="480" y="218" text-anchor="middle" fill="#58a6ff" font-size="10" font-weight="bold">AT CATHODE:</text>
+      <text x="480" y="233" text-anchor="middle" fill="#58a6ff" font-size="10">O₂ + 4H⁺ + 4e⁻ → 2H₂O</text>
+      <text x="480" y="247" text-anchor="middle" fill="#58a6ff" font-size="9">E° = +1.23 V</text>
+
+      <defs>
+        <marker id="corr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#ffa657"/></marker>
+        <marker id="darr" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#8b949e"/></marker>
+        <marker id="darr2" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#8b949e"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="card">
+    <h3>🦀 Rusting of Iron — Step by Step Electrochemistry</h3>
+    <div class="formula-box">
+      <div class="f-title">COMPLETE MECHANISM</div>
+      <div class="reaction">Anode: 2Fe(s) → 2Fe²⁺ + 4e⁻ &nbsp;&nbsp; (E° = −0.44 V)</div>
+      <div class="reaction">Cathode: O₂(g) + 4H⁺(aq) + 4e⁻ → 2H₂O(l) &nbsp;&nbsp; (E° = +1.23 V)</div>
+      <div class="reaction" style="color:var(--yellow)">Overall: 2Fe(s) + O₂(g) + 4H⁺(aq) → 2Fe²⁺(aq) + 2H₂O(l) &nbsp; (E°cell = 1.67 V)</div>
+      <div class="reaction" style="color:var(--accent3)">Further: 2Fe²⁺ + 2H₂O + ½O₂ → Fe₂O₃(s) + 4H⁺ (Rust forms!)</div>
+    </div>
+    <p style="font-size:13px; color:var(--muted); margin-top:10px;">💡 H⁺ comes from H₂CO₃ (CO₂ dissolved in water) or other acidic gases. That's why rain or polluted air accelerates rusting!</p>
+    <div class="warn-box" style="margin-top:10px;">
+      <div class="w-title">⚠️ WHY E°cell IS POSITIVE (1.67V) FOR RUSTING</div>
+      <p style="font-size:14px;">E°cell = E°cathode − E°anode = 1.23 − (−0.44) = 1.67 V (positive!) → Rusting is thermodynamically SPONTANEOUS — it will ALWAYS happen if conditions are right! This is why iron rusts without any external push.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🛡️ Prevention of Corrosion — 5 Methods</h3>
+    <table>
+      <tr><th>#</th><th>Method</th><th>Example</th><th>How it works</th></tr>
+      <tr><td>1</td><td><strong>Painting/Coating</strong></td><td>Paint on bridges, cars</td><td>Physical barrier — no O₂ or H₂O contact</td></tr>
+      <tr><td>2</td><td><strong>Chemical coating</strong></td><td>Bisphenol, varnish</td><td>Chemical barrier</td></tr>
+      <tr><td>3</td><td><strong>Galvanizing</strong></td><td>Zinc coating on iron</td><td>Zn is more active — protects Fe even if scratched</td></tr>
+      <tr><td>4</td><td><strong>Tinning</strong></td><td>Sn coating on iron (tin cans)</td><td>Physical barrier (but NOT sacrificial)</td></tr>
+      <tr><td>5</td><td><strong>Cathodic Protection</strong></td><td>Mg/Zn blocks on ships, pipelines</td><td>Sacrificial anode — Mg/Zn corrodes instead of Fe</td></tr>
+    </table>
+    <div class="memory-box" style="margin-top:12px;">
+      <div class="m-title">🧠 GALVANIZING vs TINNING — Board Confusion!</div>
+      <p style="font-size:14px;"><span class="hlg">Galvanizing (Zn coating)</span>: Even if coating is scratched, Zn still protects Fe because Zn is MORE active (higher in activity series). Zn becomes anode and sacrifices itself.</p>
+      <p style="font-size:14px; margin-top:6px;"><span class="hl">Tinning (Sn coating)</span>: If coating is scratched, Fe becomes anode (Fe is MORE active than Sn) → Fe corrodes FASTER! That's why tin cans rust once scratched!</p>
+    </div>
+    <div class="example-box" style="margin-top:10px;">
+      <div class="e-title">🚢 REAL LIFE: SHIPS AND PIPELINES</div>
+      <p style="font-size:13px;">Blocks of magnesium or zinc are attached to steel hulls of ships and underground pipelines. These <strong>sacrificial anodes</strong> corrode away while protecting the steel. When they're fully corroded, they're replaced — cheap and effective! This is cathodic protection 💪</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ★ NERNST & GIBBS — EXTRA FROM FILE 3 -->
+<div class="section" id="nernst-gibbs">
+  <div class="section-header">
+    <div class="emoji">🔗</div>
+    <div>
+      <div class="section-num">EXTRA — FROM FILE 3</div>
+      <h2>Nernst Equation Deep-Dive &amp; Gibbs Energy</h2>
+    </div>
+  </div>
+
+  <div class="ana-box">
+    <div class="a-icon">🧒</div>
+    <div>
+      <div class="a-label">🟢 Nernst Analogy</div>
+      <p>E° is the "sticker price" of a car. But the actual price (real EMF) changes with the deal — more Cu²⁺ ions = more demand at cathode = higher voltage. Nernst equation adjusts the sticker price to the actual deal price based on real concentrations!</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📝 Nernst for Daniell Cell — Full Derivation</h3>
+    <p style="font-size:14px;">Reaction: Zn(s) + Cu²⁺(aq) → Zn²⁺(aq) + Cu(s), n = 2</p>
+    <div class="formula-box" style="margin-top:10px;">
+      <div class="f-title">DANIELL CELL NERNST</div>
+      <div class="formula">E(cell) = E°(cell) − (0.0592/2) × log([Zn²⁺]/[Cu²⁺])</div>
+    </div>
+    <ul style="margin:10px 0 0 20px;font-size:14px;">
+      <li>[Cu²⁺] ↑ → Q ↓ → E(cell) <strong style="color:var(--accent2)">increases ↑</strong></li>
+      <li>[Zn²⁺] ↑ → Q ↑ → E(cell) <strong style="color:var(--accent3)">decreases ↓</strong></li>
+    </ul>
+    <div class="real-world" style="margin-top:10px;">
+      <div class="real-world-tag">🔋 Why Batteries Die</div>
+      <p style="font-size:13px;">As the cell operates: [Cu²⁺] keeps dropping (Cu deposits), [Zn²⁺] keeps rising (Zn dissolves). Q increases continuously. E(cell) decreases by Nernst until E = 0 → battery dead! That's your phone draining.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📝 NCERT Example 2.1 — Mg-Ag Cell</h3>
+    <p style="font-size:14px;"><strong>Mg(s) + 2Ag⁺(0.0001M) → Mg²⁺(0.130M) + 2Ag(s). E°cell = 3.17V. Find E(cell).</strong></p>
+    <div class="steps" style="margin-top:10px;">
+      <div class="step">n = 2 (Mg → Mg²⁺ + 2e⁻)</div>
+      <div class="step">Q = [Mg²⁺] / [Ag⁺]² = 0.130 / (0.0001)² = 0.130 / 10⁻⁸ = 1.3 × 10⁷</div>
+      <div class="step">E(cell) = 3.17 − (0.0592/2) × log(1.3 × 10⁷)</div>
+      <div class="step">E(cell) = 3.17 − 0.0296 × 7.114 = 3.17 − 0.210 = <strong>2.96 V</strong> ✅</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📝 NCERT Example 2.2 — Kc for Cu-Ag Cell</h3>
+    <p style="font-size:14px;"><strong>Cu(s) + 2Ag⁺(aq) → Cu²⁺(aq) + 2Ag(s), E°cell = 0.46V. Find Kc.</strong></p>
+    <div class="steps" style="margin-top:10px;">
+      <div class="step">log Kc = (n × E°) / 0.0592 = (2 × 0.46) / 0.0592 = 0.92/0.0592 = 15.54</div>
+      <div class="step"><strong>Kc = 3.92 × 10¹⁵</strong> ✅</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>📝 NCERT Example 2.3 — ΔrG° for Daniell Cell</h3>
+    <div class="steps" style="margin-top:10px;">
+      <div class="step">E°cell = 1.10V, n = 2, F = 96487 C mol⁻¹</div>
+      <div class="step">ΔrG° = −nFE° = −2 × 96487 × 1.10 = −212,271 J/mol</div>
+      <div class="step"><strong>ΔrG° = −212.27 kJ mol⁻¹</strong> ✅ (large negative → very spontaneous!)</div>
+    </div>
+  </div>
+
+  <!-- GIBBS TRIANGLE SVG from file 3 -->
+  <div class="card">
+    <h3>🔗 The Golden Triangle — E°, ΔrG°, and Kc Are All Connected</h3>
+    <div class="diagram-wrap">
+      <svg width="500" height="165" viewBox="0 0 500 165" xmlns="http://www.w3.org/2000/svg" font-family="Nunito,sans-serif" style="max-width:100%">
+        <rect width="500" height="165" fill="#0d1117" rx="8"/>
+        <rect x="18" y="48" width="125" height="68" rx="10" fill="#1c2333" stroke="#58a6ff" stroke-width="1.5"/>
+        <text x="80" y="76" text-anchor="middle" fill="#58a6ff" font-size="16" font-weight="700">E°cell</text>
+        <text x="80" y="97" text-anchor="middle" fill="#8b949e" font-size="10">Standard EMF</text>
+        <text x="80" y="110" text-anchor="middle" fill="#8b949e" font-size="10">Intensive property</text>
+        <rect x="188" y="48" width="125" height="68" rx="10" fill="#1c2333" stroke="#ffd700" stroke-width="1.5"/>
+        <text x="250" y="76" text-anchor="middle" fill="#ffd700" font-size="16" font-weight="700">ΔrG°</text>
+        <text x="250" y="97" text-anchor="middle" fill="#8b949e" font-size="10">Gibbs Energy</text>
+        <text x="250" y="110" text-anchor="middle" fill="#8b949e" font-size="10">Extensive property</text>
+        <rect x="358" y="48" width="125" height="68" rx="10" fill="#1c2333" stroke="#3fb950" stroke-width="1.5"/>
+        <text x="420" y="76" text-anchor="middle" fill="#3fb950" font-size="16" font-weight="700">Kc</text>
+        <text x="420" y="97" text-anchor="middle" fill="#8b949e" font-size="10">Equilibrium constant</text>
+        <text x="420" y="110" text-anchor="middle" fill="#8b949e" font-size="10">Dimensionless</text>
+        <line x1="143" y1="82" x2="188" y2="82" stroke="#e6edf3" stroke-width="1.5"/>
+        <text x="165" y="75" text-anchor="middle" fill="#e6edf3" font-size="9">ΔG°=−nF×</text>
+        <line x1="313" y1="82" x2="358" y2="82" stroke="#e6edf3" stroke-width="1.5"/>
+        <text x="336" y="75" text-anchor="middle" fill="#e6edf3" font-size="9">ΔG°=−RT ln</text>
+        <path d="M 143,62 Q 250,12 357,62" fill="none" stroke="#d2a8ff" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="250" y="20" text-anchor="middle" fill="#d2a8ff" font-size="9">E° = (0.0592/n)×log Kc</text>
+        <text x="250" y="155" text-anchor="middle" fill="#475569" font-size="9">ΔG° = −nFE° = −RT ln Kc — All three say the same thing!</text>
+      </svg>
+    </div>
+    <table style="margin-top:14px;">
+      <tr><th>If...</th><th>E°cell</th><th>ΔrG°</th><th>Kc</th><th>Reaction</th></tr>
+      <tr><td>Spontaneous</td><td style="color:var(--accent2)">+ve</td><td style="color:var(--accent3)">−ve</td><td style="color:var(--accent2)">&gt;1</td><td>Forward favoured</td></tr>
+      <tr><td>Non-spontaneous</td><td style="color:var(--accent3)">−ve</td><td style="color:var(--accent2)">+ve</td><td style="color:var(--accent3)">&lt;1</td><td>Reverse favoured</td></tr>
+      <tr><td>At equilibrium</td><td>0</td><td>0</td><td>1</td><td>No net change</td></tr>
+    </table>
+    <div class="memory-box" style="margin-top:12px;">
+      <div class="m-title">🧠 Three Formulas — They're All One</div>
+      <p style="font-size:14px;">1. <code>ΔG° = −nFE°</code> (Chemistry ↔ Electrical) &nbsp;&nbsp;|&nbsp;&nbsp; 2. <code>ΔG° = −RT ln Kc</code> (Chemistry ↔ Equilibrium) &nbsp;&nbsp;|&nbsp;&nbsp; 3. <code>E° = (0.0592/n) log Kc</code> (Electrical ↔ Equilibrium). Master one pair → third follows automatically!</p>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ★ CONDUCTANCE SECTION — FROM FILE 2 -->
+<div class="section" id="conductance">
+  <div class="section-header">
+    <div class="emoji">📡</div>
+    <div>
+      <div class="section-num">SECTION 2B — CONDUCTANCE</div>
+      <h2>Conductance of Electrolytic Solutions</h2>
+    </div>
+  </div>
+
+  <div class="ana-box">
+    <div class="a-icon">🚿</div>
+    <div>
+      <div class="a-label">🟢 Think of Electricity Like Water in a Pipe</div>
+      <p><strong>Resistance</strong> = narrow pipe → water flows slowly. <strong>Conductance</strong> = wide pipe → water flows easily. <strong>Resistivity</strong> = how "sticky" the pipe material is. <strong>Conductivity</strong> = how easily the material lets flow through!</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <div class="def-box">
+        <div class="def-title">📖 Resistance (R)</div>
+        <p>Opposition to current flow. R = ρ × (l/A). Unit: <strong>Ohm (Ω)</strong>. Where l = length, A = cross-section area, ρ = resistivity.</p>
+      </div>
+      <div class="formula-box">
+        <div class="f-title">FORMULA</div>
+        <div class="formula">R = ρ × (l / A)</div>
+      </div>
+      <div class="def-box">
+        <div class="def-title">📖 Conductance (G)</div>
+        <p>Reciprocal of resistance. G = 1/R. Ease of current flow. Unit: <strong>Siemens (S)</strong> = Ω⁻¹.</p>
+      </div>
+      <div class="def-box">
+        <div class="def-title">📖 Resistivity (ρ)</div>
+        <p>Resistance of a conductor of unit length and unit area. Unit: <strong>Ω·m</strong>. Conversion: 1 Ω·m = 100 Ω·cm</p>
+      </div>
+    </div>
+    <div>
+      <div class="def-box">
+        <div class="def-title">📖 Conductivity (κ)</div>
+        <p>Reciprocal of resistivity. κ = G × (l/A) = 1/ρ. Unit: <strong>S m⁻¹ or S cm⁻¹</strong>. Conversion: 1 S cm⁻¹ = 100 S m⁻¹</p>
+      </div>
+      <div class="def-box">
+        <div class="def-title">📖 Cell Constant (G*)</div>
+        <p>G* = l/A. Found using KCl of known κ: G* = R × κ. Then for any unknown: κ = G*/R. Unit: <strong>cm⁻¹</strong>.</p>
+      </div>
+      <div class="def-box">
+        <div class="def-title">📖 Molar Conductivity (Λm)</div>
+        <p>Conductance of ALL ions from 1 mole of electrolyte. <strong>Λm = κ × 1000 / C</strong> (κ in S/cm, C in mol/L). Unit: <strong>S cm² mol⁻¹</strong>. INCREASES on dilution!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Types of Conductance -->
+  <h3 style="margin:24px 0 12px; font-size:1.1rem;">🔌 Types of Conductance</h3>
+  <div class="grid-2">
+    <div class="card" style="border-left:4px solid var(--yellow);">
+      <h3>🔩 Metallic (Electronic) Conductance</h3>
+      <p>Charge carriers: <strong>free electrons</strong>. In metals and graphite. Metal composition does NOT change.</p>
+      <p style="margin-top:8px;"><span class="hlb" style="color:var(--accent3)">🌡️ Temperature ↑ → Conductance ↓</span> (more lattice vibrations block electrons)</p>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px;">Examples: Cu, Ag, Au, Fe, graphite</p>
+    </div>
+    <div class="card" style="border-left:4px solid var(--cyan);">
+      <h3>💧 Electrolytic (Ionic) Conductance</h3>
+      <p>Charge carriers: <strong>ions in solution</strong>. Composition CAN change on prolonged DC current (electrolysis).</p>
+      <p style="margin-top:8px;"><span style="color:var(--accent2)">🌡️ Temperature ↑ → Conductance ↑</span> (ions move faster)</p>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px;">Examples: HCl(aq), KCl(aq), NaOH(aq)</p>
+    </div>
+  </div>
+  <div class="warn-box">
+    <div class="w-title">⚠️ BOARD TRAP — Temperature Effect is OPPOSITE!</div>
+    <p style="font-size:14px;">Metal conductance DECREASES with temperature. Electrolytic conductance INCREASES with temperature. This is opposite! Very common MCQ and 1-mark question.</p>
+  </div>
+
+  <!-- Conductivity Table -->
+  <div class="card" style="margin-top:16px;">
+    <h3>📊 Conductivity Values Table (at 298.15 K)</h3>
+    <table class="ion-table">
+      <tr><th>Material</th><th>Type</th><th>κ (S m⁻¹)</th></tr>
+      <tr><td>Silver</td><td>Metal Conductor</td><td class="hi">6.2 × 10³</td></tr>
+      <tr><td>Copper</td><td>Metal Conductor</td><td class="hi">5.9 × 10³</td></tr>
+      <tr><td>Iron</td><td>Metal Conductor</td><td class="hi">1.0 × 10³</td></tr>
+      <tr><td>Graphite</td><td>Non-metal Conductor</td><td class="hi">1.2 × 10</td></tr>
+      <tr><td>Germanium</td><td>Semiconductor</td><td>2.0</td></tr>
+      <tr><td>Silicon</td><td>Semiconductor</td><td>1.5 × 10⁻²</td></tr>
+      <tr><td>0.1 M HCl</td><td>Strong Electrolyte Soln.</td><td class="hi2">3.91</td></tr>
+      <tr><td>0.01 M KCl</td><td>Strong Electrolyte Soln.</td><td class="hi2">0.14</td></tr>
+      <tr><td>0.01 M NaCl</td><td>Strong Electrolyte Soln.</td><td class="hi2">0.12</td></tr>
+      <tr><td>0.1 M CH₃COOH</td><td>Weak Electrolyte</td><td>0.047</td></tr>
+      <tr><td>Pure water</td><td>Very Weak Electrolyte</td><td>3.5 × 10⁻⁵</td></tr>
+      <tr><td>Glass</td><td>Insulator</td><td>1.0 × 10⁻¹⁶</td></tr>
+    </table>
+  </div>
+
+  <!-- Conductivity Cell + Wheatstone Bridge diagrams from file2 -->
+  <h3 style="margin:24px 0 12px; font-size:1.1rem;">🔬 Measuring Conductivity — The Conductivity Cell</h3>
+
+  <div class="warn-box">
+    <div class="w-title">⚠️ Why NOT Use DC Current?</div>
+    <p style="font-size:14px;">DC causes electrolysis → solution composition changes → products deposit on electrodes → resistance keeps changing. Results become unreliable. <strong>Always use AC (high frequency ~1000–5000 Hz)</strong> — it reverses so fast that net electrolysis doesn't occur!</p>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="d-title">📐 The Conductivity Cell (with Pt-black electrodes)</div>
+    <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px">
+      <rect width="700" height="320" fill="#0d1117" rx="10"/>
+      <text x="350" y="28" text-anchor="middle" fill="#e6edf3" font-size="15" font-family="Nunito" font-weight="bold">The Conductivity Cell</text>
+      <rect x="220" y="60" width="260" height="180" rx="14" fill="none" stroke="#56d0f0" stroke-width="2.5"/>
+      <rect x="230" y="110" width="240" height="120" rx="6" fill="rgba(86,208,240,0.07)"/>
+      <text x="350" y="185" text-anchor="middle" fill="#56d0f0" font-size="13" font-family="Nunito">Ionic Solution</text>
+      <text x="350" y="202" text-anchor="middle" fill="#8b949e" font-size="11" font-family="Nunito">(e.g. KCl solution)</text>
+      <rect x="265" y="70" width="24" height="160" rx="4" fill="#a78bfa" opacity="0.8"/>
+      <text x="277" y="255" text-anchor="middle" fill="#a78bfa" font-size="11">Pt</text>
+      <rect x="411" y="70" width="24" height="160" rx="4" fill="#a78bfa" opacity="0.8"/>
+      <text x="423" y="255" text-anchor="middle" fill="#a78bfa" font-size="11">Pt</text>
+      <circle cx="275" cy="100" r="3" fill="#555" opacity=".7"/><circle cx="280" cy="115" r="2.5" fill="#555" opacity=".7"/>
+      <circle cx="270" cy="130" r="3" fill="#555" opacity=".7"/><circle cx="420" cy="95" r="3" fill="#555" opacity=".7"/>
+      <circle cx="415" cy="120" r="2.5" fill="#555" opacity=".7"/><circle cx="425" cy="140" r="3" fill="#555" opacity=".7"/>
+      <line x1="277" y1="70" x2="277" y2="40" stroke="#f0db4f" stroke-width="2"/>
+      <line x1="423" y1="70" x2="423" y2="40" stroke="#f0db4f" stroke-width="2"/>
+      <line x1="277" y1="40" x2="423" y2="40" stroke="#f0db4f" stroke-width="2" stroke-dasharray="6,3"/>
+      <text x="350" y="35" text-anchor="middle" fill="#f0db4f" font-size="11">To Wheatstone Bridge (AC)</text>
+      <line x1="277" y1="275" x2="423" y2="275" stroke="#f78166" stroke-width="1.5"/>
+      <polygon points="277,271 269,275 277,279" fill="#f78166"/>
+      <polygon points="423,271 431,275 423,279" fill="#f78166"/>
+      <text x="350" y="293" text-anchor="middle" fill="#f78166" font-size="12">← Distance l →</text>
+      <text x="560" y="100" fill="#3fb950" font-size="12" font-family="Nunito" font-weight="bold">Area = A</text>
+      <line x1="437" y1="100" x2="555" y2="100" stroke="#3fb950" stroke-width="1" stroke-dasharray="3,3"/>
+      <rect x="510" y="140" width="170" height="80" rx="8" fill="rgba(240,219,79,0.08)" stroke="#f0db4f" stroke-width="1.5"/>
+      <text x="595" y="162" text-anchor="middle" fill="#8b949e" font-size="11">Cell Constant G* = l/A</text>
+      <text x="595" y="182" text-anchor="middle" fill="#f0db4f" font-size="14" font-weight="bold">κ = G*/R</text>
+      <text x="595" y="205" text-anchor="middle" fill="#8b949e" font-size="10">κ = conductivity</text>
+      <text x="100" y="140" fill="#8b949e" font-size="11" text-anchor="middle">Platinum</text>
+      <text x="100" y="153" fill="#8b949e" font-size="11" text-anchor="middle">Black coated</text>
+      <text x="100" y="166" fill="#8b949e" font-size="11" text-anchor="middle">electrodes</text>
+      <line x1="150" y1="155" x2="262" y2="130" stroke="#8b949e" stroke-width="1" stroke-dasharray="3,3"/>
+    </svg>
+    <div class="diagram-caption">Fig: Conductivity cell — Pt-black electrodes (huge surface area), area A, distance l. Once G* known, κ = G*/R for any solution.</div>
+  </div>
+
+  <!-- Molar Conductivity -->
+  <h3 style="margin:24px 0 12px; font-size:1.1rem;">📐 Molar Conductivity (Λm)</h3>
+
+  <div class="ana-box">
+    <div class="a-icon">🍕</div>
+    <div>
+      <div class="a-label">🟢 Pizza Analogy</div>
+      <p>Conductivity (κ) = how many slices you get per box. If you have a HUGE box, fewer slices per box. <strong>Molar conductivity = how many slices PER PERSON (per mole)</strong>. Now it's fair to compare regardless of how much solution you have!</p>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📖 Molar Conductivity</div>
+    <p>Conductance of the volume V of solution containing <strong>one mole of electrolyte</strong>, kept between two electrodes 1 cm apart.</p>
+  </div>
+  <div class="formula-box">
+    <div class="f-title">FORMULA</div>
+    <div class="formula">Λm = κ × 1000 / C</div>
+    <ul style="font-size:13px; list-style:none; padding:0; margin-top:8px;">
+      <li><strong style="color:var(--cyan)">κ</strong> in S cm⁻¹ &nbsp;|&nbsp; <strong style="color:var(--cyan)">C</strong> in mol/L &nbsp;|&nbsp; <strong style="color:var(--yellow)">Λm</strong> in S cm² mol⁻¹</li>
+      <li>In SI units: Λm (S m² mol⁻¹) = κ (S m⁻¹) / c (mol m⁻³)</li>
+      <li>Conversion: 1 S m² mol⁻¹ = 10⁴ S cm² mol⁻¹</li>
+    </ul>
+  </div>
+  <div class="warn-box">
+    <div class="w-title">⚠️ Unit Conversion Trap — Board Loves This!</div>
+    <p style="font-size:14px;">If κ is given in S cm⁻¹ and C in mol L⁻¹: <strong>multiply κ by 1000</strong> (to convert L to cm³).<br>
+    Example: κ = 0.002 S cm⁻¹, C = 0.1 mol/L → Λm = (0.002 × 1000)/0.1 = <strong>20 S cm² mol⁻¹</strong></p>
+  </div>
+
+  <!-- Variation with concentration -->
+  <h3 style="margin:24px 0 12px; font-size:1.1rem;">📈 Variation with Concentration</h3>
+  <div class="grid-2">
+    <div class="card" style="border-left:4px solid var(--accent3);">
+      <h3>📉 Conductivity (κ) vs Dilution</h3>
+      <p><strong>ALWAYS DECREASES</strong> on dilution — for both strong AND weak electrolytes.</p>
+      <p style="margin-top:8px;font-size:14px;">Why? On dilution → fewer ions per unit volume → less current per unit volume.</p>
+      <div class="memory-box" style="margin-top:8px;">
+        <div class="m-title">🧃 Juice Analogy</div>
+        <p style="font-size:13px;">Add more water to juice → taste weakens. More water = fewer juice molecules per mL. Same idea with ions!</p>
+      </div>
+    </div>
+    <div class="card" style="border-left:4px solid var(--accent2);">
+      <h3>📈 Molar Conductivity (Λm) vs Dilution</h3>
+      <p><strong>ALWAYS INCREASES</strong> on dilution — for both strong AND weak electrolytes.</p>
+      <p style="margin-top:8px;font-size:14px;">Why? Λm = κ/c. Volume V per mole increases greatly — more than compensates decrease in κ. Ions have more freedom!</p>
+      <div class="memory-box" style="margin-top:8px;">
+        <div class="m-title">🏊 Pool Analogy</div>
+        <p style="font-size:13px;">Add more water → ions have MORE SPACE to move freely → each ion conducts better → Λm increases!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="d-title">📐 Λm vs √c Graph (Debye–Hückel–Onsager Plot)</div>
+    <svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px">
+      <rect width="700" height="360" fill="#0d1117" rx="10"/>
+      <text x="350" y="28" text-anchor="middle" fill="#e6edf3" font-size="15" font-family="Nunito" font-weight="bold">Λm vs √c Graph — The Key Diagram</text>
+      <line x1="80" y1="300" x2="620" y2="300" stroke="#30363d" stroke-width="2"/>
+      <line x1="80" y1="60" x2="80" y2="300" stroke="#30363d" stroke-width="2"/>
+      <text x="350" y="328" text-anchor="middle" fill="#8b949e" font-size="13">√c →</text>
+      <text x="28" y="180" fill="#8b949e" font-size="13" text-anchor="middle" transform="rotate(-90,28,180)">Λm →</text>
+      <line x1="75" y1="240" x2="85" y2="240" stroke="#30363d" stroke-width="1.5"/><text x="65" y="245" text-anchor="middle" fill="#8b949e" font-size="11">100</text>
+      <line x1="75" y1="180" x2="85" y2="180" stroke="#30363d" stroke-width="1.5"/><text x="65" y="185" text-anchor="middle" fill="#8b949e" font-size="11">200</text>
+      <line x1="75" y1="120" x2="85" y2="120" stroke="#30363d" stroke-width="1.5"/><text x="65" y="125" text-anchor="middle" fill="#8b949e" font-size="11">300</text>
+      <!-- Strong electrolyte (KCl) - straight line -->
+      <polyline points="80,205 150,208 250,215 380,225 520,240 600,250" fill="none" stroke="#56d0f0" stroke-width="3"/>
+      <circle cx="80" cy="205" r="5" fill="#56d0f0"/>
+      <text x="80" y="196" fill="#56d0f0" font-size="13" font-weight="bold">Λ°m</text>
+      <text x="590" y="243" fill="#56d0f0" font-size="13" font-family="Nunito" font-weight="bold">KCl (Strong)</text>
+      <!-- Weak electrolyte (HAc) - steep curve -->
+      <path d="M80,80 Q160,110 260,150 Q360,195 500,240 Q560,258 600,268" fill="none" stroke="#f78166" stroke-width="3"/>
+      <circle cx="80" cy="80" r="5" fill="#f78166"/>
+      <text x="95" y="78" fill="#f78166" font-size="13" font-weight="bold">Λ°m (extrapolated)</text>
+      <text x="570" y="264" fill="#f78166" font-size="13" font-family="Nunito" font-weight="bold">HAc (Weak)</text>
+      <rect x="415" y="65" width="230" height="82" rx="8" fill="rgba(13,17,23,0.9)" stroke="#30363d"/>
+      <text x="425" y="85" fill="#56d0f0" font-size="12" font-family="Nunito" font-weight="bold">Strong: Λm = Λ°m − A√c</text>
+      <text x="425" y="102" fill="#8b949e" font-size="11" font-family="Nunito">Straight line → easy extrapolation</text>
+      <text x="425" y="120" fill="#f78166" font-size="12" font-family="Nunito" font-weight="bold">Weak: steep curve near c→0</text>
+      <text x="425" y="137" fill="#8b949e" font-size="11" font-family="Nunito">Cannot extrapolate Λ°m directly!</text>
+      <text x="80" y="316" fill="#8b949e" font-size="11">0</text>
+    </svg>
+    <div class="diagram-caption">Fig: Λm vs √c plot. Strong electrolytes (KCl) → straight line → extrapolate to get Λ°m. Weak electrolytes (HAc) → steep curve → CANNOT extrapolate → use Kohlrausch's Law!</div>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-title">DEBYE–HÜCKEL–ONSAGER EQUATION (Strong Electrolytes Only)</div>
+    <div class="formula">Λm = Λ°m − A√c</div>
+    <ul style="list-style:none;padding:0;font-size:13px;margin-top:8px;">
+      <li><strong style="color:var(--cyan)">Λ°m</strong> = limiting molar conductivity at c→0 (intercept of the graph)</li>
+      <li><strong style="color:var(--cyan)">A</strong> = constant depending on electrolyte type (1-1, 2-1, 2-2) and solvent</li>
+      <li>Plot Λm vs √c → straight line, intercept = Λ°m, slope = −A</li>
+    </ul>
+  </div>
+
+  <!-- Kohlrausch -->
+  <h3 style="margin:24px 0 12px; font-size:1.1rem;">⚖️ Kohlrausch's Law of Independent Migration of Ions</h3>
+
+  <div class="kohl-story">
+    <h4>📖 The Discovery Story</h4>
+    <p style="font-size:14px;">Friedrich Kohlrausch noticed a pattern in Λ°m values:</p>
+    <div class="formula-box" style="margin-top:10px;">
+      <div class="formula" style="font-size:0.9rem;">Λ°m(KCl) − Λ°m(NaCl) = Λ°m(KBr) − Λ°m(NaBr) = Λ°m(KI) − Λ°m(NaI) ≈ 23.4 S cm² mol⁻¹</div>
+      <ul style="list-style:none;padding:0;font-size:12px;margin-top:6px;"><li style="color:var(--muted)">The difference between K⁺ and Na⁺ is always the same regardless of which anion!</li></ul>
+    </div>
+    <p style="font-size:14px;margin-top:10px;">Conclusion: <strong>each ion contributes independently</strong> to molar conductivity!</p>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📖 Kohlrausch's Law</div>
+    <p>At infinite dilution, each ion migrates independently and contributes a definite amount (λ°) to the total molar conductivity, regardless of the nature of the other ion present.</p>
+  </div>
+  <div class="formula-box">
+    <div class="f-title">KOHLRAUSCH'S LAW</div>
+    <div class="formula">Λ°m = ν₊λ°₊ + ν₋λ°₋</div>
+    <ul style="list-style:none;padding:0;font-size:13px;margin-top:8px;">
+      <li><strong style="color:var(--cyan)">ν₊, ν₋</strong> = number of cations/anions per formula unit</li>
+      <li><strong style="color:var(--cyan)">λ°₊, λ°₋</strong> = individual ionic molar conductivities at infinite dilution</li>
+      <li>Example: CaCl₂ → Λ°m = 1×λ°(Ca²⁺) + 2×λ°(Cl⁻)</li>
+    </ul>
+  </div>
+
+  <div class="diagram-wrap">
+    <div class="d-title">Kohlrausch's Law — Each Ion Moves Independently!</div>
+    <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px">
+      <rect width="700" height="240" fill="#0d1117" rx="10"/>
+      <text x="350" y="26" text-anchor="middle" fill="#e6edf3" font-size="14" font-family="Nunito" font-weight="bold">Cl⁻ has the same λ° regardless of pairing!</text>
+      <rect x="50" y="50" width="175" height="130" rx="10" fill="rgba(86,208,240,0.08)" stroke="#56d0f0" stroke-width="1.5"/>
+      <text x="137" y="74" text-anchor="middle" fill="#56d0f0" font-size="14" font-family="Nunito" font-weight="bold">NaCl</text>
+      <circle cx="100" cy="120" r="16" fill="rgba(247,201,72,0.2)" stroke="#f0db4f" stroke-width="2"/>
+      <text x="100" y="125" text-anchor="middle" fill="#f0db4f" font-size="13" font-family="Nunito">Na⁺</text>
+      <polygon points="120,120 136,116 136,124" fill="#f0db4f"/>
+      <circle cx="180" cy="120" r="16" fill="rgba(247,129,102,0.2)" stroke="#f78166" stroke-width="2"/>
+      <text x="180" y="125" text-anchor="middle" fill="#f78166" font-size="13" font-family="Nunito">Cl⁻</text>
+      <polygon points="155,120 143,116 143,124" fill="#f78166"/>
+      <text x="100" y="160" text-anchor="middle" fill="#f0db4f" font-size="11">50.1</text>
+      <text x="180" y="160" text-anchor="middle" fill="#f78166" font-size="11">76.3</text>
+      <text x="137" y="178" text-anchor="middle" fill="#e6edf3" font-size="12">Λ°m = 126.4</text>
+      <text x="265" y="125" text-anchor="middle" fill="#8b949e" font-size="28" font-family="Nunito">→</text>
+      <rect x="300" y="50" width="175" height="130" rx="10" fill="rgba(210,168,255,0.08)" stroke="#d2a8ff" stroke-width="1.5"/>
+      <text x="387" y="74" text-anchor="middle" fill="#d2a8ff" font-size="14" font-family="Nunito" font-weight="bold">KCl</text>
+      <circle cx="350" cy="120" r="16" fill="rgba(52,211,153,0.2)" stroke="#3fb950" stroke-width="2"/>
+      <text x="350" y="125" text-anchor="middle" fill="#3fb950" font-size="13" font-family="Nunito">K⁺</text>
+      <polygon points="370,120 386,116 386,124" fill="#3fb950"/>
+      <circle cx="430" cy="120" r="16" fill="rgba(247,129,102,0.2)" stroke="#f78166" stroke-width="2"/>
+      <text x="430" y="125" text-anchor="middle" fill="#f78166" font-size="13" font-family="Nunito">Cl⁻</text>
+      <polygon points="405,120 393,116 393,124" fill="#f78166"/>
+      <text x="350" y="160" text-anchor="middle" fill="#3fb950" font-size="11">73.5</text>
+      <text x="430" y="160" text-anchor="middle" fill="#f78166" font-size="11">76.3</text>
+      <text x="387" y="178" text-anchor="middle" fill="#e6edf3" font-size="12">Λ°m = 149.8</text>
+      <rect x="502" y="65" width="180" height="90" rx="8" fill="rgba(240,219,79,0.08)" stroke="#f0db4f" stroke-width="1.5"/>
+      <text x="592" y="92" text-anchor="middle" fill="#f0db4f" font-size="12" font-family="Nunito" font-weight="bold">🔑 Key Insight</text>
+      <text x="592" y="110" text-anchor="middle" fill="#8b949e" font-size="11">Cl⁻ has same λ°</text>
+      <text x="592" y="126" text-anchor="middle" fill="#8b949e" font-size="11">in BOTH salts</text>
+      <text x="592" y="142" text-anchor="middle" fill="#f78166" font-size="13" font-weight="bold">= 76.3</text>
+      <text x="592" y="158" text-anchor="middle" fill="#8b949e" font-size="10">Ion is independent!</text>
+    </svg>
+    <div class="diagram-caption">Fig: NaCl has Λ°m=126.4, KCl has Λ°m=149.8. Difference (23.4) = λ°(K⁺) − λ°(Na⁺). Cl⁻ always contributes 76.3 regardless of pairing!</div>
+  </div>
+
+  <!-- λ° table -->
+  <div class="card">
+    <h3>📊 Limiting Molar Conductivity of Individual Ions (λ°) at 298 K</h3>
+    <div class="grid-2">
+      <table class="ion-table">
+        <tr><th>Cation</th><th>λ° (S cm² mol⁻¹)</th></tr>
+        <tr><td>H⁺</td><td class="star">349.6 ⭐ (Highest!)</td></tr>
+        <tr><td>K⁺</td><td class="hi">73.5</td></tr>
+        <tr><td>Ca²⁺</td><td class="hi">119.0</td></tr>
+        <tr><td>Mg²⁺</td><td class="hi">106.0</td></tr>
+        <tr><td>Na⁺</td><td class="hi">50.1</td></tr>
+        <tr><td>Li⁺</td><td>38.7</td></tr>
+      </table>
+      <table class="ion-table">
+        <tr><th>Anion</th><th>λ° (S cm² mol⁻¹)</th></tr>
+        <tr><td>OH⁻</td><td class="star">199.1 ⭐ (2nd!)</td></tr>
+        <tr><td>SO₄²⁻</td><td class="hi">160.0</td></tr>
+        <tr><td>Br⁻</td><td class="hi">78.1</td></tr>
+        <tr><td>Cl⁻</td><td class="hi">76.3</td></tr>
+        <tr><td>NO₃⁻</td><td>71.4</td></tr>
+        <tr><td>CH₃COO⁻</td><td>40.9</td></tr>
+      </table>
+    </div>
+    <div class="memory-box" style="margin-top:12px;">
+      <div class="m-title">⚡ Why H⁺ and OH⁻ Are So High — Grotthuss Mechanism!</div>
+      <p style="font-size:14px;">H⁺ doesn't physically travel! It <strong>"jumps"</strong> from one water molecule to the next (proton hopping — like passing a ball in a queue). H₂O → H₃O⁺ → H₂O chain propagation. This is essentially the speed of bond-breaking/forming — much faster than actual ion movement! Same for OH⁻ in reverse direction.</p>
+    </div>
+  </div>
+
+  <!-- Applications of Kohlrausch -->
+  <div class="card">
+    <h3>🎯 Applications of Kohlrausch's Law (Board Favourite!)</h3>
+
+    <h4>1. Find Λ°m of Weak Electrolytes (MOST IMPORTANT)</h4>
+    <p style="font-size:14px;">Weak electrolytes cannot be extrapolated from graph. Use combination:</p>
+    <div class="formula-box">
+      <div class="f-title">FOR CH₃COOH (Acetic Acid)</div>
+      <div class="formula" style="font-size:0.95rem;">Λ°m(CH₃COOH) = Λ°m(HCl) + Λ°m(CH₃COONa) − Λ°m(NaCl)</div>
+      <ul style="list-style:none;padding:0;font-size:12px;margin-top:6px;"><li><strong style="color:var(--cyan)">Logic:</strong> CH₃COO⁻ from CH₃COONa + H⁺ from HCl, cancel Na⁺ and Cl⁻</li></ul>
+    </div>
+    <div class="example-box" style="margin-top:8px;">
+      <div class="e-title">📝 WORKED EXAMPLE</div>
+      <p style="font-size:13px;">Λ°m: NaCl = 126.4, HCl = 426.2, CH₃COONa = 91.0 S cm² mol⁻¹</p>
+      <p style="font-size:13px;"><strong>Λ°m(CH₃COOH) = 91.0 + 426.2 − 126.4 = 390.8 S cm² mol⁻¹</strong></p>
+    </div>
+
+    <h4>2. Degree of Dissociation (α) for Weak Electrolytes</h4>
+    <div class="formula-box">
+      <div class="formula">α = Λm(c) / Λ°m</div>
+    </div>
+
+    <h4>3. Dissociation Constant (Ka)</h4>
+    <div class="formula-box">
+      <div class="formula">Ka = C × α² / (1 − α)</div>
+    </div>
+    <div class="example-box" style="margin-top:8px;">
+      <div class="e-title">📝 WORKED EXAMPLE — Ka of Acetic Acid</div>
+      <p style="font-size:13px;"><strong>Given:</strong> Λm(0.025M CH₃COOH) = 32 S cm² mol⁻¹, Λ°m = 390.8 S cm² mol⁻¹</p>
+      <p style="font-size:13px;">α = 32/390.8 = 0.0819 (8.19% dissociated)</p>
+      <p style="font-size:13px;">Ka = 0.025 × (0.0819)² / (1 − 0.0819) = <strong>1.83 × 10⁻⁴</strong></p>
+    </div>
+  </div>
+
+  <!-- Conductance numericals from file 2 -->
+  <h3 style="color:var(--accent4); margin:24px 0 12px; font-size:1.1rem;">🧮 Solved Numericals — Conductance</h3>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge num">NUM</span><span class="marks">3M</span>
+      <span style="flex:1;margin-left:10px;">Cell filled with 0.01M KCl (κ=0.00141 S cm⁻¹) gives R=500Ω. Same cell with unknown solution gives R=1500Ω. Find (a) cell constant (b) conductivity of unknown.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p><strong>(a) Cell constant:</strong> G* = κ × R = 0.00141 × 500 = <strong>0.705 cm⁻¹</strong></p>
+        <p><strong>(b) κ (unknown):</strong> κ = G*/R = 0.705/1500 = <strong>4.7 × 10⁻⁴ S cm⁻¹</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge num">NUM</span><span class="q-badge pyq">PYQ</span><span class="marks">2M</span>
+      <span style="flex:1;margin-left:10px;">Conductivity of 0.20 M KCl at 298K = 0.0248 S cm⁻¹. Calculate molar conductivity.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p>Λm = (κ × 1000) / M = (0.0248 × 1000) / 0.20 = <strong>124 S cm² mol⁻¹</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge num">NUM</span><span class="q-badge pyq">PYQ</span><span class="marks">3M</span>
+      <span style="flex:1;margin-left:10px;">Find Λ°m for CH₃COOH if Λ°m: HCl=426.2, NaCl=126.4, CH₃COONa=91.0 S cm² mol⁻¹.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p>Using Kohlrausch's Law:</p>
+        <p>Λ°m(CH₃COOH) = Λ°m(HCl) + Λ°m(CH₃COONa) − Λ°m(NaCl)</p>
+        <p>= 426.2 + 91.0 − 126.4 = <strong>390.8 S cm² mol⁻¹</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge num">NUM</span><span class="marks">5M</span>
+      <span style="flex:1;margin-left:10px;">Conductivity of 0.002 M acetic acid = 7.896 × 10⁻⁵ S cm⁻¹. Λ°m(HAc) = 390.5 S cm² mol⁻¹. Find α and Ka.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p><strong>Step 1:</strong> Λm = (7.896×10⁻⁵ × 1000) / 0.002 = <strong>39.48 S cm² mol⁻¹</strong></p>
+        <p><strong>Step 2:</strong> α = Λm/Λ°m = 39.48/390.5 = <strong>0.1011 (10.11% dissociated)</strong></p>
+        <p><strong>Step 3:</strong> Ka = (0.002 × 0.1011²)/(1 − 0.1011) = <strong>2.27 × 10⁻⁵ mol L⁻¹</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge hots">HOTS</span><span class="marks">2M</span>
+      <span style="flex:1;margin-left:10px;">Why does pure water have very low but non-zero conductivity?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p>Pure water undergoes <strong>autoionisation</strong>: H₂O ⇌ H⁺ + OH⁻. Kw = 10⁻¹⁴ at 298K → [H⁺] = [OH⁻] = 10⁻⁷ M. These small concentrations carry current → κ ≈ <strong>3.5 × 10⁻⁵ S m⁻¹</strong>. H⁺ has abnormally high λ° = 349.6 (Grotthuss mechanism) making this small but non-zero conductivity possible.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge hots">HOTS</span><span class="marks">3M</span>
+      <span style="flex:1;margin-left:10px;">A student measures conductivity of KCl using DC current. Will results be accurate? What happens to the solution?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p><strong>No, NOT accurate.</strong> When DC is passed, electrolysis occurs: K⁺ migrates to cathode (discharged as K metal or H₂), Cl⁻ to anode (discharged as Cl₂). This permanently changes the solution composition and concentration → resistance keeps changing. Back-EMF builds up → measurements unreliable. That's why <strong>AC is always used</strong> — it reverses so rapidly that net electrolysis doesn't occur.</p>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end conductance section -->
+<div class="divider"></div>
+<!-- SECTION 7: ALL FORMULAS -->
+<div class="section" id="formulas">
+  <div class="section-header">
+    <div class="emoji">📐</div>
+    <div>
+      <div class="section-num">SECTION 7</div>
+      <h2>Master Formula Sheet</h2>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🔢 All Formulas at a Glance</h3>
+    <table>
+      <tr><th>Formula</th><th>Meaning</th><th>Units</th></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--yellow)">E°cell = E°cathode − E°anode</td><td>Standard EMF of cell</td><td>Volts (V)</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--yellow)">ΔrG° = −nFE°cell</td><td>Gibbs energy from EMF</td><td>J mol⁻¹</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--yellow)">ΔrG° = −RT ln K</td><td>Gibbs energy from K</td><td>J mol⁻¹</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--cyan)">E = E° − (RT/nF) ln Q</td><td>Nernst equation</td><td>Volts</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--cyan)">E = E° − (0.0592/n) log Q</td><td>Nernst at 298K</td><td>Volts</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--accent2)">Q = I × t</td><td>Charge passed</td><td>Coulombs (C)</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--accent2)">w = ZQ = ZIt</td><td>Faraday's First Law</td><td>grams</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--accent2)">w = (M × I × t)/(n × F)</td><td>Mass deposited formula</td><td>grams</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--accent2)">F = 96500 C mol⁻¹</td><td>Faraday's constant</td><td>C mol⁻¹</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--accent4)">κ = cell constant / R</td><td>Conductivity</td><td>S cm⁻¹</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--accent4)">Λm = κ / c</td><td>Molar conductivity</td><td>S cm² mol⁻¹</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--accent4)">Λm = Λ°m − K√c</td><td>Debye-Hückel-Onsager (strong)</td><td>—</td></tr>
+      <tr><td style="font-family:'Fira Code'; color:var(--accent5)">α = Λm/Λ°m</td><td>Degree of dissociation</td><td>dimensionless</td></tr>
+    </table>
+  </div>
+
+  <!-- ELECTROCHEMICAL SERIES -->
+  <div class="card">
+    <h3>⚡ Standard Reduction Potentials (Selected) — Electrochemical Series</h3>
+    <p style="font-size:13px; color:var(--muted); margin-bottom:10px;">All values at 298K vs SHE. Higher E° = stronger oxidising agent. Lower E° = stronger reducing agent.</p>
+    <table>
+      <tr><th>Electrode Reaction</th><th>E° (V)</th><th>Note</th></tr>
+      <tr><td>F₂ + 2e⁻ → 2F⁻</td><td style="color:var(--accent3)">+2.87</td><td>Strongest oxidiser</td></tr>
+      <tr><td>MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O</td><td style="color:var(--accent3)">+1.51</td><td></td></tr>
+      <tr><td>Cl₂ + 2e⁻ → 2Cl⁻</td><td style="color:var(--accent3)">+1.36</td><td></td></tr>
+      <tr><td>O₂ + 4H⁺ + 4e⁻ → 2H₂O</td><td style="color:var(--accent3)">+1.23</td><td>Cathodic in corrosion</td></tr>
+      <tr><td>Ag⁺ + e⁻ → Ag</td><td style="color:var(--accent3)">+0.80</td><td></td></tr>
+      <tr><td>Cu²⁺ + 2e⁻ → Cu</td><td style="color:var(--accent3)">+0.34</td><td></td></tr>
+      <tr><td><strong>2H⁺ + 2e⁻ → H₂</strong></td><td style="color:var(--yellow)"><strong>0.00</strong></td><td><strong>Reference (SHE)</strong></td></tr>
+      <tr><td>Pb²⁺ + 2e⁻ → Pb</td><td style="color:var(--accent2)">−0.13</td><td></td></tr>
+      <tr><td>Fe²⁺ + 2e⁻ → Fe</td><td style="color:var(--accent2)">−0.44</td><td>Anodic in corrosion</td></tr>
+      <tr><td>Zn²⁺ + 2e⁻ → Zn</td><td style="color:var(--accent2)">−0.76</td><td>Galvanizing agent</td></tr>
+      <tr><td>Al³⁺ + 3e⁻ → Al</td><td style="color:var(--accent2)">−1.66</td><td></td></tr>
+      <tr><td>Mg²⁺ + 2e⁻ → Mg</td><td style="color:var(--accent2)">−2.37</td><td>Sacrificial anode</td></tr>
+      <tr><td>Na⁺ + e⁻ → Na</td><td style="color:var(--accent2)">−2.71</td><td></td></tr>
+      <tr><td>Li⁺ + e⁻ → Li</td><td style="color:var(--accent2)">−3.05</td><td>Strongest reducer</td></tr>
+    </table>
+    <div class="memory-box" style="margin-top:12px;">
+      <div class="m-title">🧠 ACTIVITY SERIES TRICK</div>
+      <p style="font-size:14px;">Going <strong>DOWN</strong> the electrochemical series: reducing power INCREASES (more negative E°). These metals are more reactive and get oxidised easily. K > Ca > Na > Mg > Al > Zn > Fe > Ni > Sn > Pb > H > Cu > Ag > Au</p>
+      <div class="trick" style="font-size:1rem;">Please Can Niki Make All Zesty Food Not Served (in) Hot Copper Sauce Always</div>
+      <p style="font-size:12px; color:var(--muted)">K, Ca, Na, Mg, Al, Zn, Fe, Ni, Sn, (Pb), H, Cu, (Hg), Ag, Au</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 8: QUESTIONS -->
+<div class="section" id="questions">
+  <div class="section-header">
+    <div class="emoji">❓</div>
+    <div>
+      <div class="section-num">SECTION 8</div>
+      <h2>Practice Questions — PYQ, HOTS & Numericals</h2>
+    </div>
+  </div>
+
+  <p style="margin-bottom:16px; font-size:14px; color:var(--muted)">Click on any question to reveal the answer. Don't peek before trying!</p>
+
+  <!-- PYQ QUESTIONS -->
+  <h3 style="color:var(--accent4); margin-bottom:12px; font-size:1.1rem;">📜 Previous Year Board Questions</h3>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge pyq">PYQ 2023</span>
+      <span class="marks">3M</span>
+      <span style="flex:1; margin-left:10px;">State Faraday's First Law of Electrolysis. How much charge in coulombs is required to deposit 40.5 g of Aluminium (Molar mass 27 g/mol) from its electrolytic cell?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <p style="font-size:14px;"><em>Faraday's First Law:</em> The amount of chemical reaction at an electrode is proportional to the quantity of electricity passed.</p>
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p style="font-size:14px;"><strong>Reaction:</strong> Al³⁺ + 3e⁻ → Al &nbsp; (n = 3)</p>
+        <p style="font-size:14px;"><strong>Moles of Al = 40.5/27 = 1.5 mol</strong></p>
+        <p style="font-size:14px;"><strong>Charge = moles × n × F = 1.5 × 3 × 96500 = 434250 C ≈ 4.34 × 10⁵ C</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge pyq">PYQ 2022</span>
+      <span class="marks">2M</span>
+      <span style="flex:1; margin-left:10px;">Write the electrode reactions at anode and cathode during the electrolysis of molten NaCl.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;"><strong>Anode (Oxidation):</strong> 2Cl⁻ → Cl₂(g) + 2e⁻</p>
+        <p style="font-size:14px;"><strong>Cathode (Reduction):</strong> Na⁺ + e⁻ → Na(s)</p>
+        <p style="font-size:13px; color:var(--muted); margin-top:6px;">Note: Molten NaCl, not aqueous — so Na metal is produced (not H₂)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge pyq">PYQ 2022</span>
+      <span class="marks">3M</span>
+      <span style="flex:1; margin-left:10px;">Explain how rusting of iron is envisaged as setting up of an electrochemical cell. Give the reactions at anode and cathode.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;">At certain spots on iron, oxidation occurs (anode), while O₂ is reduced at other spots (cathode). Electrons flow through the metal. Water/H₂CO₃ acts as electrolyte.</p>
+        <p style="font-size:14px; margin-top:8px;"><strong>Anode:</strong> 2Fe → 2Fe²⁺ + 4e⁻ (E° = −0.44 V)</p>
+        <p style="font-size:14px;"><strong>Cathode:</strong> O₂ + 4H⁺ + 4e⁻ → 2H₂O (E° = +1.23 V)</p>
+        <p style="font-size:14px;"><strong>Overall E°cell = 1.67 V (positive → spontaneous!)</strong></p>
+        <p style="font-size:14px; margin-top:6px;">Fe²⁺ is further oxidised to Fe³⁺ which forms hydrated Fe₂O₃ (rust).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge pyq">PYQ 2021</span>
+      <span class="marks">2M</span>
+      <span style="flex:1; margin-left:10px;">Write the chemistry of recharging the lead storage battery, highlighting all materials involved during recharging.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;">During recharging, the overall reaction is REVERSED:</p>
+        <p style="font-size:14px; margin-top:6px;"><strong>2PbSO₄(s) + 2H₂O(l) → Pb(s) + PbO₂(s) + 2H₂SO₄(aq)</strong></p>
+        <p style="font-size:14px; margin-top:6px;"><strong>Materials involved:</strong> PbSO₄ (both electrodes initially), water, electric current (external). Products: Pb (anode), PbO₂ (cathode), H₂SO₄ (electrolyte regenerated)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge pyq">PYQ 2020</span>
+      <span class="marks">1M</span>
+      <span style="flex:1; margin-left:10px;">Why does the voltage of a mercury cell remain constant throughout its life?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;">The overall reaction in a mercury cell (Zn(Hg) + HgO → ZnO + Hg) does not involve any ion whose concentration changes in solution — it is entirely a solid-to-solid reaction. So the reaction quotient Q remains constant → voltage remains constant (by Nernst equation).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge pyq">PYQ 2019</span>
+      <span class="marks">2M</span>
+      <span style="flex:1; margin-left:10px;">What is a fuel cell? Write electrode reactions for the hydrogen-oxygen fuel cell.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;"><strong>Fuel Cell:</strong> A galvanic cell that converts chemical energy of combustion of fuels directly into electrical energy. Reactants are supplied continuously.</p>
+        <p style="font-size:14px; margin-top:8px;"><strong>Cathode:</strong> O₂(g) + 2H₂O(l) + 4e⁻ → 4OH⁻(aq)</p>
+        <p style="font-size:14px;"><strong>Anode:</strong> 2H₂(g) + 4OH⁻(aq) → 4H₂O(l) + 4e⁻</p>
+        <p style="font-size:14px;"><strong>Overall:</strong> 2H₂(g) + O₂(g) → 2H₂O(l)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NUMERICAL QUESTIONS -->
+  <h3 style="color:var(--accent); margin: 24px 0 12px; font-size:1.1rem;">🧮 Numerical Questions</h3>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge num">NUM</span>
+      <span class="marks">3M</span>
+      <span style="flex:1; margin-left:10px;">A solution of AgNO₃ is electrolysed for 15 minutes using a current of 2 amperes. What is the mass of silver deposited? (M of Ag = 108 g/mol)</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ STEP-BY-STEP SOLUTION</div>
+        <div class="steps">
+          <div class="step">I = 2A, t = 15 × 60 = 900 s, M(Ag) = 108, n = 1 (Ag⁺ + e⁻ → Ag)</div>
+          <div class="step">Q = I × t = 2 × 900 = 1800 C</div>
+          <div class="step">w = (M × Q)/(n × F) = (108 × 1800)/(1 × 96500)</div>
+          <div class="step"><strong>w = 194400/96500 = 2.014 g ≈ 2.01 g</strong> ✅</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge num">NUM</span>
+      <span class="marks">3M</span>
+      <span style="flex:1; margin-left:10px;">Three electrolytic cells A (ZnSO₄), B (AgNO₃), C (CuSO₄) are connected in series. A steady current of 1.5A is passed until 1.45g of Ag deposits in cell B. How long was the current passed? What mass of Cu and Zn were deposited?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p style="font-size:14px;"><strong>For Ag:</strong> 1.45g of Ag deposited, n = 1, M = 108</p>
+        <p>Q = (w × n × F)/M = (1.45 × 1 × 96500)/108 = 1295.6 C</p>
+        <p><strong>Time = Q/I = 1295.6/1.5 = 863.7 s ≈ 864 s ≈ 14.4 minutes</strong></p>
+        <p style="margin-top:8px;"><strong>For Cu:</strong> w = (63.5 × 1295.6)/(2 × 96500) = 0.426 g</p>
+        <p><strong>For Zn:</strong> w = (65.3 × 1295.6)/(2 × 96500) = 0.438 g</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge num">NUM</span>
+      <span class="marks">3M</span>
+      <span style="flex:1; margin-left:10px;">Calculate the EMF of the cell: Mg(s)|Mg²⁺(0.001M)||Cu²⁺(0.0001M)|Cu(s). Given E°(Mg²⁺/Mg) = −2.37V, E°(Cu²⁺/Cu) = +0.34V</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p style="font-size:14px;"><strong>Cell reaction:</strong> Mg + Cu²⁺ → Mg²⁺ + Cu &nbsp; (n = 2)</p>
+        <p><strong>E°cell = E°cathode − E°anode = 0.34 − (−2.37) = 2.71 V</strong></p>
+        <p>Q = [Mg²⁺]/[Cu²⁺] = 0.001/0.0001 = 10</p>
+        <p>E = E° − (0.0592/n) × log Q</p>
+        <p>E = 2.71 − (0.0592/2) × log 10</p>
+        <p><strong>E = 2.71 − 0.0296 × 1 = 2.68 V</strong> ✅</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge num">NUM</span>
+      <span class="marks">3M</span>
+      <span style="flex:1; margin-left:10px;">How much electricity (in Faradays and Coulombs) is required to reduce 1 mol of Cr₂O₇²⁻ to Cr³⁺? (Reaction: Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O)</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p style="font-size:14px;">From the equation, <strong>6 electrons</strong> are needed per formula unit of Cr₂O₇²⁻</p>
+        <p><strong>Electricity in Faradays = 6F</strong></p>
+        <p><strong>Electricity in Coulombs = 6 × 96500 = 579000 C = 5.79 × 10⁵ C</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOTS QUESTIONS -->
+  <h3 style="color:var(--accent3); margin: 24px 0 12px; font-size:1.1rem;">🔥 HOTS (Higher Order Thinking)</h3>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge hots">HOTS</span>
+      <span class="marks">3M</span>
+      <span style="flex:1; margin-left:10px;">If the standard electrode potentials of Fe³⁺/Fe²⁺ and I₂/I⁻ are +0.77V and +0.54V respectively, predict if the reaction Fe³⁺(aq) + I⁻(aq) → Fe²⁺(aq) + ½I₂(s) is feasible.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p style="font-size:14px;">Fe³⁺ is being REDUCED (cathode): E° = +0.77V</p>
+        <p>I⁻ is being OXIDISED (anode): E° = +0.54V</p>
+        <p><strong>E°cell = E°cathode − E°anode = 0.77 − 0.54 = +0.23 V</strong></p>
+        <p><strong>Since E°cell is POSITIVE → ΔrG° is NEGATIVE → Reaction IS feasible (spontaneous) ✅</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge hots">HOTS</span>
+      <span class="marks">3M</span>
+      <span style="flex:1; margin-left:10px;">A zinc rod is dipped in 0.1M ZnSO₄ solution. If E°(Zn²⁺/Zn) = −0.76V, what is the electrode potential? Why does zinc corrode when dipped in dilute HCl?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p style="font-size:14px;">Using Nernst: Zn²⁺ + 2e⁻ → Zn (n=2)</p>
+        <p>E = −0.76 − (0.0592/2) × log(1/0.1)</p>
+        <p>E = −0.76 − 0.0296 × 1 = <strong>−0.79 V</strong></p>
+        <p style="margin-top:8px;"><strong>Zinc corrodes in HCl because:</strong> E°(H⁺/H₂) = 0.00 V > E°(Zn²⁺/Zn) = −0.76V. So Zn gets oxidised (acts as anode) and H⁺ gets reduced to H₂ at zinc surface. E°cell = 0−(−0.76) = +0.76V > 0 → spontaneous!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge hots">HOTS</span>
+      <span class="marks">2M</span>
+      <span style="flex:1; margin-left:10px;">In coastal areas, iron pipes in contact with sea water corrode much faster than iron pipes in freshwater. Explain why.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;">Sea water contains dissolved salts (mainly NaCl) which significantly increase the ionic conductivity of water. Higher conductivity means:</p>
+        <ul style="margin: 8px 0 0 20px; font-size:14px;">
+          <li>Electrolyte (sea water) conducts current more efficiently</li>
+          <li>The electrochemical corrosion cell works faster</li>
+          <li>More electrons flow → more iron dissolves per unit time</li>
+        </ul>
+        <p style="margin-top:8px; font-size:14px;">Fresh water has very low ionic content → poor conductor → slow corrosion rate.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge hots">HOTS</span>
+      <span class="marks">3M</span>
+      <span style="flex:1; margin-left:10px;">Calculate ΔrG° and the equilibrium constant K for the reaction: Zn(s) + 2Ag⁺(aq) → Zn²⁺(aq) + 2Ag(s). Given E°(Zn²⁺/Zn) = −0.76V, E°(Ag⁺/Ag) = +0.80V</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ SOLUTION</div>
+        <p style="font-size:14px;"><strong>E°cell = E°cathode − E°anode = 0.80 − (−0.76) = 1.56 V</strong></p>
+        <p>n = 2 (2 electrons transferred)</p>
+        <p><strong>ΔrG° = −nFE° = −2 × 96500 × 1.56 = −301080 J = −301.08 kJ mol⁻¹</strong></p>
+        <p>ΔrG° = −RT ln K → ln K = 301080/(8.314 × 298)</p>
+        <p>ln K = 121.5 → <strong>K = e^121.5 ≈ 3.2 × 10⁵²</strong> (reaction almost goes to completion!)</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ★ EXTRA PYQs FROM FILE 3 -->
+  <h3 style="color:var(--accent3); margin:24px 0 12px; font-size:1.1rem;">📄 More PYQs — CBSE Board Actual Questions (File 3)</h3>
+
+  <div class="pyq3-card">
+    <div class="pyq3-label">CBSE Board 2022 — 3 Marks</div>
+    <p><strong>Q: Explain: (a) Why Cu doesn't dissolve in HCl. (b) Why Zn dissolves in HCl. (c) Why a galvanic cell stops working eventually.</strong></p>
+    <details><summary></summary><div class="ans">
+      <p><strong>(a) Cu in HCl:</strong> E°(Cu²⁺/Cu) = +0.34V > 0.00V. Cu cannot reduce H⁺ ions. Hence Cu does NOT dissolve in HCl. (But Cu dissolves in HNO₃ because NO₃⁻ is a stronger oxidant than H⁺)</p>
+      <p><strong>(b) Zn in HCl:</strong> E°(Zn²⁺/Zn) = −0.76V &lt; 0.00V. Zn can reduce H⁺ → Zn dissolves and H₂ gas is produced.</p>
+      <p><strong>(c) Cell stops:</strong> [Cu²⁺] decreases, [Zn²⁺] increases. By Nernst, E(cell) decreases until Q = Kc and E(cell) = 0. No further reaction.</p>
+    </div></details>
+  </div>
+
+  <div class="pyq3-card">
+    <div class="pyq3-label">CBSE Board 2023 — 2 Marks</div>
+    <p><strong>Q: Why is aqueous NaCl used instead of molten NaCl in the chlor-alkali process? What are the products at each electrode?</strong></p>
+    <details><summary></summary><div class="ans">
+      <p>Aqueous NaCl is used because molten NaCl requires very high temperatures (costly and hazardous). Aqueous solution is easier to handle.</p>
+      <p><strong>Products:</strong> Cathode: H₂ gas (2H⁺ + 2e⁻ → H₂) | Anode: Cl₂ gas (2Cl⁻ → Cl₂ + 2e⁻) | In solution: NaOH (Na⁺ + OH⁻ from water ionisation)</p>
+    </div></details>
+  </div>
+
+  <div class="pyq3-card">
+    <div class="pyq3-label">CBSE Board 2020 — 2 Marks</div>
+    <p><strong>Q: What is the product at cathode when aqueous CuSO₄ is electrolysed using (a) Pt electrodes (b) Cu electrodes?</strong></p>
+    <details><summary></summary><div class="ans">
+      <p>(a) Pt electrodes: Cu deposits at cathode (Cu²⁺ + 2e⁻ → Cu). O₂ at anode.</p>
+      <p>(b) Cu electrodes: Cu deposits at cathode AND Cu dissolves at anode (Cu → Cu²⁺ + 2e⁻). Net effect: Cu transfers from anode to cathode — basis of copper electrorefining!</p>
+    </div></details>
+  </div>
+
+  <div class="pyq3-card">
+    <div class="pyq3-label">CBSE Board 2021 — 1 Mark</div>
+    <p><strong>Q: Define electrochemical equivalent (Z). What is its unit?</strong></p>
+    <details><summary></summary><div class="ans">
+      <p>Electrochemical equivalent (Z) = mass deposited per coulomb of electricity passed. Z = M/(n×F). Unit: g C⁻¹. Example: for Cu, Z = 63.5/(2×96500) = 3.29×10⁻⁴ g C⁻¹.</p>
+    </div></details>
+  </div>
+
+  <div class="pyq3-card">
+    <div class="pyq3-label">CBSE Board 2019 — 2 Marks</div>
+    <p><strong>Q: Can you store copper sulphate solution in a zinc pot? Justify.</strong></p>
+    <details><summary></summary><div class="ans">
+      <p>No! E°(Cu²⁺/Cu) = +0.34V > E°(Zn²⁺/Zn) = −0.76V. Zn is a better reducing agent. Zn will displace Cu: Zn + Cu²⁺ → Zn²⁺ + Cu. The zinc pot would dissolve and Cu would deposit. The solution would turn colourless (ZnSO₄ is colourless).</p>
+    </div></details>
+  </div>
+
+  <div class="pyq3-card">
+    <div class="pyq3-label">CBSE Board — 2 Marks</div>
+    <p><strong>Q: Name three substances that can oxidise Fe²⁺ ions to Fe³⁺ ions.</strong></p>
+    <details><summary></summary><div class="ans">
+      <p>Need E° > +0.77V (E° of Fe³⁺/Fe²⁺ couple). From electrochemical series: (1) MnO₄⁻ (E°=+1.51V), (2) Cr₂O₇²⁻ (E°=+1.33V), (3) Cl₂ (E°=+1.36V), (4) Br₂ (E°=+1.09V), (5) O₂ (E°=+1.23V).</p>
+    </div></details>
+  </div>
+
+  <!-- THEORY QUESTIONS -->
+  <h3 style="color:var(--accent2); margin: 24px 0 12px; font-size:1.1rem;">📝 Theory Questions</h3>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge theory">THEORY</span>
+      <span class="marks">2M</span>
+      <span style="flex:1; margin-left:10px;">Why is galvanizing better than tinning for preventing corrosion of iron?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;">In <strong>galvanizing</strong>, zinc coating protects iron even if the coating is scratched, because Zn is more active (more negative E°) than Fe. Zn acts as a sacrificial anode and corrodes preferentially.</p>
+        <p style="font-size:14px; margin-top:6px;">In <strong>tinning</strong>, if the coating is scratched, Fe is more active than Sn, so Fe becomes the anode and corrodes faster than bare iron. This is why tin cans rust quickly when scratched.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge theory">THEORY</span>
+      <span class="marks">2M</span>
+      <span style="flex:1; margin-left:10px;">What is the function of a salt bridge in an electrochemical cell? Name two materials used in it.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;"><strong>Functions of salt bridge:</strong></p>
+        <ul style="margin: 6px 0 0 20px; font-size:14px;">
+          <li>Maintains electrical neutrality of both electrode compartments by allowing ion migration</li>
+          <li>Completes the internal circuit of the electrochemical cell</li>
+          <li>Prevents mixing of the two electrolyte solutions</li>
+        </ul>
+        <p style="font-size:14px; margin-top:8px;"><strong>Materials:</strong> KCl or KNO₃ in agar-agar gel</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge theory">THEORY</span>
+      <span class="marks">1M</span>
+      <span style="flex:1; margin-left:10px;">Why is platinum used as electrodes in fuel cells?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;">Platinum (and palladium) are used as catalysts in fuel cell electrodes because:</p>
+        <ul style="margin: 6px 0 0 20px; font-size:14px;">
+          <li>They increase the rate of electrode reactions (catalytic activity)</li>
+          <li>They are inert — do not react with the fuel or electrolyte</li>
+          <li>They are good conductors of electricity</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge theory">THEORY</span>
+      <span class="marks">2M</span>
+      <span style="flex:1; margin-left:10px;">Suggest two materials other than hydrogen that can be used as fuels in fuel cells.</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;"><strong>1. Methane (CH₄)</strong> — natural gas can be used directly in fuel cells. The oxidation of methane at the anode provides electrons for the circuit.</p>
+        <p style="font-size:14px; margin-top:6px;"><strong>2. Methanol (CH₃OH)</strong> — Direct Methanol Fuel Cells (DMFC) are used in portable devices. Methanol is liquid at room temperature making storage easier.</p>
+        <p style="font-size:13px; color:var(--muted); margin-top:6px;">Others: Ethanol (C₂H₅OH), Carbon monoxide (CO), Propane (C₃H₈)</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge theory">THEORY</span>
+      <span class="marks">3M</span>
+      <span style="flex:1; margin-left:10px;">Predict the products of electrolysis of (i) dilute H₂SO₄ with platinum electrodes (ii) AgNO₃ with silver electrodes (iii) CuCl₂ solution with platinum electrodes</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p style="font-size:14px;"><strong>(i) Dilute H₂SO₄, Pt electrodes:</strong></p>
+        <p style="font-size:14px;">Cathode: H⁺ + e⁻ → ½H₂ (H₂ gas evolved)</p>
+        <p style="font-size:14px;">Anode: 2H₂O → O₂ + 4H⁺ + 4e⁻ (O₂ gas evolved) [S₂O₈²⁻ preferred at high conc.]</p>
+        <p style="font-size:14px; margin-top:8px;"><strong>(ii) AgNO₃ with Ag electrodes (reactive!):</strong></p>
+        <p style="font-size:14px;">Cathode: Ag⁺ + e⁻ → Ag (Ag deposits)</p>
+        <p style="font-size:14px;">Anode: Ag(s) → Ag⁺ + e⁻ (Ag electrode dissolves — concentration stays constant!)</p>
+        <p style="font-size:14px; margin-top:8px;"><strong>(iii) CuCl₂, Pt electrodes:</strong></p>
+        <p style="font-size:14px;">Cathode: Cu²⁺ + 2e⁻ → Cu (copper deposits)</p>
+        <p style="font-size:14px;">Anode: 2Cl⁻ → Cl₂ + 2e⁻ (Cl₂ gas due to overpotential of O₂)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ★ EXTRA HOTS FROM FILE 3 -->
+  <h3 style="color:var(--pink,#ff79c6); margin:24px 0 12px; font-size:1.1rem;">🔥 More HOTS — Higher Order Thinking (File 3)</h3>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge hots">HOTS</span><span class="marks">3M</span>
+      <span style="flex:1;margin-left:10px;">Two hydrogen electrodes: (i) Pt|H₂(1bar)|HCl(0.1M) and (ii) Pt|H₂(1bar)|HCl(1M). Which acts as anode? What is special about this cell type?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p>Higher [H⁺] = higher E° → acts as cathode. Lower [H⁺] acts as anode.</p>
+        <p>Electrode (i) [0.1M, lower H⁺] → <strong>ANODE</strong> | Electrode (ii) [1M, higher H⁺] → <strong>CATHODE</strong></p>
+        <p>Cell: Pt|H₂|H⁺(0.1M) || H⁺(1M)|H₂|Pt</p>
+        <p><strong>Special:</strong> This is a <strong>concentration cell</strong> — no NET chemical change, only concentration difference drives EMF. Used to measure pH and junction potentials!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge hots">HOTS</span><span class="marks">3M</span>
+      <span style="flex:1;margin-left:10px;">For cell: Zn|Zn²⁺(C₁)||Cu²⁺(C₂)|Cu, E°cell=1.10V. At what ratio C₂/C₁ will E(cell) = E°cell? What if C₁=C₂?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p>Nernst: E(cell) = 1.10 − (0.0592/2)×log([Zn²⁺]/[Cu²⁺]) = 1.10 − 0.0296×log(C₁/C₂)</p>
+        <p><strong>When E(cell) = E°cell:</strong> log(C₁/C₂) = 0 → C₁/C₂ = 1 → <strong>C₁ = C₂</strong></p>
+        <p>When C₁ = C₂: same as above → E(cell) = E°cell = 1.10V. The cell behaves as standard. This shows E° is actually the EMF when Q = 1 (equal concentrations).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge hots">HOTS</span><span class="marks">3M</span>
+      <span style="flex:1;margin-left:10px;">Fe has higher E° than Zn. Why doesn't Fe protect Zn from corrosion? Why does galvanizing (Zn on Fe) work but the reverse doesn't?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p>Purpose of galvanizing: protect IRON (not zinc). If the coating is scratched, both Zn and Fe are exposed. Since E°(Zn²⁺/Zn) = −0.76V &lt; E°(Fe²⁺/Fe) = −0.44V, Zn is more easily oxidised → Zn acts as <strong>sacrificial anode</strong> → Zn corrodes first, Fe is protected as cathode. ✓</p>
+        <p>If Fe coated Zn: Fe has higher E° → less easily oxidised → Zn would still corrode as anode. Fe coating on Zn would actually <em>accelerate</em> Zn corrosion! ✗</p>
+        <p>Zinc willingly sacrifices itself to protect iron — like a bodyguard. 💪</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <span class="q-badge hots">HOTS</span><span class="marks">2M</span>
+      <span style="flex:1;margin-left:10px;">Why is platinum black used in SHE instead of smooth Pt?</span>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="q-ans">
+        <div class="ans-label">✅ ANSWER</div>
+        <p>Platinum black = finely divided Pt particles = extremely large surface area. This: (i) ensures rapid adsorption of H₂ gas (ii) fast establishment of equilibrium between H₂(g) and H⁺(aq) (iii) reduces electrode polarisation → gives stable, reproducible E° = 0.00V reference.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ★ QUICK REVISION — FROM FILE 3 -->
+<div class="section">
+  <div class="section-header">
+    <div class="emoji">⚡</div>
+    <div>
+      <div class="section-num">BONUS — LAST MINUTE</div>
+      <h2>30-Second Revision — Never Forget These</h2>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🔁 Board Exam Quick Facts</h3>
+    <div class="qf"><span class="e">⚡</span><p><strong>Galvanic cell:</strong> Chemical → Electrical. Spontaneous. ΔG &lt; 0. E &gt; 0. Anode = (−).</p></div>
+    <div class="qf"><span class="e">🔌</span><p><strong>Electrolytic cell:</strong> Electrical → Chemical. Non-spontaneous. ΔG &gt; 0. Anode = (+) [connected to + terminal].</p></div>
+    <div class="qf"><span class="e">🐂</span><p><strong>AN OX / RED CAT:</strong> Anode=Oxidation | Cathode=Reduction. Always, in BOTH cell types.</p></div>
+    <div class="qf"><span class="e">🌉</span><p><strong>Salt bridge:</strong> Maintains electrical neutrality, completes internal circuit, prevents mixing. Materials: KCl or KNO₃ in agar-agar.</p></div>
+    <div class="qf"><span class="e">📏</span><p><strong>Nernst:</strong> E = E° − (0.0592/n)logQ. Adjusts standard EMF for real concentrations.</p></div>
+    <div class="qf"><span class="e">🔗</span><p><strong>Golden Triangle:</strong> ΔG° = −nFE° = −RT ln Kc. Three ways of saying the same thing.</p></div>
+    <div class="qf"><span class="e">📉</span><p><strong>κ vs dilution:</strong> DECREASES (fewer ions/volume). Λm INCREASES (greater ionic freedom per mole).</p></div>
+    <div class="qf"><span class="e">📜</span><p><strong>Kohlrausch:</strong> Λ°m = ν₊λ°₊ + ν₋λ°₋. Use to find Λ°m of weak electrolytes (CH₃COOH etc.)!</p></div>
+    <div class="qf"><span class="e">⚖️</span><p><strong>Faraday 1st:</strong> m ∝ Q = I×t. <strong>Faraday 2nd:</strong> m₁/m₂ = E₁/E₂. <strong>1F = 96500 C mol⁻¹</strong>.</p></div>
+    <div class="qf"><span class="e">🔋</span><p><strong>Primary:</strong> Dry cell (1.5V, not rechargeable), Mercury cell (1.35V, constant). <strong>Secondary:</strong> Lead-acid (2V/cell, 12V total, rechargeable).</p></div>
+    <div class="qf"><span class="e">🚀</span><p><strong>Fuel cell:</strong> H₂ + ½O₂ → H₂O + electricity. ~70% efficient. Only water produced. No pollution!</p></div>
+    <div class="qf"><span class="e">🦀</span><p><strong>Rusting:</strong> Fe → Fe²⁺ + 2e⁻ (anode) | O₂ + 4H⁺ + 4e⁻ → 2H₂O (cathode). E°cell = 1.67V → SPONTANEOUS!</p></div>
+    <div class="qf"><span class="e">🛡️</span><p><strong>Galvanizing (Zn on Fe):</strong> Zn (lower E°) = sacrificial anode → protects Fe even after scratch. Tinning (Sn on Fe) = only barrier protection, NO electrochemical protection.</p></div>
+    <div class="qf"><span class="e">🌡️</span><p><strong>Temperature:</strong> Metallic conductance DECREASES ↓. Electrolytic conductance INCREASES ↑. (Opposites!)</p></div>
+    <div class="qf"><span class="e">⚗️</span><p><strong>Chlor-alkali:</strong> NaCl(aq) + H₂O → NaOH + Cl₂ + H₂. Cathode: H₂. Anode: Cl₂ (overpotential makes Cl₂ preferred over O₂).</p></div>
+  </div>
+</div>
+<div class="divider"></div>
+<!-- QUICK REVISION CARD -->
+<div class="section">
+  <div class="section-header">
+    <div class="emoji">⚡</div>
+    <div>
+      <div class="section-num">BONUS</div>
+      <h2>Last-Minute Revision — 30 Points</h2>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🎯 30 Things You MUST Know for Board Exam</h3>
+    <div class="grid-2" style="margin-top:12px;">
+      <div>
+        <p style="font-size:13px; line-height:1.9;">
+          1️⃣ Galvanic cell: chem → electrical (spontaneous)<br>
+          2️⃣ Electrolytic cell: electrical → chem (non-spontaneous)<br>
+          3️⃣ Anode = oxidation (loss of e⁻)<br>
+          4️⃣ Cathode = reduction (gain of e⁻)<br>
+          5️⃣ E°cell = E°cathode − E°anode<br>
+          6️⃣ ΔrG° = −nFE°cell<br>
+          7️⃣ If E°cell > 0 → spontaneous<br>
+          8️⃣ Salt bridge → maintains electrical neutrality<br>
+          9️⃣ SHE = E° = 0.00V (reference)<br>
+          🔟 Nernst: E = E° − (0.0592/n)log Q<br>
+          1️⃣1️⃣ F = 96500 C mol⁻¹<br>
+          1️⃣2️⃣ Q = I × t (charge = current × time)<br>
+          1️⃣3️⃣ w = MIt/nF (mass deposited)<br>
+          1️⃣4️⃣ Faraday's 1st: w ∝ Q<br>
+          1️⃣5️⃣ Faraday's 2nd: w₁/w₂ = E₁/E₂
+        </p>
+      </div>
+      <div>
+        <p style="font-size:13px; line-height:1.9;">
+          1️⃣6️⃣ Dry cell voltage: ~1.5V<br>
+          1️⃣7️⃣ Lead battery: ~2V/cell, 12V total<br>
+          1️⃣8️⃣ Mercury cell: 1.35V (constant!)<br>
+          1️⃣9️⃣ Lead battery discharge: Pb + PbO₂ + H₂SO₄ → PbSO₄ + H₂O<br>
+          2️⃣0️⃣ Recharging: reverses above reaction<br>
+          2️⃣1️⃣ Fuel cell efficiency: ~70%<br>
+          2️⃣2️⃣ H₂-O₂ fuel cell byproduct: H₂O only<br>
+          2️⃣3️⃣ Corrosion E°cell = 1.67V (spontaneous!)<br>
+          2️⃣4️⃣ Rust = Fe₂O₃.xH₂O<br>
+          2️⃣5️⃣ Galvanizing = Zn coating on Fe<br>
+          2️⃣6️⃣ Overpotential → Cl₂ over O₂ at anode<br>
+          2️⃣7️⃣ NaCl electrolysis → NaOH + Cl₂ + H₂<br>
+          2️⃣8️⃣ Al extracted by Hall-Héroult process<br>
+          2️⃣9️⃣ Cathodic protection = sacrificial anode<br>
+          3️⃣0️⃣ Cryolite (Na₃AlF₆) used in Al extraction
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end container -->
+
+<!-- FOOTER -->
+<footer>
+  <p>✦ Consolidated Master Guide — Made with 💙 for <strong>Abilash V</strong> — Class 12 Board Exam 2026-27</p>
+  <p style="margin-top:6px; font-size:12px;">Chapter 2: Electrochemistry | All content from 3 study files combined | NCERT Class 12 Chemistry | CBSE Board</p>
+  <p style="margin-top:4px; font-size:11px; color: var(--border);">Study hard, revise smart, ace the boards! 🎯</p>
+</footer>
+
+<script>
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.q-arrow');
+  body.classList.toggle('open');
+  arrow.style.transform = body.classList.contains('open') ? 'rotate(180deg)' : '';
+}
+
+// Scroll progress bar
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const total = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = (scrolled / total * 100).toFixed(1);
+  const bar = document.getElementById('scroll-progress');
+  if (bar) bar.style.width = pct + '%';
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('.toc-nav a, .overview-item').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
