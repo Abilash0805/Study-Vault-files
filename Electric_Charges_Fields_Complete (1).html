@@ -1,0 +1,3119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Electric Charges & Fields — Abilash V Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a14;
+  --surface: #12121f;
+  --surface2: #1a1a2e;
+  --accent: #f5c518;
+  --accent2: #00d4ff;
+  --accent3: #ff6b35;
+  --accent4: #7fff7f;
+  --text: #e8e8f0;
+  --text-muted: #9090b0;
+  --border: #2a2a4a;
+  --glow: rgba(245,197,24,0.15);
+  --blue-glow: rgba(0,212,255,0.15);
+}
+
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 48px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ── PROGRESS BAR ── */
+.progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  z-index: 9999; transition: width 0.1s linear;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 1000;
+  background: rgba(10,10,20,0.97); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: stretch; height: 48px;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; color: var(--accent);
+  padding: 0 1.1rem; white-space: nowrap; flex-shrink: 0;
+  border-right: 1px solid var(--border);
+  display: flex; align-items: center;
+}
+.nav-scroll-wrap {
+  position: relative; flex: 1; min-width: 0; overflow: hidden;
+}
+.nav-scroll-wrap::before, .nav-scroll-wrap::after {
+  content: ''; position: absolute; top: 0; bottom: 5px; width: 24px;
+  pointer-events: none; z-index: 2;
+}
+.nav-scroll-wrap::before { left: 0; background: linear-gradient(to right, rgba(10,10,20,0.97), transparent); }
+.nav-scroll-wrap::after  { right: 0; background: linear-gradient(to left, rgba(10,10,20,0.97), transparent); }
+.nav-links {
+  display: flex; align-items: center; height: 100%;
+  overflow-x: auto; overflow-y: hidden;
+  padding-bottom: 5px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--surface2);
+}
+.nav-links::-webkit-scrollbar { height: 4px; }
+.nav-links::-webkit-scrollbar-track { background: var(--surface2); }
+.nav-links::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+.nav-links::-webkit-scrollbar-thumb:hover { background: var(--accent3); }
+nav a {
+  touch-action: manipulation;
+  color: var(--text-muted); text-decoration: none;
+  font-size: 0.78rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  padding: 0 0.9rem; height: 43px;
+  display: flex; align-items: center; white-space: nowrap; flex-shrink: 0;
+  border-right: 1px solid rgba(42,42,74,0.4);
+  transition: color 0.2s, background 0.2s;
+  position: relative;
+}
+nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent); transform: scaleX(0); transition: transform 0.2s;
+}
+nav a:hover, nav a.active { color: var(--accent); background: var(--glow); }
+nav a:hover::after, nav a.active::after { transform: scaleX(1); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 2rem;
+  background: radial-gradient(ellipse 80% 60% at 50% 40%, #1a1a3e 0%, var(--bg) 70%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(245,197,24,0.03) 40px, rgba(245,197,24,0.03) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0,212,255,0.03) 40px, rgba(0,212,255,0.03) 41px);
+}
+.floating-atom { position: absolute; opacity: 0.07; animation: float 8s ease-in-out infinite; }
+@keyframes float { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-30px) rotate(180deg)} }
+.hero-badge {
+  background: linear-gradient(135deg, var(--accent), var(--accent3));
+  color: #000; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.2em;
+  text-transform: uppercase; padding: 0.4rem 1.2rem; border-radius: 2rem;
+  margin-bottom: 1.5rem; display: inline-block; position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.05;
+  margin-bottom: 1rem; position: relative; z-index: 1;
+  background: linear-gradient(135deg, #fff 30%, var(--accent) 70%, var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: 1.1rem; color: var(--text-muted); max-width: 600px;
+  margin: 0 auto 2rem; position: relative; z-index: 1;
+}
+.hero-chips {
+  display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center;
+  margin-bottom: 2rem; position: relative; z-index: 1;
+}
+.chip {
+  background: var(--surface2); border: 1px solid var(--border);
+  padding: 0.35rem 1rem; border-radius: 2rem; font-size: 0.85rem; color: var(--accent2);
+  text-decoration: none;
+}
+.toc-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent3));
+  color: #000; font-weight: 700; padding: 0.8rem 2rem; border-radius: 2rem;
+  text-decoration: none; font-size: 1rem; display: inline-block;
+  transition: transform 0.2s, box-shadow 0.2s; position: relative; z-index: 1;
+}
+.toc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,197,24,0.4); }
+
+/* ── LAYOUT ── */
+.container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+section { padding: 4rem 0; border-bottom: 1px solid var(--border); }
+section:last-child { border-bottom: none; }
+
+/* ── HEADINGS ── */
+h2.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.section-num {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+  color: var(--accent3); text-transform: uppercase; letter-spacing: 0.15em;
+  margin-bottom: 0.4rem; display: block;
+}
+h3 {
+  font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--accent);
+  margin: 2rem 0 0.75rem; font-weight: 700;
+}
+h4 { font-size: 1rem; font-weight: 700; color: var(--accent2); margin: 1.25rem 0 0.4rem; }
+p { margin-bottom: 1rem; }
+
+/* ── CARD GRID — the main two-column/three-column layout ── */
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem; margin: 1.5rem 0;
+}
+
+/* ── SUMMARY CARDS (TOC, formula grid) ── */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem; margin: 1.5rem 0;
+}
+.sum-card {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 1rem; padding: 1.25rem;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.sum-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.sum-card .sc-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+.sum-card .sc-title { font-weight: 700; color: var(--accent); margin-bottom: 0.4rem; font-size: 1rem; display: block; }
+.sum-card .sc-eq { font-family: 'JetBrains Mono', monospace; font-size: 0.88rem; color: var(--accent2); }
+.sum-card p { font-size: 0.87rem; color: var(--text-muted); margin-bottom: 0; }
+/* h4 inside sum-card shouldn't have large margin */
+.sum-card h4 { margin: 0.4rem 0 0.3rem; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ── CALLOUT BOXES ── */
+.callout {
+  border-left: 4px solid var(--accent);
+  background: var(--surface2); border-radius: 0 0.75rem 0.75rem 0;
+  padding: 1.2rem 1.5rem; margin: 1.5rem 0;
+}
+.callout.blue { border-color: var(--accent2); }
+.callout.green { border-color: var(--accent4); }
+.callout.red { border-color: var(--accent3); }
+.callout-title {
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+  font-size: 0.8rem; margin-bottom: 0.5rem; color: var(--accent);
+}
+.callout.blue .callout-title { color: var(--accent2); }
+.callout.green .callout-title { color: var(--accent4); }
+.callout.red .callout-title { color: var(--accent3); }
+/* h3 inside callout = card-title style, NOT big Playfair */
+.callout h3 {
+  font-family: 'Source Sans 3', sans-serif; font-size: 1rem; font-weight: 700;
+  color: var(--text); margin: 0 0 0.6rem;
+  -webkit-text-fill-color: var(--text);
+}
+
+/* ── DEFINITION BOX ── */
+.def-box {
+  background: linear-gradient(135deg, rgba(245,197,24,0.08), rgba(0,212,255,0.05));
+  border: 1px solid rgba(245,197,24,0.3); border-radius: 1rem;
+  padding: 1.5rem; margin: 1.5rem 0;
+}
+.def-box .def-title {
+  font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700;
+  color: var(--accent); margin-bottom: 0.5rem;
+}
+
+/* ── FORMULA BOX ── */
+.formula-box {
+  background: var(--surface2); border: 1px solid rgba(0,212,255,0.4);
+  border-radius: 1rem; padding: 1.5rem; margin: 1.5rem 0;
+  font-family: 'JetBrains Mono', monospace;
+  text-align: center; position: relative; overflow: hidden;
+}
+.formula-box::before {
+  content: '∑'; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+  font-size: 4rem; opacity: 0.05; color: var(--accent2);
+}
+.formula-box .f-label {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--accent2); margin-bottom: 0.75rem; font-family: 'Source Sans 3', sans-serif;
+}
+.formula-big { font-size: 1.4rem; color: var(--accent); margin: 0.5rem 0; }
+.formula-note {
+  font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem;
+  font-family: 'Source Sans 3', sans-serif; text-align: left;
+}
+
+/* ── MEMORY TRICK ── */
+.memory-trick {
+  background: linear-gradient(135deg, rgba(255,107,53,0.12), rgba(255,107,53,0.04));
+  border: 1px solid rgba(255,107,53,0.4); border-radius: 1rem;
+  padding: 1.2rem 1.5rem; margin: 1.5rem 0;
+}
+.memory-trick .mt-title {
+  font-weight: 700; color: var(--accent3); font-size: 0.85rem;
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.6rem;
+}
+.emoji-big { font-size: 1.6rem; margin-right: 0.4rem; vertical-align: middle; }
+/* h4 inside memory-trick */
+.memory-trick h4 {
+  font-family: 'Source Sans 3', sans-serif; color: var(--accent2);
+  font-size: 0.95rem; font-weight: 700; margin: 0 0 0.4rem;
+}
+
+/* ── REAL WORLD ── */
+.realworld {
+  background: linear-gradient(135deg, rgba(127,255,127,0.08), rgba(127,255,127,0.02));
+  border: 1px solid rgba(127,255,127,0.3); border-radius: 1rem;
+  padding: 1.2rem 1.5rem; margin: 1.5rem 0;
+}
+.realworld .rw-title {
+  font-weight: 700; color: var(--accent4); font-size: 0.85rem;
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem;
+}
+
+/* ── SVG DIAGRAMS ── */
+.diagram-wrap {
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 1rem; padding: 1.5rem; margin: 2rem 0; text-align: center;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+}
+.diagram-wrap svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+.diagram-wrap .diag-caption, .diagram-wrap .diag-title {
+  font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem; font-style: italic;
+}
+svg text { font-family: 'Source Sans 3', sans-serif; }
+
+/* ── COMPARISON TABLE ── */
+.compare-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem; }
+.compare-table th {
+  background: var(--surface2); color: var(--accent);
+  padding: 0.75rem 1rem; text-align: left; font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+}
+.compare-table td { padding: 0.6rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.compare-table tr:hover td { background: rgba(245,197,24,0.05); }
+
+/* ── STEPS ── */
+.steps { counter-reset: step; list-style: none; padding: 0; }
+.steps li {
+  counter-increment: step; position: relative;
+  padding: 0.75rem 1rem 0.75rem 3.5rem; margin-bottom: 0.75rem;
+  background: var(--surface2); border-radius: 0.75rem;
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+  width: 1.8rem; height: 1.8rem; border-radius: 50%;
+  background: var(--accent); color: #000; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; font-size: 0.85rem;
+}
+
+/* ── DERIVATION ── */
+.derivation { background: var(--surface); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; margin: 2rem 0; }
+.derivation h4 { color: var(--accent2); margin-top: 0; }
+.deriv-step { display: flex; align-items: flex-start; gap: 1rem; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+.deriv-step:last-child { border-bottom: none; }
+.deriv-step .ds-num {
+  background: var(--accent2); color: #000; min-width: 1.6rem; height: 1.6rem;
+  border-radius: 0.3rem; display: flex; align-items: center; justify-content: center;
+  font-size: 0.75rem; font-weight: 700; flex-shrink: 0; padding: 0 0.3rem;
+}
+.deriv-step .ds-eq { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-size: 0.95rem; }
+.deriv-step .ds-text { font-size: 0.88rem; color: var(--text-muted); }
+
+/* ── QUESTION CARDS ── */
+.q-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 1rem; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+.q-card .q-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 700; margin-bottom: 0.5rem; }
+.q-card.board .q-label { color: var(--accent); }
+.q-card.hots  .q-label { color: var(--accent3); }
+.q-card.num   .q-label { color: var(--accent2); }
+.q-card.theory .q-label { color: var(--accent4); }
+/* Accordion label */
+.accordion-label {
+  cursor: pointer; font-size: 0.95rem; font-weight: 600; color: var(--accent2);
+  display: flex; justify-content: space-between; align-items: center;
+  user-select: none;
+}
+.accordion-label:hover { color: var(--accent); }
+.q-answer { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); font-size: 0.92rem; color: var(--text-muted); display: none; }
+.q-toggle {
+  background: none; border: 1px solid var(--border); color: var(--accent2);
+  padding: 0.3rem 0.8rem; border-radius: 0.4rem; cursor: pointer;
+  font-size: 0.8rem; margin-top: 0.75rem; transition: background 0.2s;
+}
+.q-toggle:hover { background: var(--blue-glow); }
+
+/* ── WORKED NUMERICALS ── */
+.worked { background: var(--surface); border-left: 4px solid var(--accent2); border-radius: 0 1rem 1rem 0; padding: 1.5rem; margin: 2rem 0; }
+.worked .w-title { font-weight: 700; color: var(--accent2); margin-bottom: 0.75rem; font-size: 0.95rem; }
+.worked p { margin-bottom: 0.5rem; }
+.worked .w-solution {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+  background: var(--bg); padding: 1rem; border-radius: 0.5rem;
+  color: var(--accent4); white-space: pre-wrap; line-height: 1.7;
+  border: 1px solid var(--border); overflow-x: auto;
+}
+
+/* ── FOOTER ── */
+footer { background: var(--surface2); border-top: 1px solid var(--border); padding: 3rem 2rem; text-align: center; }
+.name-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent), var(--accent3));
+  color: #000; font-weight: 900; font-size: 1.2rem;
+  padding: 0.6rem 2rem; border-radius: 2rem;
+  font-family: 'Playfair Display', serif; margin-top: 1rem;
+}
+
+/* ── MISC ── */
+mark { background: rgba(245,197,24,0.25); color: var(--accent); padding: 0 0.2em; border-radius: 2px; }
+strong { color: var(--text); }
+code { font-family: 'JetBrains Mono', monospace; background: rgba(0,212,255,0.1); color: var(--accent2); padding: 0.1em 0.4em; border-radius: 3px; font-size: 0.9em; }
+.pyq { display: inline-block; background: rgba(255,107,53,0.2); color: var(--accent3); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.5rem; border-radius: 0.3rem; margin-left: 0.5rem; }
+hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+
+/* ── ANIMATIONS ── */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+
+/* DESKTOP ≥1025px — default, no overrides needed */
+
+/* LAPTOP 769px–1024px */
+@media (max-width: 1024px) {
+  .container { padding: 0 1.5rem; }
+  .summary-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+
+/* TABLET 481px–768px */
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .container { padding: 0 1.2rem; }
+  section { padding: 3rem 0; }
+  h2.section-title { font-size: clamp(1.6rem, 5vw, 2.4rem); }
+  h3 { font-size: 1.25rem; }
+  .card-row { grid-template-columns: 1fr; }
+  .summary-grid { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+  .compare-table { font-size: 0.85rem; display: block; overflow-x: auto; }
+  .formula-big { font-size: 1.2rem; }
+  nav a { font-size: 0.74rem; padding: 0 0.75rem; }
+  .nav-brand { font-size: 0.88rem; padding: 0 0.85rem; }
+}
+
+/* MOBILE ≤480px */
+@media (max-width: 480px) {
+  body { font-size: 15px; line-height: 1.68; }
+  .container { padding: 0 0.9rem; }
+  section { padding: 2.5rem 0; }
+  h2.section-title { font-size: clamp(1.4rem, 7vw, 2rem); }
+  h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
+  h4 { font-size: 0.92rem; }
+  nav { height: 42px; }
+  nav a { font-size: 0.67rem; padding: 0 0.6rem; height: 37px; letter-spacing: 0.04em; }
+  .nav-brand { font-size: 0.8rem; padding: 0 0.7rem; }
+  .nav-links::-webkit-scrollbar { height: 3px; }
+  .hero { padding: 1.5rem 1rem; min-height: 88vh; }
+  .hero h1 { font-size: clamp(1.9rem, 10vw, 2.8rem); }
+  .hero-sub { font-size: 0.93rem; }
+  .hero-chips { gap: 0.35rem; }
+  .chip { font-size: 0.73rem; padding: 0.22rem 0.65rem; }
+  .toc-btn { padding: 0.65rem 1.4rem; font-size: 0.88rem; }
+  .summary-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .card-row { grid-template-columns: 1fr; gap: 0.75rem; }
+  .def-box { padding: 1rem 1rem; }
+  .callout { padding: 0.9rem 1rem; }
+  .memory-trick { padding: 0.9rem 1rem; }
+  .formula-box { padding: 1rem; }
+  .formula-big { font-size: 0.95rem; }
+  .formula-note { font-size: 0.78rem; }
+  .worked { padding: 1rem; }
+  .worked .w-solution { font-size: 0.76rem; }
+  .q-card { padding: 0.9rem 1rem; }
+  .compare-table { font-size: 0.76rem; display: block; overflow-x: auto; }
+  .compare-table th, .compare-table td { padding: 0.4rem 0.55rem; }
+  .diagram-wrap { padding: 0.75rem; }
+  footer { padding: 2rem 1rem; }
+}
+
+/* SMALL MOBILE ≤360px */
+@media (max-width: 360px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  body { font-size: 14px; }
+  nav a { font-size: 0.62rem; padding: 0 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="pbar"></div>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <svg class="floating-atom" style="top:10%;left:5%;width:120px;" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="8" fill="#f5c518"/>
+    <ellipse cx="60" cy="60" rx="55" ry="20" fill="none" stroke="#f5c518" stroke-width="1.5"/>
+    <ellipse cx="60" cy="60" rx="55" ry="20" fill="none" stroke="#00d4ff" stroke-width="1" transform="rotate(60,60,60)"/>
+    <ellipse cx="60" cy="60" rx="55" ry="20" fill="none" stroke="#ff6b35" stroke-width="1" transform="rotate(120,60,60)"/>
+  </svg>
+  <svg class="floating-atom" style="bottom:15%;right:5%;width:90px;" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="6" fill="#00d4ff"/>
+    <ellipse cx="60" cy="60" rx="50" ry="18" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+    <ellipse cx="60" cy="60" rx="50" ry="18" fill="none" stroke="#7fff7f" stroke-width="1" transform="rotate(90,60,60)"/>
+  </svg>
+  <div style="position:relative;z-index:2;">
+    <div class="hero-badge">Class 12 Physics · Chapter 1 · Board 2026–27</div>
+    <h1>Electric Charges<br>&amp; Fields</h1>
+    <p class="hero-sub">The complete board-exam study guide — every concept, formula, derivation, diagram &amp; question. Conductors · Coulomb · Dipole · Gauss's Law · PYQs · HOTS. Zero gaps.</p>
+    <div class="hero-chips">
+      <span class="chip">⚡ Coulomb's Law</span>
+      <span class="chip">🧲 Electric Field</span>
+      <span class="chip">💎 Gauss's Law</span>
+      <span class="chip">🔋 Dipoles</span>
+      <span class="chip">📐 Derivations</span>
+      <span class="chip">🌐 Applications</span>
+      <span class="chip">📝 PYQs &amp; HOTS</span>
+    </div>
+    <a href="#toc" class="toc-btn">Start Learning →</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <span class="nav-brand">⚡ Ch.1</span>
+  <div class="nav-scroll-wrap">
+    <div class="nav-links">
+      <a href="#intro">Intro</a>
+      <a href="#charge">Charge</a>
+      <a href="#conductors">Conductors</a>
+      <a href="#properties">Properties</a>
+      <a href="#coulomb">Coulomb</a>
+      <a href="#superposition">Superposition</a>
+      <a href="#efield">E-Field</a>
+      <a href="#fieldlines">Field Lines</a>
+      <a href="#flux">Flux</a>
+      <a href="#dipole">Dipole</a>
+      <a href="#gauss">Gauss</a>
+      <a href="#applications">Applications</a>
+      <a href="#formulas">Formulas</a>
+      <a href="#pyq">PYQs</a>
+      <a href="#numericals">Numericals</a>
+      <a href="#hots">HOTS</a>
+    </div>
+  </div>
+</nav>
+
+<!-- TABLE OF CONTENTS -->
+<section id="toc">
+<div class="container fade-in">
+  <span class="section-num">📋 Table of Contents</span>
+  <h2 class="section-title">What You'll Master</h2>
+  <div class="summary-grid" style="margin-top:1.5rem;">
+    <div class="sum-card"><div class="sc-icon">1️⃣</div><div class="sc-title">Intro &amp; History</div><p style="font-size:0.87rem;color:var(--text-muted)">What is static electricity, timeline of discoveries</p></div>
+    <div class="sum-card"><div class="sc-icon">2️⃣</div><div class="sc-title">Electric Charge</div><p style="font-size:0.87rem;color:var(--text-muted)">Types, charging mechanisms, atomic level</p></div>
+    <div class="sum-card"><div class="sc-icon">3️⃣</div><div class="sc-title">Conductors &amp; Insulators</div><p style="font-size:0.87rem;color:var(--text-muted)">Free electrons vs bound, semiconductors</p></div>
+    <div class="sum-card"><div class="sc-icon">4️⃣</div><div class="sc-title">Properties of Charge</div><p style="font-size:0.87rem;color:var(--text-muted)">Additivity, conservation, quantisation, electroscope</p></div>
+    <div class="sum-card"><div class="sc-icon">5️⃣</div><div class="sc-title">Coulomb's Law</div><p style="font-size:0.87rem;color:var(--text-muted)">Force formula, vector form, medium, vs gravity</p></div>
+    <div class="sum-card"><div class="sc-icon">6️⃣</div><div class="sc-title">Superposition</div><p style="font-size:0.87rem;color:var(--text-muted)">Multiple charges, vector sum</p></div>
+    <div class="sum-card"><div class="sc-icon">7️⃣</div><div class="sc-title">Electric Field</div><p style="font-size:0.87rem;color:var(--text-muted)">Definition, point charge field, system of charges</p></div>
+    <div class="sum-card"><div class="sc-icon">8️⃣</div><div class="sc-title">Field Lines</div><p style="font-size:0.87rem;color:var(--text-muted)">Properties, diagrams, density meaning</p></div>
+    <div class="sum-card"><div class="sc-icon">9️⃣</div><div class="sc-title">Electric Flux</div><p style="font-size:0.87rem;color:var(--text-muted)">Definition, angle dependence, area vector</p></div>
+    <div class="sum-card"><div class="sc-icon">🔟</div><div class="sc-title">Electric Dipole</div><p style="font-size:0.87rem;color:var(--text-muted)">Axial &amp; equatorial fields, dipole moment, torque</p></div>
+    <div class="sum-card"><div class="sc-icon">⚡</div><div class="sc-title">Gauss's Law</div><p style="font-size:0.87rem;color:var(--text-muted)">Statement, Gaussian surface, proof concept</p></div>
+    <div class="sum-card"><div class="sc-icon">🌐</div><div class="sc-title">Applications</div><p style="font-size:0.87rem;color:var(--text-muted)">Line, plane, sphere — all three field results</p></div>
+    <div class="sum-card"><div class="sc-icon">📝</div><div class="sc-title">All Formulas</div><p style="font-size:0.87rem;color:var(--text-muted)">Complete quick-reference formula sheet</p></div>
+    <div class="sum-card"><div class="sc-icon">📄</div><div class="sc-title">PYQs + Numericals + HOTS</div><p style="font-size:0.87rem;color:var(--text-muted)">Board questions, solved problems, advanced HOTS</p></div>
+  </div>
+</div>
+</div>
+</section>
+
+
+<!-- =================== SECTION 1: INTRO =================== -->
+<section id="intro">
+<div class="container fade-in">
+  <span class="section-num">Section 1.1</span>
+  <h2 class="section-title">Introduction — What IS Static Electricity?</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Let's build your intuition from real-life examples first</p>
+
+  <div class="memory-trick">
+    <span class="emoji-big">👕</span>
+    <div class="mt-title">The Winter Sweater Mystery</div>
+      <p>Ever taken off your woollen sweater in the dark and seen tiny sparks? That's <strong style="color:var(--accent)">static electricity</strong>! When you rub wool against your body, electrons (tiny negative particles) jump from one material to another. One side gets extra electrons (negative), the other loses them (positive). When those charges jump back through air — <strong style="color:var(--accent3)">SPARK! ⚡</strong></p>
+    </div>
+  </div>
+
+  <div class="memory-trick">
+    <span class="emoji-big">⛈️</span>
+    <div class="mt-title">Lightning — Same Thing, Just 300 Million Times Bigger!</div>
+      <p>Clouds rub against each other in a thunderstorm. Charges build up massively. When the difference becomes huge, a massive spark jumps — that's lightning! The same physics as your sweater. Nature doesn't waste good physics.</p>
+    </div>
+  </div>
+
+  <div class="memory-trick">
+    <span class="emoji-big">🚗</span>
+    <div class="mt-title">That Electric Shock from a Car Door</div>
+      <p>When you slide out of a car seat (especially with synthetic clothes), electrons pile up on your body. The moment you touch the metal door handle — ZAP! The charges discharge through your fingers. This is exactly the same principle!</p>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📋 Exam-Ready Definition — Electrostatics</div>
+    <p><strong>Electrostatics</strong> is the branch of physics that deals with the study of <strong>forces, fields, and potentials</strong> arising from charges that are <em>at rest</em> (static = not moving).</p>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">💡 Exam Tip</div>
+    "Static" = not moving. That's the KEY word! If charges move, it becomes current electricity. This distinction appears in 1-mark MCQs every year.
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:2rem 0;">
+
+  <span class="section-num">History</span>
+  <h3>How Humans Discovered Electricity</h3>
+  <div class="derivation">
+    <div class="deriv-step">
+      <div class="ds-num" style="font-family:'JetBrains Mono',monospace;width:auto;padding:0 6px;border-radius:4px;">600 BC</div>
+      <h4>🏺 Thales of Miletus, Greece</h4>
+      <p>Discovered that amber (<em>Greek: elektron</em>) rubbed with wool attracts light objects. The word "electricity" literally comes from <em>elektron</em> (amber). He had NO idea he was discovering one of the universe's fundamental forces!</p>
+    </div>
+    <div class="deriv-step">
+      <div class="ds-num" style="font-family:'JetBrains Mono',monospace;width:auto;padding:0 6px;border-radius:4px;">1600 AD</div>
+      <h4>🔬 William Gilbert</h4>
+      <p>Coined the term "electricus" and showed many materials (not just amber) can be electrified. First systematic study of electricity.</p>
+    </div>
+    <div class="deriv-step">
+      <div class="ds-num" style="font-family:'JetBrains Mono',monospace;width:auto;padding:0 6px;border-radius:4px;">1750 AD</div>
+      <h4>🇺🇸 Benjamin Franklin</h4>
+      <p>Named the two types of charges <strong>positive (+)</strong> and <strong>negative (−)</strong>. By convention, glass rod rubbed with silk = positive. Plastic rod rubbed with fur = negative. He also proved lightning = electricity.</p>
+    </div>
+    <div class="deriv-step">
+      <div class="ds-num" style="font-family:'JetBrains Mono',monospace;width:auto;padding:0 6px;border-radius:4px;">1785 AD</div>
+      <h4>⚖️ Charles Coulomb</h4>
+      <p>Used a torsion balance to measure electric force precisely. Discovered the inverse-square law — now called Coulomb's Law. Exact same math form as Newton's gravity!</p>
+    </div>
+    <div class="deriv-step">
+      <div class="ds-num" style="font-family:'JetBrains Mono',monospace;width:auto;padding:0 6px;border-radius:4px;">1912 AD</div>
+      <h4>🔬 Robert Millikan</h4>
+      <p>Oil drop experiment — experimentally proved that charge is quantised (comes in packets of e = 1.6 × 10⁻¹⁹ C). Won Nobel Prize for this.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 2: ELECTRIC CHARGE =================== -->
+<section id="charge">
+<div class="container fade-in">
+  <span class="section-num">Section 1.2</span>
+  <h2 class="section-title">Electric Charge</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">The fundamental property of matter that causes electromagnetic phenomena</p>
+
+  <!-- SVG Diagram: Like and Unlike Charges -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- Panel A: Like charges repel (glass-glass) -->
+      <text x="100" y="20" text-anchor="middle" fill="#9090b0" font-size="11" font-family="Source Sans 3">(a) Like charges — REPEL</text>
+      <!-- Thread lines -->
+      <line x1="80" y1="30" x2="60" y2="80" stroke="#f5c518" stroke-width="1.5"/>
+      <line x1="120" y1="30" x2="140" y2="80" stroke="#f5c518" stroke-width="1.5"/>
+      <!-- Pivot points -->
+      <circle cx="80" cy="30" r="3" fill="#f5c518"/>
+      <circle cx="120" cy="30" r="3" fill="#f5c518"/>
+      <!-- Rods (glass = blue) -->
+      <rect x="35" y="80" width="50" height="16" rx="8" fill="#00d4ff" opacity="0.8"/>
+      <text x="60" y="92" text-anchor="middle" fill="white" font-size="10" font-weight="bold">+</text>
+      <text x="60" y="105" text-anchor="middle" fill="#00d4ff" font-size="9">glass</text>
+      <rect x="115" y="80" width="50" height="16" rx="8" fill="#00d4ff" opacity="0.8"/>
+      <text x="140" y="92" text-anchor="middle" fill="white" font-size="10" font-weight="bold">+</text>
+      <text x="140" y="105" text-anchor="middle" fill="#00d4ff" font-size="9">glass</text>
+      <!-- Repulsion arrows -->
+      <line x1="90" y1="88" x2="112" y2="88" stroke="#ff6b35" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="87,84 87,92 77,88" fill="#ff6b35"/>
+      <polygon points="115,84 115,92 125,88" fill="#ff6b35"/>
+      <text x="100" y="145" text-anchor="middle" fill="#ff6b35" font-size="12" font-weight="bold">↔ REPEL</text>
+
+      <!-- Panel B: Like charges repel (plastic-plastic) -->
+      <text x="340" y="20" text-anchor="middle" fill="#9090b0" font-size="11" font-family="Source Sans 3">(b) Like charges — REPEL</text>
+      <line x1="320" y1="30" x2="300" y2="80" stroke="#f5c518" stroke-width="1.5"/>
+      <line x1="360" y1="30" x2="380" y2="80" stroke="#f5c518" stroke-width="1.5"/>
+      <circle cx="320" cy="30" r="3" fill="#f5c518"/>
+      <circle cx="360" cy="30" r="3" fill="#f5c518"/>
+      <rect x="275" y="80" width="50" height="16" rx="8" fill="#00d4ff" opacity="0.8"/>
+      <text x="300" y="92" text-anchor="middle" fill="white" font-size="10" font-weight="bold">−</text>
+      <text x="300" y="105" text-anchor="middle" fill="#00d4ff" font-size="9">plastic</text>
+      <rect x="355" y="80" width="50" height="16" rx="8" fill="#00d4ff" opacity="0.8"/>
+      <text x="380" y="92" text-anchor="middle" fill="white" font-size="10" font-weight="bold">−</text>
+      <text x="380" y="105" text-anchor="middle" fill="#00d4ff" font-size="9">plastic</text>
+      <line x1="330" y1="88" x2="352" y2="88" stroke="#ff6b35" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="327,84 327,92 317,88" fill="#ff6b35"/>
+      <polygon points="355,84 355,92 365,88" fill="#ff6b35"/>
+      <text x="340" y="145" text-anchor="middle" fill="#ff6b35" font-size="12" font-weight="bold">↔ REPEL</text>
+
+      <!-- Panel C: Unlike charges attract -->
+      <text x="570" y="20" text-anchor="middle" fill="#9090b0" font-size="11" font-family="Source Sans 3">(c) Unlike charges — ATTRACT</text>
+      <line x1="550" y1="30" x2="540" y2="80" stroke="#f5c518" stroke-width="1.5"/>
+      <line x1="590" y1="30" x2="600" y2="80" stroke="#f5c518" stroke-width="1.5"/>
+      <circle cx="550" cy="30" r="3" fill="#f5c518"/>
+      <circle cx="590" cy="30" r="3" fill="#f5c518"/>
+      <rect x="515" y="80" width="50" height="16" rx="8" fill="#00d4ff" opacity="0.8"/>
+      <text x="540" y="92" text-anchor="middle" fill="white" font-size="10" font-weight="bold">+</text>
+      <text x="540" y="105" text-anchor="middle" fill="#00d4ff" font-size="9">glass</text>
+      <rect x="575" y="80" width="50" height="16" rx="8" fill="#00d4ff" opacity="0.8"/>
+      <text x="600" y="92" text-anchor="middle" fill="white" font-size="10" font-weight="bold">−</text>
+      <text x="600" y="105" text-anchor="middle" fill="#00d4ff" font-size="9">plastic</text>
+      <!-- Attraction arrows (pointing toward each other) -->
+      <line x1="568" y1="88" x2="572" y2="88" stroke="#7fff7f" stroke-width="2" stroke-dasharray="4,3"/>
+      <polygon points="568,84 568,92 558,88" fill="#7fff7f" transform="rotate(180,563,88)"/>
+      <polygon points="572,84 572,92 582,88" fill="#7fff7f"/>
+      <polygon points="570,84 570,92 560,88" fill="#7fff7f"/>
+      <polygon points="570,84 570,92 580,88" fill="#7fff7f"/>
+      <text x="570" y="145" text-anchor="middle" fill="#7fff7f" font-size="12" font-weight="bold">↔ ATTRACT</text>
+
+      <!-- Golden rule text -->
+      <text x="340" y="185" text-anchor="middle" fill="#f5c518" font-size="13" font-weight="bold" font-family="Playfair Display">📌 Like charges REPEL · Unlike charges ATTRACT</text>
+    </svg>
+    <div class="diag-title">Fig 1.1 — Behaviour of charged rods: NCERT + enhanced</div>
+  </div>
+
+  <div class="memory-trick">
+    <div class="mt-title">🧠 Memory Trick</div>
+    <p>Think of it like <strong>personality</strong>: Two bossy people (same type) clash and push each other away. But an introvert and extrovert attract each other! Same charges = same personality = REPEL. Opposite charges = complementary = ATTRACT.</p>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📋 What is Electric Charge?</div>
+    <p><strong>Electric charge</strong> is a fundamental intrinsic property of matter due to which it experiences electromagnetic force. It exists in two types: <strong>positive (+)</strong> and <strong>negative (−)</strong>. The property that differentiates the two kinds of charges is called the <strong>polarity</strong> of charge.</p>
+  </div>
+
+  <h3>How Charging Actually Works — At the Atomic Level</h3>
+
+  <!-- SVG: Atom diagram showing charge transfer -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Before: Neutral glass rod -->
+      <text x="130" y="18" text-anchor="middle" fill="#9090b0" font-size="11">BEFORE RUBBING</text>
+      <!-- Glass rod shape -->
+      <rect x="30" y="40" width="200" height="40" rx="20" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="1"/>
+      <text x="130" y="65" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="600">Glass Rod (Neutral)</text>
+      <!-- Atoms showing protons and electrons balanced -->
+      <circle cx="70" cy="110" r="16" fill="none" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="70" y="105" text-anchor="middle" fill="#ff6b35" font-size="10">p+</text>
+      <circle cx="70" cy="121" r="5" fill="#00d4ff"/>
+      <text x="70" y="124" text-anchor="middle" fill="white" font-size="7">e−</text>
+      <circle cx="130" cy="110" r="16" fill="none" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="130" y="105" text-anchor="middle" fill="#ff6b35" font-size="10">p+</text>
+      <circle cx="130" cy="121" r="5" fill="#00d4ff"/>
+      <text x="130" y="124" text-anchor="middle" fill="white" font-size="7">e−</text>
+      <circle cx="190" cy="110" r="16" fill="none" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="190" y="105" text-anchor="middle" fill="#ff6b35" font-size="10">p+</text>
+      <circle cx="190" cy="121" r="5" fill="#00d4ff"/>
+      <text x="190" y="124" text-anchor="middle" fill="white" font-size="7">e−</text>
+      <text x="130" y="175" text-anchor="middle" fill="#7fff7f" font-size="11">Equal p+ and e−  → Neutral ⚖️</text>
+
+      <!-- Arrow for rubbing -->
+      <text x="305" y="100" text-anchor="middle" fill="#f5c518" font-size="22">→</text>
+      <text x="305" y="118" text-anchor="middle" fill="#f5c518" font-size="10">rub</text>
+
+      <!-- After: Positively charged glass rod -->
+      <text x="460" y="18" text-anchor="middle" fill="#9090b0" font-size="11">AFTER RUBBING WITH SILK</text>
+      <rect x="360" y="40" width="200" height="40" rx="20" fill="#00d4ff" opacity="0.15" stroke="#00d4ff" stroke-width="1"/>
+      <text x="460" y="65" text-anchor="middle" fill="#ff6b35" font-size="12" font-weight="600">Glass Rod (+ve charged)</text>
+      <!-- Atoms - electrons missing -->
+      <circle cx="390" cy="110" r="16" fill="none" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="390" y="107" text-anchor="middle" fill="#ff6b35" font-size="10">p+</text>
+      <text x="390" y="128" text-anchor="middle" fill="#9090b0" font-size="9" opacity="0.4">no e−</text>
+      <circle cx="460" cy="110" r="16" fill="none" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="460" y="107" text-anchor="middle" fill="#ff6b35" font-size="10">p+</text>
+      <text x="460" y="128" text-anchor="middle" fill="#9090b0" font-size="9" opacity="0.4">no e−</text>
+      <circle cx="530" cy="110" r="16" fill="none" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="530" y="107" text-anchor="middle" fill="#ff6b35" font-size="10">p+</text>
+      <text x="530" y="128" text-anchor="middle" fill="#9090b0" font-size="9" opacity="0.4">no e−</text>
+      <text x="460" y="175" text-anchor="middle" fill="#ff6b35" font-size="11">More p+ than e−  → Positive ⚡</text>
+    </svg>
+    <div class="diag-title">Fig — Electron transfer makes glass rod positively charged</div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="callout">
+      <h3>🔴 Positive Charge</h3>
+      <p>A body gets <strong>positively charged</strong> when it <strong>loses electrons</strong>. More protons than electrons. Glass rod rubbed with silk becomes positive.</p>
+    </div>
+    <div class="callout">
+      <h3>🔵 Negative Charge</h3>
+      <p>A body gets <strong>negatively charged</strong> when it <strong>gains electrons</strong>. More electrons than protons. Silk cloth becomes negative (gained electrons from glass).</p>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">⚠️ Critical Concept</div>
+    <strong>No new charge is ever created!</strong> Electrons are just transferred from one object to another. Total charge before rubbing = Total charge after rubbing. This is the Law of Conservation of Charge!
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 3: CONDUCTORS =================== -->
+<section id="conductors">
+<div class="container fade-in">
+  <span class="section-num">Section 1.3</span>
+  <h2 class="section-title">Conductors &amp; Insulators</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Why does a metal spoon NOT get charged but a plastic comb does?</p>
+
+  <div class="memory-trick">
+    <span class="emoji-big">🧲</span>
+    <div class="mt-title">The Comb and Hair Experiment</div>
+      <p>Run a plastic comb through dry hair rapidly. Now bring it near tiny bits of paper — it attracts them! The comb gets charged because plastic is an <strong style="color:var(--accent)">insulator</strong>. But try the same with a metal spoon — it won't work! Why? Because metal is a <strong style="color:var(--accent4)">conductor</strong> — charges immediately flow through your hand to the ground.</p>
+    </div>
+  </div>
+
+  <!-- SVG: Conductor vs Insulator -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- CONDUCTOR -->
+      <text x="130" y="18" text-anchor="middle" fill="#7fff7f" font-size="12" font-weight="600" font-family="Playfair Display">CONDUCTOR (Metal)</text>
+      <rect x="30" y="30" width="200" height="60" rx="8" fill="rgba(127,255,127,0.08)" stroke="#7fff7f" stroke-width="1.5"/>
+      <!-- Free electrons scattered -->
+      <circle cx="60" cy="55" r="5" fill="#00d4ff"/>
+      <text x="60" y="58" text-anchor="middle" fill="white" font-size="7">e</text>
+      <circle cx="100" cy="45" r="5" fill="#00d4ff"/>
+      <circle cx="90" cy="70" r="5" fill="#00d4ff"/>
+      <circle cx="150" cy="55" r="5" fill="#00d4ff"/>
+      <circle cx="180" cy="45" r="5" fill="#00d4ff"/>
+      <circle cx="170" cy="72" r="5" fill="#00d4ff"/>
+      <circle cx="120" cy="65" r="5" fill="#00d4ff"/>
+      <!-- Movement arrows -->
+      <line x1="65" y1="55" x2="88" y2="55" stroke="#00d4ff" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="155" y1="55" x2="178" y2="55" stroke="#00d4ff" stroke-width="1" marker-end="url(#arr)"/>
+      <defs>
+        <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#00d4ff"/>
+        </marker>
+      </defs>
+      <text x="130" y="115" text-anchor="middle" fill="#7fff7f" font-size="11">Free electrons move easily</text>
+      <text x="130" y="130" text-anchor="middle" fill="#9090b0" font-size="10">Metals, human body, earth, water</text>
+      <!-- Key property -->
+      <rect x="50" y="145" width="160" height="30" rx="6" fill="rgba(127,255,127,0.1)" stroke="rgba(127,255,127,0.3)"/>
+      <text x="130" y="165" text-anchor="middle" fill="#7fff7f" font-size="11">Charge spreads OVER surface</text>
+
+      <!-- Divider -->
+      <line x1="290" y1="20" x2="290" y2="185" stroke="#2a2a4a" stroke-width="2"/>
+      <text x="290" y="105" text-anchor="middle" fill="#2a2a4a" font-size="20">|</text>
+
+      <!-- INSULATOR -->
+      <text x="450" y="18" text-anchor="middle" fill="#f5c518" font-size="12" font-weight="600" font-family="Playfair Display">INSULATOR (Plastic/Glass)</text>
+      <rect x="350" y="30" width="200" height="60" rx="8" fill="rgba(245,197,24,0.05)" stroke="#f5c518" stroke-width="1.5"/>
+      <!-- Bound electrons (shown as locked) -->
+      <circle cx="380" cy="55" r="12" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="380" y="58" text-anchor="middle" fill="#00d4ff" font-size="8">🔒</text>
+      <circle cx="420" cy="48" r="12" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="420" y="51" text-anchor="middle" fill="#00d4ff" font-size="8">🔒</text>
+      <circle cx="460" cy="60" r="12" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="460" y="63" text-anchor="middle" fill="#00d4ff" font-size="8">🔒</text>
+      <circle cx="500" cy="50" r="12" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="500" y="53" text-anchor="middle" fill="#00d4ff" font-size="8">🔒</text>
+      <text x="450" y="115" text-anchor="middle" fill="#f5c518" font-size="11">Electrons tightly bound</text>
+      <text x="450" y="130" text-anchor="middle" fill="#9090b0" font-size="10">Glass, plastic, rubber, wood, air</text>
+      <rect x="370" y="145" width="160" height="30" rx="6" fill="rgba(245,197,24,0.08)" stroke="rgba(245,197,24,0.3)"/>
+      <text x="450" y="165" text-anchor="middle" fill="#f5c518" font-size="11">Charge stays at ONE spot</text>
+    </svg>
+    <div class="diag-title">Fig — Conductors have free electrons; insulators have bound electrons</div>
+  </div>
+
+  <div class="summary-grid">
+    <div>
+      <div class="def-box">
+        <div class="def-title">📋 Conductor — Definition</div>
+        <p><strong>Conductors</strong> are substances that allow easy passage of electricity (charge) through them. They have <strong>comparatively free electrons</strong> that can move inside the material. Examples: metals (copper, silver), human body, earth, animal bodies, tap water.</p>
+      </div>
+    </div>
+    <div>
+      <div class="def-box">
+        <div class="def-title">📋 Insulator — Definition</div>
+        <p><strong>Insulators</strong> are substances that <strong>do not allow</strong> easy passage of electricity. Electrons are tightly bound. Examples: glass, porcelain, plastic, nylon, wood, rubber, dry air.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>⚡ Semiconductor — The Third Type</h3>
+    <p>There's a third category: <strong>Semiconductors</strong> (Silicon, Germanium). Their resistivity to charge movement is <em>intermediate</em> between conductors and insulators. They're the backbone of all modern electronics — your phone's chips are made of semiconductors!</p>
+    <span class="pyq">Not directly in Class 12 Ch1</span>
+    <span class="pyq">Important for future chapters</span>
+  </div>
+
+  <div class="callout blue" style="margin-top:20px;">
+    <div class="callout-title">💡 Why Can't You Charge a Metal with Your Hand?</div>
+    When you hold a metal rod and rub it, charges flow through the metal → through your body (conductor) → to the ground (earth). So it can't accumulate charge. But if you use a wooden/plastic <em>handle</em>, the charges stay on the metal! That's why lab equipment has insulating handles.
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 4: PROPERTIES =================== -->
+<section id="properties">
+<div class="container fade-in">
+  <span class="section-num">Section 1.4</span>
+  <h2 class="section-title">Basic Properties of Electric Charge</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Three fundamental laws that govern ALL electric charge in the universe</p>
+
+  <div class="summary-grid">
+    <div class="sum-card">
+      <div class="sc-icon">➕</div>
+      <h4>1. Additivity</h4>
+      <p>Charges add like real numbers (scalars). Total charge = algebraic sum of all individual charges.</p>
+    </div>
+    <div class="sum-card">
+      <div class="sc-icon">⚖️</div>
+      <h4>2. Conservation</h4>
+      <p>Total charge of an isolated system is always conserved. Charge cannot be created or destroyed — only transferred.</p>
+    </div>
+    <div class="sum-card">
+      <div class="sc-icon">🔢</div>
+      <h4>3. Quantisation</h4>
+      <p>Charge comes in discrete packets. q = ne where n is an integer and e = 1.6 × 10⁻¹⁹ C is the elementary charge.</p>
+    </div>
+  </div>
+
+  <!-- ADDITIVITY -->
+  <h3>1.4.1 Additivity of Charges</h3>
+
+  <div class="callout">
+    <h3>➕ What does "Additive" mean?</h3>
+    <p>Charges add up like regular numbers — you just do simple algebra! A charge of +3C and −5C together = +3 + (−5) = <strong style="color:var(--accent4)">−2C</strong>. Unlike, say, velocity (which is a vector), charge has magnitude but no direction — it's a <strong>scalar quantity</strong>.</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">Additivity Formula</div>
+    <div class="formula-big">Q_total = q₁ + q₂ + q₃ + ... + qₙ</div>
+    <div class="formula-note">Where each qᵢ can be positive or negative. Proper algebraic signs must be used!</div>
+  </div>
+
+  <div class="memory-trick">
+    <span class="emoji-big">🧮</span>
+    <div class="mt-title">Example: System with 5 charges</div>
+      <p>Charges: +1, +2, −3, +4, −5 (in arbitrary units)<br>
+      Total charge = (+1) + (+2) + (−3) + (+4) + (−5) = <strong style="color:var(--accent4)">−1 unit</strong><br>
+      Simple arithmetic! No vectors, no angles needed.</p>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">📌 Key difference: Charge vs Mass</div>
+    Mass is always positive. Charge can be positive OR negative. Both are scalars, but this is a key distinction examiners love to test!
+  </div>
+
+  <!-- CONSERVATION -->
+  <h3>1.4.2 Conservation of Charge</h3>
+
+  <div class="def-box">
+    <div class="def-title">📋 Law of Conservation of Charge</div>
+    <p>The <strong>total electric charge of an isolated system remains constant</strong>. Charge can neither be created nor destroyed. It can only be transferred from one body to another. This is one of the most fundamental laws of physics — <em>never violated</em> in any known experiment.</p>
+  </div>
+
+  <!-- SVG: Conservation example -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Rubbing two rods -->
+      <text x="130" y="20" text-anchor="middle" fill="#9090b0" font-size="11">BEFORE RUBBING</text>
+      <rect x="30" y="35" width="100" height="30" rx="15" fill="#00d4ff" opacity="0.6"/>
+      <text x="80" y="55" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Neutral</text>
+      <rect x="160" y="35" width="100" height="30" rx="15" fill="#00d4ff" opacity="0.6"/>
+      <text x="210" y="55" text-anchor="middle" fill="white" font-size="12" font-weight="bold">Neutral</text>
+      <text x="130" y="95" text-anchor="middle" fill="#7fff7f" font-size="13">Total = 0 + 0 = 0</text>
+
+      <text x="280" y="80" text-anchor="middle" fill="#f5c518" font-size="28">→</text>
+      <text x="280" y="100" text-anchor="middle" fill="#f5c518" font-size="10">rub together</text>
+
+      <text x="430" y="20" text-anchor="middle" fill="#9090b0" font-size="11">AFTER RUBBING</text>
+      <rect x="330" y="35" width="100" height="30" rx="15" fill="#00d4ff" opacity="0.6"/>
+      <text x="380" y="55" text-anchor="middle" fill="white" font-size="12" font-weight="bold">+Q</text>
+      <rect x="460" y="35" width="100" height="30" rx="15" fill="#00d4ff" opacity="0.6"/>
+      <text x="510" y="55" text-anchor="middle" fill="white" font-size="12" font-weight="bold">−Q</text>
+      <text x="430" y="95" text-anchor="middle" fill="#7fff7f" font-size="13">Total = +Q + (−Q) = 0 ✓</text>
+      <text x="430" y="118" text-anchor="middle" fill="#f5c518" font-size="11">Charge CONSERVED! 🎉</text>
+    </svg>
+    <div class="diag-title">Fig — Conservation of charge: charges separate but total remains zero</div>
+  </div>
+
+  <div class="memory-trick">
+    <span class="emoji-big">⚛️</span>
+    <div class="mt-title">Cool Fact: Even Particles Obey This!</div>
+      <p>In nuclear physics, a <strong>neutron</strong> (charge = 0) can decay into a <strong>proton</strong> (+e) + an <strong>electron</strong> (−e). Total charge before = 0. Total charge after = +e + (−e) = 0. <strong style="color:var(--accent4)">Conservation holds even at the subatomic level!</strong></p>
+    </div>
+  </div>
+
+  <!-- QUANTISATION -->
+  <h3>1.4.3 Quantisation of Charge</h3>
+
+  <div class="def-box">
+    <div class="def-title">📋 Quantisation of Charge — Exam-Ready Definition</div>
+    <p>Electric charge is <strong>quantised</strong>, meaning it exists only in <strong>integral multiples</strong> of a basic unit of charge 'e'. <br><br>
+    <strong>q = ne</strong><br><br>
+    where n is any integer (±1, ±2, ±3, ...) and e = 1.602 × 10⁻¹⁹ C (charge of one proton or electron). This was first suggested by Faraday's laws of electrolysis and experimentally proved by Millikan (1912).</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">Quantisation of Charge</div>
+    <div class="formula-big">q = ne</div>
+    <div class="formula-note">n = integer (±1, ±2, ±3, ...) | e = 1.602192 × 10⁻¹⁹ C</div>
+  </div>
+
+  <!-- SVG: Quantisation visualization -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg">
+      <text x="260" y="20" text-anchor="middle" fill="#9090b0" font-size="11">Charge can ONLY take these values (like steps on a staircase)</text>
+      <!-- Staircase -->
+      <line x1="30" y1="100" x2="490" y2="100" stroke="#2a2a4a" stroke-width="2"/>
+      <line x1="30" y1="20" x2="30" y2="105" stroke="#2a2a4a" stroke-width="2"/>
+      <!-- Steps -->
+      <rect x="40" y="75" width="60" height="25" rx="3" fill="rgba(245,197,24,0.3)" stroke="#f5c518" stroke-width="1"/>
+      <text x="70" y="92" text-anchor="middle" fill="#00d4ff" font-size="11">e</text>
+      <rect x="105" y="55" width="60" height="45" rx="3" fill="rgba(245,197,24,0.4)" stroke="#f5c518" stroke-width="1"/>
+      <text x="135" y="82" text-anchor="middle" fill="#00d4ff" font-size="11">2e</text>
+      <rect x="170" y="35" width="60" height="65" rx="3" fill="rgba(245,197,24,0.5)" stroke="#f5c518" stroke-width="1"/>
+      <text x="200" y="72" text-anchor="middle" fill="#00d4ff" font-size="11">3e</text>
+      <!-- Labels below -->
+      <text x="70" y="118" text-anchor="middle" fill="#muted" font-size="10" fill="#9090b0">1.6×10⁻¹⁹</text>
+      <text x="135" y="118" text-anchor="middle" fill="#9090b0" font-size="10">3.2×10⁻¹⁹</text>
+      <text x="200" y="118" text-anchor="middle" fill="#9090b0" font-size="10">4.8×10⁻¹⁹</text>
+      <!-- Cross marks for non-integer values -->
+      <text x="305" y="68" text-anchor="middle" fill="#ff6b35" font-size="22">✗</text>
+      <text x="305" y="88" text-anchor="middle" fill="#ff6b35" font-size="10">1.5e</text>
+      <text x="350" y="68" text-anchor="middle" fill="#ff6b35" font-size="22">✗</text>
+      <text x="350" y="88" text-anchor="middle" fill="#ff6b35" font-size="10">2.7e</text>
+      <text x="395" y="68" text-anchor="middle" fill="#ff6b35" font-size="22">✗</text>
+      <text x="395" y="88" text-anchor="middle" fill="#ff6b35" font-size="10">π·e</text>
+      <text x="360" y="118" text-anchor="middle" fill="#ff6b35" font-size="10">Non-integer multiples: NOT ALLOWED</text>
+    </svg>
+    <div class="diag-title">Fig — Charge is like stairs (discrete steps), not a ramp (continuous)</div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="sum-card" style="text-align:center;">
+      <div class="sc-icon">⚡</div>
+      <div class="sc-title">Elementary Charge</div>
+      <div class="sc-eq">e = 1.6 × 10⁻¹⁹ C</div>
+    </div>
+    <div class="sum-card" style="text-align:center;">
+      <div class="sc-icon">🔵</div>
+      <div class="sc-title">Electrons in 1C</div>
+      <div class="sc-eq">~6 × 10¹⁸</div>
+    </div>
+    <div class="sum-card" style="text-align:center;">
+      <div class="sc-icon">🔬</div>
+      <div class="sc-title">1 Microcoulomb</div>
+      <div class="sc-eq">10⁻⁶ C</div>
+    </div>
+    <div class="sum-card" style="text-align:center;">
+      <div class="sc-icon">🔬</div>
+      <div class="sc-title">1 Millicoulomb</div>
+      <div class="sc-eq">10⁻³ C</div>
+    </div>
+  </div>
+
+  <div class="memory-trick">
+    <div class="mt-title">🧠 Memory Trick — Quantisation</div>
+    <p>Think of charge like <strong>coins</strong>. You can have ₹1, ₹2, ₹5, ₹10 coins — but NOT ₹1.73 coin. Similarly, charge can be 1e, 2e, 3e... but NEVER 1.5e or π·e. Charge comes in coins, not as a liquid!</p>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">💡 Why Don't We Notice Quantisation in Daily Life?</div>
+    Because at macroscopic level, 1 μC contains about 10¹³ electrons. The "graininess" of charge is invisible — like how a dotted line viewed from far looks continuous. At the <strong>microscopic/atomic level</strong>, quantisation is critical and cannot be ignored.
+  </div>
+
+  <!-- Gold Leaf Electroscope -->
+  <h3>Gold Leaf Electroscope 🍃</h3>
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- Box/bottle -->
+      <rect x="130" y="80" width="140" height="160" rx="10" fill="none" stroke="#00d4ff" stroke-width="2"/>
+      <text x="60" y="100" fill="#9090b0" font-size="11">Glass</text>
+      <text x="60" y="113" fill="#9090b0" font-size="11">Window</text>
+      <line x1="110" y1="107" x2="130" y2="107" stroke="#9090b0" stroke-width="1" stroke-dasharray="3,2"/>
+      <!-- Metal rod -->
+      <line x1="200" y1="10" x2="200" y2="180" stroke="#f5c518" stroke-width="4"/>
+      <!-- Metal knob on top -->
+      <circle cx="200" cy="10" r="14" fill="#f5c518" opacity="0.8"/>
+      <text x="200" y="14" text-anchor="middle" fill="#0a0a14" font-size="10" font-weight="bold">knob</text>
+      <!-- Rubber insulator -->
+      <rect x="186" y="75" width="28" height="10" rx="4" fill="#ff6b35" opacity="0.7"/>
+      <text x="285" y="82" fill="#ff6b35" font-size="10">Rubber</text>
+      <text x="285" y="95" fill="#ff6b35" font-size="10">insulation</text>
+      <line x1="283" y1="80" x2="214" y2="80" stroke="#ff6b35" stroke-width="1" stroke-dasharray="3,2"/>
+      <!-- Gold leaves -->
+      <line x1="200" y1="180" x2="170" y2="240" stroke="#f5c518" stroke-width="3"/>
+      <line x1="200" y1="180" x2="230" y2="240" stroke="#f5c518" stroke-width="3"/>
+      <text x="140" y="255" fill="#f5c518" font-size="10">Gold</text>
+      <text x="140" y="268" fill="#f5c518" font-size="10">leaves</text>
+      <line x1="168" y1="248" x2="168" y2="255" stroke="#f5c518" stroke-width="1"/>
+      <!-- Angle label -->
+      <path d="M 200 190 A 20 20 0 0 1 215 218" fill="none" stroke="#7fff7f" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <text x="215" y="208" fill="#7fff7f" font-size="10">θ ∝ charge</text>
+      <!-- How it works annotation -->
+      <text x="30" y="20" fill="#00d4ff" font-size="11" font-weight="600">How it works:</text>
+      <text x="30" y="36" fill="#9090b0" font-size="10">1. Charge → knob</text>
+      <text x="30" y="50" fill="#9090b0" font-size="10">2. Flows down rod</text>
+      <text x="30" y="64" fill="#9090b0" font-size="10">3. Leaves get same charge</text>
+      <text x="30" y="78" fill="#9090b0" font-size="10">4. Like charges → repel!</text>
+      <text x="30" y="92" fill="#7fff7f" font-size="10">Wider angle = more charge</text>
+    </svg>
+    <div class="diag-title">Fig 1.2 — Gold Leaf Electroscope: detects and measures charge</div>
+  </div>
+  <div class="def-box">
+    <div class="def-title">📋 Gold Leaf Electroscope</div>
+    <p>A device to <strong>detect and qualitatively measure</strong> electric charge. It consists of a vertical metal rod in a glass box with two thin gold leaves attached at the bottom. When charged, leaves acquire the same charge and <strong>diverge (spread apart)</strong>. The degree of divergence indicates the amount of charge.</p>
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 5: COULOMB'S LAW =================== -->
+<section id="coulomb">
+<div class="container fade-in">
+  <span class="section-num">Section 1.5</span>
+  <h2 class="section-title">Coulomb's Law</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">The quantitative law describing force between two point charges</p>
+
+  <div class="memory-trick">
+    <span class="emoji-big">🧲</span>
+    <div class="mt-title">The Magic of Inverse Square Laws</div>
+      <p>Coulomb discovered something beautiful: the electric force between two charges behaves EXACTLY like gravity between two masses. Double the distance → force becomes ¼. Triple the distance → force becomes 1/9. This is the <strong style="color:var(--accent4)">Inverse Square Law</strong>!</p>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📋 Coulomb's Law — Exam-Ready Statement</div>
+    <p>The <strong>electrostatic force</strong> between two point charges is <strong>directly proportional to the product of their magnitudes</strong> and <strong>inversely proportional to the square of the distance</strong> between them. The force acts along the line joining the two charges.</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">Coulomb's Law — Scalar Form</div>
+    <div class="formula-big">F = k |q₁q₂| / r²</div>
+    <div style="font-size:1.06rem;color:var(--accent4);margin:10px 0;">= (1/4πε₀) × |q₁q₂| / r²</div>
+    <div class="formula-note">
+      k = 9 × 10⁹ N·m²/C² &nbsp;|&nbsp; ε₀ = 8.854 × 10⁻¹² C²N⁻¹m⁻² &nbsp;|&nbsp; r = distance between charges<br>
+      k = 1/(4πε₀) where ε₀ = permittivity of free space
+    </div>
+  </div>
+
+  <!-- SVG: Coulomb's Law Vector Diagram -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg">
+      <!-- Two charges -->
+      <circle cx="120" cy="100" r="22" fill="rgba(255,107,53,0.2)" stroke="#ff6b35" stroke-width="2"/>
+      <text x="120" y="105" text-anchor="middle" fill="#ff6b35" font-size="14" font-weight="bold">q₁</text>
+      <text x="120" y="140" text-anchor="middle" fill="#9090b0" font-size="11">at r₁</text>
+      <circle cx="450" cy="100" r="22" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="2"/>
+      <text x="450" y="105" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">q₂</text>
+      <text x="450" y="140" text-anchor="middle" fill="#9090b0" font-size="11">at r₂</text>
+      <!-- Distance arrow -->
+      <line x1="143" y1="100" x2="427" y2="100" stroke="#f5c518" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="285" y="90" text-anchor="middle" fill="#f5c518" font-size="12">r₂₁</text>
+      <!-- Unit vector label -->
+      <text x="285" y="75" text-anchor="middle" fill="#00d4ff" font-size="10">←———— r ————→</text>
+      <!-- Force arrows (repulsion case, both positive) -->
+      <line x1="95" y1="100" x2="50" y2="100" stroke="#7fff7f" stroke-width="2.5"/>
+      <polygon points="50,96 50,104 38,100" fill="#7fff7f"/>
+      <text x="65" y="88" text-anchor="middle" fill="#7fff7f" font-size="11">F₁₂</text>
+      <text x="65" y="120" text-anchor="middle" fill="#7fff7f" font-size="10">(force on q₁)</text>
+      <line x1="475" y1="100" x2="520" y2="100" stroke="#7fff7f" stroke-width="2.5"/>
+      <polygon points="520,96 520,104 532,100" fill="#7fff7f"/>
+      <text x="515" y="88" text-anchor="middle" fill="#7fff7f" font-size="11">F₂₁</text>
+      <text x="515" y="120" text-anchor="middle" fill="#7fff7f" font-size="10">(force on q₂)</text>
+      <text x="285" y="175" text-anchor="middle" fill="#f5c518" font-size="11">Like charges (+,+): Forces point AWAY → Repulsion</text>
+      <!-- Origin -->
+      <text x="285" y="155" text-anchor="middle" fill="#9090b0" font-size="10">Note: F₁₂ = −F₂₁ (Newton's Third Law applies!)</text>
+    </svg>
+    <div class="diag-title">Fig 1.3 — Coulomb's force as vectors (repulsion case shown)</div>
+  </div>
+
+  <h3>Vector Form of Coulomb's Law</h3>
+
+  <div class="formula-box">
+    <div class="f-label">Coulomb's Law — Vector Form</div>
+    <div class="formula-big" style="font-size:1.18rem;">F₂₁ = (1/4πε₀) × (q₁q₂/r²₂₁) × r̂₂₁</div>
+    <div class="formula-note">
+      r₂₁ = position vector from charge 1 to charge 2<br>
+      r̂₂₁ = unit vector from 1 to 2 (direction of force on q₂ due to q₁)<br>
+      F₁₂ = −F₂₁ (Newton's Third Law satisfied ✓)
+    </div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="callout">
+      <h3>✅ What vector form handles automatically:</h3>
+      <p>• If q₁, q₂ same sign → F₂₁ along r̂₂₁ → <strong style="color:var(--accent3)">Repulsion</strong><br>
+      • If q₁, q₂ opposite sign → F₂₁ along −r̂₂₁ → <strong style="color:var(--accent4)">Attraction</strong><br>
+      No need for separate equations!</p>
+    </div>
+    <div class="callout">
+      <h3>⚠️ Important Limitations:</h3>
+      <p>• Valid only for <strong>point charges</strong> (or when size ≪ separation)<br>
+      • Valid in <strong>vacuum/free space</strong><br>
+      • For charges in a medium, multiply by 1/εᵣ where εᵣ is relative permittivity</p>
+    </div>
+  </div>
+
+  <h3>Coulomb vs Gravity — The Ultimate Comparison</h3>
+
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 520 120" xmlns="http://www.w3.org/2000/svg">
+      <!-- Bar graph showing ratio -->
+      <text x="260" y="20" text-anchor="middle" fill="#f5c518" font-size="13" font-weight="600">Electric Force is ENORMOUS compared to Gravity!</text>
+      <text x="260" y="40" text-anchor="middle" fill="#9090b0" font-size="11">Fe/Fg for proton-proton = 1.3 × 10³⁶ (that's 1 followed by 36 zeros!)</text>
+      <!-- Simple visualization -->
+      <rect x="50" y="60" width="400" height="20" rx="4" fill="rgba(255,107,53,0.15)" stroke="#ff6b35" stroke-width="1"/>
+      <rect x="50" y="60" width="399" height="20" rx="4" fill="rgba(245,197,24,0.4)"/>
+      <text x="50" y="95" fill="#f5c518" font-size="11">Electric Force →→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→→ 10³⁶ times stronger!</text>
+      <rect x="50" y="100" width="1" height="12" fill="#9090b0"/>
+      <text x="53" y="111" fill="#9090b0" font-size="9">Gravity (1×)</text>
+    </svg>
+  </div>
+
+  <table class="compare-table">
+    <tr>
+      <th>Property</th>
+      <th>Coulomb's Law (Electric)</th>
+      <th>Newton's Law (Gravity)</th>
+    </tr>
+    <tr>
+      <td>Formula</td>
+      <td>F = kq₁q₂/r²</td>
+      <td>F = Gm₁m₂/r²</td>
+    </tr>
+    <tr>
+      <td>Constant</td>
+      <td>k = 9×10⁹ N·m²/C²</td>
+      <td>G = 6.67×10⁻¹¹ N·m²/kg²</td>
+    </tr>
+    <tr>
+      <td>Nature</td>
+      <td>Can be attractive OR repulsive</td>
+      <td>Always attractive only</td>
+    </tr>
+    <tr>
+      <td>Source</td>
+      <td>Electric charge</td>
+      <td>Mass</td>
+    </tr>
+    <tr>
+      <td>Medium effect</td>
+      <td>YES — decreases in medium</td>
+      <td>NO — same everywhere</td>
+    </tr>
+    <tr>
+      <td>Relative strength (p-p)</td>
+      <td>Fₑ ≈ 230 N (inside nucleus)</td>
+      <td>Fg ≈ 1.9 × 10⁻³⁴ N</td>
+    </tr>
+    <tr>
+      <td>Ratio Fₑ/Fg for proton</td>
+      <td colspan="2" style="text-align:center;color:var(--accent)">≈ 1.3 × 10³⁶ (Electric is WAY stronger!)</td>
+    </tr>
+  </table>
+
+  <div class="memory-trick">
+    <div class="mt-title">🧠 Memory Trick for k and ε₀</div>
+    <p><strong>"k = 9 × 10⁹"</strong> — Remember: 9 and 9 zeroes (9,000,000,000). In exams, you can write either k or 1/(4πε₀).<br>
+    ε₀ = 8.854 × 10⁻¹² — "epsilon zero, epsilon zero, eight point eight five four times ten to the minus twelve"</p>
+  </div>
+
+  <h3>How Coulomb Discovered His Law (Historical)</h3>
+  <div class="q-card theory" style="margin-bottom:1rem;border:1px solid var(--border);">
+  <div class="q-label" class="accordion-label" onclick="toggleAcc(this)">📜 Coulomb's Clever Experimental Method <span style="float:right;color:var(--accent2)">▼</span></div>
+  <div class="q-answer" style="display:none;">
+      <ol class="steps">
+        <li>
+            <h4>The Torsion Balance</h4>
+            <p>Coulomb invented a <strong>torsion balance</strong> — a very sensitive device where a charged sphere is suspended by a thin wire. The twist of the wire measures the force. (Same device Cavendish used for gravity!)</p>
+          </div>
+        </div>
+</div>
+        <li>
+            <h4>Creating Known Charge Ratios</h4>
+            <p>Problem: He didn't know the exact charge! Solution: If sphere has charge q and you touch it with an identical uncharged sphere, each gets q/2. Repeat: each gets q/4. This gives known ratios!</p>
+          </div>
+        </div>
+        <li>
+            <h4>Varying Distance</h4>
+            <p>He fixed charges and varied distance r. Found F ∝ 1/r². Then fixed distance and varied charges. Found F ∝ q₁q₂. Combined: F = kq₁q₂/r²</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 6: SUPERPOSITION =================== -->
+<section id="superposition">
+<div class="container fade-in">
+  <span class="section-num">Section 1.6</span>
+  <h2 class="section-title">Forces Between Multiple Charges</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">The Principle of Superposition — handling more than 2 charges</p>
+
+  <div class="def-box">
+    <div class="def-title">📋 Principle of Superposition — Exam-Ready</div>
+    <p>The total electrostatic force on a charge due to a number of other charges is the <strong>vector sum</strong> of all the individual forces on that charge due to each other charge, taken one at a time. The individual forces are <strong>unaffected</strong> by the presence of other charges.</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">Superposition Principle — General Formula</div>
+    <div class="formula-big" style="font-size:1.00rem;">F₁ = F₁₂ + F₁₃ + F₁₄ + ... + F₁ₙ</div>
+    <div style="font-size:0.88rem;color:var(--accent4);margin:10px 0;">= (q₁/4πε₀) × Σᵢ (qᵢ/r²₁ᵢ) × r̂₁ᵢ &nbsp;[i = 2 to n]</div>
+    <div class="formula-note">Vector addition using parallelogram law</div>
+  </div>
+
+  <!-- SVG: Three charge system -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 500 280" xmlns="http://www.w3.org/2000/svg">
+      <text x="250" y="20" text-anchor="middle" fill="#9090b0" font-size="11">System of 3 charges — Force on q₁</text>
+      <!-- Charges -->
+      <circle cx="250" cy="120" r="24" fill="rgba(255,107,53,0.2)" stroke="#ff6b35" stroke-width="2"/>
+      <text x="250" y="125" text-anchor="middle" fill="#ff6b35" font-size="14" font-weight="bold">q₁</text>
+      <circle cx="100" cy="230" r="20" fill="rgba(0,212,255,0.2)" stroke="#00d4ff" stroke-width="2"/>
+      <text x="100" y="235" text-anchor="middle" fill="#00d4ff" font-size="14" font-weight="bold">q₂</text>
+      <circle cx="400" cy="230" r="20" fill="rgba(127,255,127,0.2)" stroke="#7fff7f" stroke-width="2"/>
+      <text x="400" y="235" text-anchor="middle" fill="#7fff7f" font-size="14" font-weight="bold">q₃</text>
+      <!-- Distance lines -->
+      <line x1="226" y1="130" x2="118" y2="215" stroke="#00d4ff" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="155" y="162" fill="#00d4ff" font-size="10">r₁₂</text>
+      <line x1="274" y1="130" x2="382" y2="215" stroke="#7fff7f" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="345" y="162" fill="#7fff7f" font-size="10">r₁₃</text>
+      <!-- Force vectors from q₁ -->
+      <line x1="250" y1="96" x2="205" y2="55" stroke="#00d4ff" stroke-width="2.5"/>
+      <polygon points="201,55 209,55 205,44" fill="#00d4ff"/>
+      <text x="195" y="50" fill="#00d4ff" font-size="11">F₁₂</text>
+      <line x1="250" y1="96" x2="295" y2="55" stroke="#7fff7f" stroke-width="2.5"/>
+      <polygon points="291,55 299,55 295,44" fill="#7fff7f"/>
+      <text x="296" y="50" fill="#7fff7f" font-size="11">F₁₃</text>
+      <!-- Resultant force -->
+      <line x1="250" y1="96" x2="250" y2="42" stroke="#f5c518" stroke-width="3"/>
+      <polygon points="246,42 254,42 250,30" fill="#f5c518"/>
+      <text x="265" y="38" fill="#f5c518" font-size="12" font-weight="bold">F₁ (resultant)</text>
+      <!-- Parallelogram (dotted) -->
+      <line x1="205" y1="55" x2="250" y2="42" stroke="#f5c518" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+      <line x1="295" y1="55" x2="250" y2="42" stroke="#f5c518" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+      <text x="250" y="270" text-anchor="middle" fill="#00d4ff" font-size="11">F₁ = F₁₂ + F₁₃ (vector sum via parallelogram law)</text>
+    </svg>
+    <div class="diag-title">Fig 1.5 — Superposition: vector sum of all individual forces</div>
+  </div>
+
+  <div class="memory-trick">
+    <span class="emoji-big">🎸</span>
+    <div class="mt-title">Real-World Analogy — Multiple Speakers</div>
+      <p>Imagine 5 speakers playing different notes. At any point in the room, the total sound = sum of sound from each speaker independently. Each speaker doesn't "know" about other speakers. Same with charges — each force acts independently, you just add them up as vectors!</p>
+    </div>
+  </div>
+
+  <!-- Example 1.5 from NCERT solved -->
+  <div class="worked">
+    <div class="w-title">📘 NCERT Example — Equilateral Triangle</div>
+    <p><strong>Three charges q₁ = q₂ = q₃ = q</strong> at vertices of equilateral triangle of side l. A charge Q (same sign as q) at centroid. Find force on Q.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+      Distance from each vertex to centroid = l/√3
+
+      F₁ = F₂ = F₃ = (1/4πε₀) × 3Qq/l² (each directed from vertex toward centroid)
+
+      By symmetry, F₁, F₂, F₃ are equally spaced at 120° apart.
+
+      Vector sum: F₁ + F₂ + F₃ = 0
+
+      ∴ Net force on Q = ZERO ✓
+
+      Intuition: Q is at exact center, pulled equally in all directions → cancels out!
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 7: ELECTRIC FIELD =================== -->
+<section id="efield">
+<div class="container fade-in">
+  <span class="section-num">Section 1.7</span>
+  <h2 class="section-title">Electric Field</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">The invisible force field surrounding every charge</p>
+
+  <div class="memory-trick">
+    <span class="emoji-big">🌊</span>
+    <div class="mt-title">Think of it Like Gravity Around Earth</div>
+      <p>Earth creates a "gravity field" around it — even in empty space. Drop a ball 1 meter away from Earth's center and it gets pulled. The field exists whether or not the ball is there. Similarly, a charge Q creates an <strong style="color:var(--accent2)">electric field</strong> all around it. Place another charge q in that field → force appears!</p>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📋 Electric Field — Exam-Ready Definition</div>
+    <p>The <strong>electric field</strong> at a point in space due to a source charge Q is defined as the <strong>force experienced by a unit positive test charge</strong> placed at that point, without disturbing the original position of the source charge Q.<br><br>
+    E = F/q₀ &nbsp;(where q₀ → 0, the test charge)<br><br>
+    Unit: <strong>N/C or V/m</strong> &nbsp;|&nbsp; It is a <strong>vector quantity</strong></p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">Electric Field Due to a Point Charge</div>
+    <div class="formula-big">E = (1/4πε₀) × Q/r² × r̂</div>
+    <div class="formula-note">
+      Q = source charge &nbsp;|&nbsp; r = distance from charge &nbsp;|&nbsp; r̂ = unit vector pointing away from +Q<br>
+      For +Q: E points radially OUTWARD &nbsp;|&nbsp; For −Q: E points radially INWARD
+    </div>
+  </div>
+
+  <!-- SVG: Electric field direction for +Q and -Q -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- Positive charge field -->
+      <text x="130" y="18" text-anchor="middle" fill="#9090b0" font-size="11">(a) Positive charge +Q</text>
+      <circle cx="130" cy="110" r="18" fill="rgba(255,107,53,0.3)" stroke="#ff6b35" stroke-width="2"/>
+      <text x="130" y="115" text-anchor="middle" fill="#ff6b35" font-size="16" font-weight="bold">+</text>
+      <!-- Field lines outward -->
+      <line x1="130" y1="90" x2="130" y2="50" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="126,50 134,50 130,38" fill="#00d4ff"/>
+      <line x1="150" y1="96" x2="178" y2="68" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="174,64 182,72 184,60" fill="#00d4ff"/>
+      <line x1="148" y1="110" x2="188" y2="110" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="188,106 188,114 200,110" fill="#00d4ff"/>
+      <line x1="150" y1="124" x2="178" y2="152" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="174,148 182,156 184,144" fill="#00d4ff"/>
+      <line x1="130" y1="128" x2="130" y2="168" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="126,168 134,168 130,180" fill="#00d4ff"/>
+      <line x1="110" y1="124" x2="82" y2="152" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="78,148 86,156 78,158" fill="#00d4ff"/>
+      <line x1="112" y1="110" x2="72" y2="110" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="72,106 72,114 60,110" fill="#00d4ff"/>
+      <line x1="110" y1="96" x2="82" y2="68" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="78,64 86,72 76,62" fill="#00d4ff"/>
+      <text x="130" y="200" text-anchor="middle" fill="#00d4ff" font-size="11">E points OUTWARD (away from +Q)</text>
+
+      <!-- Divider -->
+      <line x1="265" y1="20" x2="265" y2="195" stroke="#2a2a4a" stroke-width="1" stroke-dasharray="4,4"/>
+
+      <!-- Negative charge field -->
+      <text x="390" y="18" text-anchor="middle" fill="#9090b0" font-size="11">(b) Negative charge −Q</text>
+      <circle cx="390" cy="110" r="18" fill="rgba(245,197,24,0.3)" stroke="#f5c518" stroke-width="2"/>
+      <text x="390" y="115" text-anchor="middle" fill="#f5c518" font-size="16" font-weight="bold">−</text>
+      <!-- Field lines inward -->
+      <line x1="390" y1="50" x2="390" y2="90" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="386,90 394,90 390,92" fill="#00d4ff"/>
+      <line x1="418" y1="68" x2="408" y2="95" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="404,93 412,98 408,95" fill="#00d4ff"/>
+      <line x1="440" y1="110" x2="410" y2="110" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="410,106 410,114 408,110" fill="#00d4ff"/>
+      <line x1="418" y1="152" x2="408" y2="125" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="404,125 412,120 408,125" fill="#00d4ff"/>
+      <line x1="390" y1="168" x2="390" y2="128" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="386,128 394,128 390,126" fill="#00d4ff"/>
+      <line x1="362" y1="152" x2="372" y2="125" stroke="#00d4ff" stroke-width="1.5"/>
+      <line x1="340" y1="110" x2="370" y2="110" stroke="#00d4ff" stroke-width="1.5"/>
+      <line x1="362" y1="68" x2="372" y2="95" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="390" y="200" text-anchor="middle" fill="#00d4ff" font-size="11">E points INWARD (toward −Q)</text>
+    </svg>
+    <div class="diag-title">Fig 1.8 — Electric field direction for positive and negative charges</div>
+  </div>
+
+  <h3>Key Points About Electric Field</h3>
+
+  <div class="summary-grid">
+    <div class="sum-card">
+      <div class="sc-icon">🎯</div>
+      <h4>Source vs Test Charge</h4>
+      <p>Q (source charge) creates the field. q₀ (test charge, vanishingly small) detects it. Test charge must be small enough not to disturb Q!</p>
+    </div>
+    <div class="sum-card">
+      <div class="sc-icon">🌐</div>
+      <h4>Exists Everywhere</h4>
+      <p>Electric field exists at every point in 3D space around a charge. Even in vacuum. Even if no test charge is there to feel it!</p>
+    </div>
+    <div class="sum-card">
+      <div class="sc-icon">⚡</div>
+      <h4>E is Independent of q₀</h4>
+      <p>The field E depends only on Q (source) and position. F depends on both Q and q₀. But E = F/q₀ is always the same at a point.</p>
+    </div>
+    <div class="sum-card">
+      <div class="sc-icon">📐</div>
+      <h4>Spherical Symmetry</h4>
+      <p>At equal distances from a point charge, |E| is the same. So E is constant on a sphere centered at Q.</p>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📋 Electric Field Due to a System of Charges</div>
+    <p>By the superposition principle:<br>
+    <strong>E(r) = E₁(r) + E₂(r) + ... + Eₙ(r)</strong><br>
+    = (1/4πε₀) × Σᵢ (qᵢ/r²ᵢₚ) × r̂ᵢₚ<br><br>
+    Each charge contributes independently to the total field at any point.</p>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">💡 Why Is Electric Field Important?</div>
+    In electrostatics it's convenient but not essential. But when charges ACCELERATE, they create time-varying electromagnetic fields that travel as waves (light, radio waves, X-rays). The field concept is essential to explain WHY there's a time delay when one charge moves and another responds. This is where it becomes physically crucial!
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 8: FIELD LINES =================== -->
+<section id="fieldlines">
+<div class="container fade-in">
+  <span class="section-num">Section 1.8</span>
+  <h2 class="section-title">Electric Field Lines</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Faraday's brilliant visual tool for understanding fields</p>
+
+  <div class="memory-trick">
+    <span class="emoji-big">🎨</span>
+    <div class="mt-title">Faraday's Brilliant Idea</div>
+      <p>Michael Faraday (no formal education, just a genius!) invented field lines to <em>visualize</em> the electric field. Instead of just numbers, draw <strong>curves</strong> such that the tangent at any point gives the direction of E. Density of lines = strength of field. Simple, elegant, powerful.</p>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📋 Electric Field Line — Definition</div>
+    <p>An <strong>electric field line</strong> is a curve drawn in the electric field such that the <strong>tangent to it at each point gives the direction of the net electric field</strong> at that point. The relative <strong>density (closeness) of field lines</strong> at a point represents the <strong>relative strength</strong> of the electric field at that point.</p>
+  </div>
+
+  <!-- SVG: Field lines for various configurations -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 640 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- (a) Single positive charge -->
+      <text x="90" y="20" text-anchor="middle" fill="#9090b0" font-size="11">(a) Single +q</text>
+      <circle cx="90" cy="130" r="14" fill="rgba(255,107,53,0.3)" stroke="#ff6b35" stroke-width="2"/>
+      <text x="90" y="135" text-anchor="middle" fill="#ff6b35" font-size="12" font-weight="bold">+q</text>
+      <!-- 8 field lines outward -->
+      <line x1="90" y1="114" x2="90" y2="60" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="86,60 94,60 90,50" fill="#00d4ff"/>
+      <line x1="100" y1="120" x2="140" y2="80" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="137,76 145,84 147,72" fill="#00d4ff"/>
+      <line x1="104" y1="130" x2="155" y2="130" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="155,126 155,134 167,130" fill="#00d4ff"/>
+      <line x1="100" y1="140" x2="140" y2="180" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="137,177 145,185 147,172" fill="#00d4ff"/>
+      <line x1="90" y1="144" x2="90" y2="198" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="86,198 94,198 90,208" fill="#00d4ff"/>
+      <line x1="80" y1="140" x2="40" y2="180" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="37,177 43,185 33,175" fill="#00d4ff"/>
+      <line x1="76" y1="130" x2="25" y2="130" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="25,126 25,134 13,130" fill="#00d4ff"/>
+      <line x1="80" y1="120" x2="40" y2="80" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="37,76 43,84 33,73" fill="#00d4ff"/>
+
+      <!-- (b) Single negative charge -->
+      <text x="310" y="20" text-anchor="middle" fill="#9090b0" font-size="11">(b) Single −q</text>
+      <circle cx="310" cy="130" r="14" fill="rgba(245,197,24,0.3)" stroke="#f5c518" stroke-width="2"/>
+      <text x="310" y="135" text-anchor="middle" fill="#f5c518" font-size="12" font-weight="bold">−q</text>
+      <!-- 8 field lines inward -->
+      <line x1="310" y1="60" x2="310" y2="115" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="306,115 314,115 310,116" fill="#00d4ff"/>
+      <line x1="355" y1="80" x2="320" y2="119" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="316,117 324,122 320,119" fill="#00d4ff"/>
+      <line x1="375" y1="130" x2="326" y2="130" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="326,126 326,134 324,130" fill="#00d4ff"/>
+      <line x1="355" y1="180" x2="320" y2="141" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="316,143 324,138 320,141" fill="#00d4ff"/>
+      <line x1="310" y1="198" x2="310" y2="145" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="306,145 314,145 310,144" fill="#00d4ff"/>
+      <line x1="265" y1="180" x2="300" y2="141" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="296,143 304,138 300,141" fill="#00d4ff"/>
+      <line x1="245" y1="130" x2="295" y2="130" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="295,126 295,134 294,130" fill="#00d4ff"/>
+      <line x1="265" y1="80" x2="300" y2="119" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="296,117 304,122 300,119" fill="#00d4ff"/>
+
+      <!-- (c) Dipole +q -q -->
+      <text x="540" y="20" text-anchor="middle" fill="#9090b0" font-size="11">(c) Dipole +q &amp; −q</text>
+      <circle cx="510" cy="130" r="12" fill="rgba(255,107,53,0.3)" stroke="#ff6b35" stroke-width="2"/>
+      <text x="510" y="134" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="bold">+q</text>
+      <circle cx="570" cy="130" r="12" fill="rgba(245,197,24,0.3)" stroke="#f5c518" stroke-width="2"/>
+      <text x="570" y="134" text-anchor="middle" fill="#f5c518" font-size="11" font-weight="bold">−q</text>
+      <!-- Curved dipole field lines (simplified) -->
+      <path d="M 510 118 C 510 70, 570 70, 570 118" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="566,118 574,118 570,118" fill="#00d4ff"/>
+      <path d="M 510 142 C 510 190, 570 190, 570 142" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="566,142 574,142 570,142" fill="#00d4ff"/>
+      <path d="M 522 118 C 522 90, 558 90, 558 118" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+      <path d="M 522 142 C 522 170, 558 170, 558 142" fill="none" stroke="#00d4ff" stroke-width="1.5"/>
+      <line x1="522" y1="130" x2="558" y2="130" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="555,126 555,134 558,130" fill="#00d4ff"/>
+      <text x="540" y="260" text-anchor="middle" fill="#7fff7f" font-size="10">Field lines from + to −</text>
+
+      <!-- Labels at bottom -->
+      <text x="90" y="260" text-anchor="middle" fill="#00d4ff" font-size="10">Lines go OUT</text>
+      <text x="310" y="260" text-anchor="middle" fill="#00d4ff" font-size="10">Lines come IN</text>
+    </svg>
+    <div class="diag-title">Fig 1.14 — Electric field lines for point charges and dipole</div>
+  </div>
+
+  <h3>Properties of Electric Field Lines</h3>
+
+  <div class="summary-grid">
+    <div class="sum-card">
+      <div class="sc-icon">📍</div>
+      <h4>Start &amp; End</h4>
+      <p>Field lines start from <strong>positive charges</strong> and end at <strong>negative charges</strong>. If only one charge, they extend to/from infinity.</p>
+    </div>
+    <div class="sum-card">
+      <div class="sc-icon">🔄</div>
+      <h4>Continuous</h4>
+      <p>In a charge-free region, field lines are <strong>continuous curves</strong> without breaks.</p>
+    </div>
+    <div class="sum-card">
+      <div class="sc-icon">❌</div>
+      <h4>Never Cross!</h4>
+      <p>Two field lines can <strong>NEVER intersect</strong>. If they did, the field would have two directions at one point — impossible!</p>
+    </div>
+    <div class="sum-card">
+      <div class="sc-icon">🔁</div>
+      <h4>No Closed Loops</h4>
+      <p>Electrostatic field lines <strong>never form closed loops</strong>. (Magnetic field lines do — that's the difference!)</p>
+    </div>
+  </div>
+
+  <div class="memory-trick">
+    <div class="mt-title">🧠 Memory Trick — Field Line Properties</div>
+    <p>Remember: <strong>"Start Positive, End Negative, Cross Never, Loop Never"</strong><br>
+    S.P.E.N.C.N.L.N — "Spenching Nothing Lost" (make your own silly sentence!)</p>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">💡 Density of Lines = Strength of Field</div>
+    Where field lines are <strong>close together (dense)</strong> → strong field. Where they're <strong>spread apart</strong> → weak field. This is why field is strongest near a charge and weakens as you move away.
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 9: ELECTRIC FLUX =================== -->
+<section id="flux">
+<div class="container fade-in">
+  <span class="section-num">Section 1.9</span>
+  <h2 class="section-title">Electric Flux</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">How many field lines "pierce" through a surface?</p>
+
+  <div class="memory-trick">
+    <span class="emoji-big">💧</span>
+    <div class="mt-title">Think of Water Flow</div>
+      <p>Imagine holding a ring in a river current. If you hold the ring perpendicular to the flow, <strong>maximum water flows through</strong>. If you tilt the ring, less water flows. If parallel, zero water flows. Electric flux is exactly like this — it measures how many electric field lines pass through a surface!</p>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📋 Electric Flux — Exam-Ready Definition</div>
+    <p><strong>Electric flux</strong> through a surface is defined as the <strong>dot product of the electric field and the area vector</strong>. It represents the number of electric field lines passing through a given surface area.<br><br>
+    <strong>Δφ = E · ΔS = E ΔS cos θ</strong><br><br>
+    where θ is the angle between E and the outward normal to the surface. Unit: <strong>N·m²/C or V·m</strong>. It is a <strong>scalar quantity</strong>.</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">Electric Flux Formula</div>
+    <div class="formula-big">Δφ = E · ΔS = E ΔS cos θ</div>
+    <div class="formula-note">
+      For total surface: φ = ∮ E · dS (closed surface integral)<br>
+      θ = 0° → φ = maximum (E ⊥ surface) &nbsp;|&nbsp; θ = 90° → φ = 0 (E ∥ surface)
+    </div>
+  </div>
+
+  <!-- SVG: Flux dependence on angle -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 580 180" xmlns="http://www.w3.org/2000/svg">
+      <!-- Case 1: theta = 0 -->
+      <text x="90" y="18" text-anchor="middle" fill="#9090b0" font-size="11">θ = 0° (Maximum flux)</text>
+      <rect x="70" y="40" width="40" height="80" rx="3" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1.5"/>
+      <!-- E arrows (horizontal, passing through) -->
+      <line x1="20" y1="60" x2="120" y2="60" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="118,56 118,64 128,60" fill="#00d4ff"/>
+      <line x1="20" y1="80" x2="120" y2="80" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="118,76 118,84 128,80" fill="#00d4ff"/>
+      <line x1="20" y1="100" x2="120" y2="100" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="118,96 118,104 128,100" fill="#00d4ff"/>
+      <!-- Normal arrow -->
+      <line x1="90" y1="80" x2="90" y2="45" stroke="#7fff7f" stroke-width="2"/>
+      <polygon points="86,45 94,45 90,35" fill="#7fff7f"/>
+      <text x="105" y="42" fill="#7fff7f" font-size="10">n̂</text>
+      <text x="90" y="155" text-anchor="middle" fill="#7fff7f" font-size="12" font-weight="600">φ = EΔS (max)</text>
+
+      <!-- Case 2: theta = theta -->
+      <text x="295" y="18" text-anchor="middle" fill="#9090b0" font-size="11">θ = 60° (Reduced flux)</text>
+      <!-- Tilted surface -->
+      <line x1="275" y1="35" x2="315" y2="115" stroke="#00d4ff" stroke-width="1.5"/>
+      <line x1="255" y1="35" x2="295" y2="115" stroke="#00d4ff" stroke-width="1.5" opacity="0.5"/>
+      <!-- Horizontal E arrows -->
+      <line x1="220" y1="60" x2="350" y2="60" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="348,56 348,64 358,60" fill="#00d4ff"/>
+      <line x1="220" y1="85" x2="350" y2="85" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="348,81 348,89 358,85" fill="#00d4ff"/>
+      <!-- Normal at angle -->
+      <line x1="295" y1="75" x2="265" y2="42" stroke="#7fff7f" stroke-width="2"/>
+      <polygon points="261,44 269,40 265,42" fill="#7fff7f"/>
+      <text x="255" y="38" fill="#7fff7f" font-size="10">n̂</text>
+      <text x="295" y="155" text-anchor="middle" fill="#f5c518" font-size="12" font-weight="600">φ = EΔS cos60°</text>
+
+      <!-- Case 3: theta = 90 -->
+      <text x="495" y="18" text-anchor="middle" fill="#9090b0" font-size="11">θ = 90° (Zero flux)</text>
+      <!-- Vertical surface, horizontal E -->
+      <rect x="485" y="35" width="20" height="100" rx="2" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1.5"/>
+      <line x1="420" y1="60" x2="560" y2="60" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="558,56 558,64 568,60" fill="#00d4ff"/>
+      <line x1="420" y1="80" x2="560" y2="80" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="558,76 558,84 568,80" fill="#00d4ff"/>
+      <line x1="420" y1="100" x2="560" y2="100" stroke="#00d4ff" stroke-width="1.5"/>
+      <polygon points="558,96 558,104 568,100" fill="#00d4ff"/>
+      <!-- Normal arrow (pointing right) -->
+      <line x1="495" y1="85" x2="545" y2="85" stroke="#7fff7f" stroke-width="2"/>
+      <polygon points="543,81 543,89 555,85" fill="#7fff7f"/>
+      <text x="495" y="155" text-anchor="middle" fill="#ff6b35" font-size="12" font-weight="600">φ = 0 (field parallel)</text>
+    </svg>
+    <div class="diag-title">Fig 1.15 — Electric flux depends on the angle between E and surface normal</div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="callout">
+      <h3>📐 Area as a Vector</h3>
+      <p>Area element ΔS is a <strong>vector quantity</strong>. Its magnitude = the area value. Its direction = along the <strong>outward normal</strong> to the surface. For closed surfaces, outward normal is used by convention.</p>
+    </div>
+    <div class="callout">
+      <h3>⚡ Positive vs Negative Flux</h3>
+      <p>• θ &lt; 90°: cos θ &gt; 0 → <strong style="color:var(--accent4)">Positive flux</strong> (lines exit)<br>
+      • θ &gt; 90°: cos θ &lt; 0 → <strong style="color:var(--accent3)">Negative flux</strong> (lines enter)<br>
+      • θ = 90°: φ = 0 (lines parallel to surface)</p>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">💡 Flux Through a Closed Sphere Around +Q</div>
+    Gauss's Law (coming in Ch2) states: φ = Q_enclosed/ε₀. For a sphere around +Q, all field lines exit the sphere → positive flux. This is one of the most powerful tools in electrostatics!
+  </div>
+</div>
+</section>
+
+<!-- =================== ELECTRIC DIPOLE =================== -->
+<section id="dipole">
+<div class="container fade-in">
+  <span class="section-num">Section 1.10</span>
+  <h2 class="section-title">Electric Dipole</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Two equal and opposite charges — the building block of molecular physics</p>
+
+  <div class="memory-trick">
+    <span class="emoji-big">🧲</span>
+    <div class="mt-title">Water — The Natural Dipole!</div>
+      <p>A water molecule (H₂O) is a natural electric dipole! The oxygen atom pulls electrons toward itself, making it slightly negative, while the hydrogen atoms become slightly positive. This dipole nature makes water a universal solvent and is why life as we know it is possible. Physics is literally in every drop of water!</p>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📋 Electric Dipole — Board-Ready Definition</div>
+    <p>An <strong>electric dipole</strong> is a system of two equal and opposite point charges (+q and −q) separated by a small distance 2a. The line joining −q to +q defines the <em>dipole axis</em>. The dipole moment <strong>p⃗ is directed from −q to +q</strong>.</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">Dipole Moment</div>
+    <div class="formula-big">p = q × 2a</div>
+    <div class="formula-note">
+      p = dipole moment (vector) — directed from −q to +q (negative to positive!)<br>
+      Magnitude: p = q × 2a &nbsp;|&nbsp; Unit: C·m (coulomb-metre)
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">⚠️ Critical: Direction of Dipole Moment</div>
+    Direction is from <strong>−q to +q</strong> (negative to positive). Many students get this wrong! It's counter-intuitive — remember it by: "dipole points toward the positive charge."
+  </div>
+
+  <!-- SVG: Dipole diagram -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 560 160" xmlns="http://www.w3.org/2000/svg">
+      <!-- Axis line -->
+      <line x1="60" y1="80" x2="500" y2="80" stroke="#2a2a4a" stroke-width="1" stroke-dasharray="5,4"/>
+      <!-- Negative charge -->
+      <circle cx="160" cy="80" r="24" fill="rgba(245,197,24,0.25)" stroke="#f5c518" stroke-width="2"/>
+      <text x="160" y="86" text-anchor="middle" fill="#00d4ff" font-size="20" font-weight="bold">−q</text>
+      <!-- Positive charge -->
+      <circle cx="400" cy="80" r="24" fill="rgba(255,107,53,0.25)" stroke="#ff6b35" stroke-width="2"/>
+      <text x="400" y="86" text-anchor="middle" fill="#ff6b35" font-size="20" font-weight="bold">+q</text>
+      <!-- Distance labels -->
+      <line x1="160" y1="120" x2="280" y2="120" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="220" y="135" text-anchor="middle" fill="#f5c518" font-size="11">a</text>
+      <line x1="280" y1="120" x2="400" y2="120" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="340" y="135" text-anchor="middle" fill="#f5c518" font-size="11">a</text>
+      <!-- Total distance -->
+      <line x1="160" y1="148" x2="400" y2="148" stroke="#7fff7f" stroke-width="1"/>
+      <text x="280" y="158" text-anchor="middle" fill="#7fff7f" font-size="11">2a (dipole length)</text>
+      <!-- Dipole moment arrow -->
+      <defs>
+        <marker id="dpa" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#f5c518"/></marker>
+      </defs>
+      <line x1="170" y1="50" x2="390" y2="50" stroke="#f5c518" stroke-width="2.5" marker-end="url(#dpa)"/>
+      <text x="280" y="42" text-anchor="middle" fill="#f5c518" font-size="12" font-weight="600">p⃗ (direction: −q → +q)</text>
+      <!-- Center mark -->
+      <circle cx="280" cy="80" r="4" fill="#9090b0"/>
+      <text x="280" y="100" text-anchor="middle" fill="#9090b0" font-size="10">O (centre)</text>
+    </svg>
+    <div class="diag-title">Fig 1.10 — Electric dipole: charges separated by 2a, dipole moment p from −q to +q</div>
+  </div>
+
+  <h3>Electric Field on the Axial Line</h3>
+
+  <div class="def-box">
+    <div class="def-title">📋 Axial Position (End-on position)</div>
+    <p>A point P on the axis of the dipole at distance r from the centre (where r >> a).</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">E-Field on Axial Line (Short Dipole: r >> a)</div>
+    <div class="formula-big">E_axial = 2p / (4πε₀r³)</div>
+    <div class="formula-note">
+      Direction: Same as dipole moment p⃗ (from −q to +q direction)<br>
+      For exact formula: E = (2pr) / [4πε₀(r²−a²)²]
+    </div>
+  </div>
+
+  <h3>Electric Field on the Equatorial Line</h3>
+
+  <div class="def-box">
+    <div class="def-title">📋 Equatorial Position (Broadside-on position)</div>
+    <p>A point P perpendicular to the dipole axis, at distance r from the centre (where r >> a).</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">E-Field on Equatorial Line (Short Dipole: r >> a)</div>
+    <div class="formula-big">E_equatorial = p / (4πε₀r³)</div>
+    <div class="formula-note">
+      Direction: OPPOSITE to dipole moment p⃗ (anti-parallel to p⃗)<br>
+      For exact formula: E = p / [4πε₀(r²+a²)^(3/2)]
+    </div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="callout">
+      <h3>⚡ Axial vs Equatorial: Key Comparison</h3>
+      <p>• E_axial = 2 × E_equatorial (axial is TWICE as strong)<br>
+      • Axial E is along p⃗; Equatorial E is opposite to p⃗<br>
+      • Both fall as 1/r³ (faster than point charge's 1/r²!)<br>
+      • Ratio: E_axial / E_equatorial = 2 (always, for r >> a)</p>
+    </div>
+    <div class="callout">
+      <h3>🧠 Memory Trick — Directions</h3>
+      <p><strong>Axial:</strong> Standing at the "end" of the dipole — you're looking at it head-on. The field agrees with the dipole's direction.<br>
+      <strong>Equatorial:</strong> Standing at the "side" — you see the dipole sideways. The field reverses!</p>
+    </div>
+  </div>
+
+  <h3>Torque on Dipole in Uniform Electric Field</h3>
+
+  <div class="formula-box">
+    <div class="f-label">Torque on an Electric Dipole</div>
+    <div class="formula-big">τ = pE sinθ</div>
+    <div class="formula-note">
+      τ = torque (vector: τ⃗ = p⃗ × E⃗)<br>
+      p = dipole moment, E = electric field, θ = angle between p⃗ and E⃗<br>
+      Maximum torque when θ = 90°: τ_max = pE<br>
+      Zero torque when θ = 0° or 180° (stable/unstable equilibrium)
+    </div>
+  </div>
+
+  <div class="memory-trick">
+    <span class="emoji-big">🌀</span>
+    <div class="mt-title">Analogy: Compass in Magnetic Field</div>
+      <p>Just as a compass needle aligns with Earth's magnetic field (torque from the field rotates it to alignment), an electric dipole in a uniform electric field experiences a <strong>torque that tries to align p⃗ with E⃗</strong>. This is how microwave ovens work — they use an alternating E field to rotate water dipoles millions of times per second, generating heat through friction!</p>
+    </div>
+  </div>
+
+  <!-- SVG: Dipole in field -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ef" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#00d4ff"/></marker>
+      </defs>
+      <!-- Uniform field lines -->
+      <line x1="30" y1="50" x2="530" y2="50" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#ef)"/>
+      <line x1="30" y1="110" x2="530" y2="110" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#ef)"/>
+      <line x1="30" y1="170" x2="530" y2="170" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#ef)"/>
+      <text x="540" y="115" fill="#00d4ff" font-size="13" font-weight="600">E⃗</text>
+      <!-- Dipole at angle theta (tilted) -->
+      <circle cx="230" cy="110" r="16" fill="rgba(245,197,24,0.3)" stroke="#f5c518" stroke-width="2"/>
+      <text x="230" y="115" text-anchor="middle" fill="#00d4ff" font-size="12" font-weight="bold">−q</text>
+      <circle cx="330" cy="80" r="16" fill="rgba(255,107,53,0.3)" stroke="#ff6b35" stroke-width="2"/>
+      <text x="330" y="85" text-anchor="middle" fill="#ff6b35" font-size="12" font-weight="bold">+q</text>
+      <!-- Dipole axis -->
+      <defs><marker id="pma" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#f5c518"/></marker></defs>
+      <line x1="240" y1="104" x2="314" y2="86" stroke="#f5c518" stroke-width="2" marker-end="url(#pma)"/>
+      <text x="274" y="85" text-anchor="middle" fill="#f5c518" font-size="11">p⃗</text>
+      <!-- Theta angle arc -->
+      <path d="M 290 95 A 20 20 0 0 1 300 110" fill="none" stroke="#7fff7f" stroke-width="1.5"/>
+      <text x="315" y="108" fill="#7fff7f" font-size="11">θ</text>
+      <!-- Torque arrow (curved) -->
+      <path d="M 340 90 A 50 50 0 0 0 290 130" fill="none" stroke="#ff6b35" stroke-width="2" stroke-dasharray="5,3"/>
+      <text x="370" y="115" fill="#ff6b35" font-size="11">τ = pE sinθ</text>
+      <text x="370" y="130" fill="#ff6b35" font-size="10">(torque aligns p⃗ with E⃗)</text>
+    </svg>
+    <div class="diag-title">Fig 1.11 — Dipole in uniform electric field: torque τ = pE sinθ aligns the dipole with E</div>
+  </div>
+
+  <div class="memory-trick">
+    <div class="mt-title">🧠 Memory Trick — Dipole Formulas</div>
+    <p><strong>"Axial is Double, Equatorial is Opposite"</strong><br>
+    E_axial = 2E_equatorial (double the value), and equatorial field points opposite to p. For torque: τ = pE sinθ (uses SINE, not cosine!). Confusing torque with potential energy? PE = −pEcosθ (cosine). Remember: Torque = Sine, PE = cosine.</p>
+  </div>
+</div>
+</section>
+
+<!-- =================== GAUSS'S LAW =================== -->
+<section id="gauss">
+<div class="container fade-in">
+  <span class="section-num">Section 1.11</span>
+  <h2 class="section-title">Gauss's Law</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">The most powerful tool in electrostatics — one law to rule them all</p>
+
+  <div class="memory-trick">
+    <span class="emoji-big">💡</span>
+    <div class="mt-title">Why Gauss's Law is Beautiful</div>
+      <p>Coulomb's Law lets you calculate force. But Gauss's Law does something more elegant: it relates the <strong>total electric flux through any closed surface</strong> to the charge enclosed inside. It doesn't care about the shape of the surface, the position of the charge inside, or what's outside. Just the charge inside. Simple. Elegant. Powerful. This is physics at its best!</p>
+    </div>
+  </div>
+
+  <div class="def-box">
+    <div class="def-title">📋 Gauss's Law — Statement</div>
+    <p>The total electric flux through any closed surface is equal to <strong>1/ε₀ times the total charge enclosed</strong> by that surface.</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">Gauss's Law</div>
+    <div class="formula-big">φ = ∮ E⃗ · dS⃗ = q_enclosed / ε₀</div>
+    <div class="formula-note">
+      φ = total electric flux through any closed surface (called Gaussian surface)<br>
+      q_enclosed = total charge inside the closed surface (algebraic sum)<br>
+      ε₀ = 8.854 × 10⁻¹² C²N⁻¹m⁻² (permittivity of free space)<br>
+      The surface can be ANY shape — sphere, cube, irregular blob!
+    </div>
+  </div>
+
+  <!-- SVG: Gauss's law visual -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+      <!-- Gaussian surface (sphere) -->
+      <circle cx="280" cy="110" r="90" fill="rgba(245,197,24,0.06)" stroke="#f5c518" stroke-width="2" stroke-dasharray="8,4"/>
+      <text x="380" y="40" fill="#f5c518" font-size="11" font-weight="600">Gaussian Surface</text>
+      <text x="380" y="53" fill="#9090b0" font-size="10">(any closed surface)</text>
+      <!-- Charge inside -->
+      <circle cx="270" cy="100" r="14" fill="rgba(255,107,53,0.3)" stroke="#ff6b35" stroke-width="2"/>
+      <text x="270" y="105" text-anchor="middle" fill="#ff6b35" font-size="12" font-weight="bold">+Q</text>
+      <text x="270" y="135" text-anchor="middle" fill="#f5c518" font-size="10">q_enc = +Q</text>
+      <!-- Field lines outward -->
+      <defs>
+        <marker id="gla" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#00d4ff"/></marker>
+      </defs>
+      <line x1="280" y1="20" x2="280" y2="10" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#gla)"/>
+      <line x1="350" y1="40" x2="365" y2="28" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#gla)"/>
+      <line x1="370" y1="110" x2="385" y2="110" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#gla)"/>
+      <line x1="350" y1="180" x2="362" y2="195" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#gla)"/>
+      <line x1="280" y1="200" x2="280" y2="212" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#gla)"/>
+      <line x1="210" y1="180" x2="198" y2="192" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#gla)"/>
+      <line x1="190" y1="110" x2="175" y2="110" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#gla)"/>
+      <line x1="210" y1="40" x2="195" y2="28" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#gla)"/>
+      <!-- Formula -->
+      <text x="150" y="170" text-anchor="middle" fill="#7fff7f" font-size="13" font-weight="700">φ = Q/ε₀</text>
+    </svg>
+    <div class="diag-title">Fig 1.12 — Gauss's Law: total flux through any closed surface = Q_enclosed/ε₀</div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="callout">
+      <h3>✅ What Makes Gauss's Law Powerful?</h3>
+      <p>• Works for ANY closed surface (sphere, cube, irregular)<br>
+      • Charge OUTSIDE the surface contributes ZERO net flux<br>
+      • Flux depends ONLY on enclosed charge<br>
+      • Doesn't need the charge to be at center<br>
+      • If q_enc = 0, net flux = 0 (but E may not be zero!)</p>
+    </div>
+    <div class="callout">
+      <h3>⚠️ Common Misconceptions</h3>
+      <p>• Gauss's law works for ANY closed surface, not just spheres!<br>
+      • φ = 0 does NOT mean E = 0 everywhere on the surface<br>
+      • External charges don't contribute to NET flux but DO affect local E<br>
+      • Must be an isolated system — closed surface required</p>
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">💡 Gauss's Law vs Coulomb's Law</div>
+    Gauss's law is actually a more general statement than Coulomb's law — you can derive Coulomb's law FROM Gauss's law (using a spherical Gaussian surface around a point charge). That's why it's so fundamental!
+  </div>
+
+  <h3>Proof Concept: Gauss's Law from Coulomb's Law</h3>
+  <div class="def-box">
+    <div class="def-title">📐 Derivation Concept (For Board Exams)</div>
+    <p>Consider a point charge +q at centre of a sphere of radius r.<br>
+    E at surface = q/(4πε₀r²) (outward, constant on sphere)<br>
+    Area of sphere = 4πr²<br>
+    φ = E × A = [q/(4πε₀r²)] × [4πr²] = <strong>q/ε₀</strong><br>
+    The r² cancels! This is why Gauss's law is distance-independent.<br>
+    It works because Coulomb's law is an inverse-square law — exactly matching the area growth of spheres!</p>
+  </div>
+</div>
+</section>
+
+<!-- =================== APPLICATIONS OF GAUSS'S LAW =================== -->
+<section id="applications">
+<div class="container fade-in">
+  <span class="section-num">Section 1.12</span>
+  <h2 class="section-title">Applications of Gauss's Law</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Using Gauss's Law to find electric fields of continuous charge distributions</p>
+
+  <div class="memory-trick">
+    <span class="emoji-big">⚡</span>
+    <div class="mt-title">The Strategy: Choose Your Gaussian Surface Wisely!</div>
+      <p>The trick with Gauss's law is choosing a Gaussian surface where <strong>E is constant in magnitude and either parallel or perpendicular</strong> to the surface everywhere. When you can factor E out of the integral, the math becomes trivial. This is the art of applying Gauss's law!</p>
+    </div>
+  </div>
+
+  <!-- Application 1: Infinite Line Charge -->
+  <h3>1. Field Due to Infinite Line Charge</h3>
+
+  <div class="def-box">
+    <div class="def-title">📋 Setup</div>
+    <p>An infinitely long line charge with uniform <strong>linear charge density λ (C/m)</strong>. Gaussian surface: coaxial cylinder of radius r and length l.</p>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-label">Electric Field Due to Infinite Line Charge</div>
+    <div class="formula-big">E = λ / (2πε₀r)</div>
+    <div class="formula-note">
+      λ = linear charge density (C/m) &nbsp;|&nbsp; r = perpendicular distance from line<br>
+      Direction: radially outward (for +λ), radially inward (for −λ)<br>
+      Note: E ∝ 1/r (falls slower than point charge's 1/r²!)
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">💡 Derivation Steps — Infinite Line Charge</div>
+    1. Cylindrical Gaussian surface of radius r, length l<br>
+    2. Flux through two flat ends = 0 (E perpendicular to normal)<br>
+    3. Flux through curved surface = E × 2πrl (E is constant, parallel to outward normal)<br>
+    4. q_enclosed = λl<br>
+    5. Gauss's Law: E × 2πrl = λl/ε₀ → <strong>E = λ/(2πε₀r)</strong>
+  </div>
+
+  <!-- Application 2: Infinite Plane Sheet -->
+  <h3>2. Field Due to Infinite Plane Sheet of Charge</h3>
+
+  <div class="formula-box">
+    <div class="f-label">Electric Field Due to Infinite Plane Sheet</div>
+    <div class="formula-big">E = σ / (2ε₀)</div>
+    <div class="formula-note">
+      σ = surface charge density (C/m²)<br>
+      Direction: perpendicular to the plane (outward for +σ)<br>
+      Key: E is UNIFORM and INDEPENDENT of distance from the sheet!
+    </div>
+  </div>
+
+  <div class="callout blue">
+    <div class="callout-title">💡 Derivation Steps — Infinite Plane Sheet</div>
+    1. Gaussian surface: cylinder (pillbox) with cross-sectional area A, straddling the sheet<br>
+    2. Flux through curved surface = 0 (E parallel to surface)<br>
+    3. Flux through two flat faces = 2 × E × A (E exits both sides)<br>
+    4. q_enclosed = σA<br>
+    5. Gauss's Law: 2EA = σA/ε₀ → <strong>E = σ/(2ε₀)</strong>
+  </div>
+
+  <!-- Application 3: Spherical Shell -->
+  <h3>3. Field Due to Uniformly Charged Spherical Shell</h3>
+
+  <div class="summary-grid">
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Outside the Shell (r &gt; R)</div>
+      <div class="formula-big" style="font-size:1.06rem;">E = Q / (4πε₀r²)</div>
+      <div class="formula-note">Same as a point charge Q at the centre! The shell "looks like" a point charge from outside.</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Inside the Shell (r &lt; R)</div>
+      <div class="formula-big" style="font-size:1.06rem;">E = 0</div>
+      <div class="formula-note">No enclosed charge → Gauss's Law gives E = 0. This is the basis of Faraday cage shielding!</div>
+    </div>
+  </div>
+
+  <!-- SVG: E vs r for spherical shell -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="xa" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5 Z" fill="#9090b0"/></marker>
+        <marker id="ya" markerWidth="6" markerHeight="5" refX="0" refY="2.5" orient="auto"><path d="M6,0 L0,2.5 L6,5 Z" fill="#9090b0"/></marker>
+      </defs>
+      <!-- Axes -->
+      <line x1="60" y1="190" x2="520" y2="190" stroke="#9090b0" stroke-width="1.5" marker-end="url(#xa)"/>
+      <line x1="60" y1="190" x2="60" y2="20" stroke="#9090b0" stroke-width="1.5" marker-end="url(#ya)"/>
+      <text x="530" y="194" fill="#9090b0" font-size="11">r</text>
+      <text x="50" y="18" fill="#9090b0" font-size="11">E</text>
+      <!-- R marker -->
+      <line x1="200" y1="188" x2="200" y2="192" stroke="#f5c518" stroke-width="2"/>
+      <text x="200" y="204" text-anchor="middle" fill="#f5c518" font-size="11">R</text>
+      <!-- Zero line inside shell -->
+      <line x1="60" y1="190" x2="200" y2="190" stroke="#f5c518" stroke-width="3"/>
+      <text x="130" y="182" text-anchor="middle" fill="#f5c518" font-size="10">E = 0 inside</text>
+      <!-- Peak at R -->
+      <circle cx="200" cy="60" r="4" fill="#ff6b35"/>
+      <!-- 1/r² curve outside -->
+      <path d="M 200 60 C 250 75, 300 100, 350 120 C 400 140, 450 155, 510 170" fill="none" stroke="#00d4ff" stroke-width="2.5"/>
+      <text x="420" y="140" fill="#00d4ff" font-size="10">E ∝ 1/r²</text>
+      <text x="420" y="152" fill="#00d4ff" font-size="10">(outside)</text>
+      <!-- Jump label -->
+      <line x1="200" y1="60" x2="200" y2="190" stroke="#ff6b35" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="210" y="120" fill="#ff6b35" font-size="10">E_max at r=R</text>
+      <text x="210" y="132" fill="#ff6b35" font-size="10">= σ/ε₀</text>
+    </svg>
+    <div class="diag-title">Fig 1.13 — E vs r for uniformly charged spherical shell: zero inside, peak at surface, 1/r² outside</div>
+  </div>
+
+  <div class="summary-grid">
+    <div class="callout">
+      <h3>🛡️ Faraday Cage — Real World Application</h3>
+      <p>Inside a conducting shell, E = 0. This is used in:<br>
+      • Car bodies protect passengers from lightning<br>
+      • Shielded cables (coaxial cables) for signal integrity<br>
+      • Microwave oven mesh prevents radiation escape<br>
+      • Aircraft and spacecraft electronics shielding<br>
+      Named after Michael Faraday (1836)!</p>
+    </div>
+    <div class="callout">
+      <h3>📋 Summary: All Three Applications</h3>
+      <p>• <strong>Line charge:</strong> E = λ/(2πε₀r) — falls as 1/r<br>
+      • <strong>Plane sheet:</strong> E = σ/(2ε₀) — CONSTANT (no r!)<br>
+      • <strong>Spherical shell:</strong> E = 0 (inside), Q/(4πε₀r²) (outside)<br><br>
+      Each uses a cleverly chosen Gaussian surface that exploits the symmetry of the charge distribution!</p>
+    </div>
+  </div>
+
+  <div class="memory-trick">
+    <div class="mt-title">🧠 Worked Numerical — Line Charge</div>
+    <p>An infinite line charge produces field 9×10⁴ N/C at distance 2 cm. Find λ.<br>
+    E = λ/(2πε₀r) → λ = E × 2πε₀r = 9×10⁴ × 2π × 8.854×10⁻¹² × 0.02<br>
+    <strong>λ = 10⁻⁷ C/m = 0.1 μC/m</strong></p>
+  </div>
+
+  <div class="memory" style="margin-top:12px;">
+    <div class="mt-title">🧠 Worked Numerical — Dipole Axial &amp; Equatorial</div>
+    <p>Two charges ±10 μC are placed 5.0 mm apart. Find E at (a) axial point 15 cm from centre, (b) equatorial point 15 cm.<br>
+    p = 10⁻⁵ × 5×10⁻³ = 5×10⁻⁸ C·m, r = 0.15 m<br>
+    (a) E_axial = 2p/(4πε₀r³) = 2×9×10⁹×5×10⁻⁸/(0.15)³ ≈ <strong>2.67 × 10⁵ N/C</strong><br>
+    (b) E_equatorial = half of axial ≈ <strong>1.33 × 10⁵ N/C</strong> (opposite to p)</p>
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 10: ALL FORMULAS =================== -->
+<section id="formulas">
+<div class="container fade-in">
+  <span class="section-num">Quick Reference</span>
+  <h2 class="section-title">All Formulas — Chapter 1</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Everything you need for the board exam in one place</p>
+
+  <div class="summary-grid">
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Coulomb's Law</div>
+      <div class="formula-big" style="font-size:1.06rem;">F = kq₁q₂/r² = q₁q₂/(4πε₀r²)</div>
+      <div class="formula-note">k = 9×10⁹ Nm²C⁻²; ε₀ = 8.85×10⁻¹² C²N⁻¹m⁻²</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Quantisation of Charge</div>
+      <div class="formula-big" style="font-size:1.06rem;">q = ne; e = 1.6×10⁻¹⁹ C</div>
+      <div class="formula-note">n = ±1, ±2, ±3, ... (integer)</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Electric Field (Point Charge)</div>
+      <div class="formula-big" style="font-size:1.06rem;">E = Q/(4πε₀r²)</div>
+      <div class="formula-note">Direction: along r̂ for +Q, opposite for −Q</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Force on a Charge in Field</div>
+      <div class="formula-big" style="font-size:1.06rem;">F = qE</div>
+      <div class="formula-note">F = force, q = charge, E = electric field at that point</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Electric Flux</div>
+      <div class="formula-big" style="font-size:1.06rem;">φ = E·ΔS = EΔS cosθ</div>
+      <div class="formula-note">Unit: Nm²/C or Vm; Scalar quantity</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Coulomb's Law (Vector)</div>
+      <div class="formula-big" style="font-size:0.94rem;">F₂₁ = q₁q₂r̂₂₁/(4πε₀r²₂₁)</div>
+      <div class="formula-note">r̂₂₁ = unit vector from q₁ to q₂</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Dipole Moment</div>
+      <div class="formula-big" style="font-size:1.06rem;">p = q × 2a</div>
+      <div class="formula-note">Direction: from −q to +q | Unit: C·m</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Dipole Field — Axial</div>
+      <div class="formula-big" style="font-size:1.06rem;">E = 2p/(4πε₀r³)</div>
+      <div class="formula-note">Direction: along p⃗ | Short dipole r >> a</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Dipole Field — Equatorial</div>
+      <div class="formula-big" style="font-size:1.06rem;">E = p/(4πε₀r³)</div>
+      <div class="formula-note">Direction: opposite to p⃗ | Half of axial</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Torque on Dipole</div>
+      <div class="formula-big" style="font-size:1.06rem;">τ = pE sinθ</div>
+      <div class="formula-note">τ⃗ = p⃗ × E⃗ | Max when θ=90°</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Gauss's Law</div>
+      <div class="formula-big" style="font-size:1.06rem;">φ = q_enc / ε₀</div>
+      <div class="formula-note">Works for ANY closed surface</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Infinite Line Charge</div>
+      <div class="formula-big" style="font-size:1.06rem;">E = λ/(2πε₀r)</div>
+      <div class="formula-note">λ = linear charge density | E ∝ 1/r</div>
+    </div>
+    <div class="formula-box" style="text-align:left;padding:20px;">
+      <div class="f-label">Infinite Plane Sheet</div>
+      <div class="formula-big" style="font-size:1.06rem;">E = σ/(2ε₀)</div>
+      <div class="formula-note">σ = surface charge density | E is constant!</div>
+    </div>
+  </div>
+
+  <h3>Constants to Remember</h3>
+  <table class="compare-table">
+    <tr><th>Constant</th><th>Symbol</th><th>Value</th><th>What it is</th></tr>
+    <tr><td>Elementary charge</td><td>e</td><td>1.6 × 10⁻¹⁹ C</td><td>Charge of proton/electron</td></tr>
+    <tr><td>Coulomb's constant</td><td>k</td><td>9 × 10⁹ Nm²/C²</td><td>Proportionality in Coulomb's law</td></tr>
+    <tr><td>Permittivity of free space</td><td>ε₀</td><td>8.854 × 10⁻¹² C²N⁻¹m⁻²</td><td>k = 1/(4πε₀)</td></tr>
+    <tr><td>Mass of electron</td><td>mₑ</td><td>9.11 × 10⁻³¹ kg</td><td>For force/acceleration problems</td></tr>
+    <tr><td>Mass of proton</td><td>mₚ</td><td>1.67 × 10⁻²⁷ kg</td><td>For force/acceleration problems</td></tr>
+  </table>
+</section>
+
+<!-- =================== SECTION 11: PYQs =================== -->
+<section id="pyq">
+<div class="container fade-in">
+  <span class="section-num">Board Exam Preparation</span>
+  <h2 class="section-title">Previous Year Questions (PYQs)</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Questions that actually appeared in CBSE board exams</p>
+
+  <div class="q-card board">
+    <div class="q-label">📄 CBSE 2024 · 2 Marks</div>
+    <p>State and explain Coulomb's law in electrostatics. Write the expression in vector form.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong>Answer:</strong> The electrostatic force between two point charges is directly proportional to the product of the magnitudes of charges and inversely proportional to the square of the distance between them. F = (1/4πε₀)(q₁q₂/r²). In vector form: <strong>F₂₁ = (1/4πε₀)(q₁q₂/r²₂₁)r̂₂₁</strong>
+    </div>
+  </div>
+
+  <div class="q-card board">
+    <div class="q-label">📄 CBSE 2023 · 1 Mark</div>
+    <p>A charge q is placed at the centroid of an equilateral triangle with equal charges at its vertices. What is the net force on q?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong>Answer: Zero.</strong> By symmetry, equal forces from three vertices at 120° to each other cancel out completely.
+    </div>
+  </div>
+
+  <div class="q-card board">
+    <div class="q-label">📄 CBSE 2023 · 3 Marks</div>
+    <p>Define electric field lines and state four important properties of electric field lines.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong>Answer:</strong><br>
+      <strong>Definition:</strong> Curve drawn such that tangent at each point gives direction of net E field.<br>
+      <strong>Properties:</strong><br>
+      (1) Start from positive charges, end at negative charges<br>
+      (2) Continuous curves in charge-free region<br>
+      (3) Two field lines never cross each other<br>
+      (4) Do not form closed loops in electrostatics
+    </div>
+  </div>
+
+  <div class="q-card board">
+    <div class="q-label">📄 CBSE 2022 · 2 Marks</div>
+    <p>Why does a plastic comb rubbed against hair attract small bits of paper? Why does a metal comb not show this property?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong>Answer:</strong> Plastic is an insulator — when rubbed, charges stay at rubbed spot (not redistributed). Metal is a conductor — charges immediately flow through hand to ground. So plastic retains charge and attracts paper; metal does not.
+    </div>
+  </div>
+
+  <div class="q-card board">
+    <div class="q-label">📄 CBSE 2022 · 3 Marks</div>
+    <p>State the principle of superposition of electrostatic forces. Three point charges +1μC, −2μC, and +3μC are placed at vertices A, B, C of an equilateral triangle. Find the direction of net electric field at centroid.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong>Superposition:</strong> The force on a charge due to a system of charges is the vector sum of individual forces.<br>
+      <strong>Net E direction:</strong> E due to +1μC points away from A, +3μC points away from C, −2μC points toward B. Net E will be along the direction from centroid toward B (toward −2μC side, since +1+3=4μC net repulsion in opposite hemisphere dominates).
+    </div>
+  </div>
+
+  <div class="q-card board">
+    <div class="q-label">📄 CBSE 2020 · 1 Mark</div>
+    <p>What is the SI unit of electric flux?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer"><strong>Answer: Nm²C⁻¹ or Vm (volt-metre)</strong></div>
+  </div>
+
+  <div class="q-card board">
+    <div class="q-label">📄 CBSE 2019 · 2 Marks</div>
+    <p>Two equal balls having equal positive charge 'q' coulombs are suspended by two insulating strings of equal length. What would be the effect on the force between them if a sheet of metal is placed between them?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong>Answer:</strong> The electric force between the charges becomes <strong>zero</strong>. The metal sheet being a conductor has charges induced on its surfaces. The field inside a conductor is zero, effectively shielding the charges from each other (Faraday cage effect).
+    </div>
+  </div>
+
+  <div class="q-card board">
+    <div class="q-label">📄 CBSE 2018 · 1 Mark</div>
+    <p>Why can't two electric field lines intersect?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong>Answer:</strong> If two field lines intersect, there would be two directions of electric field at the point of intersection, which is physically impossible as the electric field has a unique direction at any point in space.
+    </div>
+  </div>
+
+  <div class="q-card board">
+    <div class="q-label">📄 CBSE 2017 · 5 Marks</div>
+    <p>Derive the expression for the electric field at any point on the equatorial line of a short electric dipole.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong>Answer:</strong> (This is from Section 1.10+ which extends beyond our PDF — but important for boards!)<br>
+      E_equatorial = (1/4πε₀) × p/(r² + l²)^(3/2)<br>
+      For short dipole (r >> l): E = p/(4πε₀r³)<br>
+      Direction: Opposite to the direction of dipole moment p.
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 12: NUMERICALS =================== -->
+<section id="numericals">
+<div class="container fade-in">
+  <span class="section-num">Practice Problems</span>
+  <h2 class="section-title">Numerical Questions</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Solved examples with step-by-step solutions</p>
+
+  <div class="worked">
+    <div class="w-title">🔢 Numerical 1 — Coulomb's Force (Basic)</div>
+    <p>Two point charges +4μC and −2μC are placed 0.3 m apart in vacuum. Find the force between them. Is it attractive or repulsive?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+Given: q₁ = +4×10⁻⁶ C, q₂ = −2×10⁻⁶ C, r = 0.3 m, k = 9×10⁹ Nm²/C²
+
+F = k|q₁q₂|/r²
+  = 9×10⁹ × |4×10⁻⁶ × (−2×10⁻⁶)| / (0.3)²
+  = 9×10⁹ × 8×10⁻¹² / 0.09
+  = 72×10⁻³ / 0.09
+  = 0.8 N
+
+Since charges are opposite (+q and −q): ATTRACTIVE force
+∴ F = 0.8 N (Attractive) ✓
+    </div>
+  </div>
+
+  <div class="worked">
+    <div class="w-title">🔢 Numerical 2 — Quantisation</div>
+    <p>How many electrons must be removed from a metallic sphere to give it a charge of +1.6 μC?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+Given: q = +1.6 μC = 1.6×10⁻⁶ C
+      e = 1.6×10⁻¹⁹ C
+
+q = ne → n = q/e
+n = 1.6×10⁻⁶ / 1.6×10⁻¹⁹
+n = 10¹³ electrons
+
+∴ 10,000,000,000,000 (ten trillion) electrons must be removed ✓
+Note: Removing electrons → positive charge (lost negative charge)
+    </div>
+  </div>
+
+  <div class="worked">
+    <div class="w-title">🔢 Numerical 3 — Electric Field</div>
+    <p>A point charge of +5 μC is placed in vacuum. Find the electric field at a point 30 cm from it. Also find the force experienced by a −2 μC charge placed at that point.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+Given: Q = +5×10⁻⁶ C, r = 0.30 m, q = −2×10⁻⁶ C
+
+Step 1: Electric Field at the point
+E = kQ/r² = 9×10⁹ × 5×10⁻⁶ / (0.30)²
+  = 45×10³ / 0.09
+  = 5 × 10⁵ N/C (directed away from +Q)
+
+Step 2: Force on −2μC charge
+F = qE = 2×10⁻⁶ × 5×10⁵
+  = 1 N
+
+Direction: Toward +Q (attractive, since test charge is negative)
+∴ E = 5×10⁵ N/C, F = 1 N (attractive) ✓
+    </div>
+  </div>
+
+  <div class="worked">
+    <div class="w-title">🔢 Numerical 4 — NCERT Example 1.1 (Classic Board Question)</div>
+    <p>If 10⁹ electrons move out of a body to another body every second, how long to get a total charge of 1C?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+Charge transferred per second = n × e = 10⁹ × 1.6×10⁻¹⁹
+                               = 1.6×10⁻¹⁰ C/s
+
+Time for 1C: t = 1 / (1.6×10⁻¹⁰)
+             = 6.25×10⁹ s
+             = 6.25×10⁹ / (365 × 24 × 3600) years
+             = 6.25×10⁹ / (3.15×10⁷) years
+             ≈ 198 years!
+
+∴ t ≈ 200 years
+Conclusion: 1 Coulomb is an ENORMOUS unit of charge! ✓
+    </div>
+  </div>
+
+  <div class="worked">
+    <div class="w-title">🔢 Numerical 5 — Coulomb vs Gravity Ratio</div>
+    <p>Compare the electrostatic and gravitational force between a proton and an electron at a distance of 10⁻¹⁰ m (Bohr radius). [mₚ = 1.67×10⁻²⁷ kg, mₑ = 9.11×10⁻³¹ kg]</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+Electric force:
+Fe = ke²/r² = 9×10⁹ × (1.6×10⁻¹⁹)² / (10⁻¹⁰)²
+   = 9×10⁹ × 2.56×10⁻³⁸ / 10⁻²⁰
+   = 2.3×10⁻⁸ N
+
+Gravitational force:
+Fg = Gmₚmₑ/r² = 6.67×10⁻¹¹ × 1.67×10⁻²⁷ × 9.11×10⁻³¹ / (10⁻¹⁰)²
+   = 6.67×10⁻¹¹ × 1.52×10⁻⁵⁷ / 10⁻²⁰
+   = 1.01×10⁻⁴⁷ N
+
+Ratio: Fe/Fg = 2.3×10⁻⁸ / 1.01×10⁻⁴⁷ ≈ 2.4×10³⁹
+
+∴ Electric force is ~2.4×10³⁹ times stronger than gravity! ✓
+    </div>
+  </div>
+
+  <div class="worked">
+    <div class="w-title">🔢 Numerical 6 — Superposition (3 charges on a line)</div>
+    <p>Three charges +2μC, −3μC, +4μC are placed at x = 0, x = 1m, x = 2m respectively. Find the net force on the middle charge (−3μC).</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+Let q₁ = +2μC at A (x=0), q₂ = −3μC at B (x=1m), q₃ = +4μC at C (x=2m)
+
+Force on q₂ due to q₁ (F₁₂):
+F₁₂ = k|q₁||q₂|/r₁₂² = 9×10⁹ × 2×10⁻⁶ × 3×10⁻⁶ / 1²
+     = 0.054 N
+Direction: q₁ is +, q₂ is − → Attractive → F₁₂ points in −x direction (toward A)
+
+Force on q₂ due to q₃ (F₃₂):
+F₃₂ = k|q₃||q₂|/r₃₂² = 9×10⁹ × 4×10⁻⁶ × 3×10⁻⁶ / 1²
+     = 0.108 N
+Direction: q₃ is +, q₂ is − → Attractive → F₃₂ points in +x direction (toward C)
+
+Net force on q₂:
+F_net = F₃₂ − F₁₂ = 0.108 − 0.054 = 0.054 N
+Direction: +x direction (toward C)
+
+∴ Net force = 0.054 N in +x direction ✓
+    </div>
+  <div class="worked">
+    <div class="w-title">🔢 Numerical 7 — Dipole Axial &amp; Equatorial Fields</div>
+    <p>Two charges ±10 μC are placed 5.0 mm apart. Find E at (a) axial point 15 cm from centre, (b) equatorial point 15 cm from centre.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+p = q × 2a = 10⁻⁵ × 5×10⁻³ = 5×10⁻⁸ C·m
+r = 0.15 m, a = 2.5×10⁻³ m → r >> a ✓ (short dipole approximation valid)
+
+(a) Axial: E = 2p/(4πε₀r³) = 2×(9×10⁹)×(5×10⁻⁸)/(0.15)³
+         = 9×10²/3.375×10⁻³ = 2.67 × 10⁵ N/C  (along p⃗ direction)
+
+(b) Equatorial: E = p/(4πε₀r³) = half of axial = 1.33 × 10⁵ N/C
+              Direction: OPPOSITE to p⃗ ✓
+    </div>
+  </div>
+
+  <div class="worked">
+    <div class="w-title">🔢 Numerical 8 — Charged Spherical Shell (Gauss's Law)</div>
+    <p>A uniformly charged conducting sphere of diameter 2.4 m has surface charge density 80 μC/m². Find (a) total charge, (b) total electric flux.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+R = 1.2 m, σ = 80×10⁻⁶ C/m²
+
+(a) q = σ × 4πR²
+     = 80×10⁻⁶ × 4π × (1.2)²
+     = 80×10⁻⁶ × 18.096
+     = 1.448×10⁻³ C ≈ 1.45 mC ✓
+
+(b) By Gauss's Law: φ = q/ε₀
+     = 1.45×10⁻³ / 8.854×10⁻¹²
+     = 1.637×10⁸ N·m²C⁻¹ ✓
+    </div>
+  </div>
+
+  <div class="worked">
+    <div class="w-title">🔢 Numerical 9 — Torque on Dipole</div>
+    <p>A dipole with p = 4×10⁻⁹ C·m is placed at 30° to a field E = 5×10⁴ N/C. Find the torque on the dipole.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+Given: p = 4×10⁻⁹ C·m, E = 5×10⁴ N/C, θ = 30°
+
+τ = pE sinθ
+  = 4×10⁻⁹ × 5×10⁴ × sin30°
+  = 4×10⁻⁹ × 5×10⁴ × 0.5
+  = 20×10⁻⁵ × 0.5
+
+τ = 10⁻⁴ N·m = 0.1 mN·m ✓
+
+Note: If θ = 90° (dipole ⊥ field), τ_max = pE = 2×10⁻⁴ N·m (double this value)
+    </div>
+  </div>
+
+  <div class="worked">
+    <div class="w-title">🔢 Numerical 10 — Distance Scaled (Ratio Problem)</div>
+    <p>If the distance between two charges is tripled and each charge is doubled, what is the new force in terms of the original force F?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Solution</button>
+  <div class="w-solution">
+Original: F = k·q₁·q₂/r²
+
+New charges: 2q₁ and 2q₂
+New distance: 3r
+
+New force: F' = k·(2q₁)·(2q₂)/(3r)²
+               = k·4q₁q₂/9r²
+               = (4/9) × (kq₁q₂/r²)
+               = (4/9) F
+
+∴ The new force is (4/9)th of the original force ✓
+Tip: When both charges double → ×4, when r triples → ÷9. Net: ×(4/9)
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- =================== SECTION 13: HOTS + THEORY =================== -->
+<section id="hots">
+<div class="container fade-in">
+  <span class="section-num">Advanced Questions</span>
+  <h2 class="section-title">HOTS + Theory Questions</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Higher Order Thinking Skills questions for top scores</p>
+
+  <h3>HOTS Questions</h3>
+
+  <div class="q-card hots">
+    <div class="q-label">🔥 HOTS 1 — Conceptual Reasoning</div>
+    <p><strong>Q:</strong> Why is the electric field inside a conductor always zero? What happens to charges when placed on a conductor?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong style="color:var(--accent3)">Answer:</strong> When charges are placed on a conductor, free electrons redistribute until the internal electric field becomes zero. If there were an internal field, free electrons would keep moving (which contradicts static equilibrium). At equilibrium, charges reside only on the surface, and E inside = 0. This is the basis of electromagnetic shielding (Faraday cage).
+    </div>
+  </div>
+
+  <div class="q-card hots">
+    <div class="q-label">🔥 HOTS 2 — Paradox Analysis</div>
+    <p><strong>Q:</strong> If the electric force is 10³⁶ times stronger than gravitational force, why does gravity seem to dominate at large scales?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong style="color:var(--accent3)">Answer:</strong> Gravity is always attractive. But electric force can be both attractive and repulsive. Large objects (planets, stars) are electrically neutral — positive and negative charges cancel. So net electric force between large neutral bodies is essentially zero, while gravity (always attractive) accumulates. That's why gravity wins at cosmic scales despite being intrinsically much weaker!
+    </div>
+  </div>
+
+  <div class="q-card hots">
+    <div class="q-label">🔥 HOTS 3 — Application</div>
+    <p><strong>Q:</strong> Two identical metallic spheres A and B have charges +3Q and −Q. They are brought into contact and then separated. Find the final charge on each sphere and explain the process.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong style="color:var(--accent3)">Answer:</strong> When touching: Total charge = +3Q + (−Q) = +2Q. By symmetry (identical spheres), each gets +2Q/2 = <strong>+Q</strong>. After separation, each sphere has charge +Q. Principle used: Additivity of charges + equal distribution in identical conductors in contact.
+    </div>
+  </div>
+
+  <div class="q-card hots">
+    <div class="q-label">🔥 HOTS 4 — Derive and Analyze</div>
+    <p><strong>Q:</strong> Four equal charges +q are placed at the four corners of a square of side 'a'. Find the net force on one corner charge.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong style="color:var(--accent3)">Answer:</strong><br>
+      Forces from two adjacent corners: F₁ = kq²/a² (along diagonal, each)<br>
+      Force from diagonally opposite corner: F₂ = kq²/(a√2)² = kq²/2a² (along diagonal)<br>
+      The two adjacent forces have equal magnitude and 90° between them.<br>
+      Resultant of adjacent forces = √2 × kq²/a² (along diagonal toward center)<br>
+      Plus F₂ along the same diagonal: Total = (1/4πε₀)(q²/a²)(2√2 + 1/2) — directed away from center.
+    </div>
+  </div>
+
+  <div class="q-card hots">
+    <div class="q-label">🔥 HOTS 5 — Critical Thinking</div>
+    <p><strong>Q:</strong> The test charge used to measure electric field must be infinitesimally small. Why? What happens if a large test charge is used?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong style="color:var(--accent3)">Answer:</strong> A large test charge disturbs the distribution of the source charge Q (since charges exert forces on each other). This changes the field being measured. As q₀ → 0, its effect on Q's distribution becomes negligible, giving the "true" field due to Q alone. Hence E = lim(q₀→0) F/q₀.
+    </div>
+  </div>
+
+  <div class="q-card hots">
+    <div class="q-label">🔥 HOTS 6 — Real Life</div>
+    <p><strong>Q:</strong> Why is it safer to be inside a car during a thunderstorm than standing in an open field?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong style="color:var(--accent3)">Answer:</strong> A metal car body acts as a <strong>Faraday cage</strong>. According to Gauss's law, the electric field inside a closed conducting surface is zero. Even if lightning strikes the car, the charge distributes on the outer surface and the interior field remains zero. The person inside is safe from electrocution. Standing in an open field makes you the tallest point — a potential lightning rod!
+    </div>
+  </div>
+
+  <div class="q-card hots">
+    <div class="q-label">🔥 HOTS 7 — Net Flux Analysis</div>
+    <p><strong>Q:</strong> What is the net flux through a closed surface if there is no charge inside? Can the electric field at the surface be zero?</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong style="color:var(--accent3)">Answer:</strong> By Gauss's law: φ = q_enc/ε₀ = 0/ε₀ = <strong>zero</strong>. The net flux is zero. However, E at the surface need NOT be zero — external charges create field at the surface but their flux contribution cancels (equal in and out). It's the NET flux that's zero, not the field itself!
+    </div>
+  </div>
+
+  <div class="q-card hots">
+    <div class="q-label">🔥 HOTS 8 — Superposition Deeper</div>
+    <p><strong>Q:</strong> State the superposition principle and explain why it is not "obvious" or mathematically guaranteed.</p>
+    <button class="q-toggle" onclick="toggleAns(this)">Show Answer</button>
+    <div class="q-answer">
+      <strong style="color:var(--accent3)">Answer:</strong> The superposition principle states the total force on a charge equals the vector sum of individual forces from each charge acting independently. It is NOT obvious because: (1) it assumes the presence of extra charges does NOT modify the force between any two charges; (2) there are no 3-body forces that emerge only when multiple charges are present. These are experimental facts, not mathematical necessities — they could have been otherwise!
+    </div>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:2rem 0;">
+
+  <h3>Theory Questions (Board-Style)</h3>
+
+  <!-- 1 MARK QUESTIONS -->
+  <div class="q-card theory" style="margin-bottom:1rem;border:1px solid var(--border);">
+  <div class="q-label" class="accordion-label" onclick="toggleAcc(this)">📝 1-Mark Theory Questions — 20 Questions <span style="float:right;color:var(--accent2)">▼</span></div>
+  <div class="q-answer" style="display:none;">
+      <div style="display:grid;gap:12px;">
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q1. What is the net charge of a hydrogen atom?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ Zero. It has 1 proton (+e) and 1 electron (−e); they cancel out.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q2. Can a body have a charge of 1.5 × 10⁻¹⁹ C?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ No. Charge is quantised; only integer multiples of e = 1.6×10⁻¹⁹ C are allowed. 1.5×10⁻¹⁹ is not an integer multiple.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q3. State the SI unit of electric field intensity.</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ Newton per coulomb (N/C) or equivalently Volt per metre (V/m).</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q4. What is the SI unit of electric flux?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ N·m²/C (Newton metre² per coulomb), also written as V·m (volt-metre).</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q5. At what angle between E and the area vector is electric flux maximum? Minimum?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ Maximum: θ = 0° (φ = EΔS). Minimum/Zero: θ = 90° (φ = 0).</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q6. Is electric charge a scalar or vector quantity?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ Scalar. It has magnitude only, no direction. (But it can be positive or negative — unlike mass.)</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q7. What is meant by "point charge"?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ When the size of a charged body is very small compared to the distance between the charges, the body is treated as a point charge — its entire charge is assumed at one point.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q8. Name the device used to detect charge on a body.</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ Gold Leaf Electroscope.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q9. Who coined the terms "positive" and "negative" charge?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ Benjamin Franklin (American scientist, 18th century).</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q10. Why do electric field lines never cross each other?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ If two lines crossed, the field would have two directions at the point of intersection — which is physically impossible.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q11. What is the value of permittivity of free space (ε₀)?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ ε₀ = 8.854 × 10⁻¹² C²N⁻¹m⁻² (or F/m — farads per metre).</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q12. Do electrostatic field lines form closed loops?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ No. Electrostatic field lines never form closed loops because the electrostatic field is a conservative field. (Magnetic field lines do form closed loops.)</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q13. What happens to the electric force between two charges when the distance is doubled?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ Force becomes 1/4th. (F ∝ 1/r² → when r doubles, F decreases 4 times.)</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q14. Define "electrostatics".</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ Electrostatics is the branch of physics that deals with the study of forces, fields, and potentials arising from charges that are at rest (static charges).</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q15. Is electric flux a scalar or vector?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ Scalar. It is a dot product of two vectors (E and ΔS), which gives a scalar result.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q16. Which particle carries the basic unit of negative charge?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ The electron, with charge −e = −1.6 × 10⁻¹⁹ C.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q17. What is the force between two charges of +1 C each, placed 1 m apart in vacuum?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ F = k(1)(1)/1² = 9×10⁹ N. This is enormous — showing 1 C is a very large unit.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q18. What is the direction of electric field due to a positive point charge?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ Radially outward (away from the charge) in all directions.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q19. In Coulomb's law, what does k = 1/4πε₀ represent?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ k is the proportionality constant in Coulomb's law. k = 9×10⁹ N·m²·C⁻². It is written as 1/(4πε₀) for mathematical convenience in later derivations.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.06);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q20. Where do electric field lines start and where do they end?</p>
+          <p style="color:var(--accent4);font-size:13px;">✅ They start from positive charges and end at negative charges. If only one charge is present, they start (or end) at infinity.</p>
+        </div>
+      </div>
+</div>
+    </div>
+  </div>
+
+  <!-- 2 MARK QUESTIONS -->
+  <div class="q-card theory" style="margin-bottom:1rem;border:1px solid var(--border);">
+  <div class="q-label" class="accordion-label" onclick="toggleAcc(this)">📝 2-Mark Theory Questions — 15 Questions <span style="float:right;color:var(--accent2)">▼</span></div>
+  <div class="q-answer" style="display:none;">
+      <div style="display:grid;gap:14px;">
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q1. Distinguish between conductors and insulators with examples.</p>
+          <p style="color:var(--text);font-size:13.5px;"><strong style="color:var(--accent4)">Conductors:</strong> Allow easy passage of charge. Have free electrons. Charge distributes over entire surface. Examples: metals (Cu, Ag), human body, earth.<br><br>
+          <strong style="color:var(--accent4)">Insulators:</strong> Do not allow passage of charge. Electrons are tightly bound. Charge stays at the point of deposition. Examples: glass, plastic, rubber, wood.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q2. Why is electric force called a "central force"? Does it obey Newton's third law?</p>
+          <p style="color:var(--text);font-size:13.5px;">It acts along the line joining the two charges — the "central" direction. Its magnitude depends only on distance r between charges.<br><br>Yes, it obeys Newton's 3rd law: F₁₂ = −F₂₁. Force on q₁ due to q₂ is equal and opposite to force on q₂ due to q₁.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q3. How does Coulomb's force between two charges change when placed in a medium of relative permittivity εᵣ?</p>
+          <p style="color:var(--text);font-size:13.5px;">F_medium = F_vacuum / εᵣ = (1/4πε₀εᵣ) × q₁q₂/r²<br><br>Since εᵣ > 1 for all media (e.g., water εᵣ ≈ 80), the force decreases in a medium. For water, Coulomb force is only 1/80th of its vacuum value!</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q4. State and explain the law of conservation of electric charge.</p>
+          <p style="color:var(--text);font-size:13.5px;">The total electric charge of an isolated system remains constant. Charge cannot be created or destroyed; it can only be transferred.<br><br>Example: When glass rod is rubbed with silk, glass gains +Q and silk gains −Q. Net charge = 0 before and after rubbing.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q5. Explain the quantisation of electric charge. Who proved it experimentally?</p>
+          <p style="color:var(--text);font-size:13.5px;">Electric charge is always an integer multiple of e: q = ne (n = ±1, ±2, ...).<br>e = 1.6×10⁻¹⁹ C is the elementary charge (charge of proton/electron).<br><br>First suggested by Faraday's electrolysis laws. Experimentally proved by <strong style="color:var(--accent)">Robert Millikan (1912)</strong> in his famous oil-drop experiment.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q6. What is meant by the "principle of superposition" in electrostatics?</p>
+          <p style="color:var(--text);font-size:13.5px;">The total electrostatic force on any charge due to a system of other charges is the vector sum of all individual forces on that charge, taken one at a time.<br><br>Key: Individual forces are unaffected by the presence of other charges. F₁ = F₁₂ + F₁₃ + F₁₄ + ...</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q7. Define electric field. Why must the test charge be vanishingly small?</p>
+          <p style="color:var(--text);font-size:13.5px;">Electric field E at a point = force per unit positive test charge: E = lim(q₀→0) F/q₀.<br><br>Test charge must be vanishingly small (q₀ → 0) so it does not disturb the distribution of the source charge Q, ensuring the measured field is due to Q alone.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q8. How does the electric field due to a point charge vary with distance?</p>
+          <p style="color:var(--text);font-size:13.5px;">E = (1/4πε₀) × Q/r²<br>E ∝ 1/r² — electric field decreases as the square of the distance increases (inverse square law).<br>Double the distance → E becomes 1/4. Triple the distance → E becomes 1/9.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:6px;">Q9. Two charges +3μC and −3μC are placed 10 cm apart. What is the direction of electric field at the midpoint between them?</p>
+          <p style="color:var(--text);font-size:13.5px;">At midpoint: E due to +3μC points away from it (toward −3μC). E due to −3μC also points toward −3μC. Both fields are in the same direction (from +q toward −q). So net E is directed from the positive charge toward the negative charge.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q10. What is the physical significance of electric field lines?</p>
+          <p style="color:var(--text);font-size:13.5px;">(1) Tangent at any point on a field line gives the direction of E at that point.<br>(2) Density (closeness) of field lines indicates the relative strength of E — crowded lines = strong field, sparse lines = weak field.<br>(3) Introduced by Faraday to visually represent the field.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q11. State two differences between gravitational force and Coulomb's electrostatic force.</p>
+          <p style="color:var(--text);font-size:13.5px;">
+          <strong style="color:var(--accent)">1. Nature:</strong> Gravitational force is always attractive. Coulomb force can be attractive or repulsive.<br>
+          <strong style="color:var(--accent)">2. Magnitude:</strong> Electric force is ~10³⁶ times stronger than gravitational force between same particles.<br>
+          <strong style="color:var(--accent)">3. Medium:</strong> Gravity is unaffected by medium. Electric force reduces in a dielectric medium.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q12. What is the difference between "charging by friction" and "charging by induction"?</p>
+          <p style="color:var(--text);font-size:13.5px;"><strong style="color:var(--accent)">By friction:</strong> Requires actual contact and rubbing. Electrons transfer by rubbing. Both objects get charged with opposite signs.<br><br>
+          <strong style="color:var(--accent)">By induction:</strong> No contact needed. Charged body is brought nearby; charges in the neutral body rearrange. Net charge of neutral body still zero unless grounded.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q13. Define electric flux. Is it possible for net flux through a surface to be zero even when E ≠ 0?</p>
+          <p style="color:var(--text);font-size:13.5px;">Electric flux φ = E·ΔS = EΔScosθ. It measures the number of field lines passing through a surface.<br><br>Yes! If the surface is oriented parallel to E (θ = 90°), or if equal field lines enter and exit a closed surface (equal positive and negative contributions), net flux = 0 even though E ≠ 0.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q14. Why is electric field a vector quantity while electric flux is a scalar?</p>
+          <p style="color:var(--text);font-size:13.5px;">Electric field E has both magnitude and direction at every point → vector.<br>Electric flux φ = E · ΔS is a dot product of two vectors → result is a scalar (no direction). Flux only tells "how much" passes through — not in which direction.</p>
+        </div>
+        <div style="background:rgba(127,255,127,0.05);border:1px solid rgba(127,255,127,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q15. A neutral conducting sphere is placed near a positive charge. What happens to the charge distribution on the sphere?</p>
+          <p style="color:var(--text);font-size:13.5px;">By induction: free electrons in the sphere are attracted toward the positive charge — negative charge accumulates on the near side. The far side becomes positively charged (deficit of electrons). Net charge of sphere remains zero, but charges are redistributed. The sphere experiences a net attractive force toward the positive charge.</p>
+        </div>
+      </div>
+</div>
+    </div>
+  </div>
+
+  <!-- 3 MARK QUESTIONS -->
+  <div class="q-card theory" style="margin-bottom:1rem;border:1px solid var(--border);">
+  <div class="q-label" class="accordion-label" onclick="toggleAcc(this)">📝 3-Mark Theory Questions — 8 Questions <span style="float:right;color:var(--accent2)">▼</span></div>
+  <div class="q-answer" style="display:none;">
+      <div style="display:grid;gap:14px;">
+        <div style="background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q1. State Coulomb's law. Write its vector form and explain each term.</p>
+          <p style="color:var(--text);font-size:13.5px;"><strong style="color:var(--accent)">Statement:</strong> The force between two point charges is directly proportional to the product of their magnitudes and inversely proportional to the square of the distance between them, acting along the line joining them.<br><br>
+          <strong style="color:var(--accent)">Vector form:</strong> F₂₁ = (1/4πε₀) × (q₁q₂/r²₂₁) × r̂₂₁<br>
+          where r̂₂₁ = unit vector from q₁ to q₂, r₂₁ = distance between them.<br>
+          If charges same sign → F along r̂₂₁ → repulsion. If opposite sign → F along −r̂₂₁ → attraction. Newton's 3rd law: F₁₂ = −F₂₁ ✓</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q2. State and explain the principle of superposition of forces. Write the mathematical expression for force on charge q₁ due to n other charges.</p>
+          <p style="color:var(--text);font-size:13.5px;"><strong style="color:var(--accent)">Principle:</strong> The total force on any charge due to a system of other charges is the vector sum of forces due to each individual charge, independent of the presence of others.<br><br>
+          F₁ = F₁₂ + F₁₃ + ... + F₁ₙ<br>
+          = (q₁/4πε₀) Σᵢ₌₂ⁿ (qᵢ/r²₁ᵢ) r̂₁ᵢ<br><br>
+          Significance: Coulomb's law + superposition → all electrostatics can be calculated.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q3. Explain the additivity, conservation, and quantisation of electric charge with one example each.</p>
+          <p style="color:var(--text);font-size:13.5px;"><strong style="color:var(--accent)">Additivity:</strong> Charges add algebraically. System with +1, +2, −3 = +1+2−3 = 0. No direction; scalar addition.<br><br>
+          <strong style="color:var(--accent)">Conservation:</strong> In glass-silk rubbing: glass gets +Q, silk gets −Q. Total = 0 before and after.<br><br>
+          <strong style="color:var(--accent)">Quantisation:</strong> q = ne. A body with 3 electrons removed has charge = +3e = +4.8×10⁻¹⁹ C. Non-integer values impossible.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q4. What are electric field lines? Draw field lines for (a) isolated positive charge (b) two equal positive charges.</p>
+          <p style="color:var(--text);font-size:13.5px;">Field lines are imaginary curves where the tangent at each point gives the direction of E. Density represents strength of field.<br><br>
+          (a) Isolated +Q: Radially outward lines in all directions (like a sunburst), extending to infinity.<br>
+          (b) Two +q charges: Lines start from each charge, repel each other. A neutral point exists between them where field is zero. No lines cross. Lines curve away from each other midway.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q5. Define electric flux. Derive the expression φ = E·S cosθ and explain the direction convention for a closed surface.</p>
+          <p style="color:var(--text);font-size:13.5px;">Electric flux through area ΔS = number of field lines crossing it = E·ΔS.<br>If E makes angle θ with area normal n̂: component of E along n̂ = Ecosθ.<br>∴ Δφ = (Ecosθ) × ΔS = EΔScosθ = E⃗ · ΔS⃗<br><br>
+          <strong style="color:var(--accent)">Convention for closed surface:</strong> Area vector (n̂) always points outward (away from enclosed region). Flux leaving surface = positive; entering = negative.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q6. Compare Coulomb's electrostatic force with gravitational force. State any three similarities and three differences.</p>
+          <p style="color:var(--text);font-size:13.5px;"><strong style="color:var(--accent)">Similarities:</strong> (1) Both follow inverse-square law. (2) Both are central forces. (3) Both have unlimited range.<br><br>
+          <strong style="color:var(--accent)">Differences:</strong> (1) Gravity always attractive; Coulomb can be repulsive. (2) Electric force ~10³⁶ times stronger. (3) Coulomb force depends on medium; gravity does not. (4) Source: charge vs mass.</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q7. Describe the construction and working of a gold leaf electroscope. How can it detect the sign of charge?</p>
+          <p style="color:var(--text);font-size:13.5px;"><strong style="color:var(--accent)">Construction:</strong> Glass-enclosed box. Metal rod with knob at top. Two thin gold leaves at bottom. Rubber insulation at the neck.<br><br>
+          <strong style="color:var(--accent)">Working:</strong> Charge → knob → rod → leaves. Both leaves get same charge → repel → diverge. More charge = wider divergence.<br><br>
+          <strong style="color:var(--accent)">Sign detection:</strong> First charge the electroscope with known charge (say +). Then bring unknown charge near knob. If leaves diverge more → same sign (+). If leaves converge → opposite sign (−).</p>
+        </div>
+        <div style="background:rgba(245,197,24,0.05);border:1px solid rgba(245,197,24,0.2);border-radius:8px;padding:14px;">
+          <p style="color:var(--text);font-weight:600;margin-bottom:8px;">Q8. Explain why quantisation of charge is not observable at macroscopic level but is important at microscopic level.</p>
+          <p style="color:var(--text);font-size:13.5px;">At the macroscopic level, we deal with charges like 1 μC = 10⁻⁶ C. This contains 10⁻⁶/1.6×10⁻¹⁹ ≈ 6.25×10¹² electrons. The step size 'e' is imperceptibly tiny compared to the total — like how individual pixels are invisible when viewing a full HD photo from far.<br><br>
+          At the microscopic/atomic level (e.g., nuclear reactions, electron transitions), charges of order a few 'e' are involved. Here quantisation is critical — e.g., a neutron decaying into proton+electron shows charge conservation at the single-particle level.</p>
+        </div>
+      </div>
+</div>
+    </div>
+  </div>
+
+  <!-- 5 MARK QUESTIONS -->
+  <div class="q-card theory" style="margin-bottom:1rem;border:1px solid var(--border);">
+  <div class="q-label" class="accordion-label" onclick="toggleAcc(this)">📝 5-Mark Theory Questions — 6 Questions <span style="float:right;color:var(--accent2)">▼</span></div>
+  <div class="q-answer" style="display:none;">
+      <div style="display:grid;gap:14px;">
+        <div style="background:rgba(255,107,53,0.05);border:1px solid rgba(255,107,53,0.2);border-radius:8px;padding:16px;">
+          <p style="color:var(--text);font-weight:700;margin-bottom:10px;">Q1. State and explain the three basic properties of electric charge in detail with examples and formulae.</p>
+          <p style="color:var(--text);font-size:13.5px;">
+          <strong style="color:var(--accent3)">1. Additivity (2 marks):</strong> Total charge of a system = algebraic sum of all individual charges. Q = q₁+q₂+...+qₙ. Charge is a scalar. Proper algebraic signs must be used. Example: system with +1, +2, −3, +4, −5 = −1 unit. Unlike mass (always +), charge can be positive or negative. This makes conservation testable.<br><br>
+          <strong style="color:var(--accent3)">2. Conservation (1.5 marks):</strong> Net charge of an isolated system is always constant. Cannot create or destroy charge. Only transfer. Example: Rubbing glass with silk → glass gets +Q, silk gets −Q, total = 0. Even at subatomic level: neutron (0) → proton (+e) + electron (−e). Total before = 0, after = +e−e = 0. Never violated in any known experiment.<br><br>
+          <strong style="color:var(--accent3)">3. Quantisation (1.5 marks):</strong> q = ne, where n is an integer and e = 1.6×10⁻¹⁹ C. Charge exists in discrete packets. First suggested by Faraday (electrolysis laws). Proved by Millikan in 1912 (oil drop experiment). Macroscopic level: not observable (charge of 1μC = 10¹³ electrons, step size too tiny). Atomic level: essential (electrons are countable).</p>
+        </div>
+        <div style="background:rgba(255,107,53,0.05);border:1px solid rgba(255,107,53,0.2);border-radius:8px;padding:16px;">
+          <p style="color:var(--text);font-weight:700;margin-bottom:10px;">Q2. Derive the expression for electric field intensity at a point due to a system of n point charges using the superposition principle.</p>
+          <p style="color:var(--text);font-size:13.5px;">
+          <strong style="color:var(--accent3)">Definition:</strong> E at a point P = force experienced by unit positive test charge at P = lim(q₀→0) F/q₀. Direction = direction of force on positive test charge.<br><br>
+          <strong style="color:var(--accent3)">Single charge:</strong> E = (1/4πε₀) × Q/r² × r̂ (vector, pointing away from +Q)<br><br>
+          <strong style="color:var(--accent3)">System of n charges:</strong> Using superposition principle, the field at P due to system of charges q₁, q₂, ..., qₙ at positions r₁, r₂, ..., rₙ:<br>
+          E₁ = (1/4πε₀) × q₁/r²₁ₚ × r̂₁ₚ (due to q₁)<br>
+          E₂ = (1/4πε₀) × q₂/r²₂ₚ × r̂₂ₚ (due to q₂) ... and so on.<br>
+          Total E(P) = E₁+E₂+...+Eₙ = (1/4πε₀) Σᵢ (qᵢ/r²ᵢₚ) r̂ᵢₚ<br><br>
+          <strong style="color:var(--accent3)">Key points:</strong> E is a vector field — varies with position. Independent of test charge. Has spherical symmetry for a single charge.</p>
+        </div>
+        <div style="background:rgba(255,107,53,0.05);border:1px solid rgba(255,107,53,0.2);border-radius:8px;padding:16px;">
+          <p style="color:var(--text);font-weight:700;margin-bottom:10px;">Q3. What are electric field lines? State all their properties. Draw field lines for: (a) single +q (b) single −q (c) +q and −q (dipole) (d) two equal +q charges.</p>
+          <p style="color:var(--text);font-size:13.5px;">
+          <strong style="color:var(--accent3)">Definition:</strong> Curves drawn in an electric field such that tangent at each point gives the direction of net field E there.<br><br>
+          <strong style="color:var(--accent3)">Properties (all 4 must be written):</strong><br>
+          (1) Start from positive, end at negative charges (or at infinity for isolated charges)<br>
+          (2) Continuous curves in charge-free regions (no breaks)<br>
+          (3) Never cross each other (unique direction at each point)<br>
+          (4) Do NOT form closed loops (conservative nature of electrostatic field)<br><br>
+          <strong style="color:var(--accent3)">Density note:</strong> Dense lines = strong field; sparse lines = weak field. Relative density carries the magnitude information.<br><br>
+          (a) Single +q: Radially outward, uniform in all directions<br>
+          (b) Single −q: Radially inward, uniform in all directions<br>
+          (c) Dipole (+q, −q): Start from +q, curve through space, end at −q. Beautiful butterfly pattern<br>
+          (d) Two +q: Start from both, repel midway; neutral point between them where E = 0</p>
+        </div>
+        <div style="background:rgba(255,107,53,0.05);border:1px solid rgba(255,107,53,0.2);border-radius:8px;padding:16px;">
+          <p style="color:var(--text);font-weight:700;margin-bottom:10px;">Q4. State Coulomb's law. Explain how Coulomb arrived at this law experimentally. Write the law in vector form and verify it satisfies Newton's third law.</p>
+          <p style="color:var(--text);font-size:13.5px;">
+          <strong style="color:var(--accent3)">Statement:</strong> Force ∝ q₁q₂ and ∝ 1/r². Acts along the line joining them. F = kq₁q₂/r².<br><br>
+          <strong style="color:var(--accent3)">Experimental method:</strong> Used torsion balance. Problem: unknown charge. Solution: sphere with charge q + identical uncharged sphere → each gets q/2 (symmetry). Repeat → q/4. Gets known ratios. Varied r with fixed charges: F ∝ 1/r². Varied charges with fixed r: F ∝ q₁q₂. Combined → F = kq₁q₂/r². Verified from macroscopic to subatomic (10⁻¹⁰ m).<br><br>
+          <strong style="color:var(--accent3)">Vector form:</strong> F₂₁ = (1/4πε₀)(q₁q₂/r²₂₁)r̂₂₁<br>
+          F₁₂ = (1/4πε₀)(q₁q₂/r²₁₂)r̂₁₂ = (1/4πε₀)(q₁q₂/r²₂₁)(−r̂₂₁) = −F₂₁<br>
+          ∴ F₁₂ = −F₂₁ → Newton's Third Law satisfied ✓</p>
+        </div>
+        <div style="background:rgba(255,107,53,0.05);border:1px solid rgba(255,107,53,0.2);border-radius:8px;padding:16px;">
+          <p style="color:var(--text);font-weight:700;margin-bottom:10px;">Q5. Define electric flux. Explain the area vector concept. Derive φ = E·S·cosθ and state the significance of positive and negative flux.</p>
+          <p style="color:var(--text);font-size:13.5px;">
+          <strong style="color:var(--accent3)">Definition:</strong> Electric flux through a surface = measure of number of electric field lines passing through it = E·ΔS.<br><br>
+          <strong style="color:var(--accent3)">Area as a vector:</strong> Area has magnitude (=area value) and direction (=outward normal for closed surface, or chosen normal for open surface). ΔS⃗ = ΔS × n̂.<br><br>
+          <strong style="color:var(--accent3)">Derivation:</strong> For area element ΔS with normal making angle θ with E:<br>
+          Projection of ΔS perpendicular to E = ΔS cosθ<br>
+          ∴ Δφ = E × (ΔS cosθ) = EΔScosθ = E⃗·ΔS⃗<br>
+          For total surface: φ = ∮E⃗·dS⃗ (surface integral)<br><br>
+          <strong style="color:var(--accent3)">Signs:</strong> θ < 90°: φ > 0 (lines exiting). θ > 90°: φ < 0 (lines entering). θ = 90°: φ = 0. Unit: Nm²C⁻¹. Scalar quantity.</p>
+        </div>
+        <div style="background:rgba(255,107,53,0.05);border:1px solid rgba(255,107,53,0.2);border-radius:8px;padding:16px;">
+          <p style="color:var(--text);font-weight:700;margin-bottom:10px;">Q6. Compare and contrast Coulomb's law and Newton's Law of Gravitation. Also explain why gravity dominates at large scales despite being much weaker than electric force.</p>
+          <p style="color:var(--text);font-size:13.5px;">
+          <strong style="color:var(--accent3)">Similarities:</strong> Both are inverse-square laws (F ∝ 1/r²). Both are central forces (along the line joining). Both have unlimited range. Both described by similar mathematical forms (k vs G).<br><br>
+          <strong style="color:var(--accent3)">Differences:</strong><br>
+          • Nature: Electric can attract/repel; gravity only attracts<br>
+          • Strength ratio: Fₑ/Fg ≈ 10³⁶ for proton-proton<br>
+          • Medium: Electric force ∝ 1/εᵣ in medium; gravity unchanged<br>
+          • Source: charge vs mass<br>
+          • Shielding: Electric force can be shielded; gravity cannot<br><br>
+          <strong style="color:var(--accent3)">Why gravity dominates cosmically:</strong> Large objects (planets, stars) are electrically neutral — equal +/− charges cancel. Net electric force ≈ 0. But gravity has no "negative mass" to cancel it — it always adds up. For a planet with N atoms: gravity ∝ N (cumulative), electric force ≈ 0 (cancel). Hence gravity dominates at large scales despite being intrinsically far weaker.</p>
+        </div>
+      </div>
+</div>
+    </div>
+  </div>
+
+  <hr style="border:none;border-top:1px solid var(--border);margin:2rem 0;">
+
+  <h3>Real-World Applications</h3>
+
+  <div class="summary-grid">
+    <div class="callout">
+      <h3>⚡ Lightning Rods</h3>
+      <p>Tall buildings use lightning rods (pointed conductors) that create a large electric field at their tip, providing a preferred path for lightning discharge. This protects the building from destructive lightning strikes. Coulomb's law in action!</p>
+    </div>
+    <div class="callout">
+      <h3>🖨️ Laser Printers</h3>
+      <p>Laser printers use static electricity. The drum is charged, laser selectively discharges it, toner (charged powder) sticks to charged areas, then transfers to paper. Every printout is a Coulomb's law demonstration!</p>
+    </div>
+    <div class="callout">
+      <h3>🧹 Air Purifiers</h3>
+      <p>Electrostatic precipitators charge dust/smoke particles, which then get attracted to collector plates. Industrial pollution control uses this principle to remove particulates from factory smoke.</p>
+    </div>
+    <div class="callout">
+      <h3>🏭 Spray Painting</h3>
+      <p>In industrial spray painting, paint droplets are given a negative charge and the object to be painted is given a positive charge. This ensures even coverage with minimal waste — electrostatics at work!</p>
+    </div>
+    <div class="callout">
+      <h3>📱 Touchscreens</h3>
+      <p>Capacitive touchscreens detect the change in electric field when a conductive object (your finger) touches the screen. The screen measures tiny changes in charge distribution to pinpoint where you touched.</p>
+    </div>
+    <div class="callout">
+      <h3>⚕️ ECG/EEG</h3>
+      <p>The heart and brain generate electric fields (from ionic currents). ECG measures the electric field from heart activity. EEG measures brain's electric field. Medical diagnostics = applied electrostatics!</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- QUICK SUMMARY -->
+<section>
+  <span class="section-num">Summary</span>
+  <h2 class="section-title">Chapter 1 — Complete Mind Map</h2>
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg">
+      <!-- Central node -->
+      <ellipse cx="340" cy="210" rx="70" ry="40" fill="rgba(245,197,24,0.3)" stroke="#f5c518" stroke-width="2"/>
+      <text x="340" y="205" text-anchor="middle" fill="white" font-size="13" font-weight="800" font-family="Playfair Display">Electric</text>
+      <text x="340" y="221" text-anchor="middle" fill="white" font-size="13" font-weight="800" font-family="Playfair Display">Charges &amp; Fields</text>
+
+      <!-- Branch 1: Electric Charge -->
+      <line x1="275" y1="195" x2="150" y2="100" stroke="#ff6b35" stroke-width="1.5"/>
+      <ellipse cx="100" cy="80" rx="55" ry="28" fill="rgba(255,107,53,0.2)" stroke="#ff6b35" stroke-width="1.5"/>
+      <text x="100" y="75" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="700">Electric</text>
+      <text x="100" y="88" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="700">Charge</text>
+      <text x="100" y="110" text-anchor="middle" fill="#9090b0" font-size="9">+/− | Scalar | q=ne</text>
+
+      <!-- Branch 2: Conductors -->
+      <line x1="305" y1="172" x2="240" y2="70" stroke="#7fff7f" stroke-width="1.5"/>
+      <ellipse cx="240" cy="48" rx="55" ry="25" fill="rgba(127,255,127,0.15)" stroke="#7fff7f" stroke-width="1.5"/>
+      <text x="240" y="43" text-anchor="middle" fill="#7fff7f" font-size="11" font-weight="700">Conductors &amp;</text>
+      <text x="240" y="56" text-anchor="middle" fill="#7fff7f" font-size="11" font-weight="700">Insulators</text>
+      <text x="240" y="78" text-anchor="middle" fill="#9090b0" font-size="9">Free e⁻ vs Bound e⁻</text>
+
+      <!-- Branch 3: Properties -->
+      <line x1="340" y1="170" x2="340" y2="60" stroke="#f5c518" stroke-width="1.5"/>
+      <ellipse cx="340" cy="40" rx="65" ry="25" fill="rgba(245,197,24,0.15)" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="340" y="35" text-anchor="middle" fill="#f5c518" font-size="11" font-weight="700">Properties</text>
+      <text x="340" y="48" text-anchor="middle" fill="#f5c518" font-size="10">Additive | Conserved | Quantised</text>
+      <text x="340" y="70" text-anchor="middle" fill="#9090b0" font-size="9">q=ne | e=1.6×10⁻¹⁹C</text>
+
+      <!-- Branch 4: Coulomb's Law -->
+      <line x1="405" y1="175" x2="490" y2="80" stroke="#00d4ff" stroke-width="1.5"/>
+      <ellipse cx="545" cy="60" rx="65" ry="28" fill="rgba(0,212,255,0.15)" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="545" y="55" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">Coulomb's Law</text>
+      <text x="545" y="68" text-anchor="middle" fill="#00d4ff" font-size="10">F = kq₁q₂/r²</text>
+      <text x="545" y="96" text-anchor="middle" fill="#9090b0" font-size="9">k = 9×10⁹ | Inverse Square</text>
+
+      <!-- Branch 5: Superposition -->
+      <line x1="408" y1="200" x2="545" y2="175" stroke="#00d4ff" stroke-width="1.5"/>
+      <ellipse cx="600" cy="175" rx="68" ry="28" fill="rgba(0,212,255,0.15)" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="600" y="170" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">Superposition</text>
+      <text x="600" y="183" text-anchor="middle" fill="#00d4ff" font-size="10">F = ΣFᵢ (vector sum)</text>
+
+      <!-- Branch 6: Electric Field -->
+      <line x1="400" y1="240" x2="520" y2="300" stroke="#7fff7f" stroke-width="1.5"/>
+      <ellipse cx="578" cy="315" rx="70" ry="28" fill="rgba(127,255,127,0.15)" stroke="#7fff7f" stroke-width="1.5"/>
+      <text x="578" y="310" text-anchor="middle" fill="#7fff7f" font-size="11" font-weight="700">Electric Field</text>
+      <text x="578" y="323" text-anchor="middle" fill="#7fff7f" font-size="10">E = F/q = kQ/r²</text>
+      <text x="578" y="348" text-anchor="middle" fill="#9090b0" font-size="9">Unit: N/C | Vector</text>
+
+      <!-- Branch 7: Field Lines -->
+      <line x1="340" y1="250" x2="340" y2="355" stroke="#ff6b35" stroke-width="1.5"/>
+      <ellipse cx="340" cy="378" rx="65" ry="28" fill="rgba(255,107,53,0.15)" stroke="#ff6b35" stroke-width="1.5"/>
+      <text x="340" y="373" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="700">Field Lines</text>
+      <text x="340" y="386" text-anchor="middle" fill="#ff6b35" font-size="10">Visual tool | + to − | No crossing</text>
+
+      <!-- Branch 8: Electric Flux -->
+      <line x1="280" y1="240" x2="150" y2="310" stroke="#f5c518" stroke-width="1.5"/>
+      <ellipse cx="95" cy="330" rx="68" ry="28" fill="rgba(245,197,24,0.15)" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="95" y="325" text-anchor="middle" fill="#f5c518" font-size="11" font-weight="700">Electric Flux</text>
+      <text x="95" y="338" text-anchor="middle" fill="#f5c518" font-size="10">φ = E·ΔS·cosθ</text>
+      <text x="95" y="365" text-anchor="middle" fill="#9090b0" font-size="9">Scalar | Unit: Nm²/C</text>
+    </svg>
+    <div class="diag-title">Complete Chapter 1 Mind Map — Electric Charges &amp; Fields</div>
+  </div>
+</div>
+</section>
+
+<!-- =================== CHAPTER AT A GLANCE =================== -->
+<section id="glance" style="background:linear-gradient(135deg,rgba(245,197,24,0.04),rgba(0,212,255,0.04));">
+<div class="container fade-in">
+  <span class="section-num">Final Revision</span>
+  <h2 class="section-title">Chapter at a Glance</h2>
+  <p style="color:var(--text-muted);margin-bottom:1.5rem;">Connect everything before your exam</p>
+
+  <div class="def-box" style="background:rgba(0,212,255,0.07);border-color:rgba(0,212,255,0.35);border-left-color:var(--accent2);">
+    <div class="def-label" style="color:var(--accent2);">🧠 The Big Picture — Connect Everything</div>
+    <p><strong>Charge</strong> is the source. <strong>Coulomb's Law</strong> tells you the force between two charges. The <strong>Electric Field</strong> is the "influence" a charge has on the space around it. <strong>Electric Flux</strong> measures how much field passes through a surface. <strong>Gauss's Law</strong> connects flux to the charge inside — the most powerful tool. <strong>Dipoles</strong> are charge pairs that model real-world molecules. Together, this chapter is the FOUNDATION of all electrostatics!</p>
+  </div>
+
+  <!-- Mind Map -->
+  <div class="diagram-wrap">
+    <svg width="100%" style="max-width:100%;height:auto;" viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="340" cy="210" rx="70" ry="40" fill="rgba(245,197,24,0.3)" stroke="#f5c518" stroke-width="2"/>
+      <text x="340" y="205" text-anchor="middle" fill="white" font-size="13" font-weight="800" font-family="Playfair Display">Electric</text>
+      <text x="340" y="221" text-anchor="middle" fill="white" font-size="13" font-weight="800" font-family="Playfair Display">Charges &amp; Fields</text>
+      <line x1="275" y1="195" x2="150" y2="100" stroke="#ff6b35" stroke-width="1.5"/>
+      <ellipse cx="100" cy="80" rx="55" ry="28" fill="rgba(255,107,53,0.2)" stroke="#ff6b35" stroke-width="1.5"/>
+      <text x="100" y="75" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="700">Electric</text>
+      <text x="100" y="88" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="700">Charge</text>
+      <text x="100" y="110" text-anchor="middle" fill="#9090b0" font-size="9">+/− | Scalar | q=ne</text>
+      <line x1="305" y1="172" x2="240" y2="70" stroke="#7fff7f" stroke-width="1.5"/>
+      <ellipse cx="240" cy="48" rx="55" ry="25" fill="rgba(127,255,127,0.15)" stroke="#7fff7f" stroke-width="1.5"/>
+      <text x="240" y="43" text-anchor="middle" fill="#7fff7f" font-size="11" font-weight="700">Conductors &amp;</text>
+      <text x="240" y="56" text-anchor="middle" fill="#7fff7f" font-size="11" font-weight="700">Insulators</text>
+      <text x="240" y="78" text-anchor="middle" fill="#9090b0" font-size="9">Free e⁻ vs Bound e⁻</text>
+      <line x1="340" y1="170" x2="340" y2="60" stroke="#f5c518" stroke-width="1.5"/>
+      <ellipse cx="340" cy="40" rx="65" ry="25" fill="rgba(245,197,24,0.15)" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="340" y="35" text-anchor="middle" fill="#f5c518" font-size="11" font-weight="700">Properties</text>
+      <text x="340" y="48" text-anchor="middle" fill="#f5c518" font-size="10">Additive | Conserved | Quantised</text>
+      <line x1="405" y1="175" x2="490" y2="80" stroke="#00d4ff" stroke-width="1.5"/>
+      <ellipse cx="545" cy="60" rx="65" ry="28" fill="rgba(0,212,255,0.15)" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="545" y="55" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">Coulomb's Law</text>
+      <text x="545" y="68" text-anchor="middle" fill="#00d4ff" font-size="10">F = kq₁q₂/r²</text>
+      <line x1="408" y1="200" x2="545" y2="175" stroke="#00d4ff" stroke-width="1.5"/>
+      <ellipse cx="600" cy="175" rx="68" ry="28" fill="rgba(0,212,255,0.15)" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="600" y="170" text-anchor="middle" fill="#00d4ff" font-size="11" font-weight="700">Superposition</text>
+      <text x="600" y="183" text-anchor="middle" fill="#00d4ff" font-size="10">F = ΣFᵢ (vector sum)</text>
+      <line x1="400" y1="240" x2="520" y2="300" stroke="#7fff7f" stroke-width="1.5"/>
+      <ellipse cx="578" cy="315" rx="70" ry="28" fill="rgba(127,255,127,0.15)" stroke="#7fff7f" stroke-width="1.5"/>
+      <text x="578" y="310" text-anchor="middle" fill="#7fff7f" font-size="11" font-weight="700">Electric Field</text>
+      <text x="578" y="323" text-anchor="middle" fill="#7fff7f" font-size="10">E = F/q = kQ/r²</text>
+      <line x1="340" y1="250" x2="340" y2="355" stroke="#ff6b35" stroke-width="1.5"/>
+      <ellipse cx="340" cy="378" rx="65" ry="28" fill="rgba(255,107,53,0.15)" stroke="#ff6b35" stroke-width="1.5"/>
+      <text x="340" y="373" text-anchor="middle" fill="#ff6b35" font-size="11" font-weight="700">Dipole &amp; Gauss</text>
+      <text x="340" y="386" text-anchor="middle" fill="#ff6b35" font-size="10">p=q·2a | φ=q/ε₀</text>
+      <line x1="280" y1="240" x2="150" y2="310" stroke="#f5c518" stroke-width="1.5"/>
+      <ellipse cx="95" cy="330" rx="68" ry="28" fill="rgba(245,197,24,0.15)" stroke="#f5c518" stroke-width="1.5"/>
+      <text x="95" y="325" text-anchor="middle" fill="#f5c518" font-size="11" font-weight="700">Electric Flux</text>
+      <text x="95" y="338" text-anchor="middle" fill="#f5c518" font-size="10">φ = E·ΔS·cosθ</text>
+    </svg>
+    <div class="diag-title">Complete Chapter 1 Mind Map — Electric Charges &amp; Fields</div>
+  </div>
+
+  <h3>⚠️ Top 10 Board Exam Mistakes to Avoid</h3>
+  <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;">Common errors that cost marks — memorise and avoid all 10!</p>
+
+  <div class="callout">
+    <ol style="padding-left:1.5rem;display:grid;gap:14px;">
+      <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">In a medium:</strong> Force = kq₁q₂/(ε<sub>r</sub>·d²) — don't forget the ε<sub>r</sub>!</li>
+      <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Field inside conductor:</strong> Always ZERO in electrostatics (not sometimes, ALWAYS).</li>
+      <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Axial vs Equatorial:</strong> E_axial = 2p/4πε₀r³ and E_equatorial = p/4πε₀r³. Don't swap them!</li>
+      <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Equatorial direction:</strong> Equatorial E is OPPOSITE to p (not same direction as axial!).</li>
+      <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Torque formula:</strong> τ = pE sinθ (uses SINE), not cosine. PE = −pEcosθ (uses cosine).</li>
+      <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Gauss's Law surface:</strong> Applies to ANY closed surface — not just spheres!</li>
+      <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Dipole direction:</strong> p goes from −q to +q (negative to positive — counter-intuitive!).</li>
+      <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Units:</strong> Flux is N·m²·C⁻¹, dipole moment is C·m, field is N/C or V/m.</li>
+      <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Simplified dipole formulas:</strong> Only valid when r >> a. Always verify this condition!</li>
+      <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Charge densities:</strong> λ (linear C/m), σ (surface C/m²), ρ (volume C/m³) — don't mix them!</li>
+    </ol>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p style="color:var(--text-muted);font-size:0.9rem;">Chapter 1 — Electric Charges and Fields | Class 12 Physics NCERT | Board Exam 2026–2027</p>
+  <p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.5rem;">Complete coverage: Conductors · Coulomb · Field · Flux · Dipole · Gauss's Law · Applications · PYQs · HOTS</p>
+  <a href="#top" style="display:inline-block;background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);text-decoration:none;font-size:0.8rem;padding:0.4rem 1rem;border-radius:2rem;margin-bottom:1.5rem;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'" onmouseout="this.style.color='';this.style.borderColor=''">↑ Back to Top</a>
+  <div class="name-tag">Abilash V</div>
+  <p style="color:var(--text-muted);font-size:0.75rem;margin-top:1rem;">Study hard. Score perfect. You've got this! ⚡</p>
+</footer>
+
+<script>
+// ── PROGRESS BAR ──
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  const prog = total > 0 ? (window.scrollY / total) * 100 : 0;
+  document.getElementById('pbar').style.width = prog + '%';
+}, { passive: true });
+
+// ── FADE-IN ON SCROLL ──
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// ── NAV ACTIVE STATE + AUTO-SCROLL INTO VIEW ──
+const navLinks = document.querySelectorAll('.nav-links a');
+const sectionEls = document.querySelectorAll('section[id], div.hero[id]');
+
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (active) {
+        active.classList.add('active');
+        // Scroll active link into view within the nav scroll container
+        active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+      }
+    }
+  });
+}, { threshold: 0.25, rootMargin: '-5% 0px -65% 0px' });
+sectionEls.forEach(s => navObs.observe(s));
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// ── TOGGLE ANSWERS ──
+function toggleAns(btn) {
+  const ans = btn.nextElementSibling;
+  const show = ans.style.display === 'block';
+  ans.style.display = show ? 'none' : 'block';
+  btn.textContent = show ? 'Show Answer' : 'Hide Answer';
+}
+
+// ── ACCORDION TOGGLE ──
+function toggleAcc(el) {
+  const ans = el.nextElementSibling;
+  const show = ans.style.display === 'block';
+  ans.style.display = show ? 'none' : 'block';
+  const arrow = el.querySelector('span[style*="float"]');
+  if (arrow) arrow.textContent = show ? '▼' : '▲';
+}
+</script>
+</body>
+</html>
