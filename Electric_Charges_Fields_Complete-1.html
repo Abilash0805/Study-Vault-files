@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Electric Charges & Fields — Study Guide</title>
+<title>Electric Charges & Fields — Abilash V Study Guide</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -23,7 +23,7 @@
 
 /* ── RESET & BASE ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: 56px; }
+html { scroll-behavior: smooth; scroll-padding-top: 48px; }
 body {
   background: var(--bg);
   color: var(--text);
@@ -31,7 +31,6 @@ body {
   font-size: 17px;
   line-height: 1.75;
   overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* ── PROGRESS BAR ── */
@@ -144,8 +143,9 @@ nav a:hover::after, nav a.active::after { transform: scaleX(1); }
 .toc-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,197,24,0.4); }
 
 /* ── LAYOUT ── */
-.container { max-width: 960px; margin: 0 auto; padding: 3rem 1rem; }
-section { padding: 0; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 2rem; }
+section { padding: 4rem 0; border-bottom: 1px solid var(--border); }
+section:last-child { border-bottom: none; }
 
 /* ── HEADINGS ── */
 h2.section-title {
@@ -376,130 +376,76 @@ code { font-family: 'JetBrains Mono', monospace; background: rgba(0,212,255,0.1)
 hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
 
 /* ── ANIMATIONS ── */
-.fade-in { opacity: 0; transition: opacity 0.5s ease; }
-.fade-in.visible { opacity: 1; }
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
 /* ══════════════════════════════════════════
-   RESPONSIVE — mirrors Solutions file pattern
+   RESPONSIVE
 ══════════════════════════════════════════ */
 
-/* BASE — overflow safety */
-img, svg, table, .diagram-wrap, .worked .w-solution, .compare-table,
-.formula-box, .compare-table { max-width: 100%; }
-.worked .w-solution, .compare-table, .diagram-wrap
-  { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-code { word-break: break-all; }
+/* DESKTOP ≥1025px — default, no overrides needed */
 
-/* ── MOBILE < 480px  (matches Solutions @media max-width:479px) ── */
-@media (max-width: 479px) {
-  body { font-size: 14px; line-height: 1.68; }
-  .container { padding: 1.7rem 0.55rem; }
-  section { padding: 0; }
+/* LAPTOP 769px–1024px */
+@media (max-width: 1024px) {
+  .container { padding: 0 1.5rem; }
+  .summary-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
 
-  h2.section-title { font-size: clamp(1.3rem, 7vw, 1.8rem); }
-  h3 { font-size: 1rem; margin: 1.2rem 0 0.45rem; }
-  h4 { font-size: 0.88rem; }
+/* TABLET 481px–768px */
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .container { padding: 0 1.2rem; }
+  section { padding: 3rem 0; }
+  h2.section-title { font-size: clamp(1.6rem, 5vw, 2.4rem); }
+  h3 { font-size: 1.25rem; }
+  .card-row { grid-template-columns: 1fr; }
+  .summary-grid { grid-template-columns: repeat(2, 1fr); gap: 0.85rem; }
+  .compare-table { font-size: 0.85rem; display: block; overflow-x: auto; }
+  .formula-big { font-size: 1.2rem; }
+  nav a { font-size: 0.74rem; padding: 0 0.75rem; }
+  .nav-brand { font-size: 0.88rem; padding: 0 0.85rem; }
+}
 
-  nav { height: 40px; }
-  nav a { font-size: 0.65rem; padding: 0 0.55rem; height: 35px; letter-spacing: 0.03em; }
-  .nav-brand { font-size: 0.77rem; padding: 0 0.65rem; }
+/* MOBILE ≤480px */
+@media (max-width: 480px) {
+  body { font-size: 15px; line-height: 1.68; }
+  .container { padding: 0 0.9rem; }
+  section { padding: 2.5rem 0; }
+  h2.section-title { font-size: clamp(1.4rem, 7vw, 2rem); }
+  h3 { font-size: 1.1rem; margin: 1.5rem 0 0.5rem; }
+  h4 { font-size: 0.92rem; }
+  nav { height: 42px; }
+  nav a { font-size: 0.67rem; padding: 0 0.6rem; height: 37px; letter-spacing: 0.04em; }
+  .nav-brand { font-size: 0.8rem; padding: 0 0.7rem; }
   .nav-links::-webkit-scrollbar { height: 3px; }
-
-  .hero { padding: 1.5rem 0.55rem; min-height: 85vh; }
-  .hero h1 { font-size: clamp(1.8rem, 10vw, 2.4rem); }
-  .hero-sub { font-size: 0.88rem; }
-  .hero-chips { gap: 0.28rem; }
-  .chip { font-size: 0.7rem; padding: 0.18rem 0.55rem; }
-  .toc-btn { padding: 0.55rem 1.2rem; font-size: 0.85rem; }
-
-  .summary-grid { grid-template-columns: 1fr; gap: 0.5rem; }
-  .card-row { grid-template-columns: 1fr; gap: 0.65rem; }
-
-  .sum-card { padding: 0.85rem; }
-  .sum-card .sc-icon { font-size: 1.4rem; margin-bottom: 0.25rem; }
-  .sum-card .sc-title { font-size: 0.85rem; }
-  .sum-card p { font-size: 0.76rem; }
-
-  .def-box { padding: 0.85rem; border-radius: 0.75rem; }
-  .callout { padding: 0.8rem 0.9rem; }
-  .memory-trick { padding: 0.8rem 0.9rem; }
-  .realworld { padding: 0.8rem 0.9rem; }
-
-  .derivation { padding: 0.9rem; }
-  .deriv-step { flex-direction: column; gap: 0.35rem; padding: 0.7rem 0; }
-  .deriv-step .ds-num { align-self: flex-start; font-size: 0.66rem; }
-  .deriv-step .ds-eq { font-size: 0.82rem; word-break: break-all; }
-  .deriv-step .ds-text { font-size: 0.8rem; }
-
-  .formula-box { font-size: 0.76rem; padding: 0.75rem 0.9rem; }
-  .formula-big { font-size: 0.88rem; word-break: break-word; }
-  .formula-note { font-size: 0.74rem; }
-
-  .worked { padding: 0.85rem; }
-  .worked .w-title { font-size: 0.85rem; }
-  .worked .w-solution { font-size: 0.72rem; padding: 0.65rem; }
-
-  .q-card { padding: 0.8rem 0.85rem; border-radius: 0.75rem; }
-  .q-card .q-label { font-size: 0.68rem; }
-  .accordion-label { font-size: 0.85rem; }
-  .q-answer { font-size: 0.82rem; }
-  .q-toggle { font-size: 0.72rem; padding: 0.22rem 0.6rem; }
-
-  .steps li { padding: 0.6rem 0.75rem 0.6rem 2.8rem; font-size: 0.88rem; }
-  .steps li::before { width: 1.5rem; height: 1.5rem; font-size: 0.76rem; left: 0.7rem; }
-
-  .compare-table { font-size: 0.74rem; display: block; }
-  .compare-table th, .compare-table td { padding: 0.32rem 0.48rem; white-space: nowrap; }
-
-  .diagram-wrap { padding: 0.65rem; border-radius: 0.75rem; }
-  .diagram-wrap svg { min-width: 260px; }
-  .diagram-wrap .diag-caption, .diagram-wrap .diag-title { font-size: 0.75rem; margin-top: 0.65rem; }
-
-  footer { padding: 2rem 0.55rem; }
-  .name-tag { font-size: 0.95rem; padding: 0.45rem 1.2rem; }
+  .hero { padding: 1.5rem 1rem; min-height: 88vh; }
+  .hero h1 { font-size: clamp(1.9rem, 10vw, 2.8rem); }
+  .hero-sub { font-size: 0.93rem; }
+  .hero-chips { gap: 0.35rem; }
+  .chip { font-size: 0.73rem; padding: 0.22rem 0.65rem; }
+  .toc-btn { padding: 0.65rem 1.4rem; font-size: 0.88rem; }
+  .summary-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .card-row { grid-template-columns: 1fr; gap: 0.75rem; }
+  .def-box { padding: 1rem 1rem; }
+  .callout { padding: 0.9rem 1rem; }
+  .memory-trick { padding: 0.9rem 1rem; }
+  .formula-box { padding: 1rem; }
+  .formula-big { font-size: 0.95rem; }
+  .formula-note { font-size: 0.78rem; }
+  .worked { padding: 1rem; }
+  .worked .w-solution { font-size: 0.76rem; }
+  .q-card { padding: 0.9rem 1rem; }
+  .compare-table { font-size: 0.76rem; display: block; overflow-x: auto; }
+  .compare-table th, .compare-table td { padding: 0.4rem 0.55rem; }
+  .diagram-wrap { padding: 0.75rem; }
+  footer { padding: 2rem 1rem; }
 }
 
-/* ── MOBILE 480px–767px  (matches Solutions 480–767px) ── */
-@media (min-width: 480px) and (max-width: 767px) {
-  .container { padding: 2rem 0.75rem; }
-  section { padding: 0; }
-  .card-row { grid-template-columns: 1fr; gap: 0.9rem; }
-  .summary-grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
-  .deriv-step { flex-direction: column; gap: 0.4rem; }
-  .deriv-step .ds-num { align-self: flex-start; }
-  .compare-table { display: block; font-size: 0.82rem; }
-  .compare-table th, .compare-table td { padding: 0.45rem 0.6rem; white-space: nowrap; }
-  nav a { font-size: 0.72rem; padding: 0 0.7rem; }
-}
-
-/* ── TABLET 768px+  (matches Solutions min-width:768px) ── */
-@media (min-width: 768px) {
-  .container { padding: 3.5rem 1.4rem; max-width: 920px; margin: 0 auto; }
-  section { padding: 0; }
-  h2.section-title { font-size: clamp(1.7rem, 4vw, 2.6rem); }
-  .summary-grid { grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); }
-  .card-row { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-  .compare-table { font-size: 0.88rem; display: block; overflow-x: auto; }
-  .compare-table th, .compare-table td { white-space: nowrap; }
-}
-
-/* ── DESKTOP 1024px+  (matches Solutions min-width:1024px) ── */
-@media (min-width: 1024px) {
-  .container { padding: 4rem 2rem; max-width: 960px; margin: 0 auto; }
-  section { padding: 0; }
-  body { font-size: 17px; }
-  h2.section-title { font-size: clamp(1.9rem, 3vw, 2.8rem); }
-  .summary-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
-  .card-row { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-}
-
-/* ── LARGE DESKTOP 1400px+  ── */
-@media (min-width: 1400px) {
-  .container { max-width: 1100px; padding: 4.5rem 2.5rem; }
-  body { font-size: 18px; }
-  .summary-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
-  .card-row { grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); }
-  section { padding: 0; }
+/* SMALL MOBILE ≤360px */
+@media (max-width: 360px) {
+  .summary-grid { grid-template-columns: 1fr; }
+  body { font-size: 14px; }
+  nav a { font-size: 0.62rem; padding: 0 0.5rem; }
 }
 </style>
 </head>
@@ -559,6 +505,11 @@ code { word-break: break-all; }
       <a href="#pyq">PYQs</a>
       <a href="#numericals">Numericals</a>
       <a href="#hots">HOTS</a>
+      <a href="#derivations">Derivations</a>
+      <a href="#theory-extra">Theory Bank</a>
+      <a href="#numericals-extra">Extra Nums</a>
+      <a href="#hots-extra">HOTS Advanced</a>
+      <a href="#formula-extended">All Formulas</a>
     </div>
   </div>
 </nav>
@@ -3096,6 +3047,1079 @@ Tip: When both charges double → ×4, when r triples → ÷9. Net: ×(4/9)
       <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Units:</strong> Flux is N·m²·C⁻¹, dipole moment is C·m, field is N/C or V/m.</li>
       <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Simplified dipole formulas:</strong> Only valid when r >> a. Always verify this condition!</li>
       <li style="color:var(--text);font-size:14.5px;"><strong style="color:var(--accent3);">Charge densities:</strong> λ (linear C/m), σ (surface C/m²), ρ (volume C/m³) — don't mix them!</li>
+
+<!-- =================== COMPLETE DERIVATIONS =================== -->
+<section id="derivations">
+<div class="container fade-in">
+  <span class="section-num">📐 Full Step-by-Step Derivations</span>
+  <h2 class="section-title">All Derivations — Chapter 1</h2>
+  <p style="color:var(--text-muted);margin-bottom:2rem;">Every derivation you need for board exams, fully worked out with explanations at each step.</p>
+
+  <!-- DERIVATION 1 -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:1.75rem;margin:1.5rem 0;">
+    <h3 style="color:var(--accent);margin-top:0;">📐 Derivation 1: Coulomb's Law in Vector Form</h3>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;"><em>Board weightage: 3–5 marks | Must-know derivation</em></p>
+    <div class="def-box">
+      <div class="def-title">To Derive: Vector form of Coulomb's law for two point charges q₁ and q₂</div>
+      <p><strong>Step 1:</strong> Consider two point charges q₁ at position vector <strong>r₁</strong> and q₂ at <strong>r₂</strong> from origin O.</p>
+      <p><strong>Step 2:</strong> Define displacement vectors:<br>
+      &nbsp;&nbsp;&nbsp;• <strong>r₂₁</strong> = r₂ − r₁ &nbsp;(vector from q₁ to q₂)<br>
+      &nbsp;&nbsp;&nbsp;• <strong>r₁₂</strong> = r₁ − r₂ = −r₂₁ &nbsp;(vector from q₂ to q₁)</p>
+      <p><strong>Step 3:</strong> The magnitude r₂₁ = |r₂ − r₁|. The unit vector r̂₂₁ = r₂₁/r₂₁</p>
+      <p><strong>Step 4:</strong> Force on q₂ due to q₁ (Coulomb's experimental law):</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big" style="font-size:1.1rem;">F₂₁ = (1/4πε₀) × (q₁q₂/r²₂₁) × r̂₂₁</div>
+      </div>
+      <p><strong>Step 5: Physical interpretation of signs:</strong><br>
+      &nbsp;&nbsp;&nbsp;• If q₁q₂ &gt; 0 (same signs): F₂₁ is along r̂₂₁ → repulsion ✓<br>
+      &nbsp;&nbsp;&nbsp;• If q₁q₂ &lt; 0 (opposite signs): F₂₁ is along −r̂₂₁ = r̂₁₂ → attraction ✓</p>
+      <p><strong>Step 6:</strong> Force on q₁ due to q₂ (by Newton's 3rd Law):</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big" style="font-size:1.1rem;">F₁₂ = (1/4πε₀) × (q₁q₂/r²₁₂) × r̂₁₂ = −F₂₁</div>
+      </div>
+      <p style="color:var(--accent4);"><strong>✅ Conclusion:</strong> This single equation handles both attraction and repulsion — no need for separate cases. Coulomb's law is consistent with Newton's Third Law (F₁₂ = −F₂₁).</p>
+    </div>
+  </div>
+
+  <!-- DERIVATION 2 -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:1.75rem;margin:1.5rem 0;">
+    <h3 style="color:var(--accent);margin-top:0;">📐 Derivation 2: Electric Field Due to a Point Charge</h3>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;"><em>Board weightage: 2–3 marks</em></p>
+    <div class="def-box">
+      <div class="def-title">To Derive: E = (1/4πε₀)(q/r²)r̂</div>
+      <p><strong>Step 1:</strong> Place source charge Q at origin. Place test charge q at position vector <strong>r</strong> (magnitude r).</p>
+      <p><strong>Step 2:</strong> By Coulomb's Law, force on test charge q due to Q:</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big" style="font-size:1rem;">F = (1/4πε₀) × (Qq/r²) × r̂</div>
+      </div>
+      <p><strong>Step 3:</strong> Electric field is defined as force per unit positive test charge:</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big" style="font-size:1rem;">E = lim(q→0) F/q = (1/4πε₀)(Q/r²) r̂</div>
+      </div>
+      <p><strong>Step 4:</strong> The limit q→0 ensures the test charge doesn't disturb the source charge Q.</p>
+      <p><strong>Step 5: Direction:</strong><br>
+      &nbsp;&nbsp;&nbsp;• If Q &gt; 0: E is along +r̂ (radially outward from Q) ✓<br>
+      &nbsp;&nbsp;&nbsp;• If Q &lt; 0: E is along −r̂ (radially inward toward Q) ✓</p>
+      <p style="color:var(--accent4);"><strong>✅ Result:</strong> Electric field obeys inverse square law. The field exists at all points in space around Q regardless of whether q is present or not.</p>
+    </div>
+  </div>
+
+  <!-- DERIVATION 3 -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:1.75rem;margin:1.5rem 0;">
+    <h3 style="color:var(--accent);margin-top:0;">📐 Derivation 3: Electric Field on Axial Line of a Dipole</h3>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;"><em>Board weightage: 5 marks | Very frequently asked</em></p>
+    <div class="def-box">
+      <div class="def-title">To Derive: E_axial = (1/4πε₀)(2pr/(r²−a²)²) ≈ (2p/4πε₀r³) for r >> a</div>
+      <p><strong>Setup:</strong> Dipole with charges −q at A and +q at B, centre O, half-length = a. Point P on axis at distance r from O (on the side of +q).</p>
+      <p><strong>Step 1:</strong> Distance from +q to P = r − a; Distance from −q to P = r + a</p>
+      <p><strong>Step 2:</strong> E due to +q at P (directed away from +q, i.e., along +p̂):</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:0.95rem;">E₊ = (1/4πε₀) × q/(r−a)² &nbsp;(direction: +p̂)</div>
+      </div>
+      <p><strong>Step 3:</strong> E due to −q at P (directed toward −q, i.e., along +p̂):</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:0.95rem;">E₋ = (1/4πε₀) × q/(r+a)² &nbsp;(direction: +p̂)</div>
+      </div>
+      <p><strong>Step 4:</strong> Both fields are along the same direction (+p̂), so total field:</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:0.95rem;">E = E₊ − E₋ = (q/4πε₀)[1/(r−a)² − 1/(r+a)²]</div>
+      </div>
+      <p><strong>Step 5:</strong> Simplify by taking LCM:</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:0.95rem;">E = (q/4πε₀) × [(r+a)² − (r−a)²] / [(r²−a²)²]</div>
+      </div>
+      <p><strong>Step 6:</strong> Expand: (r+a)² − (r−a)² = r²+2ra+a² − r²+2ra−a² = 4ra</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:0.95rem;">E = (q/4πε₀) × 4ra / (r²−a²)² = (2qar) / [4πε₀(r²−a²)²]</div>
+      </div>
+      <p><strong>Step 7:</strong> Since p = q×2a, substitute 2qa = p:</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">E_axial = 2pr / [4πε₀(r²−a²)²]</div>
+      </div>
+      <p><strong>Step 8: Short dipole approximation</strong> (r >> a → a² << r² → r²−a² ≈ r²):</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">E_axial ≈ 2p / (4πε₀r³) &nbsp; (r >> a)</div>
+      </div>
+      <p style="color:var(--accent4);"><strong>✅ Direction:</strong> Along p̂ (same as dipole moment direction). Note: E falls as 1/r³ (not 1/r² as for point charge).</p>
+    </div>
+  </div>
+
+  <!-- DERIVATION 4 -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:1.75rem;margin:1.5rem 0;">
+    <h3 style="color:var(--accent);margin-top:0;">📐 Derivation 4: Electric Field on Equatorial Line of a Dipole</h3>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;"><em>Board weightage: 5 marks | Very frequently asked</em></p>
+    <div class="def-box">
+      <div class="def-title">To Derive: E_equatorial = −p / [4πε₀(r²+a²)^(3/2)] ≈ −p/(4πε₀r³) for r >> a</div>
+      <p><strong>Setup:</strong> Point P on the equatorial plane at distance r from centre O. Distance from either charge to P = √(r²+a²).</p>
+      <p><strong>Step 1:</strong> Magnitudes of E due to each charge (equal by symmetry):</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:0.95rem;">|E₊| = |E₋| = q / [4πε₀(r²+a²)]</div>
+      </div>
+      <p><strong>Step 2: Direction analysis:</strong><br>
+      &nbsp;&nbsp;&nbsp;• E₊ (from +q) points from B to P (making angle θ above the perpendicular)<br>
+      &nbsp;&nbsp;&nbsp;• E₋ (toward −q) points from P to A (making angle θ below the perpendicular)<br>
+      &nbsp;&nbsp;&nbsp;• where tan θ = a/r, so cos θ = r/√(r²+a²), sin θ = a/√(r²+a²)</p>
+      <p><strong>Step 3:</strong> Resolve components:<br>
+      &nbsp;&nbsp;&nbsp;• Components perpendicular to axis: E₊sinθ and E₋sinθ are equal and <strong>cancel</strong> (opposite directions)<br>
+      &nbsp;&nbsp;&nbsp;• Components along axis: E₊cosθ and E₋cosθ both point in <strong>−p̂ direction</strong> and <strong>add up</strong></p>
+      <p><strong>Step 4:</strong> Total field:</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:0.95rem;">E = −2 × [q/4πε₀(r²+a²)] × cosθ × p̂</div>
+      </div>
+      <p><strong>Step 5:</strong> Substitute cosθ = r/√(r²+a²)... wait, cosθ here is a/(√(r²+a²)) along axis direction. Let me clarify: the axial component is cosα where α is the angle with the dipole axis. cos α = a/√(r²+a²).</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:0.95rem;">E = −2 × [q/4πε₀(r²+a²)] × [a/√(r²+a²)] × p̂</div>
+      </div>
+      <p><strong>Step 6:</strong> Simplify:</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">E_equatorial = −2qa / [4πε₀(r²+a²)^(3/2)] p̂ = −p / [4πε₀(r²+a²)^(3/2)]</div>
+      </div>
+      <p><strong>Step 7: Short dipole</strong> (r >> a → r²+a² ≈ r²):</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">E_equatorial ≈ −p / (4πε₀r³) &nbsp;(r >> a)</div>
+      </div>
+      <p style="color:var(--accent4);"><strong>✅ Key Result:</strong> E is in −p̂ direction (anti-parallel to dipole moment). |E_equatorial| = ½|E_axial| for r >> a.</p>
+    </div>
+  </div>
+
+  <!-- DERIVATION 5 -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:1.75rem;margin:1.5rem 0;">
+    <h3 style="color:var(--accent);margin-top:0;">📐 Derivation 5: Torque on a Dipole in Uniform Electric Field</h3>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;"><em>Board weightage: 3 marks</em></p>
+    <div class="def-box">
+      <div class="def-title">To Derive: τ = pE sinθ (or τ⃗ = p⃗ × E⃗)</div>
+      <p><strong>Setup:</strong> Dipole (charges +q and −q, separation 2a) in uniform field E. Dipole axis makes angle θ with E.</p>
+      <p><strong>Step 1:</strong> Force on +q = +qE (along E); Force on −q = −qE (opposite to E). Net force = 0. (No translational motion in uniform field.)</p>
+      <p><strong>Step 2:</strong> These equal and opposite forces form a <em>couple</em>. Torque = one force × perpendicular distance between them.</p>
+      <p><strong>Step 3:</strong> Perpendicular distance between the two forces:<br>
+      &nbsp;&nbsp;&nbsp;d = 2a sinθ &nbsp;(from geometry — the perpendicular from the axis of the couple)</p>
+      <p><strong>Step 4:</strong> Magnitude of torque:</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">τ = F × d = qE × 2a sinθ = (q × 2a) × E sinθ = pE sinθ</div>
+      </div>
+      <p><strong>Step 5: Vector form:</strong> τ⃗ = p⃗ × E⃗ (by right-hand rule, direction is perpendicular to the plane of p and E)</p>
+      <p><strong>Step 6: Equilibrium conditions:</strong><br>
+      &nbsp;&nbsp;&nbsp;• θ = 0°: τ = 0, stable equilibrium (p parallel to E, minimum PE)<br>
+      &nbsp;&nbsp;&nbsp;• θ = 90°: τ = pE (maximum torque)<br>
+      &nbsp;&nbsp;&nbsp;• θ = 180°: τ = 0, unstable equilibrium (p anti-parallel to E, maximum PE)</p>
+      <p style="color:var(--accent4);"><strong>✅ Physical meaning:</strong> The torque always tries to align the dipole with the field direction. This is the mechanism behind dielectric polarization!</p>
+    </div>
+  </div>
+
+  <!-- DERIVATION 6 -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:1.75rem;margin:1.5rem 0;">
+    <h3 style="color:var(--accent);margin-top:0;">📐 Derivation 6: Gauss's Law from Coulomb's Law (Proof for Point Charge)</h3>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;"><em>Board weightage: 3–5 marks | Conceptually important</em></p>
+    <div class="def-box">
+      <div class="def-title">To Prove: Total flux through a closed sphere enclosing charge q = q/ε₀</div>
+      <p><strong>Step 1:</strong> Place point charge q at centre O of a sphere of radius r.</p>
+      <p><strong>Step 2:</strong> At any point on the sphere surface, the electric field by Coulomb's law is:</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:1rem;">E = q/(4πε₀r²) &nbsp;(outward, by symmetry)</div>
+      </div>
+      <p><strong>Step 3:</strong> Since the charge is at centre, E has the <em>same magnitude at all points</em> on the sphere surface, and E is always <em>normal to the surface</em> (i.e., radial).</p>
+      <p><strong>Step 4:</strong> For a small area element ΔS on the sphere: angle between E and ΔS = 0°</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:1rem;">Δφ = E · ΔS = E × ΔS × cos0° = E ΔS</div>
+      </div>
+      <p><strong>Step 5:</strong> Total flux = sum over all area elements:</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:1rem;">φ = E × ΣΔS = E × (4πr²)</div>
+      </div>
+      <p><strong>Step 6:</strong> Substitute E = q/(4πε₀r²):</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">φ = [q/(4πε₀r²)] × (4πr²) = q/ε₀</div>
+      </div>
+      <p><strong>Step 7:</strong> The r² in numerator and denominator cancel — this is the key insight! Flux is <em>independent of radius</em>.</p>
+      <p><strong>Step 8:</strong> This result is generalized: for ANY closed surface (not just sphere), for ANY position of charge inside, φ = q_enclosed/ε₀.</p>
+      <p style="color:var(--accent4);"><strong>✅ Gauss's Law is more general than Coulomb's Law</strong> — it applies to any charge distribution, not just point charges, and to any surface shape.</p>
+    </div>
+  </div>
+
+  <!-- DERIVATION 7 -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:1.75rem;margin:1.5rem 0;">
+    <h3 style="color:var(--accent);margin-top:0;">📐 Derivation 7: E due to Infinitely Long Straight Charged Wire</h3>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;"><em>Board weightage: 5 marks | Very frequently asked</em></p>
+    <div class="def-box">
+      <div class="def-title">To Derive: E = λ/(2πε₀r) for an infinite line charge of linear charge density λ</div>
+      <p><strong>Step 1: Symmetry argument</strong><br>
+      The wire is infinite and uniform, so E must be radial (perpendicular to wire) and its magnitude depends only on perpendicular distance r. E cannot have any component along the wire direction.</p>
+      <p><strong>Step 2: Choice of Gaussian surface</strong><br>
+      Choose a coaxial cylinder of radius r and length l (with flat circular ends perpendicular to wire and curved surface parallel to wire).</p>
+      <p><strong>Step 3: Flux through flat ends</strong><br>
+      On the flat ends, E is parallel to the surface (E ⊥ ΔS, so angle = 90°). Hence flux through each flat end = 0.</p>
+      <p><strong>Step 4: Flux through curved surface</strong><br>
+      On the curved surface, E is perpendicular to the surface (E ∥ n̂, angle = 0°).</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:1rem;">φ_curved = E × (2πrl)</div>
+      </div>
+      <p><strong>Step 5: Total flux</strong><br>
+      φ_total = 0 + 0 + E × (2πrl) = E × 2πrl</p>
+      <p><strong>Step 6: Charge enclosed</strong><br>
+      q_enclosed = λl (λ = linear charge density, l = length of cylinder)</p>
+      <p><strong>Step 7: Apply Gauss's Law</strong><br>
+      φ = q_enclosed/ε₀<br>
+      E × 2πrl = λl/ε₀</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">E = λ/(2πε₀r) &nbsp;&nbsp; or &nbsp;&nbsp; E⃗ = (λ/2πε₀r) n̂</div>
+      </div>
+      <p style="color:var(--accent4);"><strong>✅ Key points:</strong> E ∝ 1/r (not 1/r²!). Direction: outward if λ &gt; 0, inward if λ &lt; 0. n̂ is the radial unit vector perpendicular to the wire.</p>
+    </div>
+  </div>
+
+  <!-- DERIVATION 8 -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:1.75rem;margin:1.5rem 0;">
+    <h3 style="color:var(--accent);margin-top:0;">📐 Derivation 8: E due to Uniformly Charged Infinite Plane Sheet</h3>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;"><em>Board weightage: 3–5 marks</em></p>
+    <div class="def-box">
+      <div class="def-title">To Derive: E = σ/(2ε₀) on both sides of an infinite plane sheet of charge density σ</div>
+      <p><strong>Step 1: Symmetry argument</strong><br>
+      The infinite plane has translational symmetry in both y and z directions. E must be perpendicular to the plane (along ±x direction) and its magnitude depends only on perpendicular distance x. By symmetry, E has equal magnitude on both sides.</p>
+      <p><strong>Step 2: Gaussian surface</strong><br>
+      Choose a "pillbox" (cylinder) of cross-sectional area A, with its axis perpendicular to the sheet. The sheet bisects the cylinder.</p>
+      <p><strong>Step 3: Flux through curved side</strong><br>
+      E is parallel to curved surface ⟹ φ_side = 0.</p>
+      <p><strong>Step 4: Flux through two flat faces</strong><br>
+      On left face: E points left, normal n̂ points left ⟹ φ_left = E × A<br>
+      On right face: E points right, normal n̂ points right ⟹ φ_right = E × A</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:1rem;">φ_total = 2EA</div>
+      </div>
+      <p><strong>Step 5: Charge enclosed</strong><br>
+      q_enclosed = σA (where σ = surface charge density)</p>
+      <p><strong>Step 6: Apply Gauss's Law</strong><br>
+      2EA = σA/ε₀</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">E = σ/(2ε₀) &nbsp;&nbsp; or &nbsp;&nbsp; E⃗ = (σ/2ε₀) n̂</div>
+      </div>
+      <p style="color:var(--accent4);"><strong>✅ Remarkable fact:</strong> E is <em>independent of distance</em> from the sheet! The field is uniform on both sides. For a conducting plate with charge on both surfaces, E = σ/ε₀.</p>
+    </div>
+  </div>
+
+  <!-- DERIVATION 9 -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:1.75rem;margin:1.5rem 0;">
+    <h3 style="color:var(--accent);margin-top:0;">📐 Derivation 9: E due to Uniformly Charged Thin Spherical Shell</h3>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;"><em>Board weightage: 5 marks | Most important application</em></p>
+    <div class="def-box">
+      <div class="def-title">To Derive: E = q/(4πε₀r²) for r > R and E = 0 for r < R</div>
+      <p><strong>Setup:</strong> Thin spherical shell of radius R, total charge q (uniform surface charge density σ).</p>
+      
+      <p><strong>Case (i): Point P outside the shell (r &gt; R)</strong></p>
+      <p><strong>Step 1:</strong> By spherical symmetry, E is radial and constant in magnitude at distance r from centre.</p>
+      <p><strong>Step 2:</strong> Choose Gaussian surface: sphere of radius r (&gt; R) centred at O.</p>
+      <p><strong>Step 3:</strong> Flux through Gaussian surface:</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:1rem;">φ = E × 4πr² &nbsp;(E is constant and radial on this surface)</div>
+      </div>
+      <p><strong>Step 4:</strong> Charge enclosed = q (entire shell charge is inside). Apply Gauss's Law:</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">E × 4πr² = q/ε₀ &nbsp;⟹&nbsp; E = q/(4πε₀r²)</div>
+      </div>
+      <p style="color:var(--accent4);">As if all charge is concentrated at centre! Identical to point charge field.</p>
+      
+      <p style="margin-top:1rem;"><strong>Case (ii): Point P inside the shell (r &lt; R)</strong></p>
+      <p><strong>Step 1:</strong> Choose Gaussian surface: sphere of radius r (&lt; R) centred at O.</p>
+      <p><strong>Step 2:</strong> Charge enclosed = 0 (all charge is on the shell at R, none inside).</p>
+      <p><strong>Step 3:</strong> Apply Gauss's Law:</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">E × 4πr² = 0/ε₀ &nbsp;⟹&nbsp; E = 0 &nbsp;(for r &lt; R)</div>
+      </div>
+      <p style="color:var(--accent4);"><strong>✅ The electric field inside a uniformly charged spherical shell is ZERO everywhere.</strong> This is a remarkable result — charge on a shell creates no field inside. This is the basis of Faraday cages and electrostatic shielding!</p>
+    </div>
+  </div>
+
+  <!-- DERIVATION 10 -->
+  <div style="background:var(--surface2);border:1px solid var(--border);border-radius:1rem;padding:1.75rem;margin:1.5rem 0;">
+    <h3 style="color:var(--accent);margin-top:0;">📐 Derivation 10: Electric Field Due to System of Charges (Superposition)</h3>
+    <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:1rem;"><em>Board weightage: 2–3 marks | Conceptual derivation</em></p>
+    <div class="def-box">
+      <div class="def-title">To Derive: E = Σ Eᵢ (Superposition Principle for Electric Field)</div>
+      <p><strong>Setup:</strong> n charges q₁, q₂, ..., qₙ at positions r₁, r₂, ..., rₙ. Find E at point P (position vector r).</p>
+      <p><strong>Step 1:</strong> Electric field at P due to charge qᵢ alone (by Coulomb's law):</p>
+      <div class="formula-box" style="margin:0.5rem 0;padding:0.5rem 1rem;">
+        <div class="formula-big" style="font-size:0.95rem;">Eᵢ(r) = (1/4πε₀) × (qᵢ/r²ᵢₚ) × r̂ᵢₚ</div>
+      </div>
+      <p>where rᵢₚ = |r − rᵢ| and r̂ᵢₚ = (r − rᵢ)/|r − rᵢ| is unit vector from qᵢ to P.</p>
+      <p><strong>Step 2:</strong> By the <em>principle of superposition</em>, the presence of other charges doesn't affect the field due to any individual charge.</p>
+      <p><strong>Step 3:</strong> Total electric field at P is the vector sum:</p>
+      <div class="formula-box" style="margin:0.5rem 0;">
+        <div class="formula-big">E(r) = E₁ + E₂ + ... + Eₙ = (1/4πε₀) Σᵢ [qᵢ/r²ᵢₚ] r̂ᵢₚ</div>
+      </div>
+      <p style="color:var(--accent4);"><strong>✅ This is an experimental law</strong> — there are no three-body or four-body force corrections. Each pair interacts independently. All of electrostatics is a consequence of Coulomb's Law + Superposition!</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- =================== EXTRA THEORY QUESTIONS =================== -->
+<section id="theory-extra">
+<div class="container fade-in">
+  <span class="section-num">📖 Theory Questions Bank</span>
+  <h2 class="section-title">Theory Questions — Complete Bank</h2>
+  <p style="color:var(--text-muted);margin-bottom:2rem;">Board exam level: 1, 2, 3 and 5 mark questions. Click to reveal answers.</p>
+
+  <!-- 1-mark Questions -->
+  <h3>⚡ 1-Mark Questions</h3>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q1. What is the SI unit of electric flux?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">N·m²·C⁻¹ (Newton-metre squared per coulomb), also written as V·m.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q2. What is the value of permittivity of free space (ε₀)?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">ε₀ = 8.854 × 10⁻¹² C² N⁻¹ m⁻² (also written as F/m or C²/(N·m²)).</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q3. Name the physical quantity whose SI unit is coulomb-metre (C·m).</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">Electric dipole moment (p = q × 2a). Unit: C·m.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q4. Define surface charge density. Give its SI unit.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">Surface charge density (σ) is charge per unit area: σ = ΔQ/ΔS. SI unit: C/m² (coulomb per square metre).</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q5. What is the angle between electric dipole moment p⃗ and electric field E⃗ for maximum torque?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">θ = 90°. τ = pE sinθ is maximum when sinθ = 1, i.e., θ = 90°. Maximum torque = pE.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q6. What is the net force on an electric dipole placed in a uniform electric field?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">Zero. In a uniform field, the forces +qE and −qE on the two charges are equal and opposite, so net force = 0. However, a torque does act.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q7. State the principle of quantisation of electric charge.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">Electric charge is quantised: the charge on any body is always an integral multiple of the elementary charge e. q = ne, where n = 0, ±1, ±2, ±3, ... and e = 1.6 × 10⁻¹⁹ C.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q8. Which property of electric field is represented by electric field lines?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">Direction and relative strength of the electric field. The tangent to a field line gives direction; density of lines indicates strength. Crowded lines = strong field, sparse lines = weak field.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q9. What is the electric field inside a uniformly charged spherical shell?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">Zero (E = 0) everywhere inside the shell. By Gauss's law: there is no enclosed charge inside a Gaussian sphere of radius r &lt; R, so E × 4πr² = 0 ⟹ E = 0.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q10. If the net flux through a closed surface is zero, does it mean there is no charge inside?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">Not necessarily. It means the NET charge inside is zero (charges cancel). There could be equal amounts of +q and −q inside. Example: an electric dipole inside a closed surface gives zero net flux.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 2-mark Questions -->
+  <h3>⚡ 2-Mark Questions</h3>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q11. State and explain the principle of conservation of electric charge with an example.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);"><strong>Statement:</strong> The total charge of an isolated system remains constant with time. Charge can neither be created nor destroyed, only transferred from one body to another.<br><br><strong>Example 1:</strong> When glass rod is rubbed with silk, electrons transfer from glass to silk. Glass becomes +ve and silk becomes −ve, but total charge remains zero (as it was initially).<br><br><strong>Example 2 (nuclear):</strong> When a neutron decays into a proton and electron: n → p⁺ + e⁻. Total charge before = 0, total charge after = +e + (−e) = 0. ✓</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q12. Why can the electric field lines never cross each other?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">Electric field lines cannot cross because the electric field at any point in space has a unique direction (the tangent to the field line at that point). If two field lines intersected at a point, it would imply two different directions of the electric field at that point — which is physically impossible. The electric field is single-valued everywhere in space.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q13. Distinguish between conductors and insulators with examples.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);"><strong>Conductors:</strong> Have free electrons that move easily. Allow electric charge to pass through. Charge distributes over entire surface. Examples: metals (copper, silver), human body, graphite, electrolytes.<br><br><strong>Insulators:</strong> Have tightly bound electrons. Do not allow charge to flow. Charge stays where it is placed. Examples: glass, plastic, rubber, wood, dry air, porcelain, mica.<br><br><strong>Key difference:</strong> In conductors, charge given to any point spreads over the whole surface. In insulators, charge remains localised where it was deposited.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q14. What is an electric dipole? Why does it experience torque but no net force in a uniform electric field?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);"><strong>Electric dipole:</strong> A system of two equal and opposite charges (+q and −q) separated by a small distance 2a. Dipole moment p = q × 2a, directed from −q to +q.<br><br><strong>No net force:</strong> Force on +q is +qE and on −q is −qE. These are equal and opposite, so net force = 0.<br><br><strong>Torque exists:</strong> These two equal and opposite forces act at different points on the dipole, forming a couple. Torque = pE sinθ. This torque tends to align p with E.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q15. State Gauss's law. What is the significance of the "Gaussian surface"?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);"><strong>Gauss's Law:</strong> The total electric flux through any closed surface S is equal to 1/ε₀ times the total charge enclosed by S: φ = q_enc/ε₀.<br><br><strong>Gaussian surface:</strong> The closed surface chosen for applying Gauss's law. Key features: (i) It can be any shape (ii) Must be a closed surface (iii) Should not pass through discrete charges (iv) Ideally chosen to exploit symmetry so that E is constant or perpendicular to parts of the surface, simplifying calculations.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q16. Why is it important to take q→0 (limit) in the definition of electric field E = F/q?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">When a test charge q is placed near a source charge Q, it exerts a force on Q and disturbs its position, changing the original configuration. To avoid this, we take the test charge to be vanishingly small (q→0). This ensures: (i) The field is due to Q alone and not affected by q. (ii) E = lim(q→0)(F/q) is a property of the source charge Q and the location, independent of q. This makes E a well-defined quantity at any point in space.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q17. How does a charged comb attract small bits of uncharged paper? Explain using concept of polarisation.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">The charged comb creates a non-uniform electric field near it. This field induces a dipole moment in the neutral paper molecules (polarisation) — the near side of each molecule/atom gets a charge opposite to the comb's charge, and the far side gets the same sign as the comb. Since the field is non-uniform, the attractive force on the nearer opposite charges is stronger than the repulsive force on the farther like charges. Hence there is a net attractive force toward the comb. This is electrostatic induction/polarisation in action.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q18. Write the properties of electric field lines (any four).</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">(i) Field lines start from positive charges and end at negative charges (or at infinity if single charge).<br>(ii) The tangent to a field line at any point gives the direction of E at that point.<br>(iii) Field lines never cross each other (unique direction at each point).<br>(iv) Density of field lines represents the strength of E (crowded = strong, sparse = weak).<br>(v) Electrostatic field lines never form closed loops (unlike magnetic field lines).<br>(vi) In charge-free regions, field lines are continuous and smooth curves.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 3-mark Questions -->
+  <h3>⚡ 3-Mark Questions</h3>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q19. Derive an expression for the electric field at a point on the axis of an electric dipole at distance r from the centre. State the direction.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">See Derivation 3 above for complete step-by-step derivation.<br><br><strong>Result:</strong> E_axial = 2pr / [4πε₀(r²−a²)²] along p̂<br><strong>For r >> a:</strong> E_axial ≈ 2p/(4πε₀r³) along p̂<br><strong>Direction:</strong> Same as dipole moment (from −q to +q direction).</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q20. Using Gauss's law, derive the expression for E due to an infinite plane sheet of uniform surface charge density σ.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">See Derivation 8 above for complete step-by-step derivation.<br><br><strong>Result:</strong> E = σ/(2ε₀) — independent of distance! Uniform field on both sides. Direction: perpendicular to surface, outward if σ &gt; 0.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q21. State the superposition principle for electric forces. Three charges q₁ = +2μC, q₂ = −3μC, q₃ = +4μC are placed at corners of an equilateral triangle of side 10 cm. Find the direction of net force on q₁.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);"><strong>Superposition principle:</strong> The total force on a charge due to multiple other charges is the vector sum of the individual forces from each charge, unaffected by the presence of others.<br><br>F₁₂ (from q₂ = −3μC): attractive force toward q₂ (along q₁ to q₂)<br>F₁₃ (from q₃ = +4μC): repulsive force away from q₃ (along q₃ to q₁ direction, i.e., away from q₃)<br><br>Since |q₂| = 3μC < |q₃| = 4μC, but both at same distance, the repulsive force from q₃ > attractive force from q₂.<br>Vector addition: Draw the triangle, compute F₁₂ and F₁₃ along their respective directions, find resultant. The net force on q₁ has a dominant component directed away from q₃ (repulsion is stronger).</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q22. Compare Coulomb's Law and Newton's Law of Gravitation. Why is electric force dominant despite gravity being universal?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);"><strong>Similarities:</strong> Both are inverse square laws (∝ 1/r²), both obey Newton's 3rd law, both are central forces.<br><br><strong>Differences:</strong><br>• Electric: F = kq₁q₂/r², can be attractive or repulsive, between charged particles only<br>• Gravity: F = Gm₁m₂/r², always attractive, between all masses<br>• k = 9×10⁹ N·m²/C², G = 6.67×10⁻¹¹ N·m²/kg²<br>• Ratio F_E/F_G for electron-proton ≈ 2.4 × 10³⁹<br><br><strong>Why gravity dominates:</strong> Electric forces between protons and electrons cancel (nearly equal + and − charges in matter). Since gravity is always attractive and there's no negative mass, large masses accumulate gravity without cancellation.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q23. What is meant by electrostatic shielding? Explain with a diagram. Where is it used?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);"><strong>Electrostatic shielding:</strong> The phenomenon by which the interior of a conductor (hollow or solid) is shielded from external electric fields.<br><br><strong>Principle:</strong> By Gauss's law, E = 0 inside a conductor in electrostatic equilibrium. Even if there's an external field, the free charges on the conductor rearrange to create an equal and opposite internal field, making the total field zero inside.<br><br><strong>Applications:</strong><br>(i) Sensitive electronic instruments are enclosed in metal boxes (Faraday cages)<br>(ii) Car passengers safe from lightning — metal body acts as shield<br>(iii) Coaxial cables: inner conductor shielded by outer conductor<br>(iv) Microwave ovens: metal mesh prevents radiation from escaping<br>(v) Aircraft electronics shielded from interference</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q24. Show that electric field lines are perpendicular to the surface of a conductor in electrostatic equilibrium. What happens if they are not?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">In electrostatic equilibrium, there is no movement of charges. If the electric field had a tangential component along the surface, it would exert a force on the surface charges, causing them to move — contradicting the assumption of equilibrium. Therefore, in equilibrium, E must be purely normal (perpendicular) to the conductor surface.<br><br>Formally: If E had a component E_∥ along the surface, then free electrons on the surface would experience force qE_∥, accelerate along the surface, and current would flow. This violates electrostatic conditions. Hence E_∥ = 0 and E is entirely perpendicular (radial w.r.t. surface).</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 5-mark Questions -->
+  <h3>⚡ 5-Mark Questions</h3>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q25. Derive expressions for the electric field on (i) axial line and (ii) equatorial line of an electric dipole. Compare the two results.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">See Derivations 3 and 4 above for full derivations.<br><br><strong>Comparison:</strong><br>• E_axial = 2p/(4πε₀r³), along p̂ (same direction as dipole moment)<br>• E_equatorial = p/(4πε₀r³), along −p̂ (opposite to dipole moment)<br>• E_axial = 2 × E_equatorial (axial field is twice as strong at same distance)<br>• Both fall as 1/r³ (faster than 1/r² for point charge — dipole field falls faster!)<br>• Both expressions are valid for r >> a (short dipole approximation)<br>• Exact formulas involve (r²−a²)² and (r²+a²)^(3/2) respectively</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q26. Using Gauss's law, derive the electric field due to a uniformly charged thin spherical shell at points (i) outside and (ii) inside the shell. Draw the variation of E with r graph.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">See Derivation 9 above for complete derivation.<br><br><strong>Results:</strong><br>• For r &gt; R: E = q/(4πε₀r²) radially outward (like point charge at centre)<br>• For r &lt; R: E = 0 (zero field inside shell)<br>• At r = R: E is maximum = q/(4πε₀R²)<br><br><strong>E-r graph description:</strong><br>• For r &lt; R: E = 0 (horizontal line along r-axis)<br>• At r = R: E jumps to maximum value = q/(4πε₀R²)<br>• For r &gt; R: E decreases as 1/r² (hyperbolic curve)<br>• Graph shows sharp discontinuity at r = R<br><br><strong>Application:</strong> This is why thunder/lightning cannot harm occupants in a metal vehicle (Faraday cage effect).</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;">
+      <p style="color:var(--accent2);font-weight:700;margin-bottom:0.5rem;">Q27. State Coulomb's Law in vector form. Show that it is consistent with Newton's Third Law. Derive the condition for equilibrium of a charge system of three collinear charges.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="margin:0;color:var(--accent4);">See Derivation 1 for vector form of Coulomb's law.<br><br><strong>Newton's 3rd Law:</strong> F₁₂ = (kq₁q₂/r²)r̂₁₂ = −F₂₁ (since r̂₁₂ = −r̂₂₁), so forces are equal and opposite. ✓<br><br><strong>Equilibrium of three collinear charges:</strong><br>Let charges q₁, Q, q₂ be on x-axis at 0, d₁, (d₁+d₂).<br>For Q to be in equilibrium: Force from q₁ on Q + Force from q₂ on Q = 0<br>kq₁Q/d₁² = kq₂Q/d₂² (in magnitude, opposite directions)<br>Therefore: q₁/d₁² = q₂/d₂² → d₁/d₂ = √(q₁/q₂)<br>For equilibrium to be possible, q₁ and q₂ must be of same sign (both attract or both repel Q).</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- =================== NUMERICAL QUESTIONS EXTENDED =================== -->
+<section id="numericals-extra">
+<div class="container fade-in">
+  <span class="section-num">🔢 Extended Numerical Problems</span>
+  <h2 class="section-title">Advanced Numerical Questions</h2>
+  <p style="color:var(--text-muted);margin-bottom:2rem;">Solved step-by-step. Perfect for board exam and JEE preparation.</p>
+
+  <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+    <!-- NUM 1 -->
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent3);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">NUMERICAL 1 — Equilibrium Position</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">Two positive charges q₁ = 4 μC and q₂ = 9 μC are placed 20 cm apart. Where on the line joining them (outside or between) should a third charge q₃ be placed so that the system is in equilibrium? Also find q₃.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent3);color:var(--accent3);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Solution</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(255,107,53,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Given:</strong> q₁ = 4μC, q₂ = 9μC, d = 20 cm = 0.2 m</p>
+        <p style="color:var(--accent4);"><strong>Step 1:</strong> For equilibrium, q₃ must be between q₁ and q₂ (since both are positive, a negative q₃ between them can be attracted by both). Let q₃ be at distance x from q₁.</p>
+        <p style="color:var(--accent4);"><strong>Step 2:</strong> For q₃ in equilibrium: Force from q₁ = Force from q₂<br>
+        kq₁|q₃|/x² = kq₂|q₃|/(0.2−x)²<br>
+        4/x² = 9/(0.2−x)²<br>
+        (0.2−x)²/x² = 9/4 → (0.2−x)/x = 3/2</p>
+        <p style="color:var(--accent4);"><strong>Step 3:</strong> 2(0.2−x) = 3x → 0.4 = 5x → x = 0.08 m = 8 cm from q₁</p>
+        <p style="color:var(--accent4);"><strong>Step 4:</strong> Find q₃ such that q₁ is also in equilibrium:<br>
+        kq₁q₂/d² + kq₁q₃/x² = 0<br>
+        q₃ = −q₂x²/d² = −9×10⁻⁶ × (0.08)²/(0.2)² = −9 × 0.16 μC = −1.44 μC</p>
+        <p style="color:var(--accent4);"><strong>Answer:</strong> q₃ = −1.44 μC at 8 cm from q₁ (between the charges). Verify: q₂ equilibrium gives same result by symmetry.</p>
+      </div>
+    </div>
+
+    <!-- NUM 2 -->
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent3);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">NUMERICAL 2 — Dipole Field</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">An electric dipole consists of charges ±2 × 10⁻⁶ C separated by 0.01 m. Find the electric field (a) 1 m along the axis, (b) 1 m along the equatorial line. Compare the two.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent3);color:var(--accent3);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Solution</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(255,107,53,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Given:</strong> q = 2×10⁻⁶ C, 2a = 0.01 m → a = 0.005 m, r = 1 m (r >> a ✓)<br>
+        p = q × 2a = 2×10⁻⁶ × 0.01 = 2×10⁻⁸ C·m</p>
+        <p style="color:var(--accent4);"><strong>(a) Axial field:</strong><br>
+        E_axial = 2p/(4πε₀r³) = 2 × 9×10⁹ × 2×10⁻⁸ / (1)³<br>
+        = 2 × 9 × 2 × 10 = <strong>360 N/C</strong> (along p̂)</p>
+        <p style="color:var(--accent4);"><strong>(b) Equatorial field:</strong><br>
+        E_equatorial = p/(4πε₀r³) = 9×10⁹ × 2×10⁻⁸ / (1)³<br>
+        = 9 × 2 × 10 = <strong>180 N/C</strong> (opposite to p̂)</p>
+        <p style="color:var(--accent4);"><strong>Comparison:</strong> E_axial = 2 × E_equatorial (ratio 2:1). ✓</p>
+      </div>
+    </div>
+
+    <!-- NUM 3 -->
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent3);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">NUMERICAL 3 — Gauss's Law Application</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">A charge of 8.85 × 10⁻¹⁰ C is uniformly distributed on a sphere of radius 5 cm. Find: (a) E at r = 10 cm, (b) E at r = 3 cm (inside), (c) E on the surface (r = 5 cm).</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent3);color:var(--accent3);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Solution</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(255,107,53,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Given:</strong> q = 8.85×10⁻¹⁰ C, R = 5 cm = 0.05 m<br>
+        Note: 1/(4πε₀) = 9×10⁹, so q/(4πε₀) = 9×10⁹ × 8.85×10⁻¹⁰ = 7.965 ≈ 8 Nm²/C</p>
+        <p style="color:var(--accent4);"><strong>(a) r = 10 cm = 0.10 m (outside):</strong><br>
+        E = q/(4πε₀r²) = 8/(0.10)² = 8/0.01 = <strong>800 N/C</strong> outward</p>
+        <p style="color:var(--accent4);"><strong>(b) r = 3 cm = 0.03 m (inside shell):</strong><br>
+        E = 0 (zero field inside uniformly charged spherical shell)</p>
+        <p style="color:var(--accent4);"><strong>(c) r = 5 cm = 0.05 m (on surface):</strong><br>
+        E = q/(4πε₀R²) = 8/(0.05)² = 8/0.0025 = <strong>3200 N/C</strong> outward<br>
+        (Maximum field — at the surface)</p>
+      </div>
+    </div>
+
+    <!-- NUM 4 -->
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent3);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">NUMERICAL 4 — Torque on Dipole</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">An electric dipole (p = 4 × 10⁻⁹ C·m) is placed in a uniform electric field of 10⁵ N/C. Find: (a) Torque when θ = 30°, (b) Torque when θ = 90°, (c) Work done to rotate from θ = 0° to θ = 180°.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent3);color:var(--accent3);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Solution</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(255,107,53,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Given:</strong> p = 4×10⁻⁹ C·m, E = 10⁵ N/C, τ = pE sinθ</p>
+        <p style="color:var(--accent4);"><strong>(a) θ = 30°:</strong><br>
+        τ = 4×10⁻⁹ × 10⁵ × sin30° = 4×10⁻⁴ × 0.5 = <strong>2 × 10⁻⁴ N·m</strong></p>
+        <p style="color:var(--accent4);"><strong>(b) θ = 90° (maximum torque):</strong><br>
+        τ = pE sin90° = 4×10⁻⁹ × 10⁵ × 1 = <strong>4 × 10⁻⁴ N·m</strong></p>
+        <p style="color:var(--accent4);"><strong>(c) Work done (0° → 180°):</strong><br>
+        W = ΔU = −pE cosθ |₀¹⁸⁰ = −pE cos180° − (−pE cos0°)<br>
+        = −pE(−1) + pE(1) = 2pE<br>
+        W = 2 × 4×10⁻⁹ × 10⁵ = <strong>8 × 10⁻⁴ J</strong><br>
+        (Work done against torque — moves from stable to unstable equilibrium)</p>
+      </div>
+    </div>
+
+    <!-- NUM 5 -->
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent3);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">NUMERICAL 5 — Linear Charge Density</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">An infinitely long straight conductor carries a linear charge density of 5 × 10⁻⁸ C/m. Find E at: (a) 5 cm from wire (b) 20 cm from wire. Find ratio E₁/E₂.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent3);color:var(--accent3);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Solution</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(255,107,53,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Formula:</strong> E = λ/(2πε₀r)</p>
+        <p style="color:var(--accent4);"><strong>(a) r = 5 cm = 0.05 m:</strong><br>
+        E₁ = (5×10⁻⁸) / (2π × 8.85×10⁻¹² × 0.05)<br>
+        = (5×10⁻⁸) / (2.78×10⁻¹²) = <strong>1.8 × 10⁴ N/C</strong></p>
+        <p style="color:var(--accent4);"><strong>(b) r = 20 cm = 0.20 m:</strong><br>
+        E₂ = (5×10⁻⁸) / (2π × 8.85×10⁻¹² × 0.20)<br>
+        = E₁ × (0.05/0.20) = E₁/4 = <strong>4.5 × 10³ N/C</strong></p>
+        <p style="color:var(--accent4);"><strong>Ratio E₁/E₂ = r₂/r₁ = 0.20/0.05 = 4</strong> (E ∝ 1/r for line charge)</p>
+      </div>
+    </div>
+
+    <!-- NUM 6 -->
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent3);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">NUMERICAL 6 — Four Charges at Square Corners</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">Four charges +q, +q, −q, −q are placed at four corners A, B, C, D of a square of side a. Find the electric field and force on a charge Q placed at the centre.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent3);color:var(--accent3);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Solution</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(255,107,53,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Setup:</strong> Let A(+q), B(−q), C(+q), D(−q) at corners. Centre O at a√2/2 from each corner. Distance r = a/√2.</p>
+        <p style="color:var(--accent4);"><strong>Step 1:</strong> Field due to each charge at centre has magnitude:<br>
+        E₀ = kq/r² = kq/(a²/2) = 2kq/a²</p>
+        <p style="color:var(--accent4);"><strong>Step 2:</strong> Direction analysis:<br>
+        • +q at A: field points away from A (toward O... no, away from A)<br>
+        • −q at B: field points toward B (from O toward B)<br>
+        • Draw vectors and add by superposition<br>
+        • Due to arrangement, components along AC direction: all 4 fields add constructively along AC<br>
+        E_net = 4 × E₀ × cos45° × (in direction from +q diagonal to −q diagonal)<br>
+        = 4 × (2kq/a²) × (1/√2) = 4√2 kq/a²</p>
+        <p style="color:var(--accent4);"><strong>Force on Q:</strong> F = QE_net = 4√2 kqQ/a², along the diagonal from +q pair to −q pair.</p>
+        <p style="color:var(--accent4);">Note: If arrangement is +q, −q, +q, −q alternately (like charges diagonally opposite), then total field = 0 by symmetry.</p>
+      </div>
+    </div>
+
+    <!-- NUM 7 -->
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent3);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">NUMERICAL 7 — Flux Through a Cube</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">A charge of 10⁻⁷ C is placed at the centre of a cube of side 0.1 m. Find: (a) total flux through the cube, (b) flux through one face, (c) if charge is at a corner instead, what is the flux through the cube?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent3);color:var(--accent3);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Solution</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(255,107,53,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>(a) Total flux:</strong><br>
+        φ = q/ε₀ = 10⁻⁷/(8.85×10⁻¹²) = <strong>1.13 × 10⁴ N·m²/C</strong></p>
+        <p style="color:var(--accent4);"><strong>(b) Flux through one face:</strong><br>
+        By symmetry, flux is equally distributed among all 6 faces.<br>
+        φ_face = φ_total/6 = 1.13×10⁴/6 = <strong>1.88 × 10³ N·m²/C</strong></p>
+        <p style="color:var(--accent4);"><strong>(c) Charge at corner:</strong><br>
+        A corner is shared by 8 identical cubes. Only 1/8 of the charge is enclosed by this cube.<br>
+        φ = (q/8)/ε₀ = (10⁻⁷/8)/(8.85×10⁻¹²) = <strong>1.41 × 10³ N·m²/C</strong></p>
+      </div>
+    </div>
+
+    <!-- NUM 8 -->
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent3);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">NUMERICAL 8 — Motion of Charge in E Field</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">An electron (m = 9.1×10⁻³¹ kg, e = 1.6×10⁻¹⁹ C) is released from rest in a uniform electric field of 100 N/C. Find: (a) acceleration, (b) speed after 2 ns, (c) distance covered in 2 ns. Comment on gravity.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent3);color:var(--accent3);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Solution</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(255,107,53,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>(a) Acceleration:</strong><br>
+        a = eE/m = (1.6×10⁻¹⁹ × 100)/(9.1×10⁻³¹)<br>
+        = 1.6×10⁻¹⁷ / 9.1×10⁻³¹ = <strong>1.76 × 10¹³ m/s²</strong></p>
+        <p style="color:var(--accent4);"><strong>(b) Speed after t = 2 ns = 2×10⁻⁹ s:</strong><br>
+        v = u + at = 0 + 1.76×10¹³ × 2×10⁻⁹ = <strong>3.52 × 10⁴ m/s</strong></p>
+        <p style="color:var(--accent4);"><strong>(c) Distance:</strong><br>
+        s = ½at² = ½ × 1.76×10¹³ × (2×10⁻⁹)² = 0.88×10¹³ × 4×10⁻¹⁸ = <strong>3.52 × 10⁻⁵ m = 35.2 μm</strong></p>
+        <p style="color:var(--accent4);"><strong>Gravity vs Electric force:</strong><br>
+        Electric force = eE = 1.6×10⁻¹⁷ N<br>
+        Gravitational force = mg = 9.1×10⁻³¹ × 9.8 = 8.9×10⁻³⁰ N<br>
+        Ratio = 1.6×10⁻¹⁷ / 8.9×10⁻³⁰ ≈ 1.8×10¹² (Electric force is ~10¹² times stronger!)<br>
+        ∴ Gravity is completely negligible for electron motion in E fields.</p>
+      </div>
+    </div>
+
+    <!-- NUM 9 -->
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent3);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">NUMERICAL 9 — Continuous Charge Distribution</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">A uniformly charged ring of radius R = 10 cm carries total charge Q = 4 × 10⁻⁸ C. Find the electric field at a point on the axis of the ring at a distance x = 10 cm from the centre. Also find the position where E is maximum.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent3);color:var(--accent3);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Solution</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(255,107,53,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Formula for ring on axis:</strong><br>
+        E = Qx / [4πε₀(R²+x²)^(3/2)]</p>
+        <p style="color:var(--accent4);"><strong>Given:</strong> R = x = 0.1 m, Q = 4×10⁻⁸ C<br>
+        R² + x² = 0.01 + 0.01 = 0.02 m²<br>
+        (R²+x²)^(3/2) = (0.02)^(3/2) = (0.02)×√(0.02) = 0.02 × 0.1414 = 2.83×10⁻³</p>
+        <p style="color:var(--accent4);"><strong>E:</strong><br>
+        E = 9×10⁹ × 4×10⁻⁸ × 0.1 / 2.83×10⁻³<br>
+        = 9×10⁹ × 4×10⁻⁹ / 2.83×10⁻³ = 36/(2.83×10⁻³) ≈ <strong>1.27 × 10⁴ N/C</strong></p>
+        <p style="color:var(--accent4);"><strong>Position of maximum E:</strong><br>
+        dE/dx = 0 gives: x = R/√2 = 0.1/√2 ≈ <strong>7.07 cm</strong></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- =================== HOTS EXTENDED =================== -->
+<section id="hots-extra">
+<div class="container fade-in">
+  <span class="section-num">🧠 Higher Order Thinking — Extended</span>
+  <h2 class="section-title">HOTS Questions — Advanced & Conceptual</h2>
+  <p style="color:var(--text-muted);margin-bottom:2rem;">These questions test deep conceptual understanding. Perfect for JEE/NEET/Olympiad preparation.</p>
+
+  <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 1 — Conceptual: Why Quantization Doesn't Matter Macroscopically</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">The elementary charge e = 1.6 × 10⁻¹⁹ C. A body has charge 10⁻³ C. Explain why we can treat charge as continuous for this body. Relate it to an analogous concept in classical mechanics.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Number of electrons:</strong> n = 10⁻³/(1.6×10⁻¹⁹) = 6.25 × 10¹⁵ electrons.<br><br>Each step of charge change = e = 1.6×10⁻¹⁹ C.<br>Fractional change per step = e/Q = 1.6×10⁻¹⁹/10⁻³ = 1.6×10⁻¹⁶ (or 0.00000000000000016%)<br><br>This is so tiny that charge appears perfectly continuous — like a smooth number. We can treat dQ as infinitesimally small.<br><br><strong>Analogous concept — mass and molecules:</strong> The mass of one molecule is ~10⁻²⁶ kg. A 1 gram object has ~10²³ molecules. One molecular mass change is 10⁻²³% of total mass. We treat mass as continuous in classical mechanics. Exactly the same reasoning applies to charge at macroscopic scales.<br><br>The "graininess" (quantization) only becomes important at the microscopic level — where you're dealing with a few tens or hundreds of electrons.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 2 — Dimensional Analysis: Is Coulomb's Law Consistent?</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">Verify dimensional consistency of F = q₁q₂/(4πε₀r²). What are the dimensions of ε₀? If a new unit system had k = 1 (instead of 9×10⁹), what would the unit of charge be in SI?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Dimensional analysis:</strong><br>
+        [F] = MLT⁻² (force)<br>
+        [q₁q₂] = A²T² = C² (charge squared)<br>
+        [r²] = L²<br>
+        For F = kq₁q₂/r²: [k] = [F][r²]/[q₁q₂] = MLT⁻² × L² / A²T² = ML³T⁻⁴A⁻² ✓<br><br>
+        <strong>Dimensions of ε₀:</strong><br>
+        k = 1/(4πε₀) → [ε₀] = 1/[k] = M⁻¹L⁻³T⁴A² = C²N⁻¹m⁻² ✓<br><br>
+        <strong>Unit of charge if k = 1:</strong><br>
+        F = q₁q₂/r² means: when F = 1 N, r = 1 m, then q₁ = q₂ = 1 unit.<br>
+        1 = q²/1 → q = 1 N^(1/2)·m<br>
+        This is called a "statcoulomb" or "esu of charge" (in CGS Gaussian units).<br>
+        1 statcoulomb ≈ 3.33 × 10⁻¹⁰ C (very tiny compared to the coulomb!)</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 3 — Paradox: E = 0 inside shell but Gauss surface can be any shape</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">Inside a uniformly charged spherical shell, E = 0 everywhere. Now place an irregular closed surface (say, a potato-shaped surface) entirely inside the shell. What is the flux through this surface? Does this contradict the fact that E ≠ 0 on this surface locally?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Answer:</strong> The flux is zero.<br><br>By Gauss's law: φ = q_enclosed/ε₀. The potato surface encloses no charge (charge is on the outer shell), so φ = 0.<br><br><strong>The key insight:</strong> E = 0 inside the shell is the physically derived result. For any surface inside, the net flux is zero because q_enclosed = 0. This is consistent — if E = 0 everywhere on the potato surface, then each E·ΔS = 0, and total = 0.<br><br>There is no contradiction. The beauty of Gauss's law is that it gives net flux = 0 regardless of the surface shape, because the enclosed charge = 0.<br><br><strong>Deeper question:</strong> Even if the charge were NOT at the centre of the spherical shell but somewhere non-centrally inside the shell, would E = 0 inside still? Interestingly, YES — still zero everywhere inside, even though the charge distribution is not symmetric. This is the power of Gauss's theorem!</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 4 — The "Field Lines Cannot Form Loops" Theorem</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">Prove that electrostatic field lines cannot form closed loops. How is this related to the conservative nature of the electric field? Contrast with magnetic field lines.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Proof:</strong> If a field line were a closed loop, then a positive test charge moving along this closed loop would be acted on by a force always in the direction of motion (tangent to field line). The work done by E in one complete loop would be positive (W = ∮F·dl > 0).<br><br>But for a conservative force, ∮F·dl = 0 for any closed path. This is a fundamental property of electrostatic fields (derivable from Coulomb's law). Therefore, work done in a closed loop must be zero → field lines cannot be closed loops.<br><br><strong>Connection to conservative field:</strong> The work done by E is path-independent → ∮E·dl = 0 → E = −∇V (can be expressed as gradient of potential) → E is conservative. Closed loops would violate this.<br><br><strong>Contrast with magnetic fields:</strong> Magnetic field lines DO form closed loops (they have no sources or sinks). This is because ∇·B = 0 (no magnetic monopoles) and magnetic forces do no work (F = qv×B always perpendicular to v). Magnetic fields are NOT derivable from a scalar potential in the same way.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 5 — Why Does 1/r² in Coulomb's Law Make Gauss's Law Work?</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">Show mathematically why Gauss's law (flux independent of r) works ONLY because Coulomb's law has an exact 1/r² dependence. What would happen if the force law were 1/r^2.001 instead?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Mathematical Proof:</strong><br>
+        Total flux through sphere of radius r: φ = E × 4πr²<br><br>
+        For 1/r² law: E = kq/r², so φ = (kq/r²) × 4πr² = 4πkq = q/ε₀ ✓ (constant, r cancels!)<br><br>
+        For 1/r^n law: E = kq/rⁿ, so φ = (kq/rⁿ) × 4πr² = 4πkq × r^(2−n)<br><br>
+        This is independent of r ONLY when n = 2. Any other power law gives φ ∝ r^(2−n), which varies with sphere size!<br><br>
+        <strong>If Coulomb's Law were 1/r^2.001:</strong><br>
+        φ ∝ r^(2−2.001) = r^(−0.001) → flux slightly decreases as r increases<br>
+        → Gauss's law would fail<br>
+        → Total flux through a large surface ≠ q/ε₀<br>
+        → Electric field at large distances would fall faster than 1/r²<br>
+        → Atomic structure would change (Bohr model fails)<br>
+        → Chemistry as we know it wouldn't exist!<br><br>
+        <strong>Experimental test:</strong> Experiments verify Coulomb's law to be 1/r² to within 1 part in 10¹⁶. This confirms Gauss's law and ∇·E = ρ/ε₀ (Maxwell's equation) to extraordinary precision.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 6 — Real World: Why Lightning Rods Work</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">Explain why electric field is strongest near a sharp pointed conductor. How does this explain: (a) why charge leaks from pointed ends, (b) why lightning rods are pointed and connected to earth, (c) the principle of corona discharge.</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Why E is strongest at sharp points:</strong><br>
+        For a conductor in equilibrium, the surface charge density σ is highest where the radius of curvature R is smallest (like a sharp point where R → 0). Since E = σ/ε₀ at conductor surface, E is very large at sharp points. Formally, σ ∝ 1/R for a conductor.<br><br>
+        <strong>(a) Charge leaks from pointed ends:</strong><br>
+        Very high E at pointed tips ionizes the surrounding air molecules (electric breakdown). Ions of opposite sign are attracted to the tip and neutralize the charge. This is called "action of points" or "corona discharge." Pointed conductors are poor charge retainers!<br><br>
+        <strong>(b) Lightning rods:</strong><br>
+        During a thunderstorm, the lightning rod's point creates a very strong E field, which ionizes air above it, providing a conducting path between the charged cloud and earth (rod is grounded). The charge is neutralized slowly and continuously, preventing sudden violent discharge (lightning). The sharp point also acts as a preferred strike point for actual lightning — conducting it safely to earth.<br><br>
+        <strong>(c) Corona discharge:</strong><br>
+        In high-voltage systems, corona discharge occurs around sharp conductors/wires when E exceeds the dielectric strength of air (~3×10⁶ N/C). The air glows (you can see it as a blue-purple halo). This is used in photocopiers (corona wires), air purifiers (ionizers), and static eliminators in industry.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 7 — Assertion–Reason Type (JEE Pattern)</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;"><strong>Assertion (A):</strong> Electric flux through a closed surface containing no charge is zero.<br><strong>Reason (R):</strong> Electric field lines that enter a closed surface must also leave it if no charge is enclosed.<br>Choose: (A) Both A and R true, R explains A &nbsp; (B) Both true, R doesn't explain A &nbsp; (C) A true, R false &nbsp; (D) A false, R true</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Answer: (A) — Both A and R are correct, and R is the correct explanation of A.</strong><br><br>
+        <strong>Explanation of A:</strong> By Gauss's law, φ = q_enc/ε₀ = 0/ε₀ = 0. So flux is zero if no charge is enclosed. ✓<br><br>
+        <strong>Explanation of R:</strong> If no charge is enclosed, every field line that enters the surface must also exit it (because field lines start and end only on charges). The inward flux (negative) and outward flux (positive) are exactly equal, giving net flux = 0. This IS the physical reason for Gauss's law giving zero. ✓<br><br>
+        <strong>R correctly explains A:</strong> The reason that field lines entering must also exit (no source/sink inside) is exactly why the net flux is zero. R gives the geometric/pictorial explanation of the algebraic result in A.</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 8 — Three-Dimensional Thinking</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">A solid non-conducting sphere of radius R has charge uniformly distributed throughout its volume with charge density ρ. Using Gauss's law, find E at (a) r < R and (b) r > R. How does this differ from a shell?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Total charge: Q = ρ × (4/3)πR³</strong></p>
+        <p style="color:var(--accent4);"><strong>Case (a): r < R (inside the sphere)</strong><br>
+        Gaussian sphere of radius r: charge enclosed = ρ × (4/3)πr³<br>
+        By Gauss's law: E × 4πr² = ρ(4/3)πr³/ε₀<br>
+        <strong>E = ρr/(3ε₀) = Qr/(4πε₀R³)</strong> (increases linearly with r inside!)<br>
+        At centre (r=0): E = 0<br>
+        At surface (r=R): E = ρR/(3ε₀) = Q/(4πε₀R²)</p>
+        <p style="color:var(--accent4);"><strong>Case (b): r > R (outside the sphere)</strong><br>
+        All charge Q is enclosed: E × 4πr² = Q/ε₀<br>
+        <strong>E = Q/(4πε₀r²)</strong> — same as point charge ✓</p>
+        <p style="color:var(--accent4);"><strong>Difference from shell:</strong><br>
+        • Shell: E = 0 inside (all charge on surface, none enclosed for inner Gaussian surface)<br>
+        • Solid sphere: E increases linearly from 0 at centre to maximum at surface, then decreases as 1/r²<br>
+        • This is the model used for Earth's gravitational field! (g increases linearly from 0 at centre to g=9.8 at surface, then decreases as 1/r²)<br>
+        • E-r graph: straight line from origin to R, then 1/r² curve for r > R</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 9 — Matrix-Match (JEE Advanced Style)</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">Match the charge configuration (Column I) with the variation of E with distance r (Column II):<br>
+      <span style="color:var(--accent2);">(A) Point charge &nbsp;(B) Infinite line charge &nbsp;(C) Infinite plane sheet &nbsp;(D) Uniformly charged shell (outside) &nbsp;(E) Uniformly charged solid sphere (inside)</span><br>
+      <span style="color:var(--accent3);">(i) E ∝ 1/r² &nbsp;(ii) E ∝ 1/r &nbsp;(iii) E = constant &nbsp;(iv) E ∝ r &nbsp;(v) E = 0</span></p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Answers:</strong><br>
+        (A) Point charge → (i) E ∝ 1/r² [Coulomb's law: E = kq/r²]<br>
+        (B) Infinite line charge → (ii) E ∝ 1/r [Gauss's law: E = λ/(2πε₀r)]<br>
+        (C) Infinite plane sheet → (iii) E = constant [E = σ/2ε₀, independent of r!]<br>
+        (D) Uniformly charged shell (outside) → (i) E ∝ 1/r² [behaves as point charge]<br>
+        (E) Uniformly charged solid sphere (inside) → (iv) E ∝ r [E = ρr/3ε₀]<br><br>
+        Note: (v) E = 0 corresponds to (D) uniformly charged shell (INSIDE) — this option wasn't listed but is important!</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 10 — Olympiad Level: Earnshaw's Theorem</p>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">Earnshaw's Theorem states: A charged particle cannot be held in stable equilibrium by electrostatic forces alone. Use Gauss's law to prove this. What are its implications for atomic structure?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>Proof via Gauss's Law:</strong><br>
+        For a particle to be in stable equilibrium at point P, the electric field E must point toward P from all directions in the neighborhood — i.e., all field lines must converge on P.<br><br>
+        Consider a small closed surface centered on P. If E points inward everywhere on this surface, the net flux is negative (inward flux). But by Gauss's law: φ = q_enclosed/ε₀. For φ &lt; 0, we need q_enclosed &lt; 0 (a negative charge at P).<br><br>
+        But if our particle is positive, field lines must diverge (not converge) — so it can't be in stable equilibrium for a repulsive arrangement. And for an attractive arrangement (negative charges around), the field does converge — but then the equilibrium is only stable against displacements in some directions but not all (saddle point).<br><br>
+        More rigorously: Gauss's law → ∇·E = 0 in free space (no charge at P). A necessary condition for stable equilibrium of a maximum in potential requires ∇²V > 0. But ∇²V = −ρ/ε₀ = 0 in free space. So V can have neither a maximum nor minimum in free space — it can only have a saddle point. ∴ No stable equilibrium. QED.<br><br>
+        <strong>Implication for atoms:</strong> Electrons CANNOT be held in stable electrostatic equilibrium. This is why classical physics predicts atoms should collapse (electron spirals into nucleus). The resolution requires QUANTUM MECHANICS — electrons don't actually orbit like planets; they exist in quantum states described by wavefunctions. Earnshaw's theorem forced the development of quantum physics!</p>
+      </div>
+    </div>
+
+    <div style="background:var(--surface2);border:1px solid rgba(245,197,24,0.3);border-radius:0.75rem;padding:1.25rem;">
+      <p style="color:var(--accent);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;">HOTS 11 — Case Study Based (CBSE New Pattern)</p>
+      <div style="background:rgba(0,212,255,0.07);border:1px solid rgba(0,212,255,0.3);border-radius:0.5rem;padding:1rem;margin-bottom:0.75rem;">
+        <p style="color:var(--accent2);font-weight:600;margin-bottom:0.5rem;">📖 Case Study: The Van de Graaff Generator</p>
+        <p style="color:var(--text);font-size:0.9rem;">A Van de Graaff generator consists of a large hollow metallic sphere mounted on an insulating column. A conveyor belt runs through the column, carrying positive charges from the base to the interior of the sphere. A brush at the top transfers charge to the inner surface of the sphere. The charges immediately migrate to the outer surface. This process continues, building up millions of volts on the sphere. The maximum voltage is limited by the surrounding air breaking down (E > 3×10⁶ N/C).</p>
+      </div>
+      <p style="color:var(--text);font-weight:600;margin-bottom:0.75rem;">Based on the passage, answer: (a) Why do charges accumulate on the OUTER surface of the sphere, not inside? (b) Using Gauss's law, explain why the field inside the sphere is zero even when huge charge is on the surface. (c) Find the maximum charge that can be accumulated on a sphere of radius 1 m before breakdown. (d) Why is the sphere made large?</p>
+      <button onclick="toggleAns(this)" style="background:var(--surface);border:1px solid var(--accent);color:var(--accent);padding:0.3rem 0.9rem;border-radius:1rem;cursor:pointer;font-size:0.85rem;">Show Answer</button>
+      <div style="display:none;margin-top:0.75rem;padding:0.75rem;background:rgba(245,197,24,0.07);border-radius:0.5rem;">
+        <p style="color:var(--accent4);"><strong>(a) Charges on outer surface:</strong><br>
+        In a conductor, free charges repel each other and move to maximize their separation. For a hollow sphere, the minimum energy configuration has all charge on the outer surface. By Gauss's law, E = 0 inside the conductor, which is only possible if no net charge is inside. Also, if charge were inside, it would create E ≠ 0 inside, causing currents to flow until equilibrium (all charge outside) is reached.<br><br>
+        <strong>(b) E = 0 inside sphere:</strong><br>
+        Choose any Gaussian sphere of radius r &lt; R inside the sphere. By Gauss's law: φ = q_enclosed/ε₀. Since all charge is on the outer surface, q_enclosed = 0 for any Gaussian surface inside. Therefore φ = 0. Since E is uniform in magnitude at all points on the Gaussian sphere (by symmetry) and must give zero flux, E = 0 at all points inside. ✓<br><br>
+        <strong>(c) Maximum charge:</strong><br>
+        E at surface = Q/(4πε₀R²) = kQ/R²<br>
+        For breakdown: E_max = 3×10⁶ N/C, R = 1 m<br>
+        Q_max = E_max × R²/(k) = 3×10⁶ × 1/(9×10⁹) = 3.33 × 10⁻⁴ C ≈ 333 μC<br><br>
+        <strong>(d) Why large sphere:</strong><br>
+        Q_max = E_max × 4πε₀R² ∝ R². Larger R → more charge can accumulate before breakdown. Also V_max = kQ_max/R = E_max × R ∝ R. Larger R → higher voltage. A 5 m sphere could hold 5 times more charge and generate 5 times higher voltage!</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<!-- =================== IMPORTANT FORMULAE EXTENDED =================== -->
+<section id="formula-extended">
+<div class="container fade-in">
+  <span class="section-num">📌 Formula Summary — Complete</span>
+  <h2 class="section-title">All Formulae at a Glance</h2>
+
+  <div class="summary-grid" style="grid-template-columns:repeat(auto-fill,minmax(270px,1fr));">
+    <div class="sum-card">
+      <span class="sc-icon">⚡</span>
+      <span class="sc-title">Coulomb's Law</span>
+      <div class="sc-eq">F = kq₁q₂/r²</div>
+      <div class="sc-eq">k = 9×10⁹ Nm²C⁻²</div>
+      <p>Force between two point charges. k = 1/(4πε₀). Inverse square law.</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">🔵</span>
+      <span class="sc-title">Electric Field</span>
+      <div class="sc-eq">E = F/q = kQ/r²</div>
+      <div class="sc-eq">Unit: N/C or V/m</div>
+      <p>Force per unit positive charge. E is independent of test charge q.</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">🧲</span>
+      <span class="sc-title">Dipole Moment</span>
+      <div class="sc-eq">p = q × 2a</div>
+      <div class="sc-eq">Direction: −q → +q</div>
+      <p>Vector from negative to positive charge. Unit: C·m.</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">📍</span>
+      <span class="sc-title">Dipole Field — Axial</span>
+      <div class="sc-eq">E = 2p/(4πε₀r³)</div>
+      <div class="sc-eq">Direction: along p̂</div>
+      <p>For r >> a. E ∝ 1/r³ (falls faster than point charge).</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">⊥</span>
+      <span class="sc-title">Dipole Field — Equatorial</span>
+      <div class="sc-eq">E = p/(4πε₀r³)</div>
+      <div class="sc-eq">Direction: opposite to p̂</div>
+      <p>For r >> a. Half of axial field. Anti-parallel to p.</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">🌀</span>
+      <span class="sc-title">Torque on Dipole</span>
+      <div class="sc-eq">τ = pE sinθ</div>
+      <div class="sc-eq">τ⃗ = p⃗ × E⃗</div>
+      <p>Max at θ=90°. Zero at θ=0°(stable) and θ=180°(unstable).</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">🌐</span>
+      <span class="sc-title">Electric Flux</span>
+      <div class="sc-eq">Δφ = E·ΔS cosθ</div>
+      <div class="sc-eq">Unit: N·m²/C</div>
+      <p>Flux = field lines per unit area × area × cosθ. Scalar quantity.</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">📐</span>
+      <span class="sc-title">Gauss's Law</span>
+      <div class="sc-eq">φ = q_enc/ε₀</div>
+      <div class="sc-eq">∮E·dS = q_enc/ε₀</div>
+      <p>True for any closed surface, any shape. Key tool for symmetric distributions.</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">〰️</span>
+      <span class="sc-title">E — Infinite Wire</span>
+      <div class="sc-eq">E = λ/(2πε₀r)</div>
+      <div class="sc-eq">E ∝ 1/r</div>
+      <p>λ = linear charge density. Radially outward. Falls as 1/r, not 1/r².</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">📋</span>
+      <span class="sc-title">E — Infinite Plane</span>
+      <div class="sc-eq">E = σ/(2ε₀)</div>
+      <div class="sc-eq">Uniform (r-independent!)</div>
+      <p>σ = surface charge density. Both sides. Independent of distance!</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">🔮</span>
+      <span class="sc-title">E — Spherical Shell</span>
+      <div class="sc-eq">E = kq/r² (r > R)</div>
+      <div class="sc-eq">E = 0 (r < R)</div>
+      <p>Outside: like point charge. Inside: zero field. Discontinuity at r=R.</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">🔴</span>
+      <span class="sc-title">E — Solid Sphere (inside)</span>
+      <div class="sc-eq">E = ρr/(3ε₀) = Qr/(4πε₀R³)</div>
+      <div class="sc-eq">E ∝ r (linear)</div>
+      <p>Increases linearly inside solid sphere. Maximum at surface.</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">🧮</span>
+      <span class="sc-title">Charge Densities</span>
+      <div class="sc-eq">λ = ΔQ/Δl [C/m]</div>
+      <div class="sc-eq">σ = ΔQ/ΔS [C/m²]</div>
+      <div class="sc-eq">ρ = ΔQ/ΔV [C/m³]</div>
+      <p>Linear, surface, and volume charge densities. Use the appropriate one!</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">⚛️</span>
+      <span class="sc-title">Elementary Charge</span>
+      <div class="sc-eq">e = 1.6 × 10⁻¹⁹ C</div>
+      <div class="sc-eq">q = ne (quantization)</div>
+      <p>Smallest free charge. Proton: +e. Electron: −e. n = integer.</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">🎯</span>
+      <span class="sc-title">Force on Dipole (Non-uniform E)</span>
+      <div class="sc-eq">F = p(dE/dx) [for p ∥ E]</div>
+      <div class="sc-eq">Net torque + net force</div>
+      <p>In non-uniform E, dipole experiences both torque and net translational force.</p>
+    </div>
+    <div class="sum-card">
+      <span class="sc-icon">💎</span>
+      <span class="sc-title">PE of Dipole in Field</span>
+      <div class="sc-eq">U = −p⃗·E⃗ = −pE cosθ</div>
+      <div class="sc-eq">Min at θ=0°, Max at θ=180°</div>
+      <p>Stable equilibrium: U = −pE (minimum). Unstable: U = +pE (maximum).</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:2rem;">
+    <div class="callout-title">🎯 Crucial Distinctions to Remember in Exams</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:0.75rem;">
+      <div>
+        <p><strong style="color:var(--accent3);">1/r vs 1/r² vs 1/r³:</strong><br>
+        Line charge: E ∝ 1/r<br>
+        Point charge/Shell outside: E ∝ 1/r²<br>
+        Dipole: E ∝ 1/r³</p>
+      </div>
+      <div>
+        <p><strong style="color:var(--accent3);">Direction of dipole E:</strong><br>
+        Axial: same as p̂ (→)<br>
+        Equatorial: opposite to p̂ (←)</p>
+      </div>
+      <div>
+        <p><strong style="color:var(--accent3);">Torque vs PE formula:</strong><br>
+        τ = pE sinθ (SINE)<br>
+        U = −pE cosθ (COSINE)</p>
+      </div>
+      <div>
+        <p><strong style="color:var(--accent3);">Gauss's Law — what changes:</strong><br>
+        Shape of Gaussian surface: free choice<br>
+        q_enclosed: determines flux<br>
+        External charge: affects E locally, NOT net flux</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
     </ol>
 </div>
 </div>
@@ -3106,6 +4130,7 @@ Tip: When both charges double → ×4, when r triples → ÷9. Net: ×(4/9)
   <p style="color:var(--text-muted);font-size:0.9rem;">Chapter 1 — Electric Charges and Fields | Class 12 Physics NCERT | Board Exam 2026–2027</p>
   <p style="color:var(--text-muted);font-size:0.85rem;margin-top:0.5rem;">Complete coverage: Conductors · Coulomb · Field · Flux · Dipole · Gauss's Law · Applications · PYQs · HOTS</p>
   <a href="#top" style="display:inline-block;background:var(--surface2);border:1px solid var(--border);color:var(--text-muted);text-decoration:none;font-size:0.8rem;padding:0.4rem 1rem;border-radius:2rem;margin-bottom:1.5rem;transition:color 0.2s,border-color 0.2s;" onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'" onmouseout="this.style.color='';this.style.borderColor=''">↑ Back to Top</a>
+  <div class="name-tag">Abilash V</div>
   <p style="color:var(--text-muted);font-size:0.75rem;margin-top:1rem;">Study hard. Score perfect. You've got this! ⚡</p>
 </footer>
 
@@ -3117,13 +4142,13 @@ window.addEventListener('scroll', () => {
   document.getElementById('pbar').style.width = prog + '%';
 }, { passive: true });
 
-// ── FADE-IN ON SCROLL — opacity only, no layout shift ──
+// ── FADE-IN ON SCROLL ──
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.05 });
+}, { threshold: 0, rootMargin: "0px 0px -50px 0px" });
 document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-// ── NAV ACTIVE STATE ──
+// ── NAV ACTIVE STATE + AUTO-SCROLL INTO VIEW ──
 const navLinks = document.querySelectorAll('.nav-links a');
 const sectionEls = document.querySelectorAll('section[id], div.hero[id]');
 
@@ -3134,12 +4159,8 @@ const navObs = new IntersectionObserver(entries => {
       const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
       if (active) {
         active.classList.add('active');
-        // Use scrollLeft instead of scrollIntoView to avoid interrupting page scroll
-        const wrap = document.querySelector('.nav-scroll-wrap');
-        if (wrap) {
-          const linkLeft = active.offsetLeft - wrap.offsetWidth / 2 + active.offsetWidth / 2;
-          wrap.querySelector('.nav-links').scrollLeft = linkLeft;
-        }
+        // Scroll active link into view within the nav scroll container
+        active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
       }
     }
   });
@@ -3151,10 +4172,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
     const target = document.querySelector(a.getAttribute('href'));
-    if (!target) return;
-    const navH = document.getElementById('main-nav')?.offsetHeight || 48;
-    const top = target.getBoundingClientRect().top + window.scrollY - navH - 8;
-    window.scrollTo({ top, behavior: 'smooth' });
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
@@ -3165,6 +4183,9 @@ function toggleAns(btn) {
   ans.style.display = show ? 'none' : 'block';
   btn.textContent = show ? 'Show Answer' : 'Hide Answer';
 }
+
+// ── FALLBACK: ensure all fade-in become visible ──
+setTimeout(() => { document.querySelectorAll(".fade-in").forEach(el => el.classList.add("visible")); }, 800);
 
 // ── ACCORDION TOGGLE ──
 function toggleAcc(el) {
