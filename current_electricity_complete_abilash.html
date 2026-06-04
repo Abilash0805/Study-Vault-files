@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Current Electricity — Complete Study Guide | Abilash V</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0f1a;--card:#111827;--card2:#1a2435;
+  --y:#fbbf24;--b:#60a5fa;--g:#34d399;--p:#a78bfa;--pk:#f472b6;--r:#f87171;--o:#fb923c;--cy:#22d3ee;
+  --text:#e2e8f0;--muted:#94a3b8;--border:#1e293b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Nunito',sans-serif;font-size:16px;line-height:1.75;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 15% 20%,rgba(251,191,36,.04),transparent 50%),radial-gradient(ellipse at 85% 80%,rgba(96,165,250,.04),transparent 50%);pointer-events:none;z-index:0}
+#prog{height:5px;background:linear-gradient(90deg,var(--y),var(--b),var(--g),var(--pk),var(--o),var(--cy));position:sticky;top:0;z-index:300;width:0;transition:width .07s}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#050d1a 0%,#0d1b3e 45%,#1a0d2e 100%);padding:64px 20px 52px;text-align:center;position:relative;overflow:hidden;z-index:1}
+.hero::after{content:'⚡🔋💡🔀⚖️🔌🧪🌡️';position:absolute;font-size:26px;top:10px;left:0;right:0;opacity:.07;letter-spacing:28px;pointer-events:none}
+.hero-emoji{font-size:84px;display:block;animation:pulse 3s ease-in-out infinite;position:relative}
+@keyframes pulse{0%,100%{transform:scale(1) rotate(-3deg)}50%{transform:scale(1.1) rotate(3deg)}}
+.hero h1{font-family:'Fredoka One',cursive;font-size:clamp(2rem,6vw,4rem);color:var(--y);position:relative;text-shadow:0 0 40px rgba(251,191,36,.25);letter-spacing:2px}
+.hero .chap{color:var(--cy);font-size:1.05rem;font-weight:700;margin-top:6px;position:relative;letter-spacing:1px}
+.hero .sub{color:var(--muted);font-size:.9rem;margin-top:4px;position:relative}
+.hero .badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px;position:relative}
+.badge{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:5px 14px;border-radius:20px;font-size:.81rem;font-weight:700}
+.badge.y{color:var(--y);border-color:rgba(251,191,36,.35)}.badge.b{color:var(--b);border-color:rgba(96,165,250,.35)}.badge.g{color:var(--g);border-color:rgba(52,211,153,.35)}.badge.p{color:var(--p);border-color:rgba(167,139,250,.35)}
+
+/* ── SCROLL NAV ── */
+.snav{position:fixed;right:14px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:5px;z-index:200;background:rgba(10,15,26,.6);padding:8px 5px;border-radius:20px;backdrop-filter:blur(8px)}
+.sdot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.2);border:none;cursor:pointer;padding:0;transition:all .2s;display:block}
+.sdot.active,.sdot:hover{background:var(--y);box-shadow:0 0 6px var(--y)}
+@media(max-width:640px){.snav{display:none}}
+
+/* ── CONTAINER ── */
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 80px;position:relative;z-index:1}
+
+/* ── TOC ── */
+.toc{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;margin:24px auto;max-width:900px;position:relative;z-index:1}
+.toc h2{color:var(--y);font-family:'Fredoka One',cursive;margin-bottom:14px;font-size:1.5rem}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:7px}
+.toc a{display:block;background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:8px 13px;color:var(--b);text-decoration:none;font-weight:600;font-size:.84rem;transition:all .2s}
+.toc a:hover{background:rgba(96,165,250,.12);border-color:var(--b);transform:translateX(4px)}
+
+/* ── SECTION HEADERS ── */
+.section{margin:44px 0}
+.sec-hdr{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.sec-icon{font-size:2rem}
+.sec-title{font-family:'Fredoka One',cursive;font-size:1.8rem}
+.ty{color:var(--y)}.tb{color:var(--b)}.tg{color:var(--g)}.tp{color:var(--p)}.tpk{color:var(--pk)}.tr{color:var(--r)}.to{color:var(--o)}.tcy{color:var(--cy)}
+
+/* ── CARDS ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin:14px 0;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+.card.cy::before{background:var(--y)}.card.cb::before{background:var(--b)}.card.cg::before{background:var(--g)}.card.cp::before{background:var(--p)}.card.cpk::before{background:var(--pk)}.card.cr::before{background:var(--r)}.card.co::before{background:var(--o)}.card.ccy::before{background:var(--cy)}
+.card h3{font-family:'Fredoka One',cursive;font-size:1.15rem;margin-bottom:10px}
+.h3y{color:var(--y)}.h3b{color:var(--b)}.h3g{color:var(--g)}.h3p{color:var(--p)}.h3pk{color:var(--pk)}.h3r{color:var(--r)}.h3o{color:var(--o)}.h3cy{color:var(--cy)}
+
+/* ── SPECIAL BOXES ── */
+.def-box{background:linear-gradient(135deg,rgba(251,191,36,.09),rgba(251,191,36,.02));border:2px solid rgba(251,191,36,.45);border-radius:13px;padding:17px 20px;margin:13px 0}
+.def-box .lbl,.analogy .lbl,.memory .lbl,.warn-box .lbl,.formula-box .lbl,.ponder .pnum-lbl{font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:block}
+.def-box .lbl{color:var(--y)}.def-box p{font-weight:600;color:#fef3c7}
+.formula-box{background:linear-gradient(135deg,rgba(96,165,250,.1),rgba(96,165,250,.03));border:2px solid rgba(96,165,250,.45);border-radius:13px;padding:16px 22px;margin:13px 0;text-align:center}
+.formula-box .lbl{color:var(--b)}
+.fml{font-family:'Fira Code',monospace;font-size:1.08rem;color:#bfdbfe;font-weight:600}
+.analogy{background:linear-gradient(135deg,rgba(52,211,153,.08),rgba(52,211,153,.02));border:2px solid rgba(52,211,153,.35);border-radius:13px;padding:17px 20px;margin:13px 0}
+.analogy .lbl{color:var(--g)}
+.memory{background:linear-gradient(135deg,rgba(244,114,182,.1),rgba(244,114,182,.02));border:2px solid rgba(244,114,182,.35);border-radius:13px;padding:16px 20px;margin:13px 0}
+.memory .lbl{color:var(--pk)}
+.warn-box{background:linear-gradient(135deg,rgba(248,113,113,.08),rgba(248,113,113,.02));border:2px solid rgba(248,113,113,.4);border-radius:13px;padding:15px 19px;margin:12px 0}
+.warn-box .lbl{color:var(--r)}
+.purple-box{background:linear-gradient(135deg,rgba(167,139,250,.1),rgba(167,139,250,.02));border:2px solid rgba(167,139,250,.4);border-radius:13px;padding:17px 20px;margin:13px 0}
+.purple-box .lbl{font-size:.7rem;font-weight:800;letter-spacing:2px;color:var(--p);text-transform:uppercase;margin-bottom:6px;display:block}
+.cyan-box{background:linear-gradient(135deg,rgba(34,211,238,.08),rgba(34,211,238,.02));border:2px solid rgba(34,211,238,.35);border-radius:13px;padding:17px 20px;margin:13px 0}
+.cyan-box .lbl{font-size:.7rem;font-weight:800;letter-spacing:2px;color:var(--cy);text-transform:uppercase;margin-bottom:6px;display:block}
+.green-box{background:linear-gradient(135deg,rgba(52,211,153,.08),rgba(52,211,153,.02));border:2px solid rgba(52,211,153,.35);border-radius:13px;padding:17px 20px;margin:13px 0}
+.green-box .lbl{font-size:.7rem;font-weight:800;letter-spacing:2px;color:var(--g);text-transform:uppercase;margin-bottom:6px;display:block}
+
+/* ── DERIVATION ── */
+.deriv{background:var(--card2);border:1px solid var(--border);border-left:3px solid var(--p);border-radius:13px;padding:20px;margin:13px 0}
+.deriv h4{color:var(--p);font-family:'Fredoka One',cursive;font-size:1.08rem;margin-bottom:12px}
+.step{display:flex;gap:12px;margin:10px 0;align-items:flex-start}
+.sn{width:27px;height:27px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.82rem;flex-shrink:0;margin-top:3px}
+.sny{background:var(--y);color:#000}.snb{background:var(--b);color:#fff}.sng{background:var(--g);color:#000}.snp{background:var(--p);color:#fff}.snr{background:var(--r);color:#fff}
+
+/* ── DIAGRAMS ── */
+.dw{background:var(--card2);border-radius:13px;padding:18px;margin:13px 0;text-align:center;overflow-x:auto;border:1px solid var(--border)}
+.dw figcaption{color:var(--muted);font-size:.82rem;margin-top:9px;font-weight:600;font-style:italic}
+
+/* ── TABLES ── */
+.ftable{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem}
+.ftable th{background:rgba(96,165,250,.15);color:var(--b);font-weight:800;padding:9px 12px;text-align:left;border-bottom:2px solid rgba(96,165,250,.4);font-size:.87rem}
+.ftable td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+.ftable tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+.ftable code{font-family:'Fira Code',monospace;font-size:.9rem;color:#bfdbfe}
+.dim-table{width:100%;border-collapse:collapse;font-size:.85rem;margin:12px 0}
+.dim-table th{background:linear-gradient(135deg,rgba(167,139,250,.2),rgba(167,139,250,.08));color:var(--p);font-weight:800;padding:9px 11px;border-bottom:2px solid rgba(167,139,250,.4);text-align:center}
+.dim-table td{padding:9px 11px;border-bottom:1px solid var(--border);text-align:center;vertical-align:middle}
+.dim-table tr:nth-child(even) td{background:rgba(167,139,250,.04)}
+.dim-table .qty{color:var(--y);font-weight:700;text-align:left}.dim-table .sym{color:var(--g);font-family:'Fira Code',monospace;font-weight:600}
+.dim-table .dim{color:var(--b);font-family:'Fira Code',monospace;font-size:.81rem}.dim-table .unit{color:var(--pk);font-weight:700}.dim-table .remark{color:var(--muted);font-size:.81rem;text-align:left}
+.ctable{width:100%;border-collapse:collapse;margin:13px 0;font-size:.9rem}
+.ctable th{padding:9px 12px;font-weight:800;font-size:.88rem;text-align:center;border-bottom:2px solid rgba(96,165,250,.4);background:rgba(96,165,250,.12);color:var(--b)}
+.ctable td{padding:9px 12px;border:1px solid var(--border);font-size:.88rem;text-align:center;vertical-align:top}
+
+/* ── GRID ── */
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:12px}
+.mini{background:var(--card2);border:1px solid var(--border);border-radius:11px;padding:15px}
+.mini .mi{font-size:1.65rem;margin-bottom:5px}
+.mini h4{font-weight:800;font-size:.94rem;margin-bottom:5px}
+
+/* ── HIGHLIGHTS ── */
+.hy{color:var(--y);font-weight:800}.hb{color:var(--b);font-weight:800}.hg{color:var(--g);font-weight:800}.hp{color:var(--p);font-weight:800}.hr{color:var(--r);font-weight:800}.ho{color:var(--o);font-weight:800}.hcy{color:var(--cy);font-weight:800}
+
+/* ── DIVIDER ── */
+.div{height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);margin:40px 0}
+
+/* ── PONDER ── */
+.ponder{background:var(--card);border:1px solid rgba(34,211,238,.3);border-radius:13px;padding:18px 22px;margin:13px 0;padding-top:24px}
+.ponder .pnum{display:inline-block;background:var(--cy);color:#000;font-family:'Fredoka One',cursive;font-size:.88rem;padding:2px 14px;border-radius:20px;margin-bottom:10px}
+.ponder-content{color:#cffafe}
+
+/* ── SUMMARY ITEM ── */
+.sumitem{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.sumitem:last-child{border-bottom:none}
+.snum{background:linear-gradient(135deg,var(--y),var(--o));color:#000;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.88rem;flex-shrink:0;margin-top:2px}
+
+/* ── FORMULA GRID ── */
+.fref{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:9px;margin:14px 0}
+.fcard{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:13px;text-align:center}
+.fcard .fname{font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:5px;text-transform:uppercase;letter-spacing:.8px}
+.fcard .fform{font-family:'Fira Code',monospace;font-size:.93rem;color:var(--y);font-weight:600}
+.fcard .funit{font-size:.74rem;color:var(--muted);margin-top:3px}
+
+/* ── QUESTIONS (all at bottom) ── */
+.q-section{background:var(--card);border-radius:16px;padding:22px;margin:14px 0;border:1px solid var(--border)}
+.q-section h3{font-family:'Fredoka One',cursive;font-size:1.15rem;margin-bottom:14px}
+
+/* PYQ */
+.pyqbox{background:linear-gradient(135deg,rgba(251,146,60,.08),rgba(251,146,60,.02));border:2px solid rgba(251,146,60,.4);border-radius:13px;padding:17px;margin:12px 0}
+.pyqbox .pl{font-size:.7rem;font-weight:800;letter-spacing:2px;color:var(--o);text-transform:uppercase;margin-bottom:6px}
+.pyqbox .pq{font-weight:700;margin-bottom:8px}
+.marks{display:inline-block;background:var(--o);color:#000;padding:2px 10px;border-radius:20px;font-size:.74rem;font-weight:800;margin-bottom:7px}
+
+/* NUMERICAL */
+.nbox{background:var(--card);border:2px solid rgba(52,211,153,.35);border-radius:13px;padding:18px;margin:12px 0}
+.nbox .nl{font-size:.7rem;font-weight:800;letter-spacing:2px;color:var(--g);text-transform:uppercase;margin-bottom:6px}
+.nbox .np{font-weight:700;margin-bottom:8px}
+
+/* HOTS */
+.hots{background:linear-gradient(135deg,rgba(248,113,113,.08),rgba(167,139,250,.06));border:2px solid rgba(248,113,113,.4);border-radius:13px;padding:17px;margin:12px 0}
+.hots .hl{font-size:.7rem;font-weight:800;letter-spacing:2px;color:var(--r);text-transform:uppercase;margin-bottom:6px}
+.hots .hq{font-weight:700;margin-bottom:8px}
+
+/* QBOX THEORY */
+.qbox{background:var(--card);border-left:4px solid var(--p);border-radius:9px;padding:14px 17px;margin:10px 0}
+.qbox .ql{font-size:.7rem;font-weight:800;letter-spacing:1.5px;color:var(--p);text-transform:uppercase;margin-bottom:5px}
+.qbox .qq{font-weight:700;margin-bottom:7px}
+
+/* EXERCISE BOX */
+.exbox{background:var(--card);border:2px solid rgba(52,211,153,.35);border-radius:13px;padding:20px;margin:12px 0;position:relative}
+.exbox .enlbl{position:absolute;top:-11px;left:16px;background:var(--g);color:#000;font-weight:800;font-size:.76rem;padding:2px 12px;border-radius:20px}
+.exbox .ep{font-weight:700;margin-bottom:9px;padding-top:5px}
+
+/* TOGGLE BUTTONS */
+.tog,.etog,.ntog,.ptog{padding:5px 15px;border-radius:7px;cursor:pointer;font-weight:700;font-size:.81rem;font-family:'Nunito',sans-serif;transition:all .2s;border:1px solid}
+.tog{background:rgba(167,139,250,.15);border-color:rgba(167,139,250,.4);color:var(--p)}
+.tog:hover{background:rgba(167,139,250,.3)}
+.etog,.ntog{background:rgba(52,211,153,.15);border-color:rgba(52,211,153,.4);color:var(--g)}
+.etog:hover,.ntog:hover{background:rgba(52,211,153,.3)}
+.ptog{background:rgba(251,146,60,.15);border-color:rgba(251,146,60,.4);color:var(--o)}
+.ptog:hover{background:rgba(251,146,60,.3)}
+.ans-body,.esol,.nsol,.pbody{display:none;margin-top:11px;border-top:1px solid var(--border);padding-top:11px}
+.ans-body.show,.esol.show,.nsol.show,.pbody.show{display:block}
+.ans-body{color:#c7d2fe}.esol{color:#a7f3d0}.nsol{color:#a7f3d0}.pbody{color:#fed7aa}
+
+/* FOOTER */
+.footer{text-align:center;padding:50px 20px 40px;border-top:1px solid var(--border);color:var(--muted);font-size:.88rem;position:relative;z-index:1}
+.footer .name{color:var(--y);font-family:'Fredoka One',cursive;font-size:2.2rem;display:block;margin-bottom:6px;text-shadow:0 0 20px rgba(251,191,36,.3)}
+.footer .tag{font-size:.75rem;color:var(--p);letter-spacing:1.5px;text-transform:uppercase}
+.footer .stamp{margin-top:14px;padding:10px 20px;background:linear-gradient(135deg,rgba(52,211,153,.1),rgba(52,211,153,.03));border:1px solid rgba(52,211,153,.3);border-radius:10px;display:inline-block;font-size:.84rem;color:var(--g)}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<!-- SCROLL NAV -->
+<nav class="snav" id="snav">
+  <button class="sdot active" onclick="goTo('s31')" title="Introduction"></button>
+  <button class="sdot" onclick="goTo('s32')" title="Electric Current"></button>
+  <button class="sdot" onclick="goTo('s33')" title="Conductors"></button>
+  <button class="sdot" onclick="goTo('s34')" title="Ohm's Law"></button>
+  <button class="sdot" onclick="goTo('s35')" title="Drift"></button>
+  <button class="sdot" onclick="goTo('s36')" title="Limitations"></button>
+  <button class="sdot" onclick="goTo('s37')" title="Resistivity"></button>
+  <button class="sdot" onclick="goTo('s38')" title="Temp Dependence"></button>
+  <button class="sdot" onclick="goTo('s39')" title="Power"></button>
+  <button class="sdot" onclick="goTo('s310')" title="EMF & Cells"></button>
+  <button class="sdot" onclick="goTo('s311')" title="Series/Parallel"></button>
+  <button class="sdot" onclick="goTo('s312')" title="Kirchhoff"></button>
+  <button class="sdot" onclick="goTo('s313')" title="Wheatstone"></button>
+  <button class="sdot" onclick="goTo('summary-sec')" title="Summary"></button>
+  <button class="sdot" onclick="goTo('dimtable')" title="Dimensions"></button>
+  <button class="sdot" onclick="goTo('ponder-sec')" title="Points to Ponder"></button>
+  <button class="sdot" onclick="goTo('allformulas')" title="All Formulas"></button>
+  <button class="sdot" onclick="goTo('exercises-sec')" title="Exercises"></button>
+  <button class="sdot" onclick="goTo('numericals-sec')" title="Numericals"></button>
+  <button class="sdot" onclick="goTo('pyq-sec')" title="PYQs"></button>
+  <button class="sdot" onclick="goTo('hots-sec')" title="HOTS"></button>
+  <button class="sdot" onclick="goTo('theory-sec')" title="Theory Q"></button>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <span class="hero-emoji">⚡</span>
+  <h1>CURRENT ELECTRICITY</h1>
+  <div class="chap">Chapter 3 — Class 12 Physics | Board Exam 2026-27</div>
+  <div class="sub">Complete Study Guide · All Sections · All Derivations · All Questions</div>
+  <div class="badges">
+    <span class="badge y">📚 Complete Notes 3.1–3.13</span>
+    <span class="badge b">🧠 All Derivations</span>
+    <span class="badge g">📐 Dimensional Analysis</span>
+    <span class="badge p">🧠 Points to Ponder</span>
+    <span class="badge y">✅ All NCERT Exercises</span>
+    <span class="badge b">🔢 Numericals</span>
+    <span class="badge g">📜 Board PYQs</span>
+    <span class="badge p">🚀 HOTS · Theory Q</span>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="wrap">
+<div class="toc">
+  <h2>📋 Full Chapter Contents</h2>
+  <div class="toc-grid">
+    <a href="#s31">3.1 Introduction</a>
+    <a href="#s32">3.2 Electric Current</a>
+    <a href="#s33">3.3 Currents in Conductors</a>
+    <a href="#s34">3.4 Ohm's Law &amp; R = ρl/A</a>
+    <a href="#s35">3.5 Drift of Electrons</a>
+    <a href="#s36">3.6 Limitations of Ohm's Law</a>
+    <a href="#s37">3.7 Resistivity of Materials</a>
+    <a href="#s38">3.8 Temperature Dependence</a>
+    <a href="#s39">3.9 Electrical Energy &amp; Power</a>
+    <a href="#s310">3.10 Cells, EMF &amp; Internal Resistance</a>
+    <a href="#s311">3.11 Cells in Series &amp; Parallel</a>
+    <a href="#s312">3.12 Kirchhoff's Rules</a>
+    <a href="#s313">3.13 Wheatstone Bridge</a>
+    <a href="#summary-sec">📋 NCERT Summary</a>
+    <a href="#dimtable">📐 Dimensional Analysis</a>
+    <a href="#ponder-sec">🧠 Points to Ponder</a>
+    <a href="#allformulas">🗺️ Master Formula Sheet</a>
+    <a href="#exercises-sec">✅ NCERT Exercises (All 9)</a>
+    <a href="#numericals-sec">🔢 Numericals</a>
+    <a href="#pyq-sec">📜 Board PYQs</a>
+    <a href="#hots-sec">🚀 HOTS Questions</a>
+    <a href="#theory-sec">📝 Theory Questions</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     3.1 INTRODUCTION
+═══════════════════════════════════════════ -->
+<div class="section" id="s31">
+  <div class="sec-hdr"><span class="sec-icon">🌩️</span><h2 class="sec-title ty">3.1 Introduction</h2></div>
+  <div class="analogy"><div class="lbl">🧒 Explain Like I'm 10</div><p>In Chapter 1, charges just <strong>sat still</strong> — like furniture. Now they start <strong>running</strong> — like kids in a school corridor. That running of charges is called <strong>Electric Current</strong>! 🏃</p></div>
+  <div class="card cy"><h3 class="h3y">⚡ What is Electric Current?</h3>
+    <p>When electric charges are <strong>in motion</strong>, they constitute an <span class="hy">electric current</span>.<br>
+    🌩️ <strong>Lightning</strong> = Charges flowing from clouds to earth — not steady (sudden burst)<br>
+    🔦 <strong>Torch / Clock</strong> = Charges flowing steadily. This chapter focuses on <span class="hy">STEADY currents</span>.</p>
+  </div>
+  <div class="g2">
+    <div class="mini"><div class="mi">🌊</div><h4 style="color:var(--b)">River Analogy</h4><p>Water = Electrons · Flow = Current · Narrow river = High resistance · Wide river = Low resistance</p></div>
+    <div class="mini"><div class="mi">🚶</div><h4 style="color:var(--g)">Crowd in Mall</h4><p>More people walking faster = More current · Obstacles = Resistance · Battery = Security guard pushing people forward</p></div>
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.2 ELECTRIC CURRENT
+═══════════════════════════════════════════ -->
+<div class="section" id="s32">
+  <div class="sec-hdr"><span class="sec-icon">🔋</span><h2 class="sec-title tb">3.2 Electric Current</h2></div>
+  <div class="def-box"><div class="lbl">📖 Board-Ready Definition</div><p>Electric current is defined as the <strong>net charge flowing through a cross-section of a conductor per unit time</strong>. For steady current: I = Q/t. For varying current: I(t) = lim(ΔQ/Δt) as Δt→0. SI unit: <strong>Ampere (A)</strong>.</p></div>
+  <div class="dw">
+    <svg viewBox="0 0 580 185" xmlns="http://www.w3.org/2000/svg" style="max-width:580px;width:100%">
+      <defs><marker id="a1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#fbbf24"/></marker></defs>
+      <rect x="40" y="55" width="500" height="75" rx="8" fill="rgba(96,165,250,.07)" stroke="#1e293b" stroke-width="2"/>
+      <line x1="290" y1="44" x2="290" y2="142" stroke="#fbbf24" stroke-width="3" stroke-dasharray="6,3"/>
+      <circle cx="120" cy="80" r="12" fill="rgba(52,211,153,.2)" stroke="#34d399" stroke-width="2"/><text x="120" y="84" text-anchor="middle" fill="#34d399" font-size="13" font-weight="bold">+</text>
+      <line x1="134" y1="80" x2="185" y2="80" stroke="#34d399" stroke-width="2" marker-end="url(#a1)"/>
+      <circle cx="120" cy="115" r="12" fill="rgba(52,211,153,.2)" stroke="#34d399" stroke-width="2"/><text x="120" y="119" text-anchor="middle" fill="#34d399" font-size="13" font-weight="bold">+</text>
+      <line x1="134" y1="115" x2="185" y2="115" stroke="#34d399" stroke-width="2" marker-end="url(#a1)"/>
+      <circle cx="420" cy="80" r="12" fill="rgba(248,113,113,.2)" stroke="#f87171" stroke-width="2"/><text x="420" y="84" text-anchor="middle" fill="#f87171" font-size="13" font-weight="bold">–</text>
+      <circle cx="420" cy="115" r="12" fill="rgba(248,113,113,.2)" stroke="#f87171" stroke-width="2"/><text x="420" y="119" text-anchor="middle" fill="#f87171" font-size="13" font-weight="bold">–</text>
+      <line x1="60" y1="30" x2="240" y2="30" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#a1)"/>
+      <text x="150" y="22" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">Conventional Current I →</text>
+      <text x="290" y="170" text-anchor="middle" fill="#fbbf24" font-size="12" font-weight="bold">Cross-section A</text>
+      <text x="120" y="148" text-anchor="middle" fill="#34d399" font-size="10">q₊ (forward)</text>
+      <text x="420" y="148" text-anchor="middle" fill="#f87171" font-size="10">q₋ (electrons, move left)</text>
+    </svg>
+    <figcaption>Both + and – charges may flow. Net charge crossing area A per time t = Current I</figcaption>
+  </div>
+  <div class="formula-box"><div class="lbl">Electric Current — Two Forms</div><div class="fml">I = q/t &nbsp;&nbsp;(steady) &nbsp;&nbsp;|&nbsp;&nbsp; I(t) = dQ/dt &nbsp;&nbsp;(varying)</div><p style="color:var(--muted);font-size:.82rem;margin-top:7px">If result is negative → current flows in backward direction</p></div>
+  <div class="card cb"><h3 class="h3b">📐 About the Unit — Ampere</h3>
+    <p>📌 1 Ampere = 1 Coulomb per second &nbsp;|&nbsp; SI Base Unit (defined via magnetic effects)<br>
+    🏠 Domestic appliances → order of <span class="hy">Amperes</span> &nbsp;|&nbsp; 🌩️ Lightning → tens of thousands of A<br>
+    🧠 Nerve signals → <span class="hg">microamperes (μA)</span> &nbsp;|&nbsp; ⌚ Wristwatch → <span class="hb">milliamperes (mA)</span></p>
+  </div>
+  <div class="memory"><div class="lbl">🧠 Memory Trick</div><p><strong>"PEN" Rule:</strong> Positive charge + conventional current → East (right). Electrons go West (left). Conventional current is always <em>opposite</em> to electron flow direction! 🖊️</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.3 ELECTRIC CURRENTS IN CONDUCTORS
+═══════════════════════════════════════════ -->
+<div class="section" id="s33">
+  <div class="sec-hdr"><span class="sec-icon">🔌</span><h2 class="sec-title tg">3.3 Electric Currents in Conductors</h2></div>
+  <div class="analogy"><div class="lbl">🧒 Explain Like I'm 10</div><p>Imagine a classroom. Usually kids (electrons) run around randomly — no direction. Now the teacher (electric field) says "Everyone walk to the door!" They all drift slowly in one direction = <strong>Current flows!</strong> 🏫</p></div>
+  <div class="dw">
+    <svg viewBox="0 0 600 255" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%">
+      <defs><marker id="earr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#f87171"/></marker></defs>
+      <text x="300" y="18" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Conductor Behaviour: No Field vs With Field</text>
+      <rect x="10" y="30" width="270" height="200" rx="12" fill="rgba(96,165,250,.05)" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="145" y="52" text-anchor="middle" fill="#60a5fa" font-size="12" font-weight="bold">❌ No Electric Field</text>
+      <circle cx="70" cy="90" r="8" fill="rgba(248,113,113,.2)" stroke="#f87171" stroke-width="1.5"/><text x="70" y="94" text-anchor="middle" fill="#f87171" font-size="10">e⁻</text>
+      <line x1="78" y1="86" x2="108" y2="70" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <circle cx="140" cy="115" r="8" fill="rgba(248,113,113,.2)" stroke="#f87171" stroke-width="1.5"/><text x="140" y="119" text-anchor="middle" fill="#f87171" font-size="10">e⁻</text>
+      <line x1="140" y1="123" x2="115" y2="148" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <circle cx="210" cy="95" r="8" fill="rgba(248,113,113,.2)" stroke="#f87171" stroke-width="1.5"/><text x="210" y="99" text-anchor="middle" fill="#f87171" font-size="10">e⁻</text>
+      <line x1="210" y1="87" x2="228" y2="68" stroke="#f87171" stroke-width="1.5" stroke-dasharray="4,2"/>
+      <circle cx="90" cy="178" r="8" fill="rgba(248,113,113,.2)" stroke="#f87171" stroke-width="1.5"/><text x="90" y="182" text-anchor="middle" fill="#f87171" font-size="10">e⁻</text>
+      <text x="145" y="215" text-anchor="middle" fill="#94a3b8" font-size="11">Random motion → Net I = 0</text>
+      <rect x="320" y="30" width="270" height="200" rx="12" fill="rgba(52,211,153,.05)" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="455" y="52" text-anchor="middle" fill="#34d399" font-size="12" font-weight="bold">✅ Electric Field Applied</text>
+      <line x1="335" y1="72" x2="574" y2="72" stroke="#fbbf24" stroke-width="2" stroke-dasharray="7,3"/>
+      <polygon points="572,67 582,72 572,77" fill="#fbbf24"/>
+      <text x="455" y="66" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">E →</text>
+      <circle cx="540" cy="110" r="8" fill="rgba(248,113,113,.3)" stroke="#f87171" stroke-width="2"/><text x="540" y="114" text-anchor="middle" fill="#f87171" font-size="10">e⁻</text>
+      <line x1="532" y1="110" x2="492" y2="110" stroke="#f87171" stroke-width="2" marker-end="url(#earr)"/>
+      <circle cx="520" cy="145" r="8" fill="rgba(248,113,113,.3)" stroke="#f87171" stroke-width="2"/><text x="520" y="149" text-anchor="middle" fill="#f87171" font-size="10">e⁻</text>
+      <line x1="512" y1="145" x2="472" y2="145" stroke="#f87171" stroke-width="2" marker-end="url(#earr)"/>
+      <circle cx="545" cy="178" r="8" fill="rgba(248,113,113,.3)" stroke="#f87171" stroke-width="2"/><text x="545" y="182" text-anchor="middle" fill="#f87171" font-size="10">e⁻</text>
+      <line x1="537" y1="178" x2="497" y2="178" stroke="#f87171" stroke-width="2" marker-end="url(#earr)"/>
+      <text x="455" y="215" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">Electrons drift ← opposite to E → I flows ✓</text>
+    </svg>
+    <figcaption>Without field: random electron motion, zero net current. With field: electrons drift opposite to E, net current flows.</figcaption>
+  </div>
+  <div class="card cb"><h3 class="h3b">🧲 Why Do Metals Conduct?</h3>
+    <p>In metals, some electrons become <span class="hy">"free electrons"</span> — not attached to any atom. They wander freely.<br>
+    📌 <span class="hb">Ionosphere</span> — free charged particles exist naturally<br>
+    📌 <span class="hb">Metals</span> — free electrons are current carriers<br>
+    📌 <span class="hb">Electrolytic solutions</span> — both + and – ions carry current<br>
+    📌 <span class="hb">Insulators</span> — electrons tightly bound, no current</p>
+  </div>
+  <div class="warn-box"><div class="lbl">⚠️ Important</div><p>If you only put +Q/−Q at ends of a conductor, current flows briefly then STOPS (charges neutralize). You need a <strong>battery/cell</strong> to continuously supply charges and maintain steady current!</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.4 OHM'S LAW
+═══════════════════════════════════════════ -->
+<div class="section" id="s34">
+  <div class="sec-hdr"><span class="sec-icon">⚖️</span><h2 class="sec-title ty">3.4 Ohm's Law</h2></div>
+  <div class="analogy"><div class="lbl">🧒 Explain Like I'm 10</div><p>More pressure (voltage) = more water flow (current). Thin clogged pipe (resistance) = less flow even at high pressure. <strong>V = IR</strong> is exactly this! 💧</p></div>
+  <div class="def-box"><div class="lbl">📖 Board-Ready Definition</div><p>Ohm's Law: The electric current (I) through a conductor is <strong>directly proportional to the potential difference (V)</strong> across its ends, provided physical conditions remain constant. V ∝ I → V = IR. R = resistance. SI unit: Ohm (Ω). 1Ω = 1 V/A.</p></div>
+  <div class="dw">
+    <svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg" style="max-width:620px;width:100%">
+      <text x="310" y="17" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Dependence of Resistance on Dimensions</text>
+      <rect x="25" y="32" width="155" height="65" rx="6" fill="rgba(96,165,250,.12)" stroke="#60a5fa" stroke-width="2"/>
+      <text x="102" y="68" text-anchor="middle" fill="#e2e8f0" font-size="12">R, Length l, Area A</text>
+      <line x1="8" y1="65" x2="25" y2="65" stroke="#fbbf24" stroke-width="2"/><line x1="180" y1="65" x2="197" y2="65" stroke="#fbbf24" stroke-width="2"/>
+      <text x="102" y="118" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">(a) Single slab → R</text>
+      <rect x="235" y="32" width="130" height="65" rx="6" fill="rgba(96,165,250,.12)" stroke="#60a5fa" stroke-width="2"/>
+      <rect x="365" y="32" width="130" height="65" rx="6" fill="rgba(96,165,250,.12)" stroke="#60a5fa" stroke-width="2"/>
+      <text x="300" y="65" text-anchor="middle" fill="#e2e8f0" font-size="11">R, l, A</text>
+      <text x="430" y="65" text-anchor="middle" fill="#e2e8f0" font-size="11">R, l, A</text>
+      <line x1="218" y1="65" x2="235" y2="65" stroke="#fbbf24" stroke-width="2"/><line x1="495" y1="65" x2="510" y2="65" stroke="#fbbf24" stroke-width="2"/>
+      <text x="365" y="118" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">(b) Length doubled → R_eq = 2R</text>
+      <rect x="25" y="155" width="155" height="32" rx="4" fill="rgba(167,139,250,.15)" stroke="#a78bfa" stroke-width="1.5"/>
+      <rect x="25" y="187" width="155" height="32" rx="4" fill="rgba(167,139,250,.15)" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="102" y="175" text-anchor="middle" fill="#e2e8f0" font-size="10">l, A/2, R₁ = 2R</text>
+      <text x="102" y="207" text-anchor="middle" fill="#e2e8f0" font-size="10">l, A/2, R₁ = 2R</text>
+      <text x="102" y="238" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">(c) Area halved → R = 2R</text>
+      <rect x="280" y="148" width="315" height="90" rx="10" fill="rgba(251,191,36,.08)" stroke="#fbbf24" stroke-width="2"/>
+      <text x="437" y="170" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="bold">Conclusions:</text>
+      <text x="290" y="190" fill="#e2e8f0" font-size="12">R ∝ l &nbsp;(longer → more resistance)</text>
+      <text x="290" y="210" fill="#e2e8f0" font-size="12">R ∝ 1/A &nbsp;(wider → less resistance)</text>
+      <text x="290" y="230" fill="#fbbf24" font-size="13" font-weight="bold">∴ R = ρ × l/A</text>
+    </svg>
+    <figcaption>Fig — Dependence of resistance on length and cross-sectional area (leads to R = ρl/A)</figcaption>
+  </div>
+  <div class="deriv">
+    <h4>📐 Derivation: R = ρl/A → Vector form of Ohm's Law</h4>
+    <div class="step"><div class="sn sny">1</div><div><strong>Double length:</strong> Two slabs in series → V_total = 2V, same I → R_C = 2V/I = 2R → <span class="hy">R ∝ l</span></div></div>
+    <div class="step"><div class="sn snb">2</div><div><strong>Halve area:</strong> Slab split lengthwise → each carries I/2, same V → R₁ = 2V/I = 2R → <span class="hb">R ∝ 1/A</span></div></div>
+    <div class="step"><div class="sn sng">3</div><div>Combining: R ∝ l/A → <span style="color:var(--y);font-weight:800;font-size:1.05rem">R = ρl/A</span> where ρ = resistivity (material property only)</div></div>
+    <div class="step"><div class="sn snp">4</div><div>V = IR = I × ρl/A. Current density j = I/A. Field E = V/l.<br>→ El = (jA)(ρl/A) = jρl → <span style="color:var(--b);font-weight:800">E = jρ</span> or <span style="color:var(--g);font-weight:800">j = σE</span> where σ = 1/ρ = conductivity</div></div>
+    <div class="formula-box" style="margin-top:13px"><div class="lbl">Key Equations</div><div class="fml">R = ρl/A &nbsp;|&nbsp; E = jρ &nbsp;|&nbsp; j = σE &nbsp;|&nbsp; σ = 1/ρ</div></div>
+  </div>
+  <div class="card cp"><h3 class="h3p">🔬 Key Quantities</h3>
+    <table class="ftable"><tr><th>Quantity</th><th>Symbol</th><th>Formula</th><th>Unit</th></tr>
+    <tr><td>Resistance</td><td>R</td><td><code>V/I = ρl/A</code></td><td>Ω (Ohm)</td></tr>
+    <tr><td>Resistivity</td><td>ρ</td><td><code>RA/l = m/(ne²τ)</code></td><td>Ω·m</td></tr>
+    <tr><td>Current Density</td><td>j</td><td><code>I/A = σE</code></td><td>A/m²</td></tr>
+    <tr><td>Conductivity</td><td>σ</td><td><code>1/ρ = ne²τ/m</code></td><td>S/m</td></tr></table>
+  </div>
+  <div class="memory"><div class="lbl">🧠 Memory Trick</div><p><strong>Resistivity</strong> = "Character" of a material (lazy person is lazy everywhere — doesn't depend on their size!)<br><strong>Resistance</strong> = How hard it is to push through a specific piece of wire (shape matters!) 🏋️</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.5 DRIFT OF ELECTRONS
+═══════════════════════════════════════════ -->
+<div class="section" id="s35">
+  <div class="sec-hdr"><span class="sec-icon">🏃</span><h2 class="sec-title tp">3.5 Drift of Electrons &amp; Origin of Resistivity</h2></div>
+  <div class="analogy"><div class="lbl">🧒 Explain Like I'm 10</div><p>Walking through a crowded market (electrons in a metal). People keep bumping into you (ions!). Even with someone pushing you (E field), you zigzag slowly. That slow net movement = <strong>drift velocity</strong>! 🛒</p></div>
+  <div class="dw">
+    <svg viewBox="0 0 580 220" xmlns="http://www.w3.org/2000/svg" style="max-width:580px;width:100%">
+      <defs><marker id="da" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#a78bfa"/></marker><marker id="ea2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#fbbf24"/></marker></defs>
+      <rect x="15" y="25" width="550" height="155" rx="10" fill="rgba(30,41,59,.8)" stroke="#1e293b" stroke-width="2"/>
+      <circle cx="75" cy="75" r="10" fill="rgba(52,211,153,.2)" stroke="#34d399" stroke-width="1.5"/><text x="75" y="79" text-anchor="middle" fill="#34d399" font-size="11">+</text>
+      <circle cx="195" cy="105" r="10" fill="rgba(52,211,153,.2)" stroke="#34d399" stroke-width="1.5"/><text x="195" y="109" text-anchor="middle" fill="#34d399" font-size="11">+</text>
+      <circle cx="315" cy="68" r="10" fill="rgba(52,211,153,.2)" stroke="#34d399" stroke-width="1.5"/><text x="315" y="72" text-anchor="middle" fill="#34d399" font-size="11">+</text>
+      <circle cx="435" cy="115" r="10" fill="rgba(52,211,153,.2)" stroke="#34d399" stroke-width="1.5"/><text x="435" y="119" text-anchor="middle" fill="#34d399" font-size="11">+</text>
+      <circle cx="150" cy="155" r="10" fill="rgba(52,211,153,.2)" stroke="#34d399" stroke-width="1.5"/><text x="150" y="159" text-anchor="middle" fill="#34d399" font-size="11">+</text>
+      <circle cx="370" cy="160" r="10" fill="rgba(52,211,153,.2)" stroke="#34d399" stroke-width="1.5"/><text x="370" y="164" text-anchor="middle" fill="#34d399" font-size="11">+</text>
+      <circle cx="500" cy="70" r="10" fill="rgba(52,211,153,.2)" stroke="#34d399" stroke-width="1.5"/><text x="500" y="74" text-anchor="middle" fill="#34d399" font-size="11">+</text>
+      <circle cx="540" cy="125" r="9" fill="rgba(248,113,113,.3)" stroke="#f87171" stroke-width="2"/><text x="540" y="129" text-anchor="middle" fill="#f87171" font-size="9" font-weight="bold">e⁻</text>
+      <polyline points="540,125 510,85 470,135 430,95 390,148 355,93 310,143 262,88 222,138 182,88 145,132 107,98 68,132 38,115" stroke="#a78bfa" stroke-width="2.5" fill="none"/>
+      <circle cx="38" cy="115" r="9" fill="rgba(248,113,113,.3)" stroke="#f87171" stroke-width="2"/><text x="38" y="119" text-anchor="middle" fill="#f87171" font-size="9" font-weight="bold">e⁻</text>
+      <circle cx="510" cy="85" r="4" fill="#fbbf24"/><circle cx="470" cy="135" r="4" fill="#fbbf24"/><circle cx="390" cy="148" r="4" fill="#fbbf24"/><circle cx="310" cy="143" r="4" fill="#fbbf24"/>
+      <circle cx="222" cy="138" r="4" fill="#fbbf24"/><circle cx="145" cy="132" r="4" fill="#fbbf24"/><circle cx="68" cy="132" r="4" fill="#fbbf24"/>
+      <line x1="540" y1="195" x2="38" y2="195" stroke="#fbbf24" stroke-width="3" marker-end="url(#ea2)"/>
+      <text x="290" y="212" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">Net drift direction (opposite to E)</text>
+      <line x1="38" y1="18" x2="510" y2="18" stroke="#60a5fa" stroke-width="2.5" marker-end="url(#da)"/>
+      <text x="275" y="13" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">E (Electric Field) →</text>
+      <text x="490" y="180" text-anchor="middle" fill="#94a3b8" font-size="9">● = collision</text>
+    </svg>
+    <figcaption>Electron drifts from right to left (opposite to E). Zigzag path = random thermal motion. Net displacement = drift. Yellow dots = collision points.</figcaption>
+  </div>
+  <div class="deriv">
+    <h4>📐 Derivation: Drift Velocity &amp; Origin of Ohm's Law (σ = ne²τ/m)</h4>
+    <div class="step"><div class="sn sny">1</div><div>Force on electron: F = −eE. Acceleration: <span class="hy">a = −eE/m</span></div></div>
+    <div class="step"><div class="sn snb">2</div><div>Velocity of iᵗʰ electron at time t: V_i = v_i + (−eE/m)·t_i. Post-collision velocity v_i is random (average = 0). Average of t_i = τ (relaxation time).</div></div>
+    <div class="step"><div class="sn sng">3</div><div>Average velocity = drift velocity: <span style="color:var(--y);font-weight:800">v_d = −eEτ/m</span> (constant! independent of time despite acceleration)</div></div>
+    <div class="step"><div class="sn snp">4</div><div>In time Δt, electrons within |v_d|Δt from area A cross it. Number = n·A·|v_d|·Δt. Charge = neA|v_d|Δt.<br><span style="color:var(--y);font-weight:800">I = neAv_d</span></div></div>
+    <div class="step"><div class="sn snr">5</div><div>Substitute v_d = eEτ/m: I = (ne²Aτ/m)E. Since j = I/A and j = σE:<br><span style="color:var(--g);font-weight:800">σ = ne²τ/m</span> and <span style="color:var(--g);font-weight:800">ρ = m/(ne²τ)</span> — Ohm's law derived from first principles! ✓</div></div>
+    <div class="formula-box" style="margin-top:13px"><div class="lbl">Drift Velocity Results</div><div class="fml">v_d = eEτ/m &nbsp;|&nbsp; I = neAv_d &nbsp;|&nbsp; σ = ne²τ/m &nbsp;|&nbsp; ρ = m/(ne²τ)</div></div>
+  </div>
+  <div class="card cpk"><h3 class="h3pk">3.5.1 Mobility (μ)</h3>
+    <div class="def-box" style="margin:8px 0"><div class="lbl">📖 Definition</div><p>Mobility = magnitude of drift velocity per unit electric field. μ = |v_d|/E = eτ/m. SI unit: m²/Vs. Always positive.</p></div>
+    <p>Higher τ → higher μ → electrons drift more freely under same field.</p>
+  </div>
+  <div class="card cb"><h3 class="h3b">❓ Famous Conceptual Q&amp;A (NCERT Example 3.2)</h3>
+    <p><strong>Q: Drift speed is mm/s — how does current establish instantly?</strong> → E field travels at speed of light! Every electron drifts simultaneously — no need for electrons from one end to reach the other.<br><br>
+    <strong>Q: Force accelerates electrons — why constant drift speed?</strong> → Each electron accelerates until it collides with an ion, losing drift speed. Cycle repeats. Average = constant drift.<br><br>
+    <strong>Q: How can large currents flow if drift is tiny?</strong> → Electron density n ≈ 10²⁹/m³ is ENORMOUS!<br><br>
+    <strong>Q: Do all electrons drift in same direction?</strong> → NO! Drift is superposed on large random thermal velocities.</p>
+  </div>
+  <div class="memory"><div class="lbl">🧠 Memory Trick</div><p><strong>τ = Relaxation Time</strong> = "Rest time between crashes" (like a racing car that crashes and starts again). Smaller τ = more crashes = more resistance. Higher temp = more crashes = τ↓ = ρ↑ for metals! 🏎️</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.6 LIMITATIONS OF OHM'S LAW
+═══════════════════════════════════════════ -->
+<div class="section" id="s36">
+  <div class="sec-hdr"><span class="sec-icon">🚧</span><h2 class="sec-title tr">3.6 Limitations of Ohm's Law</h2></div>
+  <div class="dw">
+    <svg viewBox="0 0 620 250" xmlns="http://www.w3.org/2000/svg" style="max-width:620px;width:100%">
+      <text x="310" y="16" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Three Types of Ohm's Law Failure</text>
+      <g transform="translate(18,28)">
+        <rect x="0" y="0" width="170" height="140" rx="8" fill="rgba(30,41,59,.8)" stroke="#1e293b" stroke-width="1"/>
+        <line x1="18" y1="120" x2="158" y2="120" stroke="#475569" stroke-width="1.5"/><line x1="18" y1="120" x2="18" y2="12" stroke="#475569" stroke-width="1.5"/>
+        <polygon points="156,115 164,120 156,125" fill="#475569"/><polygon points="13,14 18,6 23,14" fill="#475569"/>
+        <text x="166" y="126" fill="#94a3b8" font-size="9">I</text><text x="7" y="10" fill="#94a3b8" font-size="9">V</text>
+        <line x1="18" y1="120" x2="148" y2="18" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <path d="M18,120 Q60,110 95,60 Q115,35 148,18" stroke="#f87171" stroke-width="2.5" fill="none"/>
+        <text x="85" y="155" text-anchor="middle" fill="#f87171" font-size="11" font-weight="bold">(a) V not ∝ I</text>
+        <text x="85" y="170" text-anchor="middle" fill="#94a3b8" font-size="9">e.g. Tungsten filament</text>
+      </g>
+      <g transform="translate(225,28)">
+        <rect x="0" y="0" width="170" height="140" rx="8" fill="rgba(30,41,59,.8)" stroke="#1e293b" stroke-width="1"/>
+        <line x1="85" y1="128" x2="162" y2="128" stroke="#475569" stroke-width="1.5"/><line x1="8" y1="128" x2="85" y2="128" stroke="#475569" stroke-width="1.5"/>
+        <line x1="85" y1="133" x2="85" y2="10" stroke="#475569" stroke-width="1.5"/>
+        <polygon points="160,123 168,128 160,133" fill="#475569"/><polygon points="80,12 85,4 90,12" fill="#475569"/>
+        <text x="170" y="134" fill="#94a3b8" font-size="9">V</text><text x="75" y="8" fill="#94a3b8" font-size="9">I</text>
+        <path d="M85,128 Q100,126 110,118 Q120,98 130,48 Q140,18 145,10" stroke="#60a5fa" stroke-width="2.5" fill="none"/>
+        <path d="M85,128 Q70,130 50,133 Q30,136 10,138" stroke="#f87171" stroke-width="2.5" fill="none"/>
+        <text x="85" y="155" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">(b) Asymmetric I-V</text>
+        <text x="85" y="170" text-anchor="middle" fill="#94a3b8" font-size="9">e.g. Diode (PN junction)</text>
+      </g>
+      <g transform="translate(432,28)">
+        <rect x="0" y="0" width="170" height="140" rx="8" fill="rgba(30,41,59,.8)" stroke="#1e293b" stroke-width="1"/>
+        <line x1="14" y1="120" x2="158" y2="120" stroke="#475569" stroke-width="1.5"/><line x1="14" y1="125" x2="14" y2="10" stroke="#475569" stroke-width="1.5"/>
+        <polygon points="156,115 164,120 156,125" fill="#475569"/><polygon points="9,12 14,4 19,12" fill="#475569"/>
+        <text x="166" y="126" fill="#94a3b8" font-size="9">V</text><text x="5" y="8" fill="#94a3b8" font-size="9">I</text>
+        <path d="M14,120 Q40,98 58,66 Q67,52 62,72 Q57,92 76,58 Q96,28 148,18" stroke="#a78bfa" stroke-width="2.5" fill="none"/>
+        <line x1="52" y1="60" x2="52" y2="105" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,3"/>
+        <circle cx="52" cy="68" r="3" fill="#fbbf24"/><circle cx="52" cy="88" r="3" fill="#fbbf24"/><circle cx="52" cy="105" r="3" fill="#fbbf24"/>
+        <text x="85" y="155" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">(c) Multi-valued I-V</text>
+        <text x="85" y="170" text-anchor="middle" fill="#94a3b8" font-size="9">e.g. GaAs</text>
+      </g>
+    </svg>
+    <figcaption>Three types of Ohm's law failure: (a) Non-linear (b) Asymmetric direction-dependent (c) Non-unique relationship</figcaption>
+  </div>
+  <div class="memory"><div class="lbl">🧠 Memory Trick — 3 Failures</div><p><strong>"NPM"</strong> = Not Proportional · Polarity Matters · Multiple values — three ways Ohm's law can fail! 📝</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.7 RESISTIVITY OF MATERIALS
+═══════════════════════════════════════════ -->
+<div class="section" id="s37">
+  <div class="sec-hdr"><span class="sec-icon">🧲</span><h2 class="sec-title tg">3.7 Resistivity of Various Materials</h2></div>
+  <div class="dw">
+    <svg viewBox="0 0 620 170" xmlns="http://www.w3.org/2000/svg" style="max-width:620px;width:100%">
+      <text x="310" y="15" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Resistivity Scale (Increasing →)</text>
+      <defs><linearGradient id="rg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#34d399;stop-opacity:.9"/><stop offset="40%" style="stop-color:#fbbf24;stop-opacity:.9"/><stop offset="100%" style="stop-color:#f87171;stop-opacity:.9"/></linearGradient></defs>
+      <rect x="30" y="30" width="560" height="40" rx="8" fill="url(#rg)"/>
+      <text x="115" y="54" text-anchor="middle" fill="#000" font-size="12" font-weight="bold">METALS</text>
+      <text x="115" y="67" text-anchor="middle" fill="#000" font-size="9">10⁻⁸ to 10⁻⁶ Ω·m</text>
+      <text x="310" y="54" text-anchor="middle" fill="#000" font-size="12" font-weight="bold">SEMICONDUCTORS</text>
+      <text x="310" y="67" text-anchor="middle" fill="#000" font-size="9">ρ ↓ with temperature ↑</text>
+      <text x="520" y="54" text-anchor="middle" fill="#000" font-size="12" font-weight="bold">INSULATORS</text>
+      <text x="520" y="67" text-anchor="middle" fill="#000" font-size="9">10¹⁰ to 10²³ Ω·m</text>
+      <text x="75" y="105" text-anchor="middle" fill="#34d399" font-size="10" font-weight="bold">Cu, Ag, Au, Al</text>
+      <text x="75" y="118" text-anchor="middle" fill="#94a3b8" font-size="9">Wires, PCBs</text>
+      <text x="210" y="105" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="bold">Nichrome, Manganin</text>
+      <text x="210" y="118" text-anchor="middle" fill="#94a3b8" font-size="9">Heaters, std resistors</text>
+      <text x="350" y="105" text-anchor="middle" fill="#fb923c" font-size="10" font-weight="bold">Si, Ge</text>
+      <text x="350" y="118" text-anchor="middle" fill="#94a3b8" font-size="9">Chips, transistors</text>
+      <text x="500" y="105" text-anchor="middle" fill="#f87171" font-size="10" font-weight="bold">Rubber, Glass, Plastics</text>
+      <text x="500" y="118" text-anchor="middle" fill="#94a3b8" font-size="9">Cable insulation</text>
+      <text x="310" y="155" text-anchor="middle" fill="#fbbf24" font-size="10">Insulators have resistivity ~10¹⁸ times more than metals!</text>
+    </svg>
+    <figcaption>Resistivity spectrum — metals (lowest) to insulators (highest). Semiconductors lie in between and can be tuned by doping.</figcaption>
+  </div>
+  <div class="card cg"><h3 class="h3g">🔑 Special Alloys</h3><p><span class="hy">Nichrome, Manganin, Constantan</span> have very <strong>weak dependence of resistivity on temperature</strong> (α ≈ 0). Used in standard wire-wound resistors and heater coils — their resistance stays stable even when hot.</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.8 TEMPERATURE DEPENDENCE
+═══════════════════════════════════════════ -->
+<div class="section" id="s38">
+  <div class="sec-hdr"><span class="sec-icon">🌡️</span><h2 class="sec-title to">3.8 Temperature Dependence of Resistivity</h2></div>
+  <div class="def-box"><div class="lbl">📖 Board-Ready Definition</div><p>For metallic conductors: <span style="color:var(--y)">ρ_T = ρ₀[1 + α(T − T₀)]</span>. α = temperature coefficient of resistivity. For metals, α &gt; 0 (ρ increases with T). For semiconductors, α &lt; 0 (ρ decreases with T). R_T = R₀[1 + α(T − T₀)] for resistance.</p></div>
+  <div class="dw">
+    <svg viewBox="0 0 620 210" xmlns="http://www.w3.org/2000/svg" style="max-width:620px;width:100%">
+      <text x="310" y="16" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Temperature Dependence of Resistivity</text>
+      <g transform="translate(18,28)">
+        <rect x="0" y="0" width="173" height="140" rx="8" fill="rgba(30,41,59,.8)" stroke="#1e293b" stroke-width="1"/>
+        <line x1="18" y1="118" x2="162" y2="118" stroke="#475569" stroke-width="1.5"/><line x1="18" y1="118" x2="18" y2="14" stroke="#475569" stroke-width="1.5"/>
+        <polygon points="160,113 168,118 160,123" fill="#475569"/><polygon points="13,16 18,8 23,16" fill="#475569"/>
+        <text x="170" y="124" fill="#94a3b8" font-size="9">T</text><text x="5" y="10" fill="#94a3b8" font-size="9">ρ</text>
+        <path d="M18,118 Q38,113 58,98 Q78,83 98,63 Q113,48 128,36" stroke="#fb923c" stroke-width="2.5" fill="none"/>
+        <path d="M18,118 Q23,117 30,116" stroke="#f87171" stroke-width="2" fill="none"/>
+        <text x="86" y="154" text-anchor="middle" fill="#fb923c" font-size="11" font-weight="bold">Copper (Metal)</text>
+        <text x="86" y="168" text-anchor="middle" fill="#94a3b8" font-size="9">α &gt; 0, ρ increases with T</text>
+      </g>
+      <g transform="translate(222,28)">
+        <rect x="0" y="0" width="173" height="140" rx="8" fill="rgba(30,41,59,.8)" stroke="#1e293b" stroke-width="1"/>
+        <line x1="18" y1="118" x2="162" y2="118" stroke="#475569" stroke-width="1.5"/><line x1="18" y1="118" x2="18" y2="14" stroke="#475569" stroke-width="1.5"/>
+        <polygon points="160,113 168,118 160,123" fill="#475569"/><polygon points="13,16 18,8 23,16" fill="#475569"/>
+        <text x="170" y="124" fill="#94a3b8" font-size="9">T</text><text x="5" y="10" fill="#94a3b8" font-size="9">ρ</text>
+        <path d="M18,62 Q58,60 98,64 Q130,66 158,63" stroke="#60a5fa" stroke-width="2.5" fill="none"/>
+        <text x="86" y="154" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">Nichrome (Alloy)</text>
+        <text x="86" y="168" text-anchor="middle" fill="#94a3b8" font-size="9">α ≈ 0, nearly constant</text>
+      </g>
+      <g transform="translate(426,28)">
+        <rect x="0" y="0" width="173" height="140" rx="8" fill="rgba(30,41,59,.8)" stroke="#1e293b" stroke-width="1"/>
+        <line x1="18" y1="118" x2="162" y2="118" stroke="#475569" stroke-width="1.5"/><line x1="18" y1="118" x2="18" y2="14" stroke="#475569" stroke-width="1.5"/>
+        <polygon points="160,113 168,118 160,123" fill="#475569"/><polygon points="13,16 18,8 23,16" fill="#475569"/>
+        <text x="170" y="124" fill="#94a3b8" font-size="9">T</text><text x="5" y="10" fill="#94a3b8" font-size="9">ρ</text>
+        <path d="M18,18 Q38,22 58,36 Q88,58 118,84 Q143,103 160,118" stroke="#34d399" stroke-width="2.5" fill="none"/>
+        <text x="86" y="154" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">Semiconductor</text>
+        <text x="86" y="168" text-anchor="middle" fill="#94a3b8" font-size="9">α &lt; 0, ρ decreases with T</text>
+      </g>
+    </svg>
+    <figcaption>Temperature dependence: Copper (linear increase), Nichrome (nearly flat), Semiconductor (decreasing — more charge carriers freed at higher T)</figcaption>
+  </div>
+  <div class="card cy"><h3 class="h3y">🌡️ Formula Breakdown: ρ_T = ρ₀[1 + α(T − T₀)]</h3>
+    <table class="ftable"><tr><th>Term</th><th>Meaning</th><th>Sign for Metals</th></tr>
+    <tr><td>ρ_T</td><td>Resistivity at temperature T</td><td>—</td></tr>
+    <tr><td>ρ₀</td><td>Resistivity at reference temp T₀</td><td>Positive</td></tr>
+    <tr><td>α</td><td>Temperature coefficient of resistivity</td><td><code>α &gt; 0</code> (metals), <code>α &lt; 0</code> (semiconductors)</td></tr>
+    <tr><td>T − T₀</td><td>Temperature change (in K or °C)</td><td>Either unit works</td></tr></table>
+    <p style="margin-top:10px">📌 Semiconductors: increasing T frees more electrons → n increases → dominates over τ decrease → ρ falls</p>
+  </div>
+  <div class="memory"><div class="lbl">🧠 Memory Trick — M.S. Dhoni Method</div><p><strong>M</strong>etals → <strong>M</strong>ore temp = More resistance (α &gt; 0)<br><strong>S</strong>emiconductors → <strong>S</strong>urprisingly opposite! More temp = Less resistance (α &lt; 0) 🏏</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.9 ELECTRICAL ENERGY & POWER
+═══════════════════════════════════════════ -->
+<div class="section" id="s39">
+  <div class="sec-hdr"><span class="sec-icon">💡</span><h2 class="sec-title ty">3.9 Electrical Energy &amp; Power</h2></div>
+  <div class="analogy"><div class="lbl">🧒 Explain Like I'm 10</div><p>Water hitting a wheel converts pressure-energy to spinning. Similarly, charges flowing through a resistor give up their energy as <strong>heat</strong>. Rate of energy release = <strong>Power</strong>! 💧→⚙️→🔥</p></div>
+  <div class="def-box"><div class="lbl">📖 Board-Ready Definition</div><p>Electric power = energy dissipated per unit time. P = IV = I²R = V²/R. SI unit: Watt (W). Energy: W = Pt. Commercial unit: 1 kWh = 3.6 × 10⁶ J.</p></div>
+  <div class="deriv">
+    <h4>📐 Derivation of P = IV</h4>
+    <div class="step"><div class="sn sny">1</div><div>Conductor AB, current I, potential diff V = V(A)−V(B) &gt; 0.</div></div>
+    <div class="step"><div class="sn snb">2</div><div>In time Δt, charge ΔQ = I·Δt flows from A to B. Potential energy change: ΔU = −ΔQ·V = −IV·Δt (negative = energy lost by charges)</div></div>
+    <div class="step"><div class="sn sng">3</div><div>Energy doesn't speed up electrons (constant drift). It goes into collisions with ions → <strong>heat</strong>. Energy dissipated: <span class="hy">ΔW = IV·Δt</span></div></div>
+    <div class="step"><div class="sn snp">4</div><div>P = ΔW/Δt = <span style="color:var(--y);font-weight:800">IV</span>. Using V = IR: <span class="hb">P = I²R</span>. Using I = V/R: <span class="hg">P = V²/R</span></div></div>
+    <div class="formula-box" style="margin-top:12px"><div class="lbl">Power — 3 Forms</div><div class="fml">P = IV = I²R = V²/R</div></div>
+  </div>
+  <div class="card cy"><h3 class="h3y">🏭 Why High Voltage for Power Transmission?</h3>
+    <p>P_loss in cables = I²R_c = P²R_c/V² → <span class="hr">P_loss ∝ 1/V²</span><br>
+    India uses 220kV–765kV for transmission → tiny I → tiny I²R loss → efficient! Transformer steps down to 230V at homes. That's why high-tension lines have danger signs! ⚡</p>
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.10 CELLS, EMF, INTERNAL RESISTANCE
+═══════════════════════════════════════════ -->
+<div class="section" id="s310">
+  <div class="sec-hdr"><span class="sec-icon">🔋</span><h2 class="sec-title tb">3.10 Cells, EMF &amp; Internal Resistance</h2></div>
+  <div class="analogy"><div class="lbl">🧒 Explain Like I'm 10</div><p>A cell is like a <strong>pump for electricity</strong>. EMF (ε) = how hard it pumps. But the pump has internal friction (r). Actual pressure outside (terminal voltage V) is less than maximum. More current = more energy wasted inside! 🚰</p></div>
+  <div class="def-box"><div class="lbl">📖 EMF Definition</div><p>EMF (ε) = potential difference between positive and negative electrodes when <strong>no current flows</strong> (open circuit). ε = V₊ + V₋. EMF is a potential difference, <strong>NOT a force</strong>! Unit: Volt.</p></div>
+  <div class="def-box"><div class="lbl">📖 Internal Resistance</div><p>Internal resistance (r) = resistance offered by the electrolyte of a cell to the flow of current. Unit: Ohm (Ω). Dry cells have MUCH higher r than liquid electrolytic cells.</p></div>
+  <div class="deriv">
+    <h4>📐 Derivation: Terminal Voltage V = ε − Ir</h4>
+    <div class="step"><div class="sn sny">1</div><div>Open circuit (I = 0): V = ε (full EMF available, no internal drop)</div></div>
+    <div class="step"><div class="sn snb">2</div><div>With load R: current I flows. Internal drop = Ir. Terminal voltage V = ε − Ir.</div></div>
+    <div class="step"><div class="sn sng">3</div><div>Since V = IR (Ohm's law for external): IR = ε − Ir → <span style="color:var(--y);font-weight:800">I = ε/(R+r)</span></div></div>
+    <div class="formula-box" style="margin-top:12px"><div class="lbl">EMF and Terminal Voltage</div><div class="fml">V = ε − Ir &nbsp;|&nbsp; I = ε/(R+r) &nbsp;|&nbsp; I_max = ε/r &nbsp;|&nbsp; V_charge = ε + Ir</div></div>
+  </div>
+  <div class="card cb"><h3 class="h3b">📊 Terminal Voltage in Different Conditions</h3>
+    <table class="ftable"><tr><th>Condition</th><th>Terminal Voltage</th><th>Meaning</th></tr>
+    <tr><td>Open circuit (I = 0)</td><td><code>V = ε</code></td><td>Full EMF — no internal drop</td></tr>
+    <tr><td>Under load (I flows)</td><td><code>V = ε − Ir</code></td><td>V &lt; ε — some lost to internal r</td></tr>
+    <tr><td>Short circuit (R = 0)</td><td><code>V = 0, I = ε/r</code></td><td>All voltage lost inside — dangerous!</td></tr>
+    <tr><td>Charging</td><td><code>V = ε + Ir</code></td><td>V &gt; ε — external source pushes current in</td></tr></table>
+  </div>
+  <div class="memory"><div class="lbl">🧠 Memory Trick</div><p><strong>EMF is what the cell PROMISES. Terminal voltage is what it DELIVERS.</strong> The difference is "stolen" by internal resistance r — like a shop promising ₹100 discount but giving ₹80 due to "handling charges"! 🛒</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.11 CELLS IN SERIES AND PARALLEL
+═══════════════════════════════════════════ -->
+<div class="section" id="s311">
+  <div class="sec-hdr"><span class="sec-icon">🔗</span><h2 class="sec-title tg">3.11 Cells in Series &amp; Parallel</h2></div>
+  <div class="analogy"><div class="lbl">🧒 Explain Like I'm 10</div><p><strong>Series</strong> = Stacking batteries in a remote — total push (EMF) adds up!<br><strong>Parallel</strong> = Multiple pumps side-by-side — same pressure, more flow capacity, lower internal friction. 🔋🔋</p></div>
+  <div class="dw">
+    <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" style="max-width:600px;width:100%">
+      <text x="150" y="18" text-anchor="middle" fill="#34d399" font-size="12" font-weight="bold">SERIES</text>
+      <rect x="28" y="32" width="75" height="48" rx="6" fill="rgba(52,211,153,.1)" stroke="#34d399" stroke-width="2"/>
+      <text x="65" y="59" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">ε₁, r₁</text>
+      <text x="18" y="59" fill="#34d399" font-size="13" font-weight="bold">+</text><text x="106" y="59" fill="#f87171" font-size="13" font-weight="bold">−</text>
+      <rect x="145" y="32" width="75" height="48" rx="6" fill="rgba(52,211,153,.1)" stroke="#34d399" stroke-width="2"/>
+      <text x="182" y="59" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">ε₂, r₂</text>
+      <text x="135" y="59" fill="#34d399" font-size="13" font-weight="bold">+</text><text x="223" y="59" fill="#f87171" font-size="13" font-weight="bold">−</text>
+      <line x1="15" y1="56" x2="28" y2="56" stroke="#475569" stroke-width="2"/><line x1="103" y1="56" x2="145" y2="56" stroke="#475569" stroke-width="2"/>
+      <line x1="220" y1="56" x2="270" y2="56" stroke="#475569" stroke-width="2"/>
+      <line x1="15" y1="56" x2="15" y2="148" stroke="#475569" stroke-width="2"/><line x1="270" y1="56" x2="270" y2="148" stroke="#475569" stroke-width="2"/>
+      <line x1="15" y1="148" x2="270" y2="148" stroke="#475569" stroke-width="2"/>
+      <rect x="88" y="132" width="90" height="28" rx="5" fill="rgba(167,139,250,.15)" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="133" y="150" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">R</text>
+      <rect x="25" y="175" width="250" height="72" rx="8" fill="rgba(52,211,153,.07)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="150" y="195" text-anchor="middle" fill="#34d399" font-size="12" font-weight="bold">Series Results:</text>
+      <text x="150" y="213" text-anchor="middle" fill="#fbbf24" font-size="12">ε_eq = ε₁ + ε₂ &nbsp;(adds)</text>
+      <text x="150" y="230" text-anchor="middle" fill="#60a5fa" font-size="12">r_eq = r₁ + r₂ &nbsp;(adds)</text>
+
+      <text x="450" y="18" text-anchor="middle" fill="#60a5fa" font-size="12" font-weight="bold">PARALLEL</text>
+      <line x1="330" y1="68" x2="570" y2="68" stroke="#475569" stroke-width="2"/><line x1="330" y1="145" x2="570" y2="145" stroke="#475569" stroke-width="2"/>
+      <rect x="368" y="50" width="76" height="38" rx="5" fill="rgba(96,165,250,.1)" stroke="#60a5fa" stroke-width="2"/>
+      <text x="406" y="73" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">ε₁, r₁</text>
+      <rect x="368" y="122" width="76" height="38" rx="5" fill="rgba(96,165,250,.1)" stroke="#60a5fa" stroke-width="2"/>
+      <text x="406" y="145" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">ε₂, r₂</text>
+      <text x="358" y="72" fill="#34d399" font-size="12" font-weight="bold">+</text><text x="448" y="72" fill="#f87171" font-size="12" font-weight="bold">−</text>
+      <text x="358" y="144" fill="#34d399" font-size="12" font-weight="bold">+</text><text x="448" y="144" fill="#f87171" font-size="12" font-weight="bold">−</text>
+      <rect x="524" y="90" width="34" height="35" rx="4" fill="rgba(167,139,250,.15)" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="541" y="111" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">R</text>
+      <line x1="570" y1="68" x2="570" y2="90" stroke="#475569" stroke-width="2"/><line x1="570" y1="125" x2="570" y2="145" stroke="#475569" stroke-width="2"/>
+      <rect x="330" y="175" width="250" height="72" rx="8" fill="rgba(96,165,250,.07)" stroke="#60a5fa" stroke-width="1.5"/>
+      <text x="455" y="195" text-anchor="middle" fill="#60a5fa" font-size="12" font-weight="bold">Parallel Results:</text>
+      <text x="455" y="213" text-anchor="middle" fill="#fbbf24" font-size="11">ε_eq = (ε₁r₂+ε₂r₁)/(r₁+r₂)</text>
+      <text x="455" y="230" text-anchor="middle" fill="#60a5fa" font-size="12">1/r_eq = 1/r₁ + 1/r₂</text>
+    </svg>
+    <figcaption>Series: EMFs and internal resistances both add. Parallel: r_eq reduces (parallel resistors), ε_eq = weighted average.</figcaption>
+  </div>
+  <div class="deriv">
+    <h4>📐 Series Cells: ε_eq = ε₁+ε₂, r_eq = r₁+r₂</h4>
+    <div class="step"><div class="sn sny">1</div><div>V_AB = ε₁ − Ir₁ &nbsp; V_BC = ε₂ − Ir₂</div></div>
+    <div class="step"><div class="sn snb">2</div><div>V_AC = V_AB + V_BC = (ε₁+ε₂) − I(r₁+r₂)</div></div>
+    <div class="step"><div class="sn sng">3</div><div>Compare with V = ε_eq − Ir_eq: <span class="hy">ε_eq = ε₁+ε₂</span> and <span class="hb">r_eq = r₁+r₂</span></div></div>
+    <div class="warn-box" style="margin-top:10px"><div class="lbl">⚠️ Opposing Cells!</div><p>If connected opposing: ε_eq = ε₁ − ε₂. The smaller EMF fights the larger one.</p></div>
+  </div>
+  <div class="deriv">
+    <h4>📐 Parallel Cells: 1/r_eq = 1/r₁+1/r₂ and ε_eq/r_eq = ε₁/r₁+ε₂/r₂</h4>
+    <div class="step"><div class="sn sny">1</div><div>I = I₁ + I₂ (KCL). Same V across both: I₁ = (ε₁−V)/r₁, I₂ = (ε₂−V)/r₂</div></div>
+    <div class="step"><div class="sn snb">2</div><div>I = (ε₁/r₁ + ε₂/r₂) − V(1/r₁ + 1/r₂)</div></div>
+    <div class="step"><div class="sn sng">3</div><div>V = [(ε₁r₂+ε₂r₁)/(r₁+r₂)] − I·[r₁r₂/(r₁+r₂)] → <span class="hy">ε_eq = (ε₁r₂+ε₂r₁)/(r₁+r₂)</span>, <span class="hb">r_eq = r₁r₂/(r₁+r₂)</span></div></div>
+  </div>
+  <div class="memory"><div class="lbl">🧠 Memory Trick</div><p><strong>Series = STACK (like books)</strong> → everything adds up 📚<br><strong>Parallel = SPREAD (like highway lanes)</strong> → more lanes, less congestion, same speed limit 🛣️</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.12 KIRCHHOFF'S RULES
+═══════════════════════════════════════════ -->
+<div class="section" id="s312">
+  <div class="sec-hdr"><span class="sec-icon">🔀</span><h2 class="sec-title tp">3.12 Kirchhoff's Rules</h2></div>
+  <div class="analogy"><div class="lbl">🧒 Explain Like I'm 10</div><p><strong>Junction Rule = Traffic Rule 🚦</strong> Cars in = Cars out at any junction. No cars appear or vanish!<br><strong>Loop Rule = Bank Account 🏦</strong> Start at ₹0, spend/earn, return to same account = ₹0 net change. Same with voltage around a loop!</p></div>
+  <div class="def-box"><div class="lbl">📖 Junction Rule (KCL)</div><p>At any junction, <strong>sum of currents entering = sum of currents leaving</strong>. ΣI_in = ΣI_out. Based on: conservation of charge.</p></div>
+  <div class="def-box"><div class="lbl">📖 Loop Rule (KVL)</div><p>Algebraic sum of changes in potential around any <strong>closed loop</strong> is <strong>zero</strong>. ΣΔV = 0. Based on: conservation of energy.</p></div>
+  <div class="dw">
+    <svg viewBox="0 0 580 165" xmlns="http://www.w3.org/2000/svg" style="max-width:580px;width:100%">
+      <defs><marker id="jt" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#34d399"/></marker><marker id="jt2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#fbbf24"/></marker></defs>
+      <text x="290" y="15" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">Sign Convention for KVL Loop Traversal</text>
+      <g transform="translate(18,28)">
+        <rect x="0" y="0" width="118" height="110" rx="7" fill="rgba(30,41,59,.8)" stroke="#1e293b"/>
+        <rect x="8" y="12" width="102" height="30" rx="4" fill="rgba(248,113,113,.1)" stroke="#f87171" stroke-width="1.5"/>
+        <text x="59" y="31" text-anchor="middle" fill="#f87171" font-size="10">R (resistor)</text>
+        <line x1="8" y1="27" x2="110" y2="27" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#jt)"/>
+        <line x1="8" y1="55" x2="110" y2="55" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#jt2)"/>
+        <text x="59" y="47" text-anchor="middle" fill="#60a5fa" font-size="9">I → same as traversal</text>
+        <text x="59" y="70" text-anchor="middle" fill="#fbbf24" font-size="9">Traversal →</text>
+        <text x="59" y="90" text-anchor="middle" fill="#f87171" font-size="13" font-weight="bold">ΔV = −IR</text>
+        <text x="59" y="106" text-anchor="middle" fill="#94a3b8" font-size="8">(drop, negative)</text>
+      </g>
+      <g transform="translate(158,28)">
+        <rect x="0" y="0" width="118" height="110" rx="7" fill="rgba(30,41,59,.8)" stroke="#1e293b"/>
+        <rect x="8" y="12" width="102" height="30" rx="4" fill="rgba(52,211,153,.1)" stroke="#34d399" stroke-width="1.5"/>
+        <text x="59" y="31" text-anchor="middle" fill="#34d399" font-size="10">R (resistor)</text>
+        <line x1="110" y1="27" x2="8" y2="27" stroke="#60a5fa" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#jt)"/>
+        <line x1="8" y1="55" x2="110" y2="55" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#jt2)"/>
+        <text x="59" y="47" text-anchor="middle" fill="#60a5fa" font-size="9">I ← against traversal</text>
+        <text x="59" y="70" text-anchor="middle" fill="#fbbf24" font-size="9">Traversal →</text>
+        <text x="59" y="90" text-anchor="middle" fill="#34d399" font-size="13" font-weight="bold">ΔV = +IR</text>
+        <text x="59" y="106" text-anchor="middle" fill="#94a3b8" font-size="8">(rise, positive)</text>
+      </g>
+      <g transform="translate(298,28)">
+        <rect x="0" y="0" width="118" height="110" rx="7" fill="rgba(30,41,59,.8)" stroke="#1e293b"/>
+        <rect x="8" y="12" width="102" height="30" rx="4" fill="rgba(251,191,36,.1)" stroke="#fbbf24" stroke-width="1.5"/>
+        <text x="10" y="31" fill="#f87171" font-size="14" font-weight="bold">−</text>
+        <text x="59" y="31" text-anchor="middle" fill="#fbbf24" font-size="9">ε cell</text>
+        <text x="100" y="31" fill="#34d399" font-size="14" font-weight="bold">+</text>
+        <line x1="8" y1="55" x2="110" y2="55" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#jt2)"/>
+        <text x="59" y="70" text-anchor="middle" fill="#fbbf24" font-size="9">Traversal: − → +</text>
+        <text x="59" y="90" text-anchor="middle" fill="#34d399" font-size="13" font-weight="bold">ΔV = +ε</text>
+        <text x="59" y="106" text-anchor="middle" fill="#94a3b8" font-size="8">(rise, positive)</text>
+      </g>
+      <g transform="translate(438,28)">
+        <rect x="0" y="0" width="118" height="110" rx="7" fill="rgba(30,41,59,.8)" stroke="#1e293b"/>
+        <rect x="8" y="12" width="102" height="30" rx="4" fill="rgba(167,139,250,.1)" stroke="#a78bfa" stroke-width="1.5"/>
+        <text x="10" y="31" fill="#34d399" font-size="14" font-weight="bold">+</text>
+        <text x="59" y="31" text-anchor="middle" fill="#a78bfa" font-size="9">ε cell</text>
+        <text x="100" y="31" fill="#f87171" font-size="14" font-weight="bold">−</text>
+        <line x1="8" y1="55" x2="110" y2="55" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#jt2)"/>
+        <text x="59" y="70" text-anchor="middle" fill="#fbbf24" font-size="9">Traversal: + → −</text>
+        <text x="59" y="90" text-anchor="middle" fill="#f87171" font-size="13" font-weight="bold">ΔV = −ε</text>
+        <text x="59" y="106" text-anchor="middle" fill="#94a3b8" font-size="8">(drop, negative)</text>
+      </g>
+    </svg>
+    <figcaption>KVL Sign Convention — follow consistently around any closed loop. ΣΔV = 0 always.</figcaption>
+  </div>
+  <div class="card cp"><h3 class="h3p">📐 How to Apply Kirchhoff's Rules</h3>
+    <div class="step"><div class="sn snb">1</div><div><strong>Label all branch currents</strong> with symbols and assumed directions</div></div>
+    <div class="step"><div class="sn sng">2</div><div><strong>Apply KCL</strong> at each junction: ΣI_in = ΣI_out (reduces unknowns)</div></div>
+    <div class="step"><div class="sn sny">3</div><div><strong>Apply KVL</strong> to independent closed loops: ΣΔV = 0</div></div>
+    <div class="step"><div class="sn snp">4</div><div><strong>Solve simultaneous equations</strong>. Negative current → actual direction is opposite to assumed</div></div>
+  </div>
+  <div class="card ccy"><h3 class="h3cy">🎲 Cube of 12 Resistors (Example 3.5)</h3>
+    <p>12 equal resistors (R each) form a cube. Battery across body diagonal. By symmetry, current I enters at one corner, splits into 3 equal branches (I/3 each at first level, I/6 middle, I/3 last).<br>
+    KVL loop ABCC'EA: −IR − (1/2)IR − IR + ε = 0 → ε = (5/2)IR<br>
+    Total current = 3I. <span class="hy">R_eq = ε/(3I) = 5R/6</span><br>
+    For R = 1Ω, R_eq = 5/6 Ω. For ε = 10V, total I = 12A.</p>
+  </div>
+  <div class="memory"><div class="lbl">🧠 Memory Trick</div><p><strong>KCL = Traffic Junction 🚦</strong> — cars can't pile up at intersections!<br><strong>KVL = Round-trip ✈️</strong> — Delhi→Mumbai→Delhi: altitude change = 0 net!</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     3.13 WHEATSTONE BRIDGE
+═══════════════════════════════════════════ -->
+<div class="section" id="s313">
+  <div class="sec-hdr"><span class="sec-icon">⚖️</span><h2 class="sec-title to">3.13 Wheatstone Bridge</h2></div>
+  <div class="analogy"><div class="lbl">🧒 Explain Like I'm 10</div><p>Like a balance scale ⚖️ — when both sides equal, middle pointer shows zero. The Wheatstone Bridge: when 4 resistors are in the right ratio, NO current flows through the middle wire (galvanometer = 0). Bridge is <strong>balanced</strong>! Used to find unknown resistance precisely.</p></div>
+  <div class="def-box"><div class="lbl">📖 Board-Ready Definition</div><p>A Wheatstone bridge measures an unknown resistance precisely using four resistors R₁, R₂, R₃, R₄ in a diamond arrangement. Battery across diagonal AC, galvanometer across BD. At balance (I_g = 0): <span style="color:var(--y)">R₁/R₂ = R₃/R₄</span>. Unknown R₄ = R₃(R₂/R₁).</p></div>
+  <div class="dw">
+    <svg viewBox="0 0 540 290" xmlns="http://www.w3.org/2000/svg" style="max-width:540px;width:100%">
+      <defs><marker id="wa" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#fbbf24"/></marker></defs>
+      <line x1="270" y1="58" x2="435" y2="148" stroke="#475569" stroke-width="2"/>
+      <rect x="318" y="73" width="60" height="26" rx="5" fill="rgba(96,165,250,.12)" stroke="#60a5fa" stroke-width="1.8" transform="rotate(30,348,86)"/>
+      <text x="370" y="90" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="bold">R₁</text>
+      <line x1="270" y1="58" x2="105" y2="148" stroke="#475569" stroke-width="2"/>
+      <rect x="138" y="73" width="60" height="26" rx="5" fill="rgba(251,191,36,.12)" stroke="#fbbf24" stroke-width="1.8" transform="rotate(-30,168,86)"/>
+      <text x="168" y="90" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">R₂</text>
+      <line x1="435" y1="158" x2="270" y2="242" stroke="#475569" stroke-width="2"/>
+      <rect x="318" y="175" width="60" height="26" rx="5" fill="rgba(52,211,153,.12)" stroke="#34d399" stroke-width="1.8" transform="rotate(-30,348,188)"/>
+      <text x="370" y="195" text-anchor="middle" fill="#34d399" font-size="11" font-weight="bold">R₃</text>
+      <line x1="105" y1="158" x2="270" y2="242" stroke="#475569" stroke-width="2"/>
+      <rect x="138" y="175" width="60" height="26" rx="5" fill="rgba(167,139,250,.12)" stroke="#a78bfa" stroke-width="1.8" transform="rotate(30,168,188)"/>
+      <text x="168" y="195" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="bold">R₄</text>
+      <line x1="108" y1="153" x2="430" y2="153" stroke="#475569" stroke-width="1.5" stroke-dasharray="7,3"/>
+      <circle cx="270" cy="153" r="22" fill="rgba(244,114,182,.15)" stroke="#f472b6" stroke-width="2.5"/>
+      <text x="270" y="150" text-anchor="middle" fill="#f472b6" font-size="13" font-weight="bold">G</text>
+      <text x="270" y="164" text-anchor="middle" fill="#f472b6" font-size="9">I_g</text>
+      <path d="M270,242 Q520,242 520,50 Q520,50 270,50" stroke="#475569" stroke-width="2" fill="none"/>
+      <rect x="490" y="117" width="48" height="28" rx="5" fill="rgba(52,211,153,.15)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="514" y="134" text-anchor="middle" fill="#34d399" font-size="10" font-weight="bold">ε</text>
+      <circle cx="270" cy="48" r="7" fill="rgba(251,191,36,.2)" stroke="#fbbf24" stroke-width="2"/><text x="270" y="35" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="bold">A</text>
+      <circle cx="438" cy="153" r="7" fill="rgba(96,165,250,.2)" stroke="#60a5fa" stroke-width="2"/><text x="456" y="158" fill="#60a5fa" font-size="14" font-weight="bold">B</text>
+      <circle cx="270" cy="248" r="7" fill="rgba(251,191,36,.2)" stroke="#fbbf24" stroke-width="2"/><text x="270" y="270" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="bold">C</text>
+      <circle cx="102" cy="153" r="7" fill="rgba(167,139,250,.2)" stroke="#a78bfa" stroke-width="2"/><text x="78" y="158" fill="#a78bfa" font-size="14" font-weight="bold">D</text>
+      <rect x="14" y="252" width="215" height="32" rx="7" fill="rgba(251,191,36,.07)" stroke="#fbbf24" stroke-width="1.5"/>
+      <text x="122" y="268" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="bold">Balanced: I_g = 0 → R₁/R₂ = R₃/R₄</text>
+    </svg>
+    <figcaption>Wheatstone Bridge: Battery across AC (battery arm), galvanometer G across BD. At balance: I_g = 0, R₁/R₂ = R₃/R₄.</figcaption>
+  </div>
+  <div class="deriv">
+    <h4>📐 Derivation: Balance Condition R₁/R₂ = R₃/R₄</h4>
+    <div class="step"><div class="sn sny">1</div><div>At balance: I_g = 0 → I₁ = I₃ and I₂ = I₄ (KCL)</div></div>
+    <div class="step"><div class="sn snb">2</div><div>Loop ADBA: −I₁R₁ + I₂R₂ = 0 → I₁/I₂ = R₂/R₁ ...(i)</div></div>
+    <div class="step"><div class="sn sng">3</div><div>Loop CBDC: I₁R₃ = I₂R₄ → I₁/I₂ = R₄/R₃ ...(ii)</div></div>
+    <div class="step"><div class="sn snp">4</div><div>From (i) and (ii): R₂/R₁ = R₄/R₃ → <span style="color:var(--y);font-size:1.05rem;font-weight:800">R₁/R₂ = R₃/R₄</span></div></div>
+    <div class="formula-box" style="margin-top:12px"><div class="lbl">Balance Condition</div><div class="fml">R₁/R₂ = R₃/R₄ &nbsp;&nbsp;⟺&nbsp;&nbsp; R₁·R₄ = R₂·R₃ &nbsp;&nbsp;|&nbsp;&nbsp; R₄ = R₃·(R₂/R₁)</div></div>
+  </div>
+  <div class="card co"><h3 class="h3o">⚡ Unbalanced Bridge (Example 3.7)</h3>
+    <p>AB=100Ω, BC=10Ω, CD=5Ω, DA=60Ω. Galvanometer G=15Ω across BD. Battery=10V.<br>
+    Check: R₁/R₂ = 100/60 ≠ 10/5 → <strong>Unbalanced</strong> → I_g ≠ 0. Apply KVL to 3 meshes (BADB, BCDB, ADCEA):<br>
+    20I₁ + 3I_g − 12I₂ = 0 ...(a) | 2I₁ − 6I_g − I₂ = 0 ...(b) | 13I₂ + I_g = 2 ...(c)<br>
+    Solving: I₂ = 31.5·I_g → 410.5·I_g = 2 → <span class="hy">I_g = 4.87 mA</span></p>
+  </div>
+  <div class="memory"><div class="lbl">🧠 Memory Trick</div><p><strong>"Products of Opposites Equal":</strong> R₁×R₄ = R₂×R₃ at balance. Cross-multiply the ratio! Like a see-saw — opposite corners balance each other. ⚖️</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     NCERT SUMMARY
+═══════════════════════════════════════════ -->
+<div class="section" id="summary-sec">
+  <div class="sec-hdr"><span class="sec-icon">📋</span><h2 class="sec-title tb">NCERT Chapter Summary — All 13 Points</h2></div>
+  <div class="card cy">
+    <h3 class="h3y">📌 Complete Summary with Analysis</h3>
+    <div class="sumitem"><div class="snum">1</div><div><strong style="color:var(--y)">I = Q/t or dQ/dt.</strong> Current = net charge per unit time. SI base unit: Ampere. Current is a SCALAR.</div></div>
+    <div class="sumitem"><div class="snum">2</div><div><strong style="color:var(--y)">EMF = Work done per unit charge by source.</strong> Closed circuit needed for steady current. EMF is a potential difference, NOT a force.</div></div>
+    <div class="sumitem"><div class="snum">3</div><div><strong style="color:var(--y)">Ohm's Law: V = RI.</strong> V ∝ I at constant temperature. R = resistance. 1Ω = 1 V/A. Not a fundamental law.</div></div>
+    <div class="sumitem"><div class="snum">4</div><div><strong style="color:var(--y)">R = ρl/A.</strong> ρ = resistivity (material property). Depends on temperature and pressure, NOT on dimensions.</div></div>
+    <div class="sumitem"><div class="snum">5</div><div><strong style="color:var(--y)">Resistivity range:</strong> Metals: 10⁻⁸–10⁻⁶ Ωm. Insulators: 10²² times more. Semiconductors: middle range.</div></div>
+    <div class="sumitem"><div class="snum">6</div><div><strong style="color:var(--y)">Current carriers:</strong> Metals → electrons. Ionic crystals/electrolytes → both + and − ions.</div></div>
+    <div class="sumitem"><div class="snum">7</div><div><strong style="color:var(--y)">j = nqv_d.</strong> Current density = charge per second per unit area. I = nev_dA for electrons.</div></div>
+    <div class="sumitem"><div class="snum">8</div><div><strong style="color:var(--y)">v_d = eEτ/m and ρ = m/(ne²τ).</strong> Drift from collision model. τ = relaxation time. v_d ∝ E (constant, not accelerating).</div></div>
+    <div class="sumitem"><div class="snum">9</div><div><strong style="color:var(--y)">α = temperature coefficient of resistivity.</strong> ρ_T = ρ₀[1+α(T−T₀)]. Metals: α&gt;0. Valid for limited T range.</div></div>
+    <div class="sumitem"><div class="snum">10</div><div><strong style="color:var(--y)">3 Ohm's law failures:</strong> (a) V not ∝ I (b) Depends on sign of V — rectifier (c) Non-unique V-I — GaAs.</div></div>
+    <div class="sumitem"><div class="snum">11</div><div><strong style="color:var(--y)">V_ext = IR = εR/(R+r).</strong> Terminal voltage &lt; EMF when current flows. V = ε−Ir.</div></div>
+    <div class="sumitem"><div class="snum">12</div><div><strong style="color:var(--y)">Kirchhoff's Rules:</strong> (a) KCL: ΣI_in=ΣI_out (charge conservation) (b) KVL: ΣΔV=0 (energy conservation).</div></div>
+    <div class="sumitem"><div class="snum">13</div><div><strong style="color:var(--y)">Wheatstone Bridge balance: R₁/R₂ = R₃/R₄</strong> (when I_g=0). Find unknown R₄ = R₃·R₂/R₁. Practical form = meter bridge.</div></div>
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     DIMENSIONAL ANALYSIS TABLE
+═══════════════════════════════════════════ -->
+<div class="section" id="dimtable">
+  <div class="sec-hdr"><span class="sec-icon">📐</span><h2 class="sec-title tp">Dimensional Analysis — All Physical Quantities</h2></div>
+  <div class="card cp">
+    <h3 class="h3p">📊 Complete Dimensional Analysis (From NCERT)</h3>
+    <div style="overflow-x:auto">
+    <table class="dim-table">
+      <tr><th style="text-align:left">Physical Quantity</th><th>Symbol</th><th>Dimensions</th><th>SI Unit</th><th style="text-align:left">Formula / Remark</th></tr>
+      <tr><td class="qty">Electric Current</td><td class="sym">I</td><td class="dim">[A]</td><td class="unit">A</td><td class="remark">SI Base Unit</td></tr>
+      <tr><td class="qty">Electric Charge</td><td class="sym">Q</td><td class="dim">[T A]</td><td class="unit">C</td><td class="remark">Q = It</td></tr>
+      <tr><td class="qty">Voltage / PD</td><td class="sym">V</td><td class="dim">[M L² T⁻³ A⁻¹]</td><td class="unit">V</td><td class="remark">Work/charge</td></tr>
+      <tr><td class="qty">EMF</td><td class="sym">ε</td><td class="dim">[M L² T⁻³ A⁻¹]</td><td class="unit">V</td><td class="remark">Same as voltage</td></tr>
+      <tr><td class="qty">Resistance</td><td class="sym">R</td><td class="dim">[M L² T⁻³ A⁻²]</td><td class="unit">Ω</td><td class="remark">R = V/I</td></tr>
+      <tr><td class="qty">Resistivity</td><td class="sym">ρ</td><td class="dim">[M L³ T⁻³ A⁻²]</td><td class="unit">Ω·m</td><td class="remark">ρ = RA/l</td></tr>
+      <tr><td class="qty">Conductivity</td><td class="sym">σ</td><td class="dim">[M⁻¹ L⁻³ T³ A²]</td><td class="unit">S/m</td><td class="remark">σ = 1/ρ</td></tr>
+      <tr><td class="qty">Electric Field</td><td class="sym">E</td><td class="dim">[M L T⁻³ A⁻¹]</td><td class="unit">V/m</td><td class="remark">E = V/l</td></tr>
+      <tr><td class="qty">Drift Speed</td><td class="sym">v_d</td><td class="dim">[L T⁻¹]</td><td class="unit">m/s</td><td class="remark">v_d = eEτ/m</td></tr>
+      <tr><td class="qty">Relaxation Time</td><td class="sym">τ</td><td class="dim">[T]</td><td class="unit">s</td><td class="remark">Avg time between collisions</td></tr>
+      <tr><td class="qty">Current Density</td><td class="sym">j</td><td class="dim">[L⁻² A]</td><td class="unit">A/m²</td><td class="remark">j = I/A</td></tr>
+      <tr><td class="qty">Mobility</td><td class="sym">μ</td><td class="dim">[M⁻¹ L⁰ T² A]</td><td class="unit">m²/Vs</td><td class="remark">μ = v_d/E = eτ/m</td></tr>
+    </table>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="purple-box" style="margin:0"><div class="lbl">Deriving ρ = RA/l</div><p style="color:#ddd6fe">R=[ML²T⁻³A⁻²], A=[L²], l=[L]<br>ρ = [ML²T⁻³A⁻²×L²/L] = <strong style="color:var(--p)">[ML³T⁻³A⁻²]</strong></p></div>
+    <div class="cyan-box" style="margin:0"><div class="lbl">Deriving μ = eτ/m</div><p style="color:#cffafe">e=[TA], τ=[T], m=[M]<br>μ = [TA×T/M] = <strong style="color:var(--cy)">[M⁻¹T²A]</strong></p></div>
+    <div class="green-box" style="margin:0"><div class="lbl">Deriving σ = ne²τ/m</div><p style="color:#d1fae5">n=[L⁻³], e²=[T²A²], τ=[T], m=[M]<br>σ = <strong style="color:var(--g)">[M⁻¹L⁻³T³A²]</strong></p></div>
+  </div>
+  <div class="memory"><div class="lbl">🧠 Memory — Master Trick for Dimensions</div><p>Start from V=[ML²T⁻³A⁻¹]. Then R=V/I → add A⁻¹. Then ρ=RA/l → add L. Then σ=1/ρ → flip ALL exponent signs! 🔄</p></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     POINTS TO PONDER
+═══════════════════════════════════════════ -->
+<div class="section" id="ponder-sec">
+  <div class="sec-hdr"><span class="sec-icon">🧠</span><h2 class="sec-title tcy">Points to Ponder — 6 Deep Insights</h2></div>
+  <div class="ponder"><div class="pnum">Point 1</div><div class="ponder-content"><strong>Current is a SCALAR — Not a Vector!</strong><p style="margin-top:7px">Even with direction arrows, current does NOT obey vector addition. I = <strong>j · ΔS</strong> (dot product of two vectors = scalar). Board trap: "Is current scalar or vector?" → SCALAR! 📌</p></div></div>
+  <div class="ponder"><div class="pnum">Point 2</div><div class="ponder-content"><strong>V = IR Defines R — NOT Ohm's Law!</strong><p style="margin-top:7px">V = IR holds for ALL conductors — it defines R = V/I. Ohm's law says R is CONSTANT (I-V is linear). A diode has R = V/I at every point, but R changes with V → Ohm's law fails, but V = IR is still valid. E = ρj is another statement: material obeys Ohm's law when ρ doesn't depend on |E| or direction.</p></div></div>
+  <div class="ponder"><div class="pnum">Point 3</div><div class="ponder-content"><strong>All Homogeneous Conductors Obey Ohm's Law — Up to a Limit!</strong><p style="margin-top:7px">Silver and pure Ge both obey Ohm's law within some field range. But at very strong fields, ALL materials deviate — τ itself becomes field-dependent, breaking linearity.</p></div></div>
+  <div class="ponder"><div class="pnum">Point 4</div><div class="ponder-content"><strong>Electron Motion = Random Thermal Motion + Drift Due to E</strong><p style="margin-top:7px">Random thermal motion averages to ZERO. Only E causes drift. v_d is purely due to applied field. Thermal speeds (~10⁵ m/s) >> drift speeds (~10⁻³ m/s).</p></div></div>
+  <div class="ponder"><div class="pnum">Point 5</div><div class="ponder-content"><strong>j = ρv Does NOT Apply to Total Current Density!</strong><p style="margin-top:7px">In neutral wire: ρ₊ = −ρ₋ → ρ_total = 0. But j = ρ₊v₊ + ρ₋v₋. Ions barely move (v₊ ≈ 0), so j ≈ ρ₋v₋ ≠ 0. Apply j = ρv to EACH carrier type separately, not to total charge density.</p></div></div>
+  <div class="ponder"><div class="pnum">Point 6</div><div class="ponder-content"><strong>KCL Works Regardless of Wire Geometry!</strong><p style="margin-top:7px">Bending or reshaping a wire does NOT change KCL. It's based on charge conservation — a fundamental law, independent of geometry. Works in any shape, dimension, or orientation.</p></div></div>
+  <div class="memory"><div class="lbl">🧠 All 6 in One Line Each</div>
+    <p>1️⃣ Current=SCALAR (j·ΔS dot product)<br>2️⃣ V=IR defines R; Ohm's law says R=constant<br>3️⃣ All materials obey Ohm's law — up to field limit<br>4️⃣ Drift only from E; random motion cancels<br>5️⃣ j=ρv for each carrier separately, not total<br>6️⃣ KCL works regardless of wire shape</p>
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     MASTER FORMULA SHEET
+═══════════════════════════════════════════ -->
+<div class="section" id="allformulas">
+  <div class="sec-hdr"><span class="sec-icon">🗺️</span><h2 class="sec-title ty">Master Formula Sheet — Entire Chapter 3</h2></div>
+  <div class="fref">
+    <div class="fcard"><div class="fname">Electric Current (Steady)</div><div class="fform">I = Q/t</div><div class="funit">A (Ampere)</div></div>
+    <div class="fcard"><div class="fname">Electric Current (Varying)</div><div class="fform">I = dQ/dt</div><div class="funit">A</div></div>
+    <div class="fcard"><div class="fname">Ohm's Law</div><div class="fform">V = IR</div><div class="funit">V, A, Ω</div></div>
+    <div class="fcard"><div class="fname">Resistance</div><div class="fform">R = ρl/A</div><div class="funit">Ω (Ohm)</div></div>
+    <div class="fcard"><div class="fname">Resistivity</div><div class="fform">ρ = m/(ne²τ)</div><div class="funit">Ω·m</div></div>
+    <div class="fcard"><div class="fname">Conductivity</div><div class="fform">σ = 1/ρ = ne²τ/m</div><div class="funit">S/m</div></div>
+    <div class="fcard"><div class="fname">Current Density</div><div class="fform">j = I/A = σE</div><div class="funit">A/m²</div></div>
+    <div class="fcard"><div class="fname">Ohm's Law (Vector)</div><div class="fform">E = jρ or j = σE</div><div class="funit">—</div></div>
+    <div class="fcard"><div class="fname">Electron Acceleration</div><div class="fform">a = eE/m</div><div class="funit">m/s²</div></div>
+    <div class="fcard"><div class="fname">Drift Velocity</div><div class="fform">v_d = eEτ/m</div><div class="funit">m/s</div></div>
+    <div class="fcard"><div class="fname">Current via Drift</div><div class="fform">I = neAv_d</div><div class="funit">A</div></div>
+    <div class="fcard"><div class="fname">Mobility</div><div class="fform">μ = v_d/E = eτ/m</div><div class="funit">m²/Vs</div></div>
+    <div class="fcard"><div class="fname">Temp. Resistivity</div><div class="fform">ρ_T = ρ₀[1+α(T−T₀)]</div><div class="funit">Ω·m</div></div>
+    <div class="fcard"><div class="fname">Temp. Resistance</div><div class="fform">R_T = R₀[1+α(T−T₀)]</div><div class="funit">Ω</div></div>
+    <div class="fcard"><div class="fname">Power</div><div class="fform">P = IV = I²R = V²/R</div><div class="funit">W</div></div>
+    <div class="fcard"><div class="fname">Energy Dissipated</div><div class="fform">W = Pt = IVt</div><div class="funit">J or kWh</div></div>
+    <div class="fcard"><div class="fname">1 kWh in Joules</div><div class="fform">= 3.6 × 10⁶ J</div><div class="funit">—</div></div>
+    <div class="fcard"><div class="fname">Transmission Loss</div><div class="fform">P_c = P²R_c/V²</div><div class="funit">W</div></div>
+    <div class="fcard"><div class="fname">EMF</div><div class="fform">ε = V₊ + V₋</div><div class="funit">V</div></div>
+    <div class="fcard"><div class="fname">Terminal Voltage</div><div class="fform">V = ε − Ir</div><div class="funit">V</div></div>
+    <div class="fcard"><div class="fname">Circuit Current</div><div class="fform">I = ε/(R+r)</div><div class="funit">A</div></div>
+    <div class="fcard"><div class="fname">Max Current</div><div class="fform">I_max = ε/r</div><div class="funit">A (when R=0)</div></div>
+    <div class="fcard"><div class="fname">Cells Series ε</div><div class="fform">ε_eq = ε₁+ε₂+…</div><div class="funit">V</div></div>
+    <div class="fcard"><div class="fname">Cells Series r</div><div class="fform">r_eq = r₁+r₂+…</div><div class="funit">Ω</div></div>
+    <div class="fcard"><div class="fname">Cells Parallel r</div><div class="fform">1/r_eq = Σ(1/rᵢ)</div><div class="funit">Ω</div></div>
+    <div class="fcard"><div class="fname">Cells Parallel ε</div><div class="fform">ε_eq/r_eq = Σ(εᵢ/rᵢ)</div><div class="funit">V</div></div>
+    <div class="fcard"><div class="fname">KCL</div><div class="fform">ΣI_in = ΣI_out</div><div class="funit">Charge conserv.</div></div>
+    <div class="fcard"><div class="fname">KVL</div><div class="fform">ΣΔV = 0</div><div class="funit">Energy conserv.</div></div>
+    <div class="fcard"><div class="fname">Wheatstone Balance</div><div class="fform">R₁/R₂ = R₃/R₄</div><div class="funit">when I_g = 0</div></div>
+    <div class="fcard"><div class="fname">Cube Resistance</div><div class="fform">R_eq = 5R/6</div><div class="funit">Body diagonal</div></div>
+    <div class="fcard"><div class="fname">Max Power Transfer</div><div class="fform">R_ext = r_int → P_max = ε²/4r</div><div class="funit">—</div></div>
+  </div>
+  <div class="card cy" style="margin-top:18px"><h3 class="h3y">⭐ The 25 Things You MUST Remember</h3>
+    <div class="g2" style="margin-top:10px">
+      <ol style="padding-left:20px;line-height:2.1;font-size:.91rem">
+        <li>I = Q/t or dQ/dt. Unit: Ampere (A)</li>
+        <li>Current is a SCALAR (j·ΔS = dot product)</li>
+        <li>Conventional current: OPPOSITE to electron flow</li>
+        <li>V = IR defines R; Ohm's law says R is constant</li>
+        <li>R = ρl/A — shape AND material determine R</li>
+        <li>ρ = m/(ne²τ) — MATERIAL property only</li>
+        <li>σ = 1/ρ = ne²τ/m — conductivity</li>
+        <li>v_d = eEτ/m — drift velocity (~mm/s)</li>
+        <li>I = neAv_d — current from drift</li>
+        <li>j = I/A = σE — current density</li>
+        <li>μ = v_d/E = eτ/m — mobility (positive)</li>
+        <li>ρ_T = ρ₀[1+α(T−T₀)] — metals: α&gt;0; SC: α&lt;0</li>
+        <li>3 failures of Ohm: non-linear, asymmetric, non-unique</li>
+      </ol>
+      <ol style="padding-left:20px;line-height:2.1;font-size:.91rem" start="14">
+        <li>P = IV = I²R = V²/R. 1 kWh = 3.6×10⁶ J</li>
+        <li>P_transmission = P²R/V² → use high V!</li>
+        <li>ε = open-circuit voltage; NOT a force</li>
+        <li>V = ε − Ir (discharge); V = ε + Ir (charging)</li>
+        <li>I = ε/(R+r); I_max = ε/r when R=0</li>
+        <li>Series cells: ε_eq=Σε, r_eq=Σr</li>
+        <li>Parallel cells: 1/r_eq=Σ(1/r), ε_eq/r_eq=Σ(ε/r)</li>
+        <li>KCL: ΣI_in = ΣI_out (charge conservation)</li>
+        <li>KVL: ΣΔV = 0 (energy conservation)</li>
+        <li>Wheatstone balance: R₁/R₂ = R₃/R₄ when I_g=0</li>
+        <li>Cube: R_eq = 5R/6 (12 resistors, body diagonal)</li>
+        <li>Max power at R_ext = r_int → P_max = ε²/4r</li>
+      </ol>
+    </div>
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ════════════════════════════════════════════════════════
+     ALL QUESTIONS SECTION — EXERCISES, NUMERICALS, PYQs, HOTS, THEORY
+════════════════════════════════════════════════════════ -->
+
+<!-- ═══════════════════════════════════════════
+     NCERT EXERCISES
+═══════════════════════════════════════════ -->
+<div class="section" id="exercises-sec">
+  <div class="sec-hdr"><span class="sec-icon">✅</span><h2 class="sec-title tg">NCERT Exercises — All 9 Solved</h2></div>
+  <div class="exbox"><div class="enlbl">Exercise 3.1</div><div class="ep">Car battery: EMF = 12V, internal resistance = 0.4Ω. Find maximum current that can be drawn.</div>
+    <button class="etog" onclick="es(this)">👉 Show Solution</button>
+    <div class="esol"><p><strong>Concept:</strong> Max current when R = 0 (short circuit). I_max = ε/r = 12/0.4 = <span class="hg">30 A</span></p><p>📌 This is why short-circuiting a car battery is dangerous — 30A causes fire/explosion!</p></div>
+  </div>
+  <div class="exbox"><div class="enlbl">Exercise 3.2</div><div class="ep">Battery: EMF 10V, r = 3Ω, current = 0.5A. Find (a) external resistance R (b) terminal voltage.</div>
+    <button class="etog" onclick="es(this)">👉 Show Solution</button>
+    <div class="esol"><p>(a) I = ε/(R+r) → R+r = 10/0.5 = 20Ω → R = 20−3 = <span class="hg">17 Ω</span></p><p>(b) V = ε−Ir = 10−(0.5)(3) = 10−1.5 = <span class="hg">8.5 V</span> &nbsp;(= IR = 0.5×17 ✓)</p></div>
+  </div>
+  <div class="exbox"><div class="enlbl">Exercise 3.3</div><div class="ep">Heating element: R₀=100Ω at 27°C, R_T=117Ω. α = 1.70×10⁻⁴ °C⁻¹. Find temperature T.</div>
+    <button class="etog" onclick="es(this)">👉 Show Solution</button>
+    <div class="esol"><p>R_T = R₀[1+α(T−T₀)] → 117 = 100[1 + 1.70×10⁻⁴×(T−27)]</p><p>0.17 = 1.70×10⁻⁴×(T−27) → T−27 = 1000 → T = <span class="hg">1027°C</span></p></div>
+  </div>
+  <div class="exbox"><div class="enlbl">Exercise 3.4</div><div class="ep">Wire: length 15m, A = 6.0×10⁻⁷ m², resistance = 5.0Ω. Find resistivity.</div>
+    <button class="etog" onclick="es(this)">👉 Show Solution</button>
+    <div class="esol"><p>ρ = RA/l = (5.0 × 6.0×10⁻⁷)/15 = 30×10⁻⁷/15 = <span class="hg">2.0 × 10⁻⁷ Ω·m</span></p></div>
+  </div>
+  <div class="exbox"><div class="enlbl">Exercise 3.5</div><div class="ep">Silver wire: R = 2.1Ω at 27.5°C and R = 2.7Ω at 100°C. Find temperature coefficient α of silver.</div>
+    <button class="etog" onclick="es(this)">👉 Show Solution</button>
+    <div class="esol"><p>2.7 = 2.1[1+α(100−27.5)] → 2.7/2.1 = 1 + 72.5α → 0.2857 = 72.5α → α = <span class="hg">3.9 × 10⁻³ °C⁻¹</span></p></div>
+  </div>
+  <div class="exbox"><div class="enlbl">Exercise 3.6</div><div class="ep">Nichrome element on 230V: initial I = 3.2A, steady I = 2.8A. Room temp = 27°C, α = 1.70×10⁻⁴ °C⁻¹. Find steady temperature.</div>
+    <button class="etog" onclick="es(this)">👉 Show Solution</button>
+    <div class="esol"><p>R₁ = 230/3.2 = 71.9Ω &nbsp; R₂ = 230/2.8 = 82.1Ω</p><p>T₂−T₁ = (R₂−R₁)/(R₁×α) = (82.1−71.9)/(71.9×1.70×10⁻⁴) = 10.2/0.01223 ≈ 834°C</p><p>T₂ = 834 + 27 = <span class="hg">861°C</span></p></div>
+  </div>
+  <div class="exbox"><div class="enlbl">Exercise 3.7</div><div class="ep">Find current in each branch of the bridge network (Fig 3.20): AB=10Ω, BC=5Ω, CD=10Ω, DA=5Ω, AC-middle=5Ω, battery=10V.</div>
+    <button class="etog" onclick="es(this)">👉 Show Solution</button>
+    <div class="esol"><p>Check balance: AB/DA = 10/5 = 2; BC/DC = 5/10 = 0.5 → NOT balanced → full Kirchhoff needed.</p><p>NCERT results: Branch AB: <span class="hg">1A</span> | BC: <span class="hg">0.5A</span> | AD: <span class="hg">1A</span> | DC: <span class="hg">1A</span> | Middle AC: <span class="hg">0.5A</span></p><p>Method: KCL at junctions, KVL for 3 independent loops, solve 3 simultaneous equations.</p></div>
+  </div>
+  <div class="exbox"><div class="enlbl">Exercise 3.8</div><div class="ep">Battery (8V, 0.5Ω) charged by 120V DC using series resistor 15.5Ω. Find terminal voltage. Why use series resistor?</div>
+    <button class="etog" onclick="es(this)">👉 Show Solution</button>
+    <div class="esol"><p>Charging current I = (120−8)/(0.5+15.5) = 112/16 = <span class="hg">7 A</span></p><p>Terminal voltage during charging: V = ε + Ir = 8 + (7)(0.5) = 8 + 3.5 = <span class="hg">11.5 V</span></p><p>Series resistor: limits charging current to safe value. Without it, I = 112/0.5 = 224A → battery destroyed! 🔋</p></div>
+  </div>
+  <div class="exbox"><div class="enlbl">Exercise 3.9</div><div class="ep">Copper: n = 8.5×10²⁸ m⁻³, wire length = 3.0m, A = 2.0×10⁻⁶ m², I = 3.0A. How long for electron to drift from one end to other?</div>
+    <button class="etog" onclick="es(this)">👉 Show Solution</button>
+    <div class="esol"><p>v_d = I/(neA) = 3.0/(8.5×10²⁸ × 1.6×10⁻¹⁹ × 2.0×10⁻⁶) = 3.0/27200 ≈ <span class="hg">1.1 × 10⁻⁴ m/s</span></p><p>t = l/v_d = 3.0/(1.1×10⁻⁴) ≈ <span class="hg">2.7 × 10⁴ s ≈ 7.5 hours!</span></p><p>📌 A single electron takes 7.5 HOURS to drift 3m! Yet light turns on instantly — E field propagates at speed of light, all electrons drift simultaneously! ✨</p></div>
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     SOLVED NUMERICALS
+═══════════════════════════════════════════ -->
+<div class="section" id="numericals-sec">
+  <div class="sec-hdr"><span class="sec-icon">🔢</span><h2 class="sec-title tg">Solved Numerical Problems</h2></div>
+  <div class="nbox"><div class="nl">📊 Numerical 1 — Drift Velocity (NCERT Eg 3.1)</div>
+    <div class="np">Copper wire A = 1.0×10⁻⁷ m², I = 1.5A. Density = 9.0×10³ kg/m³, atomic mass = 63.5u. Find drift speed.</div>
+    <button class="ntog" onclick="ns(this)">👉 Show Solution</button>
+    <div class="nsol"><p>n = (6.022×10²³/63.5)×9.0×10⁶ = 8.5×10²⁸ m⁻³</p><p>v_d = I/(neA) = 1.5/(8.5×10²⁸×1.6×10⁻¹⁹×1.0×10⁻⁷) = 1.5/(1.36×10³) = <span class="hg">1.1×10⁻³ m/s = 1.1 mm/s</span></p><p>📌 Drift is incredibly slow — yet current is instantaneous because E field travels at ~3×10⁸ m/s!</p></div>
+  </div>
+  <div class="nbox"><div class="nl">📊 Numerical 2 — Resistance when Stretched</div>
+    <div class="np">Wire of R=10Ω, length 2m, A=2×10⁻⁶ m². Find: (a) resistivity (b) resistance when stretched to double length.</div>
+    <button class="ntog" onclick="ns(this)">👉 Show Solution</button>
+    <div class="nsol"><p>(a) ρ = RA/l = 10×2×10⁻⁶/2 = <span class="hg">1×10⁻⁵ Ω·m</span></p><p>(b) Stretched: l' = 4m, volume constant → A' = A/2 = 10⁻⁶ m²</p><p>R' = ρl'/A' = 10⁻⁵×4/10⁻⁶ = <span class="hg">40 Ω</span> → (n times length: R increases n² times)</p></div>
+  </div>
+  <div class="nbox"><div class="nl">📊 Numerical 3 — EMF and Terminal Voltage</div>
+    <div class="np">Battery: EMF 12V, r = 0.5Ω, R = 5.5Ω. Find: (a) current (b) terminal voltage (c) power wasted internally.</div>
+    <button class="ntog" onclick="ns(this)">👉 Show Solution</button>
+    <div class="nsol"><p>(a) I = 12/(5.5+0.5) = 12/6 = <span class="hg">2 A</span></p><p>(b) V = ε−Ir = 12−(2)(0.5) = <span class="hg">11 V</span></p><p>(c) P_internal = I²r = 4×0.5 = <span class="hg">2 W</span> (Check: P_ext = 4×5.5=22W. Total = 24W = εI = 12×2 ✓)</p></div>
+  </div>
+  <div class="nbox"><div class="nl">📊 Numerical 4 — Cells in Series vs Parallel</div>
+    <div class="np">Three cells, each 2V, 1Ω, connected to R=3Ω. Compare current when (a) series (b) parallel.</div>
+    <button class="ntog" onclick="ns(this)">👉 Show Solution</button>
+    <div class="nsol"><p>(a) Series: ε_eq=6V, r_eq=3Ω. I = 6/(3+3) = <span class="hg">1 A</span></p><p>(b) Parallel: ε_eq=2V, r_eq=r/n=1/3 Ω. I = 2/(3+1/3) = 2/(10/3) = <span class="hg">0.6 A</span></p><p>📌 Series gives more current here (external R large). Parallel better when R is very small (heavy loads).</p></div>
+  </div>
+  <div class="nbox"><div class="nl">📊 Numerical 5 — Wheatstone Bridge</div>
+    <div class="np">Wheatstone bridge: P=10Ω, Q=15Ω, R=20Ω. Bridge balanced. Find unknown S. With 5V battery (no r), find battery current.</div>
+    <button class="ntog" onclick="ns(this)">👉 Show Solution</button>
+    <div class="nsol"><p>P/Q = R/S → S = Q×R/P = 15×20/10 = <span class="hg">30 Ω</span></p><p>At balance: Branch 1 (P+R): 10+20=30Ω; Branch 2 (Q+S): 15+30=45Ω</p><p>R_eq = 30×45/(30+45) = 1350/75 = 18Ω. I_battery = 5/18 ≈ <span class="hg">0.278 A</span></p></div>
+  </div>
+  <div class="nbox"><div class="nl">📊 Numerical 6 — Power Transmission</div>
+    <div class="np">Power station generates 10MW. Transmission cable R_c = 10Ω. Compare power loss at V=10kV vs V=100kV.</div>
+    <button class="ntog" onclick="ns(this)">👉 Show Solution</button>
+    <div class="nsol"><p><strong>At 10kV:</strong> I = 10×10⁶/10⁴ = 1000A. P_loss = I²R = (1000)²×10 = <span style="color:var(--r);font-weight:800">10MW = 100% wasted! 😱</span></p><p><strong>At 100kV:</strong> I = 10×10⁶/10⁵ = 100A. P_loss = (100)²×10 = <span class="hg">0.1MW = only 1%! 🎉</span></p><p>Stepping up by 10× reduces loss by 100×! THIS is why high-tension lines exist!</p></div>
+  </div>
+  <div class="nbox"><div class="nl">📊 Numerical 7 — Relaxation Time</div>
+    <div class="np">Copper: n=8.5×10²⁸ m⁻³, ρ=1.7×10⁻⁸ Ω·m. Find relaxation time τ.</div>
+    <button class="ntog" onclick="ns(this)">👉 Show Solution</button>
+    <div class="nsol"><p>ρ = m/(ne²τ) → τ = m/(ne²ρ)</p><p>τ = (9.1×10⁻³¹)/(8.5×10²⁸ × (1.6×10⁻¹⁹)² × 1.7×10⁻⁸)</p><p>= (9.1×10⁻³¹)/(3.7×10⁻¹⁷) = <span class="hg">2.46 × 10⁻¹⁴ s</span></p><p>📌 Relaxation time ~10⁻¹⁴ s — extremely short!</p></div>
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     BOARD PYQs
+═══════════════════════════════════════════ -->
+<div class="section" id="pyq-sec">
+  <div class="sec-hdr"><span class="sec-icon">📜</span><h2 class="sec-title to">Previous Year Board Questions (2017–2024)</h2></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2024</div><span class="marks">2 Marks</span><div class="pq">Q: Is current a scalar or a vector? Justify with the definition I = j·ΔS.</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p>Current is a <strong>scalar</strong>. I = j·ΔS is a dot product of two vectors — result is scalar. Current does NOT obey vector addition law. Even though we assign a direction, it's just to indicate sense of flow, not a vector property.</p></div></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2023</div><span class="marks">5 Marks</span><div class="pq">Q: Derive the expression for drift velocity. Hence derive the relation σ = ne²τ/m and prove Ohm's law from first principles.</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p><strong>v_d = eEτ/m:</strong> a=eE/m; V_i = v_i + a·t_i; average: v_d = 0 − eEτ/m = −eEτ/m (drift opposite to E)<br><strong>I = neAv_d</strong> (charge crossing area A per second)<br>Substitute: I = neA·(eEτ/m) = (ne²Aτ/m)·E. Since j = I/A = σE: <strong>σ = ne²τ/m</strong><br>Since σ = 1/ρ and V = El, I = V/R: this is exactly Ohm's law V = IR with R = ρl/A ✓</p></div></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2023</div><span class="marks">3 Marks</span><div class="pq">Q: Define resistivity. Write its SI unit. Derive R = ρl/A. On what factors does resistivity depend?</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p>Resistivity ρ = inherent property of material = RA/l. Unit: Ω·m. Derivation: R∝l (doubling l doubles R); R∝1/A (halving A doubles R) → R=ρl/A where ρ is material-specific. Depends on: (1) Material (2) Temperature (3) Pressure. Does NOT depend on shape or size.</p></div></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2022</div><span class="marks">3 Marks</span><div class="pq">Q: State Kirchhoff's rules. Using them, derive the balanced condition for the Wheatstone bridge.</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p>KCL: ΣI_in=ΣI_out (charge conservation). KVL: ΣΔV=0 (energy conservation).<br>At balance I_g=0: KCL gives I₁=I₃, I₂=I₄. KVL on ADBA: I₁R₁=I₂R₂ ...(i). KVL on CBDC: I₁R₃=I₂R₄ ...(ii). Dividing: <strong>R₁/R₂ = R₃/R₄</strong></p></div></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2022</div><span class="marks">2 Marks</span><div class="pq">Q: Two wires A and B: same material, A is twice as long and twice the diameter. Find R_A/R_B.</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p>l_A=2l, d_A=2d → A_A=π(2r)²=4A. R_A=ρ(2l)/(4A)=ρl/(2A). R_B=ρl/A. R_A/R_B = (ρl/2A)/(ρl/A) = <strong>1:2</strong></p></div></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2021</div><span class="marks">2 Marks</span><div class="pq">Q: How does resistance of metallic conductor change with temperature? Give reason.</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p>Resistance INCREASES with temperature. Reason: Higher T → ions vibrate more → more frequent electron-ion collisions → τ decreases → ρ=m/(ne²τ) increases → R increases. Formula: R_T=R₀[1+α(T−T₀)], α&gt;0 for metals.</p></div></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2021</div><span class="marks">3 Marks</span><div class="pq">Q: (a) Define mobility. (b) Derive expression for resistivity in terms of n and τ. (c) How does mobility change with temperature?</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p>(a) Mobility μ = magnitude of drift velocity per unit electric field = v_d/E = eτ/m. Unit: m²/Vs. Always positive.<br>(b) From v_d=eEτ/m and I=neAv_d: j=σE where σ=ne²τ/m → ρ=m/(ne²τ)<br>(c) Temperature↑ → τ↓ → μ=eτ/m decreases for metals</p></div></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2020</div><span class="marks">3 Marks</span><div class="pq">Q: A battery (EMF 8V, r 0.5Ω) charged by 120V DC using R_series=15.5Ω. Find terminal voltage and purpose of R_series.</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p>I = (120−8)/(0.5+15.5) = 112/16 = 7A. Terminal voltage = ε+Ir = 8+3.5 = <strong>11.5V</strong>. Purpose: limits charging current to safe value. Without it, I=224A → battery destroyed.</p></div></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2019</div><span class="marks">2 Marks</span><div class="pq">Q: Why is KCL valid regardless of wire shape or orientation?</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p>KCL is based on conservation of charge — a fundamental law of nature. Charge cannot accumulate at any junction in steady state. Since charge conservation holds in any geometry, KCL is valid regardless of wire shape, orientation, or material. It is topological, not geometric.</p></div></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2018</div><span class="marks">5 Marks</span><div class="pq">Q: (a) Derive current in terms of drift velocity. (b) Deduce Ohm's law. (c) Wire carries 2A, n=4×10²⁸/m³, A=2×10⁻⁷ m². Find v_d.</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p>(a) I=neAv_d (from charge crossing area A in time Δt). (b) I=neA·(eEτ/m)=(ne²Aτ/m)E → V=IR with R=ρl/A. (c) v_d = I/(neA) = 2/(4×10²⁸×1.6×10⁻¹⁹×2×10⁻⁷) = 2/(1.28×10³) = <strong>1.56×10⁻³ m/s</strong></p></div></div>
+
+  <div class="pyqbox"><div class="pl">📜 CBSE 2017</div><span class="marks">2 Marks</span><div class="pq">Q: When electrons drift from lower to higher potential, do all free electrons move in the same direction?</div>
+    <button class="ptog" onclick="pa(this)">Show Answer</button><div class="pbody"><p>NO. Drift velocity (~10⁻³ m/s) is superposed on large random thermal velocities (~10⁵ m/s). Each electron moves randomly — but the average has a tiny net drift. So not all electrons move in the same direction at any instant.</p></div></div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     HOTS QUESTIONS
+═══════════════════════════════════════════ -->
+<div class="section" id="hots-sec">
+  <div class="sec-hdr"><span class="sec-icon">🚀</span><h2 class="sec-title tr">HOTS — Higher Order Thinking</h2></div>
+
+  <div class="hots"><div class="hl">🔥 HOTS 1</div><div class="hq">Two bulbs rated 60W/220V and 100W/220V connected in series across 220V. Which glows brighter?</div>
+    <button class="tog" onclick="ta(this)">Show Answer</button>
+    <div class="ans-body"><p>R₁(60W) = V²/P = (220)²/60 = 807Ω; R₂(100W) = (220)²/100 = 484Ω. Series: same I, P=I²R → more R = more power. <strong>60W bulb glows brighter</strong> in series (higher R)! Counter-intuitive — in parallel, 100W is brighter.</p></div>
+  </div>
+
+  <div class="hots"><div class="hl">🔥 HOTS 2</div><div class="hq">For what value of external R is maximum power delivered to it from a cell (ε, r)?</div>
+    <button class="tog" onclick="ta(this)">Show Answer</button>
+    <div class="ans-body"><p>P_ext = I²R = ε²R/(R+r)². dP/dR = 0 → r−R = 0 → <strong>R = r</strong>. P_max = ε²/(4r). This is the Maximum Power Transfer Theorem — used in electronics and communication! 📡</p></div>
+  </div>
+
+  <div class="hots"><div class="hl">🔥 HOTS 3</div><div class="hq">A wire is stretched to n times its original length. Find new resistance in terms of original.</div>
+    <button class="tog" onclick="ta(this)">Show Answer</button>
+    <div class="ans-body"><p>Volume constant: l×A = l'×A' → l' = nl → A' = A/n. R' = ρl'/A' = ρ(nl)/(A/n) = ρn²l/A = n²R. New resistance = <strong>n²R</strong>. Stretching to n times → resistance becomes n² times! 📏</p></div>
+  </div>
+
+  <div class="hots"><div class="hl">🔥 HOTS 4</div><div class="hq">If Wheatstone bridge battery and galvanometer are interchanged, does the balance condition change?</div>
+    <button class="tog" onclick="ta(this)">Show Answer</button>
+    <div class="ans-body"><p><strong>No.</strong> Balance condition R₁/R₂ = R₃/R₄ does NOT change. The bridge is symmetric w.r.t. battery and galvanometer arms. This is the reciprocity theorem — sensitivity may change but balance point stays same.</p></div>
+  </div>
+
+  <div class="hots"><div class="hl">🔥 HOTS 5</div><div class="hq">In a neutral copper wire carrying current, total charge density ρ_total = 0. Yet current flows (j ≠ 0). How?</div>
+    <button class="tog" onclick="ta(this)">Show Answer</button>
+    <div class="ans-body"><p>ρ₊ = −ρ₋ → ρ_total = 0. But j = ρ₊v₊ + ρ₋v₋. Positive ions barely move (v₊ ≈ 0). Only electrons drift: j ≈ ρ₋v₋ ≠ 0. The formula j = ρv applies to EACH carrier type separately, not to total charge density. (Points to Ponder #5!)</p></div>
+  </div>
+
+  <div class="hots"><div class="hl">🔥 HOTS 6</div><div class="hq">Two wires of same material: lengths ratio 1:2, areas ratio 2:1. Connected in parallel across same battery. Find ratio of heat produced.</div>
+    <button class="tog" onclick="ta(this)">Show Answer</button>
+    <div class="ans-body"><p>R₁ = ρl/(2A) = ρl/2A. R₂ = ρ(2l)/A = 2ρl/A → R₂/R₁ = 4. Parallel: same V, H = V²t/R ∝ 1/R. H₁/H₂ = R₂/R₁ = <strong>4:1</strong></p></div>
+  </div>
+
+  <div class="hots"><div class="hl">🔥 HOTS 7</div><div class="hq">Why is tungsten used for bulb filament but not copper, even though copper has lower resistivity?</div>
+    <button class="tog" onclick="ta(this)">Show Answer</button>
+    <div class="ans-body"><p>Bulb filament needs HIGH resistance (heat/light) AND HIGH melting point (withstand ~2500°C). Tungsten: MP=3422°C, high ρ → glows white-hot ✓. Copper: MP=1085°C, very low ρ → melts at bulb temperature ✗. Tungsten's extreme melting point makes it the only practical choice!</p></div>
+  </div>
+
+  <div class="hots"><div class="hl">🔥 HOTS 8</div><div class="hq">Why is semiconductor resistance temperature-dependent OPPOSITE to metals? Explain using electron theory.</div>
+    <button class="tog" onclick="ta(this)">Show Answer</button>
+    <div class="ans-body"><p>Metal: n is constant. T↑ → more ion vibration → τ↓ → ρ=m/(ne²τ) increases → R increases. Semiconductor: very few free electrons at room T. T↑ → more electrons gain energy to break free → n increases dramatically. The n-increase DOMINATES over τ-decrease → net ρ decreases → R decreases. Two competing effects; in SC, the carrier release wins!</p></div>
+  </div>
+</div>
+<div class="div"></div>
+
+<!-- ═══════════════════════════════════════════
+     THEORY QUESTIONS
+═══════════════════════════════════════════ -->
+<div class="section" id="theory-sec">
+  <div class="sec-hdr"><span class="sec-icon">📝</span><h2 class="sec-title tb">Theory Questions Bank</h2></div>
+  <div class="g2">
+    <div class="qbox"><div class="ql">1 MARK</div><div class="qq">Is EMF a force? What is its SI unit?</div><button class="tog" onclick="ta(this)">Answer</button><div class="ans-body">No. EMF = potential difference (work done per unit charge by source). SI unit: Volt (V). Name is historical and misleading — given when phenomenon wasn't understood.</div></div>
+    <div class="qbox"><div class="ql">1 MARK</div><div class="qq">What are dimensions of electrical conductivity σ?</div><button class="tog" onclick="ta(this)">Answer</button><div class="ans-body">σ = 1/ρ. Dimensions: [M⁻¹ L⁻³ T³ A²]. Unit: S/m (Siemens/metre) or (Ω·m)⁻¹.</div></div>
+    <div class="qbox"><div class="ql">1 MARK</div><div class="qq">Name the physical quantity whose SI unit is m²V⁻¹s⁻¹.</div><button class="tog" onclick="ta(this)">Answer</button><div class="ans-body">Mobility (μ = v_d/E). It measures how easily charge carriers drift in an electric field.</div></div>
+    <div class="qbox"><div class="ql">2 MARKS</div><div class="qq">Distinguish between resistance and resistivity.</div><button class="tog" onclick="ta(this)">Answer</button><div class="ans-body">Resistance R: depends on material AND dimensions (l, A). R = ρl/A. Unit: Ω. Extrinsic property. Resistivity ρ: depends ONLY on material (not shape/size). ρ = m/(ne²τ). Unit: Ω·m. Intrinsic property of material.</div></div>
+    <div class="qbox"><div class="ql">2 MARKS</div><div class="qq">Why are household appliances connected in parallel?</div><button class="tog" onclick="ta(this)">Answer</button><div class="ans-body">(1) Each appliance gets full supply voltage (2) Can be switched independently (3) If one fails, others work (4) Each draws its rated current (flexibility). Series connection would give each appliance less than full voltage and switching one off would break all!</div></div>
+    <div class="qbox"><div class="ql">2 MARKS</div><div class="qq">What is the condition for maximum current from a cell? Why is it rarely used in practice?</div><button class="tog" onclick="ta(this)">Answer</button><div class="ans-body">I_max = ε/r (when R=0, short circuit). Not used in practice: (1) Causes excessive heating inside cell (2) Can permanently damage/destroy the cell (3) No useful work done in external circuit. Real cells have a maximum rated current much lower than I_max.</div></div>
+    <div class="qbox"><div class="ql">3 MARKS</div><div class="qq">State the "V=IR is not Ohm's law" insight. Give example where V=IR applies but Ohm's law fails.</div><button class="tog" onclick="ta(this)">Answer</button><div class="ans-body">V=IR defines resistance R=V/I at any operating point — applies to ALL conductors. Ohm's law additionally says R is CONSTANT (I-V graph is linear). A diode: at every point V=IR gives a value of R, but R changes dramatically with voltage → V=IR applicable but Ohm's law NOT obeyed. Ohm's law also stated as: material obeys it when ρ doesn't depend on |E| or direction of E.</div></div>
+    <div class="qbox"><div class="ql">3 MARKS</div><div class="qq">Explain why electrical power is transmitted at high voltages over long distances.</div><button class="tog" onclick="ta(this)">Answer</button><div class="ans-body">P_loss = I²R_c = P²R_c/V². Power loss ∝ 1/V². For same power P delivered, high V → small I → I²R loss is tiny. Step-up transformer increases V at power station (e.g. 220kV). Step-down transformer reduces to 230V at consumer end. Example: At 10× higher V, current is 10× less, power loss is 100× less!</div></div>
+    <div class="qbox"><div class="ql">3 MARKS</div><div class="qq">What is a Wheatstone bridge? Describe how it is used to find an unknown resistance.</div><button class="tog" onclick="ta(this)">Answer</button><div class="ans-body">Wheatstone bridge: four resistors R₁,R₂,R₃,R₄ in diamond shape. Battery across one diagonal, galvanometer across other. Method: Insert unknown R₄ in one arm. Keep known R₁,R₂ in arms 1 and 2. Vary R₃ until galvanometer reads zero (I_g=0 = null deflection = balanced). Then R₄ = R₃·R₂/R₁. Advantage over ammeter-voltmeter: null-point method eliminates instrument errors.</div></div>
+  </div>
+</div>
+
+</div><!-- end wrap -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <span class="name">Abilash V</span>
+  <span class="tag">Class 12 Physics — Chapter 3: Current Electricity | Board 2026-27</span>
+  <p style="margin-top:12px;font-size:.78rem">Complete Guide · Sections 3.1–3.13 · All Derivations · Dimensional Analysis · Points to Ponder · All NCERT Exercises · Numericals · Board PYQs · HOTS · Theory</p>
+  <div class="stamp">✅ Chapter 3 — Complete &amp; Board-Ready | Study smart. Never doubt. Ace the boards. 🏆</div>
+  <p style="margin-top:14px;font-size:.73rem;color:#334155">All content verified from NCERT Class 12 Physics | Reprint 2026-27</p>
+</div>
+
+<script>
+function ta(btn){const b=btn.nextElementSibling;b.classList.toggle('show');btn.textContent=b.classList.contains('show')?'Hide Answer':'Show Answer'}
+function es(btn){const b=btn.nextElementSibling;b.classList.toggle('show');btn.textContent=b.classList.contains('show')?'👈 Hide':'👉 Show Solution'}
+function ns(btn){const b=btn.nextElementSibling;b.classList.toggle('show');btn.textContent=b.classList.contains('show')?'👈 Hide':'👉 Show Solution'}
+function pa(btn){const b=btn.nextElementSibling;b.classList.toggle('show');btn.textContent=b.classList.contains('show')?'Hide Answer':'Show Answer'}
+function goTo(id){const el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+const secs=['s31','s32','s33','s34','s35','s36','s37','s38','s39','s310','s311','s312','s313','summary-sec','dimtable','ponder-sec','allformulas','exercises-sec','numericals-sec','pyq-sec','hots-sec','theory-sec'];
+window.addEventListener('scroll',()=>{
+  const st=window.scrollY,dh=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('prog').style.width=Math.min(st/dh*100,100)+'%';
+  const dots=document.querySelectorAll('.sdot');
+  let active=0;
+  secs.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<=160)active=i});
+  dots.forEach((d,i)=>d.classList.toggle('active',i===active));
+});
+</script>
+</body>
+</html>
