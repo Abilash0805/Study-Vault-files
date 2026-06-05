@@ -1,0 +1,2982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemical Kinetics — The Complete Study Guide for Abilash V</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=Geist:wght@400;500;600;700&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410; --paper: #faf6ef; --paper-2: #f0e5d0;
+    --accent: #b8341f; --accent-2: #d49528; --accent-3: #2a5d6b; --accent-4: #6a3b8e;
+    --highlight: #ffe88c; --soft: #e8dcc2;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Geist', system-ui, sans-serif; background: var(--paper); color: var(--ink); line-height: 1.7; font-size: 17px;
+    background-image: radial-gradient(at 15% 10%, rgba(184,52,31,0.05) 0px, transparent 50%), radial-gradient(at 85% 90%, rgba(106,59,142,0.06) 0px, transparent 50%); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 30px 24px 80px; }
+  .hero { border: 3px solid var(--ink); padding: 38px 30px; margin-bottom: 50px; background: var(--paper-2); position: relative; box-shadow: 8px 8px 0 var(--ink); }
+  .hero::before { content: "★ COMPLETE STUDY KIT ★"; position: absolute; top: -16px; left: 28px; background: var(--accent); color: var(--paper); padding: 4px 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 2px; }
+  .hero h1 { font-family: 'Fraunces', serif; font-size: clamp(40px, 7vw, 72px); line-height: 0.95; letter-spacing: -0.02em; font-weight: 800; margin-bottom: 14px; }
+  .hero h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+  .hero .sub { font-family: 'Caveat', cursive; font-size: 28px; color: var(--accent-3); margin-bottom: 18px; }
+  .hero .meta { display: flex; flex-wrap: wrap; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 13px; border-top: 1px dashed var(--ink); padding-top: 14px; }
+  .hero .meta span { padding: 4px 10px; background: var(--paper); border: 1px solid var(--ink); }
+  .toc { background: var(--ink); color: var(--paper); padding: 32px; margin-bottom: 50px; }
+  .toc h2 { font-family: 'Fraunces', serif; font-size: 28px; margin-bottom: 18px; border-bottom: 2px solid var(--accent-2); padding-bottom: 8px; }
+  .toc-section { margin: 18px 0; }
+  .toc-section h3 { font-family: 'Fraunces', serif; font-size: 17px; color: var(--accent-2); margin-bottom: 8px; font-style: italic; }
+  .toc ol { list-style: none; counter-reset: toc; padding-left: 0; }
+  .toc li { counter-increment: toc; padding: 5px 0; border-bottom: 1px dotted rgba(250,246,239,0.15); }
+  .toc li::before { content: counter(toc, decimal-leading-zero); color: var(--accent-2); font-family: 'JetBrains Mono', monospace; margin-right: 14px; font-weight: 600; font-size: 13px; }
+  .toc a { color: var(--paper); text-decoration: none; font-size: 15px; }
+  .toc a:hover { color: var(--accent-2); }
+  section { margin-bottom: 60px; scroll-margin-top: 80px; }
+  .section-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 24px; padding-bottom: 8px; border-bottom: 3px solid var(--ink); }
+  .section-num { font-family: 'JetBrains Mono', monospace; font-size: 14px; background: var(--accent); color: var(--paper); padding: 4px 10px; }
+  h2.sec-title { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 40px); font-weight: 800; line-height: 1; letter-spacing: -0.01em; }
+  h3 { font-family: 'Fraunces', serif; font-size: 24px; margin: 30px 0 14px; color: var(--accent-4); font-weight: 600; }
+  h4 { font-family: 'Geist', sans-serif; font-size: 18px; font-weight: 700; margin: 20px 0 10px; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; }
+  p { margin-bottom: 14px; }
+  .box { border: 2px solid var(--ink); padding: 20px 22px; margin: 22px 0; background: var(--paper-2); position: relative; }
+  .box-tag { position: absolute; top: -12px; left: 18px; background: var(--ink); color: var(--paper); padding: 2px 12px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1.5px; font-weight: 600; }
+  .definition { background: linear-gradient(180deg, var(--highlight) 0%, #ffe060 100%); border: 2px solid var(--ink); padding: 18px 22px; margin: 18px 0; box-shadow: 4px 4px 0 var(--ink); }
+  .definition::before { content: "📖 DEFINITION"; display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; color: var(--accent); }
+  .formula { background: var(--ink); color: var(--paper); padding: 18px 22px; margin: 18px 0; font-family: 'JetBrains Mono', monospace; font-size: 17px; text-align: center; border-left: 6px solid var(--accent-2); overflow-x: auto; }
+  .example { background: #e2eef0; border: 2px dashed var(--accent-3); padding: 18px 22px; margin: 18px 0; }
+  .example::before { content: "🧪 EXAMPLE"; display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; color: var(--accent-3); }
+  .memory { background: #fde6dc; border-left: 6px solid var(--accent); padding: 16px 20px; margin: 18px 0; font-family: 'Caveat', cursive; font-size: 21px; line-height: 1.4; }
+  .memory::before { content: "🧠 Memory Hook"; display: block; font-family: 'Geist', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; color: var(--accent); }
+  .warning { background: #ffe1d5; border: 2px solid var(--accent); padding: 14px 18px; margin: 18px 0; }
+  .warning::before { content: "⚠️ TRAP / COMMON MISTAKE"; display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 6px; color: var(--accent); }
+  .derivation { background: var(--paper-2); border: 1px solid var(--ink); padding: 22px; margin: 20px 0; }
+  .derivation h5 { font-family: 'Fraunces', serif; font-size: 19px; margin-bottom: 12px; color: var(--accent-4); border-bottom: 1px solid var(--ink); padding-bottom: 6px; }
+  .step { background: var(--paper); padding: 10px 14px; margin: 10px 0; border-left: 3px solid var(--accent-2); }
+  .step-num { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); font-weight: 700; margin-right: 8px; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; background: var(--paper); border: 2px solid var(--ink); }
+  th { background: var(--ink); color: var(--paper); padding: 10px 12px; text-align: left; font-family: 'Geist', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 12px; }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--soft); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--paper-2); }
+  .svg-holder { background: var(--paper); border: 2px solid var(--ink); padding: 18px; margin: 20px 0; text-align: center; box-shadow: 4px 4px 0 var(--ink); }
+  .svg-holder svg { max-width: 100%; height: auto; }
+  .svg-caption { font-family: 'Caveat', cursive; font-size: 18px; margin-top: 10px; color: var(--accent-4); }
+  .question { border: 2px solid var(--ink); margin: 18px 0; background: var(--paper); }
+  .q-header { background: var(--accent-4); color: var(--paper); padding: 8px 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 1.5px; font-weight: 600; display: flex; justify-content: space-between; }
+  .q-header.pyq { background: var(--accent); }
+  .q-header.hots { background: var(--accent-3); }
+  .q-header.ncert { background: #d49528; color: #1a1410; }
+  .q-body { padding: 16px 20px; }
+  .q-answer { background: var(--paper-2); border-top: 1px dashed var(--ink); padding: 14px 20px; }
+  .q-answer::before { content: "✏️ Solution"; display: block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; margin-bottom: 8px; color: var(--accent); }
+  strong { color: var(--accent); }
+  em { font-style: italic; }
+  code, .math { font-family: 'JetBrains Mono', monospace; background: var(--soft); padding: 1px 6px; font-size: 0.92em; border-radius: 2px; }
+  .footer { margin-top: 80px; padding: 30px; background: var(--ink); color: var(--paper); text-align: center; border: 3px solid var(--ink); }
+  .footer .name { font-family: 'Fraunces', serif; font-size: 32px; font-style: italic; color: var(--accent-2); }
+  .footer .name-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; color: var(--paper); opacity: 0.7; margin-top: 8px; }
+  ul.bulleted { padding-left: 22px; margin: 12px 0; }
+  ul.bulleted li { margin-bottom: 6px; }
+  .pillrow { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+  .pill { font-family: 'JetBrains Mono', monospace; font-size: 12px; background: var(--accent-2); color: var(--ink); padding: 4px 10px; border-radius: 100px; font-weight: 600; }
+  .chapter-divider { margin: 80px 0 50px; text-align: center; position: relative; }
+  .chapter-divider::before { content: ""; position: absolute; top: 50%; left: 0; right: 0; height: 2px; background: var(--ink); }
+  .chapter-divider span { background: var(--paper); padding: 0 20px; position: relative; font-family: 'Fraunces', serif; font-size: 22px; font-style: italic; color: var(--accent-4); }
+  /* Sticky horizontal navigation */
+  .topnav { position: sticky; top: 0; z-index: 100; background: var(--ink); border-bottom: 3px solid var(--accent-2); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .topnav-inner { display: flex; gap: 6px; padding: 10px 16px; overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth;
+    scrollbar-width: thin; scrollbar-color: var(--accent-2) var(--ink); }
+  .topnav-inner::-webkit-scrollbar { height: 8px; }
+  .topnav-inner::-webkit-scrollbar-track { background: var(--ink); }
+  .topnav-inner::-webkit-scrollbar-thumb { background: var(--accent-2); border-radius: 4px; }
+  .topnav-inner::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+  .topnav a { flex: 0 0 auto; white-space: nowrap; padding: 6px 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: var(--paper); text-decoration: none; background: transparent; border: 1px solid transparent; border-radius: 4px; transition: all 0.15s; }
+  .topnav a:hover { background: var(--accent); border-color: var(--accent-2); color: var(--paper); }
+  .topnav a .nav-num { color: var(--accent-2); margin-right: 6px; font-weight: 700; }
+  .topnav a:hover .nav-num { color: var(--highlight); }
+  .topnav .group-label { flex: 0 0 auto; padding: 6px 10px; font-family: 'Fraunces', serif; font-style: italic; font-size: 13px; color: var(--accent-2); border-right: 1px dashed rgba(212,149,40,0.4); margin-right: 4px; }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <span class="group-label">Foundations</span>
+    <a href="#intro"><span class="nav-num">01</span>Why Kinetics</a>
+    <a href="#rate"><span class="nav-num">02</span>Rate</a>
+    <a href="#avg-inst"><span class="nav-num">03</span>Avg vs Inst</a>
+    <a href="#stoich"><span class="nav-num">04</span>Stoich Coeff</a>
+    <a href="#units"><span class="nav-num">05</span>Units</a>
+    <a href="#factors"><span class="nav-num">06</span>Factors</a>
+    <a href="#ratelaw"><span class="nav-num">07</span>Rate Law</a>
+    <a href="#order"><span class="nav-num">08</span>Order</a>
+    <a href="#unitsk"><span class="nav-num">09</span>Units of k</a>
+    <a href="#molec"><span class="nav-num">10</span>Molecularity</a>
+    <a href="#omvm"><span class="nav-num">11</span>Order vs Molec.</a>
+    <a href="#rds"><span class="nav-num">12</span>RDS</a>
+    <span class="group-label">Integrated Rate</span>
+    <a href="#why-int"><span class="nav-num">13</span>Why Integrate</a>
+    <a href="#zero"><span class="nav-num">14</span>Zero Order</a>
+    <a href="#first"><span class="nav-num">15</span>First Order</a>
+    <a href="#firstgas"><span class="nav-num">16</span>Gas Phase</a>
+    <a href="#halflife"><span class="nav-num">17</span>Half-Life</a>
+    <a href="#pseudo"><span class="nav-num">18</span>Pseudo 1st</a>
+    <a href="#master-table"><span class="nav-num">19</span>Master Table</a>
+    <span class="group-label">Arrhenius &amp; Catalysts</span>
+    <a href="#temperature"><span class="nav-num">20</span>Temperature</a>
+    <a href="#arrhenius"><span class="nav-num">21</span>Arrhenius Eq</a>
+    <a href="#activated"><span class="nav-num">22</span>Activation E</a>
+    <a href="#maxwell"><span class="nav-num">23</span>Maxwell-Boltz</a>
+    <a href="#arr-graph"><span class="nav-num">24</span>Arrhenius Plot</a>
+    <a href="#twotemp"><span class="nav-num">25</span>Two-Temp Form</a>
+    <a href="#catalyst"><span class="nav-num">26</span>Catalyst</a>
+    <a href="#collision"><span class="nav-num">27</span>Collision Theory</a>
+    <a href="#orientation"><span class="nav-num">28</span>Orientation</a>
+    <span class="group-label">Practice</span>
+    <a href="#solved-numericals"><span class="nav-num">29</span>Solved Numericals</a>
+    <a href="#ncert-1-10"><span class="nav-num">30</span>NCERT 3.1–3.10</a>
+    <a href="#ncert-11-20"><span class="nav-num">31</span>NCERT 3.11–3.20</a>
+    <a href="#ncert-21-30"><span class="nav-num">32</span>NCERT 3.21–3.30</a>
+    <a href="#all-intext"><span class="nav-num">33</span>Intext Q&amp;A</a>
+    <a href="#pyq"><span class="nav-num">34</span>PYQs</a>
+    <a href="#hots"><span class="nav-num">35</span>HOTS</a>
+    <a href="#summary"><span class="nav-num">36</span>Cheat Sheet</a>
+    <a href="#mistakes"><span class="nav-num">37</span>Exam Traps</a>
+    <a href="#final"><span class="nav-num">38</span>Final Words</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<div class="hero">
+  <div class="sub">Class 12 • CBSE • Board Preparation 2026–27</div>
+  <h1>Chemical <em>Kinetics</em></h1>
+  <p style="font-size:18px; max-width:750px;">The complete, visual, no-doubts-left study companion. Plain English explanations, derivations done line by line, hand-drawn-style diagrams, real-world examples, every NCERT problem solved, and every kind of exam question — all in one place.</p>
+  <div class="meta">
+    <span>Unit 3 • NCERT</span>
+    <span>~16 marks weightage</span>
+    <span>Made for: Abilash V</span>
+    <span>Complete chapter</span>
+  </div>
+</div>
+
+<div class="toc">
+  <h2>Complete Contents</h2>
+
+  <div class="toc-section">
+    <h3>Foundations</h3>
+    <ol style="counter-reset: toc;">
+      <li><a href="#intro">Why we study Chemical Kinetics</a></li>
+      <li><a href="#rate">Rate of a Chemical Reaction</a></li>
+      <li><a href="#avg-inst">Average Rate vs Instantaneous Rate</a></li>
+      <li><a href="#stoich">Rate with Stoichiometric Coefficients</a></li>
+      <li><a href="#units">Units of Rate</a></li>
+      <li><a href="#factors">Factors Affecting Rate</a></li>
+      <li><a href="#ratelaw">Rate Law, Rate Constant &amp; Rate Expression</a></li>
+      <li><a href="#order">Order of a Reaction</a></li>
+      <li><a href="#unitsk">Units of Rate Constant</a></li>
+      <li><a href="#molec">Molecularity of a Reaction</a></li>
+      <li><a href="#omvm">Order vs Molecularity (The Big Comparison)</a></li>
+      <li><a href="#rds">Rate Determining Step &amp; Mechanisms</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-section">
+    <h3>Integrated Rate Equations &amp; Half-Life</h3>
+    <ol style="counter-reset: toc 12;">
+      <li><a href="#why-int">Why we need Integrated Rate Equations</a></li>
+      <li><a href="#zero">Zero Order Reactions — Full Derivation</a></li>
+      <li><a href="#first">First Order Reactions — Full Derivation</a></li>
+      <li><a href="#firstgas">First Order Gas Phase Reactions</a></li>
+      <li><a href="#halflife">Half-Life of a Reaction</a></li>
+      <li><a href="#pseudo">Pseudo First Order Reactions</a></li>
+      <li><a href="#master-table">Master Comparison Table (Zero vs First Order)</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-section">
+    <h3>Temperature, Arrhenius &amp; Catalysts</h3>
+    <ol style="counter-reset: toc 19;">
+      <li><a href="#temperature">Effect of Temperature on Rate</a></li>
+      <li><a href="#arrhenius">The Arrhenius Equation</a></li>
+      <li><a href="#activated">Activated Complex &amp; Activation Energy</a></li>
+      <li><a href="#maxwell">Maxwell-Boltzmann Distribution Curve</a></li>
+      <li><a href="#arr-graph">Arrhenius Plots — ln k vs 1/T</a></li>
+      <li><a href="#twotemp">Two-Temperature Form of Arrhenius</a></li>
+      <li><a href="#catalyst">Effect of a Catalyst</a></li>
+      <li><a href="#collision">Collision Theory of Chemical Reactions</a></li>
+      <li><a href="#orientation">Orientation, Steric Factor &amp; Effective Collisions</a></li>
+    </ol>
+  </div>
+
+  <div class="toc-section">
+    <h3>Practice &amp; Mastery</h3>
+    <ol style="counter-reset: toc 28;">
+      <li><a href="#solved-numericals">Solved Numericals (Step by Step)</a></li>
+      <li><a href="#ncert-1-10">NCERT Exercises 3.1 – 3.10</a></li>
+      <li><a href="#ncert-11-20">NCERT Exercises 3.11 – 3.20</a></li>
+      <li><a href="#ncert-21-30">NCERT Exercises 3.21 – 3.30</a></li>
+      <li><a href="#all-intext">All Intext Questions (3.1 – 3.9)</a></li>
+      <li><a href="#pyq">Previous Year Board Questions</a></li>
+      <li><a href="#hots">HOTS &amp; Theory Questions</a></li>
+      <li><a href="#summary">Whole-Chapter Cheat Sheet</a></li>
+      <li><a href="#mistakes">Top Exam Traps to Avoid</a></li>
+      <li><a href="#final">Final Words</a></li>
+    </ol>
+  </div>
+</div>
+
+<div class="chapter-divider"><span>~ Part I · Foundations ~</span></div>
+
+
+<section id="intro">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="sec-title">Why we even study Chemical Kinetics</h2>
+  </div>
+
+  <p>Imagine you cook Maggi noodles. Two questions pop up:</p>
+  <ul class="bulleted">
+    <li><strong>Will it actually cook?</strong> → Yes, because heat + water makes the chemicals react. This is <em>thermodynamics</em>.</li>
+    <li><strong>How fast will it cook?</strong> → 2 minutes! This is <em>chemical kinetics</em>.</li>
+  </ul>
+
+  <p>Chemistry asks three big questions for any reaction:</p>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="rough1" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence baseFrequency="0.02" numOctaves="2" seed="3"/>
+          <feDisplacementMap in="SourceGraphic" scale="1"/>
+        </filter>
+      </defs>
+      <!-- Three boxes -->
+      <g>
+        <rect x="20" y="40" width="200" height="200" rx="6" fill="#fff0e8" stroke="#1a1410" stroke-width="3"/>
+        <text x="120" y="75" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="18" fill="#c8442a">1. Will it happen?</text>
+        <text x="120" y="105" text-anchor="middle" font-family="Geist" font-size="13" fill="#1a1410">Thermodynamics</text>
+        <text x="120" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="14" fill="#1a1410">ΔG &lt; 0</text>
+        <text x="120" y="165" text-anchor="middle" font-family="Caveat" font-size="18" fill="#2e6f6a">Feasibility ✓</text>
+        <circle cx="60" cy="210" r="14" fill="#d98c2b" stroke="#1a1410" stroke-width="2"/>
+        <text x="60" y="215" text-anchor="middle" font-size="14" font-weight="700">?</text>
+      </g>
+      <g>
+        <rect x="260" y="40" width="200" height="200" rx="6" fill="#e9f3f2" stroke="#1a1410" stroke-width="3"/>
+        <text x="360" y="75" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="18" fill="#2e6f6a">2. How far?</text>
+        <text x="360" y="105" text-anchor="middle" font-family="Geist" font-size="13" fill="#1a1410">Equilibrium</text>
+        <text x="360" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="14" fill="#1a1410">Kc, Kp</text>
+        <text x="360" y="165" text-anchor="middle" font-family="Caveat" font-size="18" fill="#c8442a">Extent ⚖</text>
+        <path d="M 320 200 L 400 200 M 360 190 L 360 210" stroke="#1a1410" stroke-width="2" fill="none"/>
+      </g>
+      <g>
+        <rect x="500" y="40" width="200" height="200" rx="6" fill="#fff6a8" stroke="#1a1410" stroke-width="3"/>
+        <text x="600" y="75" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="18" fill="#6a3b8e">3. How FAST?</text>
+        <text x="600" y="105" text-anchor="middle" font-family="Geist" font-size="13" fill="#1a1410">Kinetics ⚡</text>
+        <text x="600" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="14" fill="#1a1410">Rate = ?</text>
+        <text x="600" y="165" text-anchor="middle" font-family="Caveat" font-size="18" fill="#c8442a">Speed 🏎</text>
+        <circle cx="640" cy="210" r="14" fill="#c8442a" stroke="#1a1410" stroke-width="2"/>
+        <text x="640" y="215" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">!</text>
+      </g>
+      <text x="360" y="20" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">The Three Questions Chemists Ask</text>
+    </svg>
+    <div class="svg-caption">Thermodynamics says "yes it CAN happen"; Kinetics says "but here's HOW FAST"</div>
+  </div>
+
+  <div class="definition">
+    <strong>Chemical Kinetics:</strong> The branch of chemistry that deals with the <strong>study of rates of chemical reactions, the factors that affect these rates, and the mechanism (steps) by which reactions occur.</strong>
+    <br><br>
+    The word "kinetics" comes from the Greek word <em>"kinesis"</em>, meaning <strong>movement</strong>.
+  </div>
+
+  <h4>The Diamond Paradox 💎</h4>
+  <p>Thermodynamics says: "Diamond should convert into graphite (it's more stable)."<br>
+  Reality: This conversion is so unbelievably slow that <strong>"diamonds are forever"</strong> in your lifetime. This is why kinetics matters — feasibility ≠ speed!</p>
+
+  <div class="memory">
+    Thermodynamics = the <strong>WILL</strong> 🎯<br>
+    Kinetics = the <strong>SPEED</strong> 🏃‍♂️<br>
+    A reaction can be allowed but still take 1,000,000 years!
+  </div>
+
+  <h4>Real-life uses of Kinetics</h4>
+  <ul class="bulleted">
+    <li>🍞 How fast does <strong>food spoil</strong>? (Choose preservatives)</li>
+    <li>🦷 How quickly does <strong>dental filling</strong> set?</li>
+    <li>🚗 How fast does <strong>petrol burn</strong> in your car engine?</li>
+    <li>💊 How long before a <strong>medicine</strong> works in your body?</li>
+    <li>🌎 How fast is the <strong>ozone layer depleting</strong>?</li>
+  </ul>
+
+  <h4>Three speeds of reactions (Examples)</h4>
+  <table>
+    <tr><th>Speed</th><th>Example</th><th>Time</th></tr>
+    <tr><td><strong>Very Fast</strong> ⚡</td><td>AgNO₃ + NaCl → AgCl↓ + NaNO₃ (white ppt of silver chloride forms instantly)</td><td>Instantaneous (microseconds)</td></tr>
+    <tr><td><strong>Moderate</strong> 🐢</td><td>Inversion of cane sugar; Hydrolysis of starch</td><td>Minutes to hours</td></tr>
+    <tr><td><strong>Very Slow</strong> 🐌</td><td>Rusting of iron; Diamond → Graphite</td><td>Years to centuries</td></tr>
+  </table>
+</section>
+
+<section id="rate">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="sec-title">Rate of a Chemical Reaction</h2>
+  </div>
+
+  <p>You already know how speed of a car works:</p>
+  <div class="formula">Speed of car = (Distance covered) ÷ (Time taken)</div>
+
+  <p>Reaction rate works <em>almost</em> the same way — but instead of distance, we track <strong>concentration</strong> (how much reactant is left, or how much product has formed).</p>
+
+  <div class="definition">
+    <strong>Rate of a Reaction:</strong> The change in concentration of any reactant or product per unit time.
+    <br><br>
+    It can be expressed as:
+    <ul class="bulleted" style="margin-top:8px;">
+      <li>Rate of <strong>decrease</strong> in concentration of a reactant (it's going down), OR</li>
+      <li>Rate of <strong>increase</strong> in concentration of a product (it's building up).</li>
+    </ul>
+  </div>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 680 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- Beaker reactants -->
+      <g transform="translate(40,50)">
+        <path d="M 20 0 L 20 150 Q 20 180 50 180 L 130 180 Q 160 180 160 150 L 160 0" fill="#e9f3f2" stroke="#1a1410" stroke-width="3"/>
+        <path d="M 10 0 L 170 0" stroke="#1a1410" stroke-width="3"/>
+        <!-- Reactant molecules (decreasing) -->
+        <circle cx="50" cy="160" r="8" fill="#c8442a" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="80" cy="155" r="8" fill="#c8442a" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="110" cy="160" r="8" fill="#c8442a" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="130" cy="155" r="8" fill="#c8442a" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="65" cy="130" r="8" fill="#c8442a" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="100" cy="135" r="8" fill="#c8442a" stroke="#1a1410" stroke-width="1.5"/>
+        <text x="90" y="-10" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="20">REACTANT R</text>
+        <text x="90" y="210" text-anchor="middle" font-family="Caveat" font-size="20" fill="#c8442a">Going DOWN ↓</text>
+      </g>
+
+      <!-- Arrow -->
+      <g transform="translate(260,140)">
+        <path d="M 0 0 L 100 0 M 90 -10 L 100 0 L 90 10" stroke="#1a1410" stroke-width="3" fill="none"/>
+        <text x="50" y="-15" text-anchor="middle" font-family="JetBrains Mono" font-weight="600" font-size="14">time →</text>
+        <text x="50" y="25" text-anchor="middle" font-family="Caveat" font-size="18" fill="#2e6f6a">reaction happens</text>
+      </g>
+
+      <!-- Beaker products -->
+      <g transform="translate(420,50)">
+        <path d="M 20 0 L 20 150 Q 20 180 50 180 L 130 180 Q 160 180 160 150 L 160 0" fill="#fff6a8" stroke="#1a1410" stroke-width="3"/>
+        <path d="M 10 0 L 170 0" stroke="#1a1410" stroke-width="3"/>
+        <!-- Product molecules (more!) -->
+        <rect x="40" y="155" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <rect x="65" y="160" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <rect x="90" y="155" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <rect x="115" y="160" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <rect x="135" y="155" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <rect x="50" y="130" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <rect x="80" y="125" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <rect x="110" y="130" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <rect x="135" y="125" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <rect x="65" y="100" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <rect x="95" y="105" width="14" height="14" fill="#2e6f6a" stroke="#1a1410" stroke-width="1.5"/>
+        <text x="90" y="-10" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="20">PRODUCT P</text>
+        <text x="90" y="210" text-anchor="middle" font-family="Caveat" font-size="20" fill="#2e6f6a">Going UP ↑</text>
+      </g>
+
+      <text x="340" y="290" text-anchor="middle" font-family="JetBrains Mono" font-size="14" fill="#1a1410">R → P</text>
+    </svg>
+    <div class="svg-caption">Concentration of R falls; concentration of P rises. Rate measures BOTH.</div>
+  </div>
+
+  <p>For a simple reaction <strong>R → P</strong>, where 1 mole of R gives 1 mole of P:</p>
+
+  <p>If at time t₁ the concentration is [R]₁ and at time t₂ it is [R]₂, then:</p>
+
+  <div class="formula">
+    Δt = t₂ – t₁<br>
+    Δ[R] = [R]₂ – [R]₁ &nbsp; (this is NEGATIVE because R decreases)<br>
+    Δ[P] = [P]₂ – [P]₁ &nbsp; (this is POSITIVE because P increases)
+  </div>
+
+  <p>(Note: square brackets [ ] mean "concentration in mol/L")</p>
+
+  <div class="formula">
+    Rate of disappearance of R = – Δ[R]/Δt &nbsp;&nbsp; ...(eq. 3.1)<br><br>
+    Rate of appearance of P = + Δ[P]/Δt &nbsp;&nbsp; ...(eq. 3.2)
+  </div>
+
+  <div class="warning">
+    Why the minus sign for R? Because Δ[R] is already negative (reactant decreases). The minus sign makes rate <strong>positive</strong> — because rate is a SPEED, and speed cannot be negative!
+  </div>
+
+  <div class="memory">
+    Reactant rate = "–" (minus sign added so rate stays +ve)<br>
+    Product rate = "+" (already +ve, no fix needed)<br>
+    📌 Rate is ALWAYS reported as a positive number.
+  </div>
+</section>
+
+<section id="avg-inst">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="sec-title">Average Rate vs Instantaneous Rate</h2>
+  </div>
+
+  <p>This is one of the <strong>most-tested topics</strong> on boards. Let's break it down with a car analogy.</p>
+
+  <h3>The Car Analogy 🚗</h3>
+  <p>You drive 200 km in 4 hours.</p>
+  <ul class="bulleted">
+    <li><strong>Average speed</strong> = 200/4 = 50 km/h (over the WHOLE trip)</li>
+    <li><strong>Instantaneous speed</strong> = what your speedometer shows RIGHT NOW (could be 0, 80, or 30 at this exact second)</li>
+  </ul>
+
+  <h3>Average Rate</h3>
+  <div class="definition">
+    <strong>Average Rate (r_avg):</strong> The change in concentration of reactant (or product) divided by the time interval over which the change occurred.
+  </div>
+  <div class="formula">
+    r_avg = – Δ[R]/Δt = + Δ[P]/Δt
+  </div>
+
+  <h3>Instantaneous Rate</h3>
+  <div class="definition">
+    <strong>Instantaneous Rate (r_inst):</strong> The rate of a reaction at a <strong>particular moment of time</strong>. It is obtained when Δt becomes very, very small (Δt → 0).
+  </div>
+  <div class="formula">
+    r_inst = – d[R]/dt = + d[P]/dt
+  </div>
+
+  <p><strong>How to find it graphically:</strong> Plot concentration vs time. At the point you want, draw a <strong>tangent line</strong>. The <strong>slope of the tangent = instantaneous rate</strong>.</p>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg">
+      <!-- Axes -->
+      <line x1="60" y1="40" x2="60" y2="320" stroke="#1a1410" stroke-width="2"/>
+      <line x1="60" y1="320" x2="650" y2="320" stroke="#1a1410" stroke-width="2"/>
+      <text x="30" y="180" font-family="Geist" font-size="13" transform="rotate(-90 30 180)">Concentration of R</text>
+      <text x="350" y="360" text-anchor="middle" font-family="Geist" font-size="13">Time →</text>
+
+      <!-- Decay curve -->
+      <path d="M 60 60 Q 200 120 350 200 T 640 295" fill="none" stroke="#c8442a" stroke-width="3.5"/>
+
+      <!-- Average rate secant (two points connected) -->
+      <circle cx="120" cy="80" r="6" fill="#1a1410"/>
+      <circle cx="500" cy="260" r="6" fill="#1a1410"/>
+      <line x1="120" y1="80" x2="500" y2="260" stroke="#6a3b8e" stroke-width="2" stroke-dasharray="6,4"/>
+      <text x="310" y="155" font-family="Caveat" font-size="18" fill="#6a3b8e" transform="rotate(20 310 155)">Average rate = slope of this SECANT line</text>
+
+      <!-- Instantaneous rate tangent at one point -->
+      <circle cx="350" cy="200" r="7" fill="#2e6f6a"/>
+      <line x1="200" y1="120" x2="500" y2="280" stroke="#2e6f6a" stroke-width="2.5"/>
+      <text x="350" y="240" font-family="Caveat" font-size="20" fill="#2e6f6a">Instantaneous rate at point P</text>
+      <text x="350" y="262" font-family="Caveat" font-size="18" fill="#2e6f6a">= slope of TANGENT</text>
+
+      <!-- Labels -->
+      <text x="120" y="65" font-family="JetBrains Mono" font-size="11" fill="#1a1410">[R]₁, t₁</text>
+      <text x="510" y="255" font-family="JetBrains Mono" font-size="11" fill="#1a1410">[R]₂, t₂</text>
+      <text x="355" y="195" font-family="JetBrains Mono" font-size="11" fill="#1a1410">P</text>
+
+      <!-- Title -->
+      <text x="350" y="25" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="18">Average vs Instantaneous Rate</text>
+    </svg>
+    <div class="svg-caption">Average = slope joining TWO points; Instantaneous = slope of tangent at ONE point.</div>
+  </div>
+
+  <h4>Why we need instantaneous rate</h4>
+  <p>Average rate is okay, but it tells you about a <em>range of time</em>, not a single moment. If someone asks "what's the rate at t = 30 seconds?", you can't say "well, on average over 0–60s it was X" — that's lazy! For that one moment, only instantaneous rate is correct.</p>
+
+  <div class="memory">
+    Average = <strong>chord</strong> (line joining two points)<br>
+    Instantaneous = <strong>tangent</strong> (touching just one point)<br>
+    📐 Both are slopes — different ways of drawing them.
+  </div>
+
+  <h3>Units of Rate</h3>
+  <p>Rate = concentration ÷ time</p>
+  <ul class="bulleted">
+    <li>If concentration is in <strong>mol L⁻¹</strong> and time in <strong>seconds</strong> → unit is <strong>mol L⁻¹ s⁻¹</strong></li>
+    <li>For gases (when partial pressure is used instead of concentration) → unit is <strong>atm s⁻¹</strong> or <strong>bar s⁻¹</strong></li>
+    <li>If time is in minutes → <strong>mol L⁻¹ min⁻¹</strong></li>
+  </ul>
+</section>
+
+<section id="stoich">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="sec-title">Rate with Stoichiometric Coefficients</h2>
+  </div>
+
+  <p>Here's where most students get confused. Let me make it crystal clear.</p>
+
+  <h4>Case 1: Coefficients are all 1</h4>
+  <div class="example">
+    Hg(l) + Cl₂(g) → HgCl₂(s)<br><br>
+    Here, every species has coefficient 1. So:
+    <div class="formula">
+      Rate = – Δ[Hg]/Δt = – Δ[Cl₂]/Δt = + Δ[HgCl₂]/Δt
+    </div>
+    Rate of disappearance of reactants = Rate of appearance of product (all numerically equal).
+  </div>
+
+  <h4>Case 2: Coefficients are different</h4>
+  <p>Take this reaction:</p>
+  <div class="formula">2 HI(g) → H₂(g) + I₂(g)</div>
+  <p>Now, when 2 moles of HI vanish, only 1 mole of H₂ forms. So the rate of disappearance of HI is <strong>twice</strong> the rate of formation of H₂!</p>
+
+  <p>To make all three rates equal (one single number for the reaction), we divide each by its coefficient:</p>
+  <div class="formula">
+    Rate of reaction = – (1/2) · Δ[HI]/Δt = + Δ[H₂]/Δt = + Δ[I₂]/Δt
+  </div>
+
+  <h4>Master Rule (memorize this!)</h4>
+  <div class="definition">
+    For a general reaction:
+    <br><br>
+    <strong>aA + bB → cC + dD</strong>
+    <br><br>
+    <div class="formula" style="margin-top:10px; background:#1a1410;">
+      Rate = – (1/a)·Δ[A]/Δt = – (1/b)·Δ[B]/Δt = +(1/c)·Δ[C]/Δt = +(1/d)·Δ[D]/Δt
+    </div>
+    <strong>Rule:</strong> Divide by the coefficient. Put minus for reactants, plus for products.
+  </div>
+
+  <div class="example">
+    <strong>Tough example:</strong> 5Br⁻(aq) + BrO₃⁻(aq) + 6H⁺(aq) → 3Br₂(aq) + 3H₂O(l)
+    <div class="formula" style="font-size:14px;">
+      Rate = –(1/5)Δ[Br⁻]/Δt = –Δ[BrO₃⁻]/Δt = –(1/6)Δ[H⁺]/Δt = +(1/3)Δ[Br₂]/Δt = +(1/3)Δ[H₂O]/Δt
+    </div>
+  </div>
+
+  <div class="memory">
+    Coefficient on top of the species → that number goes on the BOTTOM of the rate fraction (as divisor).<br>
+    Reactant = minus. Product = plus.<br>
+    📌 This is why "rate of reaction" is unique — only ONE value, no matter which species you pick.
+  </div>
+
+  <div class="warning">
+    Don't confuse "rate of reaction" with "rate of disappearance of A". They're related, but not always equal! Rate of disappearance of A = a × (rate of reaction).
+  </div>
+</section>
+
+<section id="units">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="sec-title">Quick Recap: Units</h2>
+  </div>
+  <table>
+    <tr><th>Quantity</th><th>SI Unit</th><th>For Gases (partial pressure)</th></tr>
+    <tr><td>Rate of Reaction</td><td>mol L⁻¹ s⁻¹</td><td>atm s⁻¹ or bar s⁻¹</td></tr>
+    <tr><td>Concentration</td><td>mol L⁻¹ (M)</td><td>atm or bar</td></tr>
+    <tr><td>Time</td><td>s, min, h</td><td>s, min, h</td></tr>
+  </table>
+</section>
+
+<section id="factors">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <h2 class="sec-title">Factors that Affect Rate of Reaction</h2>
+  </div>
+
+  <p>The 5 big things that change how fast a reaction goes:</p>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
+      <!-- Center hexagon -->
+      <polygon points="360,120 410,140 410,200 360,220 310,200 310,140" fill="#1a1410"/>
+      <text x="360" y="165" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="14" fill="#fff">RATE</text>
+      <text x="360" y="185" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="14" fill="#fff">of</text>
+      <text x="360" y="205" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="14" fill="#fff">REACTION</text>
+
+      <!-- 5 factors around -->
+      <g>
+        <circle cx="100" cy="80" r="50" fill="#fff0e8" stroke="#1a1410" stroke-width="2.5"/>
+        <text x="100" y="75" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="14" fill="#c8442a">Conc.</text>
+        <text x="100" y="92" text-anchor="middle" font-family="Geist" font-size="10">of reactants</text>
+        <line x1="140" y1="105" x2="305" y2="155" stroke="#1a1410" stroke-width="1.5"/>
+      </g>
+      <g>
+        <circle cx="620" cy="80" r="50" fill="#fff6a8" stroke="#1a1410" stroke-width="2.5"/>
+        <text x="620" y="78" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="14" fill="#c8442a">Temp.</text>
+        <text x="620" y="95" text-anchor="middle" font-family="Geist" font-size="10">🌡 ↑ T = ↑ rate</text>
+        <line x1="580" y1="105" x2="415" y2="155" stroke="#1a1410" stroke-width="1.5"/>
+      </g>
+      <g>
+        <circle cx="100" cy="260" r="50" fill="#e9f3f2" stroke="#1a1410" stroke-width="2.5"/>
+        <text x="100" y="258" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="14" fill="#2e6f6a">Catalyst</text>
+        <text x="100" y="275" text-anchor="middle" font-family="Geist" font-size="10">speeds up ✨</text>
+        <line x1="140" y1="235" x2="305" y2="185" stroke="#1a1410" stroke-width="1.5"/>
+      </g>
+      <g>
+        <circle cx="620" cy="260" r="50" fill="#f3d9b1" stroke="#1a1410" stroke-width="2.5"/>
+        <text x="620" y="258" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="14" fill="#6a3b8e">Surface</text>
+        <text x="620" y="275" text-anchor="middle" font-family="Geist" font-size="10">area (powder &gt; lump)</text>
+        <line x1="580" y1="235" x2="415" y2="185" stroke="#1a1410" stroke-width="1.5"/>
+      </g>
+      <g>
+        <circle cx="360" cy="30" r="28" fill="#dccfee" stroke="#1a1410" stroke-width="2.5"/>
+        <text x="360" y="33" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="13" fill="#6a3b8e">Pressure</text>
+        <line x1="360" y1="58" x2="360" y2="115" stroke="#1a1410" stroke-width="1.5"/>
+      </g>
+    </svg>
+    <div class="svg-caption">5 things that control reaction rate — concentration, temperature, catalyst, surface area, pressure</div>
+  </div>
+
+  <table>
+    <tr><th>Factor</th><th>How it affects rate</th><th>Why?</th></tr>
+    <tr><td><strong>Concentration</strong></td><td>↑ Conc → ↑ Rate</td><td>More molecules per unit volume → more collisions</td></tr>
+    <tr><td><strong>Temperature</strong></td><td>↑ T → ↑↑ Rate (usually doubles per 10°C)</td><td>Molecules have more kinetic energy & cross activation energy</td></tr>
+    <tr><td><strong>Catalyst</strong></td><td>↑ Rate (lowers activation energy)</td><td>Provides alternative path with lower energy barrier</td></tr>
+    <tr><td><strong>Surface Area</strong></td><td>↑ Area → ↑ Rate</td><td>More contact area = more reactant exposed</td></tr>
+    <tr><td><strong>Pressure (gases only)</strong></td><td>↑ P → ↑ Rate</td><td>Effectively increases concentration of gas</td></tr>
+  </table>
+
+  <div class="memory">
+    "CATs Pee on the Carpet" 🐱<br>
+    <strong>C</strong>oncentration · <strong>T</strong>emperature · <strong>S</strong>urface area · <strong>P</strong>ressure · <strong>C</strong>atalyst<br>
+    Easy way to never forget the 5 factors!
+  </div>
+</section>
+
+<section id="ratelaw">
+  <div class="section-header">
+    <span class="section-num">07</span>
+    <h2 class="sec-title">Rate Law, Rate Constant & Rate Expression</h2>
+  </div>
+
+  <h3>The Idea</h3>
+  <p>Since rate depends on concentration, can we write a formula?<br>For a reaction: <strong>aA + bB → cC + dD</strong></p>
+
+  <div class="formula">
+    Rate ∝ [A]ˣ [B]ʸ<br><br>
+    Rate = k [A]ˣ [B]ʸ &nbsp;&nbsp; ...(eq. 3.4a)<br><br>
+    – d[R]/dt = k [A]ˣ [B]ʸ &nbsp;&nbsp; ...(differential rate equation)
+  </div>
+
+  <p>Here:</p>
+  <ul class="bulleted">
+    <li><strong>k</strong> = rate constant (proportionality constant)</li>
+    <li><strong>x, y</strong> = order with respect to A and B (found from EXPERIMENT, not from the balanced equation!)</li>
+  </ul>
+
+  <h3>Three big definitions</h3>
+
+  <div class="definition">
+    <strong>Rate Law (or Rate Expression / Rate Equation):</strong> The expression which relates the rate of a reaction to the concentration of reactants, with each concentration term raised to some power (which may or may not be the same as the stoichiometric coefficient).
+  </div>
+
+  <div class="definition">
+    <strong>Rate Constant (k):</strong> The proportionality constant in the rate law. It is <strong>equal to the rate of reaction when the concentration of each reactant is unity (1 mol L⁻¹)</strong>. Also called <em>specific reaction rate</em>.
+  </div>
+
+  <h3>Why exponents ≠ coefficients (always)</h3>
+  <div class="warning">
+    The biggest misconception students have: "Rate law comes from the balanced equation." <strong>WRONG!</strong> Rate law comes from <strong>experiments</strong>. Sometimes the powers in the rate law happen to match the coefficients — but that's a coincidence, not a rule.
+  </div>
+
+  <h4>Real Examples</h4>
+  <table>
+    <tr><th>Reaction</th><th>Experimental Rate Law</th><th>Powers match coefficients?</th></tr>
+    <tr><td>2NO + O₂ → 2NO₂</td><td>Rate = k [NO]²[O₂]</td><td>✅ Yes (coincidence)</td></tr>
+    <tr><td>CHCl₃ + Cl₂ → CCl₄ + HCl</td><td>Rate = k [CHCl₃][Cl₂]^(1/2)</td><td>❌ No</td></tr>
+    <tr><td>CH₃COOC₂H₅ + H₂O → CH₃COOH + C₂H₅OH</td><td>Rate = k [CH₃COOC₂H₅]¹[H₂O]⁰</td><td>❌ No (it's a pseudo-1st-order!)</td></tr>
+  </table>
+
+  <h3>How to find rate law experimentally (the method of initial rates)</h3>
+  <p>For the reaction <strong>2NO(g) + O₂(g) → 2NO₂(g)</strong>, suppose we measured:</p>
+
+  <table>
+    <tr><th>Expt</th><th>[NO]</th><th>[O₂]</th><th>Initial Rate (mol L⁻¹ s⁻¹)</th></tr>
+    <tr><td>1</td><td>0.30</td><td>0.30</td><td>0.096</td></tr>
+    <tr><td>2</td><td>0.60</td><td>0.30</td><td>0.384</td></tr>
+    <tr><td>3</td><td>0.30</td><td>0.60</td><td>0.192</td></tr>
+    <tr><td>4</td><td>0.60</td><td>0.60</td><td>0.768</td></tr>
+  </table>
+
+  <div class="derivation">
+    <h5>How to crack it:</h5>
+    <div class="step"><span class="step-num">STEP 1</span> Compare Expts 1 & 2: [NO] doubles, [O₂] same. Rate becomes 4× (0.096 → 0.384). So rate ∝ [NO]². Order in NO = <strong>2</strong>.</div>
+    <div class="step"><span class="step-num">STEP 2</span> Compare Expts 1 & 3: [O₂] doubles, [NO] same. Rate doubles (0.096 → 0.192). So rate ∝ [O₂]¹. Order in O₂ = <strong>1</strong>.</div>
+    <div class="step"><span class="step-num">STEP 3</span> Rate law: <strong>Rate = k [NO]² [O₂]¹</strong></div>
+    <div class="step"><span class="step-num">STEP 4</span> Overall order = 2 + 1 = <strong>3 (third order)</strong></div>
+  </div>
+
+  <div class="memory">
+    To find order w.r.t. a species: change ONLY that one, see how rate changes.<br>
+    If conc. doubles and rate doubles → order 1<br>
+    If conc. doubles and rate quadruples → order 2<br>
+    If conc. doubles and rate is unchanged → order 0
+  </div>
+</section>
+
+<section id="order">
+  <div class="section-header">
+    <span class="section-num">08</span>
+    <h2 class="sec-title">Order of a Reaction</h2>
+  </div>
+
+  <div class="definition">
+    <strong>Order of a Reaction:</strong> The <strong>sum of the powers</strong> of the concentration of the reactants in the experimentally determined rate law expression.
+  </div>
+
+  <p>If Rate = k [A]ˣ [B]ʸ, then:</p>
+  <ul class="bulleted">
+    <li>Order with respect to A = x</li>
+    <li>Order with respect to B = y</li>
+    <li><strong>Overall order = x + y</strong></li>
+  </ul>
+
+  <h3>Key features of "order"</h3>
+  <ul class="bulleted">
+    <li>Order can be <strong>0, 1, 2, 3</strong>, or even a <strong>fraction</strong> (like 1/2 or 3/2).</li>
+    <li>Order can even be <strong>negative</strong> for some species (rare but possible).</li>
+    <li>Order is determined <strong>experimentally</strong>, NOT from the balanced equation.</li>
+    <li>Order of 0 means rate is <strong>independent</strong> of that species' concentration.</li>
+  </ul>
+
+  <div class="example">
+    <strong>Practice (Example 3.3 from NCERT):</strong><br>
+    Find overall order:<br>
+    (a) Rate = k [A]^(1/2) [B]^(3/2) → Order = 1/2 + 3/2 = <strong>2 (second order)</strong><br>
+    (b) Rate = k [A]^(3/2) [B]^(–1) → Order = 3/2 + (–1) = <strong>1/2 (half order)</strong>
+  </div>
+
+  <h3>Types based on order</h3>
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- Title -->
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">Rate vs Concentration Graphs (by order)</text>
+
+      <!-- Zero order -->
+      <g transform="translate(20,50)">
+        <text x="100" y="0" text-anchor="middle" font-family="Geist" font-weight="700" font-size="14">Zero Order</text>
+        <text x="100" y="20" text-anchor="middle" font-family="JetBrains Mono" font-size="11">Rate = k</text>
+        <line x1="20" y1="40" x2="20" y2="200" stroke="#1a1410" stroke-width="2"/>
+        <line x1="20" y1="200" x2="190" y2="200" stroke="#1a1410" stroke-width="2"/>
+        <line x1="20" y1="120" x2="190" y2="120" stroke="#c8442a" stroke-width="3"/>
+        <text x="105" y="225" text-anchor="middle" font-family="Geist" font-size="10">[A]</text>
+        <text x="0" y="115" text-anchor="end" font-family="Geist" font-size="10">Rate</text>
+        <text x="105" y="245" text-anchor="middle" font-family="Caveat" font-size="14" fill="#c8442a">flat line — no change</text>
+      </g>
+
+      <!-- First order -->
+      <g transform="translate(260,50)">
+        <text x="100" y="0" text-anchor="middle" font-family="Geist" font-weight="700" font-size="14">First Order</text>
+        <text x="100" y="20" text-anchor="middle" font-family="JetBrains Mono" font-size="11">Rate = k[A]</text>
+        <line x1="20" y1="40" x2="20" y2="200" stroke="#1a1410" stroke-width="2"/>
+        <line x1="20" y1="200" x2="190" y2="200" stroke="#1a1410" stroke-width="2"/>
+        <line x1="20" y1="200" x2="180" y2="60" stroke="#2e6f6a" stroke-width="3"/>
+        <text x="105" y="225" text-anchor="middle" font-family="Geist" font-size="10">[A]</text>
+        <text x="0" y="115" text-anchor="end" font-family="Geist" font-size="10">Rate</text>
+        <text x="105" y="245" text-anchor="middle" font-family="Caveat" font-size="14" fill="#2e6f6a">straight line up</text>
+      </g>
+
+      <!-- Second order -->
+      <g transform="translate(500,50)">
+        <text x="100" y="0" text-anchor="middle" font-family="Geist" font-weight="700" font-size="14">Second Order</text>
+        <text x="100" y="20" text-anchor="middle" font-family="JetBrains Mono" font-size="11">Rate = k[A]²</text>
+        <line x1="20" y1="40" x2="20" y2="200" stroke="#1a1410" stroke-width="2"/>
+        <line x1="20" y1="200" x2="190" y2="200" stroke="#1a1410" stroke-width="2"/>
+        <path d="M 20 200 Q 100 200 180 50" fill="none" stroke="#6a3b8e" stroke-width="3"/>
+        <text x="105" y="225" text-anchor="middle" font-family="Geist" font-size="10">[A]</text>
+        <text x="0" y="115" text-anchor="end" font-family="Geist" font-size="10">Rate</text>
+        <text x="105" y="245" text-anchor="middle" font-family="Caveat" font-size="14" fill="#6a3b8e">curves up sharply</text>
+      </g>
+    </svg>
+    <div class="svg-caption">Shape of the Rate vs [A] graph tells you the order at a glance!</div>
+  </div>
+
+  <h3>Pseudo First Order Reaction (boards love this!)</h3>
+  <div class="definition">
+    <strong>Pseudo First Order Reaction:</strong> A reaction that is actually second (or higher) order, but BEHAVES like a first order reaction because one of the reactants is present in <strong>large excess</strong> (so its concentration hardly changes).
+  </div>
+
+  <div class="example">
+    <strong>Classic Example: Hydrolysis of ester</strong><br>
+    CH₃COOC₂H₅ + H₂O → CH₃COOH + C₂H₅OH<br><br>
+    Theoretically, Rate = k [ester][H₂O]. But H₂O is the solvent — its concentration (~55.5 M) hardly changes. So [H₂O] is constant. Then:<br>
+    Rate = k [ester][H₂O] = k' [ester] &nbsp; where k' = k[H₂O]<br><br>
+    It LOOKS like first order, but it's really second order in disguise. ⇒ <strong>Pseudo first order</strong>.<br><br>
+    <strong>Another example:</strong> Inversion of cane sugar in dilute acid:<br>
+    C₁₂H₂₂O₁₁ + H₂O → C₆H₁₂O₆ + C₆H₁₂O₆
+  </div>
+
+  <div class="memory">
+    Pseudo = "fake" or "pretending". A pseudo first order reaction PRETENDS to be first order because water is in huge excess. 🎭
+  </div>
+</section>
+
+<section id="unitsk">
+  <div class="section-header">
+    <span class="section-num">09</span>
+    <h2 class="sec-title">Units of Rate Constant (k)</h2>
+  </div>
+
+  <p>This is a guaranteed 2-marker on board exams. Let's derive the formula once and for all.</p>
+
+  <div class="derivation">
+    <h5>Derivation of units of k</h5>
+    <div class="step"><span class="step-num">STEP 1</span> For a reaction of order n: Rate = k [conc]ⁿ</div>
+    <div class="step"><span class="step-num">STEP 2</span> Therefore k = Rate / [conc]ⁿ</div>
+    <div class="step"><span class="step-num">STEP 3</span> Units of k = (mol L⁻¹ s⁻¹) / (mol L⁻¹)ⁿ = <strong>mol^(1–n) L^(n–1) s⁻¹</strong></div>
+  </div>
+
+  <table>
+    <tr><th>Order (n)</th><th>Rate Law</th><th>Units of k</th></tr>
+    <tr><td>0</td><td>Rate = k</td><td>mol L⁻¹ s⁻¹</td></tr>
+    <tr><td>1</td><td>Rate = k[A]</td><td>s⁻¹</td></tr>
+    <tr><td>2</td><td>Rate = k[A]²</td><td>mol⁻¹ L s⁻¹ &nbsp; (or L mol⁻¹ s⁻¹)</td></tr>
+    <tr><td>3</td><td>Rate = k[A]³</td><td>mol⁻² L² s⁻¹</td></tr>
+    <tr><td>1/2</td><td>Rate = k[A]^(1/2)</td><td>mol^(1/2) L^(–1/2) s⁻¹</td></tr>
+  </table>
+
+  <div class="example">
+    <strong>NCERT Example 3.4:</strong> Identify the order from k.<br>
+    (i) k = 2.3 × 10⁻⁵ L mol⁻¹ s⁻¹ → Second order ✅<br>
+    (ii) k = 3 × 10⁻⁴ s⁻¹ → First order ✅
+  </div>
+
+  <div class="memory">
+    REVERSE TRICK: If you see units of k, you can find the order!<br>
+    • Just s⁻¹ → first order<br>
+    • mol L⁻¹ s⁻¹ → zero order<br>
+    • L mol⁻¹ s⁻¹ → second order<br>
+    🔑 Boards LOVE this question.
+  </div>
+</section>
+
+<section id="molec">
+  <div class="section-header">
+    <span class="section-num">10</span>
+    <h2 class="sec-title">Molecularity of a Reaction</h2>
+  </div>
+
+  <div class="definition">
+    <strong>Molecularity:</strong> The number of <strong>reacting species (atoms, ions or molecules)</strong> that must <strong>collide simultaneously</strong> to bring about an <strong>elementary reaction</strong> in one step.
+  </div>
+
+  <p>Think of it as: "How many guests need to bump into each other at the same time for the chemistry party to happen?"</p>
+
+  <h3>Types based on molecularity</h3>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg">
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">Molecularity: 1, 2, or 3 species colliding</text>
+
+      <!-- Unimolecular -->
+      <g transform="translate(60,60)">
+        <circle cx="60" cy="60" r="34" fill="#fff0e8" stroke="#1a1410" stroke-width="2.5"/>
+        <text x="60" y="55" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="13">1</text>
+        <text x="60" y="72" text-anchor="middle" font-family="Geist" font-size="11">molecule</text>
+        <text x="60" y="115" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13">Unimolecular</text>
+        <text x="60" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="10">NH₄NO₂ → N₂+2H₂O</text>
+        <text x="60" y="155" text-anchor="middle" font-family="Caveat" font-size="14" fill="#c8442a">decomposition</text>
+      </g>
+
+      <!-- Bimolecular -->
+      <g transform="translate(280,60)">
+        <circle cx="40" cy="60" r="26" fill="#fff6a8" stroke="#1a1410" stroke-width="2.5"/>
+        <circle cx="100" cy="60" r="26" fill="#fff6a8" stroke="#1a1410" stroke-width="2.5"/>
+        <line x1="60" y1="60" x2="80" y2="60" stroke="#c8442a" stroke-width="3"/>
+        <text x="70" y="48" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#c8442a">COLLIDE</text>
+        <text x="70" y="115" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13">Bimolecular</text>
+        <text x="70" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="10">2HI → H₂ + I₂</text>
+        <text x="70" y="155" text-anchor="middle" font-family="Caveat" font-size="14" fill="#2e6f6a">most common type</text>
+      </g>
+
+      <!-- Termolecular -->
+      <g transform="translate(520,60)">
+        <circle cx="35" cy="60" r="22" fill="#e9f3f2" stroke="#1a1410" stroke-width="2.5"/>
+        <circle cx="80" cy="60" r="22" fill="#e9f3f2" stroke="#1a1410" stroke-width="2.5"/>
+        <circle cx="125" cy="60" r="22" fill="#e9f3f2" stroke="#1a1410" stroke-width="2.5"/>
+        <text x="80" y="115" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13">Termolecular</text>
+        <text x="80" y="135" text-anchor="middle" font-family="JetBrains Mono" font-size="10">2NO + O₂ → 2NO₂</text>
+        <text x="80" y="155" text-anchor="middle" font-family="Caveat" font-size="14" fill="#6a3b8e">rare! all 3 at once 😰</text>
+      </g>
+    </svg>
+    <div class="svg-caption">Three molecules colliding at the same instant is statistically rare → termolecular reactions are slow & uncommon</div>
+  </div>
+
+  <table>
+    <tr><th>Type</th><th>Species Colliding</th><th>Example</th></tr>
+    <tr><td><strong>Unimolecular</strong></td><td>1</td><td>NH₄NO₂ → N₂ + 2H₂O</td></tr>
+    <tr><td><strong>Bimolecular</strong></td><td>2</td><td>2HI → H₂ + I₂</td></tr>
+    <tr><td><strong>Termolecular (Trimolecular)</strong></td><td>3</td><td>2NO + O₂ → 2NO₂</td></tr>
+  </table>
+
+  <div class="warning">
+    <strong>Why no 4-molecular or 5-molecular reactions?</strong> Probability of 4 molecules colliding at the EXACT same moment in the EXACT correct orientation is practically zero! So all "high-molecularity" reactions are really sequences of simpler steps.
+  </div>
+
+  <h3>Elementary vs Complex Reactions</h3>
+  <div class="definition">
+    <strong>Elementary Reaction:</strong> A reaction that takes place in <strong>one single step</strong> (one collision = one reaction). For these, rate law CAN be written from the balanced equation, and molecularity = order.
+  </div>
+  <div class="definition">
+    <strong>Complex Reaction:</strong> A reaction that takes place through a <strong>sequence of elementary steps</strong>. The set of steps is called the <strong>mechanism</strong>. For complex reactions, rate law must be found experimentally.
+  </div>
+
+  <div class="example">
+    <strong>The "fake high-order" trap:</strong><br>
+    KClO₃ + 6FeSO₄ + 3H₂SO₄ → KCl + 3Fe₂(SO₄)₃ + 3H₂O<br><br>
+    Looking at the equation, you might think order = 1 + 6 + 3 = <strong>10</strong>. <br>
+    But experimentally, this is only <strong>second order</strong>! That's because it actually happens in many tiny steps. The balanced equation is a LIE about how it really works. 😱
+  </div>
+</section>
+
+<section id="omvm">
+  <div class="section-header">
+    <span class="section-num">11</span>
+    <h2 class="sec-title">Order vs Molecularity — THE Big Comparison</h2>
+  </div>
+
+  <p>This 5-marker is asked every other year. Memorize this table.</p>
+
+  <table>
+    <tr><th>Order</th><th>Molecularity</th></tr>
+    <tr><td>Determined <strong>experimentally</strong></td><td>Determined <strong>theoretically</strong> from the balanced (elementary) equation</td></tr>
+    <tr><td>Can be <strong>zero, fraction, or negative</strong></td><td>Always a <strong>whole positive integer</strong> (1, 2, 3 only)</td></tr>
+    <tr><td>Sum of powers of concentrations in rate law</td><td>Number of reacting species colliding simultaneously</td></tr>
+    <tr><td>Applies to <strong>both elementary and complex</strong> reactions</td><td>Applies to <strong>elementary reactions only</strong></td></tr>
+    <tr><td>Can change with conditions (e.g., temperature, pressure)</td><td>Fixed for a given elementary step</td></tr>
+    <tr><td>For complex reaction, order of overall reaction = order of slowest step (RDS)</td><td>For complex reaction, no single molecularity — each step has its own</td></tr>
+    <tr><td>e.g. order of decomp. of H₂O₂ = 1</td><td>e.g. molecularity of 2HI → H₂ + I₂ is 2</td></tr>
+  </table>
+
+  <div class="memory">
+    Order = EXPERIMENTAL, can be ANY number (0, 0.5, 1, 2, –1, etc.)<br>
+    Molecularity = THEORETICAL, must be 1, 2, or 3 only<br>
+    🧪 Order is what nature tells you in the lab. Molecularity is what your textbook tells you from the equation.
+  </div>
+</section>
+
+<section id="rds">
+  <div class="section-header">
+    <span class="section-num">12</span>
+    <h2 class="sec-title">Rate Determining Step (RDS) & Mechanisms</h2>
+  </div>
+
+  <h3>The Relay Race Analogy 🏃‍♀️🏃‍♂️🏃</h3>
+  <p>Imagine a relay race team with 4 runners. One of them is super slow. Even if the others sprint like Usain Bolt, the team's <em>overall time</em> is decided by the slow guy. Same with chemistry: in a multi-step reaction, the <strong>slowest step decides the overall rate</strong>.</p>
+
+  <div class="definition">
+    <strong>Rate Determining Step (RDS):</strong> The <strong>slowest step</strong> in a multi-step (complex) reaction mechanism. It determines the overall rate of the reaction.
+  </div>
+
+  <h3>The Decomposition of H₂O₂ (NCERT example)</h3>
+  <p>Overall reaction (catalysed by I⁻ in alkaline medium):</p>
+  <div class="formula">2H₂O₂ → 2H₂O + O₂</div>
+  <p>Experimentally determined rate law:</p>
+  <div class="formula">Rate = – d[H₂O₂]/dt = k [H₂O₂][I⁻]</div>
+  <p>Order = 1 + 1 = 2 (first order each in H₂O₂ and I⁻).</p>
+
+  <h4>Proposed Mechanism (two steps):</h4>
+  <div class="step"><span class="step-num">STEP 1 (slow, RDS)</span> H₂O₂ + I⁻ → H₂O + IO⁻</div>
+  <div class="step"><span class="step-num">STEP 2 (fast)</span> H₂O₂ + IO⁻ → H₂O + I⁻ + O₂</div>
+
+  <p>Notice:</p>
+  <ul class="bulleted">
+    <li>IO⁻ is an <strong>intermediate</strong> — it forms in step 1, is used up in step 2, and doesn't show up in the overall equation.</li>
+    <li>I⁻ is the <strong>catalyst</strong> — used in step 1, regenerated in step 2.</li>
+    <li>The rate law for the slow step is Rate = k[H₂O₂][I⁻] — and this matches the overall rate law! ✅</li>
+  </ul>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 280" xmlns="http://www.w3.org/2000/svg">
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">Energy Profile: Slow step decides overall rate</text>
+      <!-- Axes -->
+      <line x1="60" y1="40" x2="60" y2="240" stroke="#1a1410" stroke-width="2"/>
+      <line x1="60" y1="240" x2="680" y2="240" stroke="#1a1410" stroke-width="2"/>
+      <text x="30" y="140" font-family="Geist" font-size="12" transform="rotate(-90 30 140)">Energy</text>
+      <text x="370" y="265" text-anchor="middle" font-family="Geist" font-size="12">Reaction progress →</text>
+
+      <!-- Reactants level -->
+      <line x1="60" y1="200" x2="120" y2="200" stroke="#1a1410" stroke-width="2"/>
+      <text x="85" y="195" font-family="JetBrains Mono" font-size="11">R</text>
+
+      <!-- First bump (BIG = slow) -->
+      <path d="M 120 200 Q 200 60 280 200" fill="none" stroke="#c8442a" stroke-width="3"/>
+      <text x="200" y="55" text-anchor="middle" font-family="Caveat" font-size="18" fill="#c8442a">BIG hill = slow step (RDS)</text>
+
+      <!-- Intermediate plateau -->
+      <line x1="280" y1="200" x2="380" y2="200" stroke="#1a1410" stroke-width="2"/>
+      <text x="330" y="195" font-family="JetBrains Mono" font-size="11">Intermediate</text>
+
+      <!-- Second bump (small = fast) -->
+      <path d="M 380 200 Q 440 140 500 200" fill="none" stroke="#2e6f6a" stroke-width="3"/>
+      <text x="440" y="130" text-anchor="middle" font-family="Caveat" font-size="16" fill="#2e6f6a">small hill = fast step</text>
+
+      <!-- Products -->
+      <line x1="500" y1="200" x2="640" y2="220" stroke="#1a1410" stroke-width="2"/>
+      <text x="600" y="235" font-family="JetBrains Mono" font-size="11">Products</text>
+    </svg>
+    <div class="svg-caption">The HIGHEST energy barrier = the slowest step = the rate determining step!</div>
+  </div>
+</section>
+
+<div class="chapter-divider"><span>~ Part II · Integrated Rate Equations &amp; Half-Life ~</span></div>
+
+<section id="why-int">
+  <div class="section-header"><span class="section-num">13</span><h2 class="sec-title">Why we need Integrated Rate Equations</h2></div>
+  <p>You've just learnt the <strong>differential rate equation</strong>: <code>–d[R]/dt = k[R]ⁿ</code>. It gives the rate at any moment, but to use it, you'd have to <strong>draw a tangent</strong> on a curve every time. That's tedious and error-prone!</p>
+  <p>So chemists integrate the differential rate equation. The result is the <strong>integrated rate equation</strong>, connecting three measurable things:</p>
+  <div class="formula">[Conc at time t] &nbsp;↔&nbsp; [Initial conc] &nbsp;↔&nbsp; [Time]</div>
+  <p>Now you can measure concentrations at different times (easy with experiments) and directly find <strong>k</strong> and the order. No tangents needed! 🎉</p>
+  <div class="memory">
+    Differential form = the "speedometer reading" right now ⏱<br>
+    Integrated form = the "trip log" connecting start, end, and time 🗺<br>
+    📐 Both describe the same reaction — different viewpoints.
+  </div>
+  <p>NCERT does derivations for two orders only: <strong>Zero order</strong> and <strong>First order</strong>. These are guaranteed on board exams.</p>
+</section>
+
+<section id="zero">
+  <div class="section-header"><span class="section-num">14</span><h2 class="sec-title">Zero Order Reactions — Full Derivation</h2></div>
+  <div class="definition">
+    <strong>Zero Order Reaction:</strong> A reaction whose rate is <strong>independent</strong> of the concentration of the reactants — rate is proportional to <strong>[reactant]⁰ = 1</strong>.
+  </div>
+  <p>Sounds weird, right? "The speed doesn't care how much reactant you have?" Yes! Happens because of special situations (we'll see why).</p>
+
+  <h3>🔬 Derivation of the Integrated Rate Law</h3>
+  <div class="derivation">
+    <h5>Step-by-step derivation (BOARD EXAM FAVORITE — 5 marks)</h5>
+    <div class="step"><span class="step-num">STEP 1</span> Consider a zero order reaction: <strong>R → P</strong></div>
+    <div class="step"><span class="step-num">STEP 2</span> Write the differential rate law:<br>
+      <code>Rate = – d[R]/dt = k [R]⁰</code><br>Since anything raised to the power 0 is 1:<br>
+      <code>– d[R]/dt = k × 1 = k</code></div>
+    <div class="step"><span class="step-num">STEP 3</span> Rearrange (move dt to right):<br><code>d[R] = – k dt</code></div>
+    <div class="step"><span class="step-num">STEP 4</span> Integrate both sides:<br>
+      <code>∫ d[R] = ∫ – k dt</code><br>
+      <code>[R] = – k t + I</code> &nbsp; ...(eq. 3.5)<br>
+      where <strong>I</strong> is the integration constant.</div>
+    <div class="step"><span class="step-num">STEP 5</span> Apply initial condition: at <code>t = 0</code>, <code>[R] = [R]₀</code><br>
+      <code>[R]₀ = –k(0) + I</code> &nbsp; ⇒ &nbsp; <code>I = [R]₀</code></div>
+    <div class="step"><span class="step-num">STEP 6</span> Substitute back:<br>
+      <strong style="font-size:18px;">[R] = – kt + [R]₀</strong> &nbsp; ...(eq. 3.6)</div>
+    <div class="step"><span class="step-num">STEP 7</span> Rearrange to express k:<br>
+      <strong style="font-size:18px;">k = ([R]₀ – [R]) / t</strong> &nbsp; ...(eq. 3.7)</div>
+  </div>
+
+  <h3>What the Equation Tells Us (Graph)</h3>
+  <p>Compare <strong>[R] = –kt + [R]₀</strong> with <strong>y = mx + c</strong>. So plotting <strong>[R] vs t</strong> gives a straight line!</p>
+  <ul class="bulleted">
+    <li><strong>Slope = –k</strong> (negative because conc. decreases)</li>
+    <li><strong>Y-intercept = [R]₀</strong> (initial concentration)</li>
+  </ul>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+      <line x1="80" y1="40" x2="80" y2="300" stroke="#1a1410" stroke-width="2.5"/>
+      <line x1="80" y1="300" x2="560" y2="300" stroke="#1a1410" stroke-width="2.5"/>
+      <polygon points="80,40 75,55 85,55" fill="#1a1410"/>
+      <polygon points="560,300 545,295 545,305" fill="#1a1410"/>
+      <line x1="80" y1="60" x2="500" y2="280" stroke="#b8341f" stroke-width="3.5"/>
+      <circle cx="80" cy="60" r="5" fill="#1a1410"/>
+      <text x="35" y="65" font-family="JetBrains Mono" font-size="13" fill="#1a1410">[R]₀</text>
+      <line x1="74" y1="60" x2="86" y2="60" stroke="#1a1410" stroke-width="2"/>
+      <text x="300" y="155" font-family="Caveat" font-size="22" fill="#b8341f" transform="rotate(25 300 155)">slope = –k</text>
+      <text x="40" y="170" font-family="Geist" font-weight="600" font-size="14" transform="rotate(-90 40 170)">[R] (concentration)</text>
+      <text x="320" y="340" text-anchor="middle" font-family="Geist" font-weight="600" font-size="14">Time, t →</text>
+      <text x="320" y="25" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">Zero Order: [R] vs t is a STRAIGHT LINE going down</text>
+      <text x="440" y="180" font-family="Caveat" font-size="18" fill="#2a5d6b">y-intercept = [R]₀</text>
+    </svg>
+    <div class="svg-caption">Concentration falls linearly with time. Slope's magnitude = k.</div>
+  </div>
+
+  <h3>Real Examples of Zero Order Reactions</h3>
+  <p>"But sir, why doesn't rate depend on concentration?" It happens when the reaction site is <em>saturated</em>.</p>
+  <div class="example">
+    <strong>Example 1: NH₃ decomposition on hot Pt (high pressure)</strong><br>
+    <code>2NH₃(g) ──Pt, 1130K──→ N₂(g) + 3H₂(g)</code> &nbsp; Rate = k[NH₃]⁰ = k<br><br>
+    <strong>Why zero order?</strong> The Pt surface gets <strong>fully covered</strong> with NH₃ molecules. Adding more NH₃ to the gas doesn't help — the surface is already full!<br><br>
+    <strong>Example 2:</strong> Decomposition of HI on a gold surface.<br>
+    <strong>Example 3:</strong> Many enzyme-catalyzed reactions (when substrate is in excess).
+  </div>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg">
+      <rect x="60" y="170" width="580" height="40" fill="#6b6b6b" stroke="#1a1410" stroke-width="2.5"/>
+      <text x="350" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#1a1410">Pt catalyst surface (SATURATED — no room for more!)</text>
+      <g>
+        <circle cx="90" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="130" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="170" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="210" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="250" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="290" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="330" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="370" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="410" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="450" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="490" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="530" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="570" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="610" cy="160" r="14" fill="#b8341f" stroke="#1a1410" stroke-width="1.5"/>
+      </g>
+      <g opacity="0.85">
+        <circle cx="120" cy="80" r="12" fill="#e0a232" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="200" cy="60" r="12" fill="#e0a232" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="280" cy="80" r="12" fill="#e0a232" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="360" cy="50" r="12" fill="#e0a232" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="440" cy="80" r="12" fill="#e0a232" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="520" cy="60" r="12" fill="#e0a232" stroke="#1a1410" stroke-width="1.5"/>
+        <circle cx="600" cy="80" r="12" fill="#e0a232" stroke="#1a1410" stroke-width="1.5"/>
+      </g>
+      <text x="350" y="30" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="15">Why NH₃ decomposition is ZERO order on Pt</text>
+      <text x="350" y="120" text-anchor="middle" font-family="Caveat" font-size="20" fill="#e0a232">↑ Extra NH₃ floating above can't react — no space on surface!</text>
+    </svg>
+    <div class="svg-caption">The catalyst surface is fully covered. Adding more reactant doesn't increase rate. Hence rate = constant = k.</div>
+  </div>
+
+  <div class="memory">
+    Zero order = "rate doesn't care about concentration" 🤷<br>
+    Happens when: enzyme is saturated OR catalyst surface is fully covered<br>
+    Graph: STRAIGHT line falling down ([R] vs t)
+  </div>
+</section>
+
+<section id="first">
+  <div class="section-header"><span class="section-num">15</span><h2 class="sec-title">First Order Reactions — Full Derivation</h2></div>
+  <div class="definition">
+    <strong>First Order Reaction:</strong> A reaction whose rate is <strong>proportional to the first power</strong> of the concentration of the reactant.<br><br>
+    <code>Rate = k [R]¹ = k [R]</code>
+  </div>
+  <p>This is THE most important order — radioactive decay, many decompositions, hydrolysis (in excess water), and most biological reactions are first order.</p>
+
+  <h3>🔬 Derivation of the Integrated Rate Law</h3>
+  <div class="derivation">
+    <h5>Step-by-step derivation (5-mark board question every other year!)</h5>
+    <div class="step"><span class="step-num">STEP 1</span> Consider <strong>R → P</strong> (first order in R).</div>
+    <div class="step"><span class="step-num">STEP 2</span> Differential rate law:<br><code>Rate = – d[R]/dt = k [R]</code></div>
+    <div class="step"><span class="step-num">STEP 3</span> Separate variables ([R] on left, t on right):<br><code>d[R]/[R] = – k dt</code></div>
+    <div class="step"><span class="step-num">STEP 4</span> Integrate both sides:<br>
+      <code>∫ d[R]/[R] = ∫ – k dt</code><br>
+      <code>ln[R] = – kt + I</code> &nbsp; ...(eq. 3.8)</div>
+    <div class="step"><span class="step-num">STEP 5</span> Apply initial condition: at <code>t = 0</code>, <code>[R] = [R]₀</code><br>
+      <code>ln[R]₀ = – k(0) + I</code> &nbsp; ⇒ &nbsp; <code>I = ln[R]₀</code></div>
+    <div class="step"><span class="step-num">STEP 6</span> Substitute back:<br>
+      <strong style="font-size:18px;">ln[R] = – kt + ln[R]₀</strong> &nbsp; ...(eq. 3.9)</div>
+    <div class="step"><span class="step-num">STEP 7</span> Rearrange (move ln[R]₀ to left):<br>
+      <code>ln[R] – ln[R]₀ = – kt</code><br>Using <code>ln(a) – ln(b) = ln(a/b)</code>:<br>
+      <strong style="font-size:18px;">ln([R]/[R]₀) = –kt</strong></div>
+    <div class="step"><span class="step-num">STEP 8</span> Flip signs:<br>
+      <strong style="font-size:18px;">k = (1/t) · ln([R]₀/[R])</strong> &nbsp; ...(eq. 3.10)</div>
+    <div class="step"><span class="step-num">STEP 9</span> Convert to log₁₀ (since ln = 2.303 × log):<br>
+      <strong style="font-size:18px;">k = (2.303/t) · log([R]₀/[R])</strong> &nbsp; ...(eq. 3.15)</div>
+    <div class="step"><span class="step-num">STEP 10</span> Antilog of step 7:<br>
+      <strong style="font-size:18px;">[R] = [R]₀ · e^(–kt)</strong> &nbsp; ...(eq. 3.14)<br>
+      The famous <em>exponential decay</em> formula!</div>
+  </div>
+
+  <h3>The 5 Forms of First Order Equation</h3>
+  <p>Memorize these — exam questions can use any:</p>
+  <div class="formula" style="text-align:left; font-size:15px;">
+    ① &nbsp; ln[R] = –kt + ln[R]₀<br><br>
+    ② &nbsp; ln([R]₀/[R]) = kt<br><br>
+    ③ &nbsp; [R] = [R]₀ · e^(–kt) &nbsp; ← exponential decay form<br><br>
+    ④ &nbsp; k = (1/t) · ln([R]₀/[R])<br><br>
+    ⑤ &nbsp; k = (2.303/t) · log([R]₀/[R])
+  </div>
+
+  <h3>Between Two Time Points</h3>
+  <div class="derivation">
+    <h5>Concentrations at t₁ and t₂</h5>
+    <p>From ln[R] = –kt + ln[R]₀:</p>
+    <div class="step"><span class="step-num">At t₁</span> ln[R]₁ = –kt₁ + ln[R]₀</div>
+    <div class="step"><span class="step-num">At t₂</span> ln[R]₂ = –kt₂ + ln[R]₀</div>
+    <div class="step"><span class="step-num">SUBTRACT</span> ln[R]₁ – ln[R]₂ = –k(t₁ – t₂) = k(t₂ – t₁)<br>
+      ⇒ <strong>k = [1/(t₂ – t₁)] · ln([R]₁/[R]₂)</strong> &nbsp; ...(eq. 3.13)</div>
+  </div>
+
+  <h3>The Two Graphs to Memorize</h3>
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">First Order — two beautiful straight-line graphs</text>
+      <g transform="translate(40,40)">
+        <text x="140" y="0" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13">Plot 1: ln[R] vs t</text>
+        <line x1="40" y1="20" x2="40" y2="240" stroke="#1a1410" stroke-width="2"/>
+        <line x1="40" y1="240" x2="280" y2="240" stroke="#1a1410" stroke-width="2"/>
+        <line x1="40" y1="40" x2="260" y2="220" stroke="#b8341f" stroke-width="3"/>
+        <circle cx="40" cy="40" r="4" fill="#1a1410"/>
+        <text x="0" y="45" font-family="JetBrains Mono" font-size="11">ln[R]₀</text>
+        <text x="20" y="135" font-family="Geist" font-size="11" transform="rotate(-90 20 135)">ln[R]</text>
+        <text x="160" y="260" text-anchor="middle" font-family="Geist" font-size="11">t →</text>
+        <text x="150" y="140" font-family="Caveat" font-size="18" fill="#b8341f" transform="rotate(38 150 140)">slope = –k</text>
+      </g>
+      <g transform="translate(380,40)">
+        <text x="140" y="0" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13">Plot 2: log([R]₀/[R]) vs t</text>
+        <line x1="40" y1="20" x2="40" y2="240" stroke="#1a1410" stroke-width="2"/>
+        <line x1="40" y1="240" x2="280" y2="240" stroke="#1a1410" stroke-width="2"/>
+        <line x1="40" y1="240" x2="260" y2="40" stroke="#2a5d6b" stroke-width="3"/>
+        <circle cx="40" cy="240" r="4" fill="#1a1410"/>
+        <text x="-15" y="135" font-family="Geist" font-size="11" transform="rotate(-90 -15 135)">log([R]₀/[R])</text>
+        <text x="160" y="260" text-anchor="middle" font-family="Geist" font-size="11">t →</text>
+        <text x="150" y="140" font-family="Caveat" font-size="18" fill="#2a5d6b" transform="rotate(-38 150 140)">slope = k/2.303</text>
+      </g>
+    </svg>
+    <div class="svg-caption">Both are STRAIGHT LINES — that's the giveaway for first order. One goes down, the other goes up.</div>
+  </div>
+
+  <h3>Real Examples of First Order Reactions</h3>
+  <table>
+    <tr><th>Reaction</th><th>Rate Law</th></tr>
+    <tr><td>Hydrogenation of ethene: C₂H₄ + H₂ → C₂H₆</td><td>Rate = k[C₂H₄]</td></tr>
+    <tr><td>Decomposition of N₂O₅</td><td>Rate = k[N₂O₅]</td></tr>
+    <tr><td>Decomposition of N₂O</td><td>Rate = k[N₂O]</td></tr>
+    <tr><td>Radioactive decay: ₈₈²²⁶Ra → ₂⁴He + ₈₆²²²Rn</td><td>Rate = k[Ra]</td></tr>
+  </table>
+  <div class="memory">
+    ALL radioactive decay is first order. 🌌<br>
+    That's how we date fossils with carbon-14!<br>
+    Memorize: <strong>k = (2.303/t) × log([R]₀/[R])</strong> — used in every numerical
+  </div>
+</section>
+
+<section id="firstgas">
+  <div class="section-header"><span class="section-num">16</span><h2 class="sec-title">First Order Gas Phase Reactions (Pressure Method)</h2></div>
+  <p>For gases, we usually can't measure "concentration" directly. But we CAN measure <strong>pressure</strong>. Since for ideal gases, pressure ∝ concentration, we just use partial pressures instead of [concentration] in the rate equation. The form stays the same!</p>
+
+  <h3>🔬 Derivation for gas phase</h3>
+  <div class="derivation">
+    <h5>Standard reaction setup: A(g) → B(g) + C(g)</h5>
+    <p>Suppose initial pressure of A is <code>p_i</code> (total pressure at start = p_i, since only A is present). Let pressure of A decrease by <code>x</code> after time t.</p>
+    <table style="font-size:14px;">
+      <tr><th></th><th>A(g)</th><th>→</th><th>B(g)</th><th>+</th><th>C(g)</th></tr>
+      <tr><td>At t = 0</td><td>p_i</td><td></td><td>0</td><td></td><td>0</td></tr>
+      <tr><td>At time t</td><td>p_i – x</td><td></td><td>x</td><td></td><td>x</td></tr>
+    </table>
+    <div class="step"><span class="step-num">STEP 1</span> Total pressure: <code>p_t = (p_i – x) + x + x = p_i + x</code><br>⇒ <code>x = p_t – p_i</code></div>
+    <div class="step"><span class="step-num">STEP 2</span> Pressure of A at time t: <code>p_A = p_i – x = p_i – (p_t – p_i) = 2p_i – p_t</code></div>
+    <div class="step"><span class="step-num">STEP 3</span> Plug into first-order rate equation (replacing [R]₀ with p_i, [R] with p_A):<br>
+      <strong style="font-size:17px;">k = (2.303/t) · log(p_i / p_A) = (2.303/t) · log[p_i / (2p_i – p_t)]</strong> &nbsp; ...(eq. 3.16)</div>
+  </div>
+
+  <p>If you know <strong>initial pressure p_i</strong> and <strong>total pressure p_t at time t</strong>, you can find k! Easy.</p>
+
+  <div class="example">
+    <strong>NCERT Example 3.6 — Solved:</strong><br>
+    For: 2N₂O₅(g) → 2N₂O₄(g) + O₂(g)<br>
+    p_i = 0.5 atm at t = 0; p_t = 0.512 atm at t = 100 s. Find k.<br><br>
+    Let pressure of N₂O₅ decrease by 2x. Then N₂O₄ increases by 2x, O₂ increases by x.<br>
+    p_t = (0.5 – 2x) + 2x + x = 0.5 + x ⇒ x = p_t – 0.5 = 0.012<br>
+    p(N₂O₅) = 0.5 – 2(0.012) = 0.5 – 0.024 = 0.476 atm<br><br>
+    k = (2.303/100) × log(0.5/0.476)<br>
+    &nbsp;&nbsp;= (2.303/100) × log(1.0504)<br>
+    &nbsp;&nbsp;= (2.303/100) × 0.0216<br>
+    &nbsp;&nbsp;= <strong>4.98 × 10⁻⁴ s⁻¹</strong>
+  </div>
+</section>
+
+<section id="halflife">
+  <div class="section-header"><span class="section-num">17</span><h2 class="sec-title">Half-Life of a Reaction (Both Orders, Derived)</h2></div>
+  <div class="definition">
+    <strong>Half-Life (t₁/₂):</strong> The time required for the concentration of a reactant to fall to <strong>HALF</strong> of its initial value.<br><br>
+    Symbolically: at <code>t = t₁/₂</code>, <code>[R] = [R]₀/2</code>.
+  </div>
+
+  <h3>Half-Life for Zero Order Reaction</h3>
+  <div class="derivation">
+    <h5>Derivation (1 to 3 mark question)</h5>
+    <div class="step"><span class="step-num">STEP 1</span> Start with: <code>k = ([R]₀ – [R])/t</code> &nbsp; (eq. 3.7)</div>
+    <div class="step"><span class="step-num">STEP 2</span> At <code>t = t₁/₂</code>, <code>[R] = [R]₀/2</code></div>
+    <div class="step"><span class="step-num">STEP 3</span> Substitute:<br>
+      <code>k = ([R]₀ – [R]₀/2) / t₁/₂ = ([R]₀/2) / t₁/₂</code></div>
+    <div class="step"><span class="step-num">RESULT</span> <strong style="font-size:18px;">t₁/₂ = [R]₀ / (2k)</strong></div>
+  </div>
+  <div class="box">
+    <span class="box-tag">CONCLUSION</span>
+    For zero order: <strong>t₁/₂ ∝ [R]₀</strong> (proportional to initial concentration).<br>
+    More reactant = longer half-life. Less reactant = shorter half-life.
+  </div>
+
+  <h3>Half-Life for First Order Reaction</h3>
+  <div class="derivation">
+    <h5>Derivation (VERY IMPORTANT — gets asked nearly every year!)</h5>
+    <div class="step"><span class="step-num">STEP 1</span> Start with: <code>k = (2.303/t) · log([R]₀/[R])</code> &nbsp; (eq. 3.15)</div>
+    <div class="step"><span class="step-num">STEP 2</span> At <code>t = t₁/₂</code>, <code>[R] = [R]₀/2</code></div>
+    <div class="step"><span class="step-num">STEP 3</span> Substitute:<br>
+      <code>k = (2.303/t₁/₂) · log([R]₀ / ([R]₀/2))</code><br>
+      <code>k = (2.303/t₁/₂) · log(2)</code></div>
+    <div class="step"><span class="step-num">STEP 4</span> Rearrange:<br>
+      <code>t₁/₂ = (2.303 × log 2) / k</code><br>
+      <code>t₁/₂ = (2.303 × 0.301) / k</code><br>
+      <code>t₁/₂ = 0.693 / k</code></div>
+    <div class="step"><span class="step-num">RESULT</span> <strong style="font-size:18px;">t₁/₂ = 0.693 / k</strong> &nbsp; (eq. 3.17)</div>
+  </div>
+  <div class="box">
+    <span class="box-tag">HUGE INSIGHT</span>
+    For first order: <strong>t₁/₂ is INDEPENDENT of [R]₀!</strong><br>
+    No matter how much you start with, the half-life is always the same. This is unique to first order — the principle behind <em>carbon dating</em> and <em>nuclear half-lives</em>.
+  </div>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 360" xmlns="http://www.w3.org/2000/svg">
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">First Order Half-Life — Visualizing the "Halving"</text>
+      <line x1="80" y1="60" x2="80" y2="300" stroke="#1a1410" stroke-width="2.5"/>
+      <line x1="80" y1="300" x2="680" y2="300" stroke="#1a1410" stroke-width="2.5"/>
+      <path d="M 80 80 Q 180 160 280 200 T 480 260 T 680 285" fill="none" stroke="#b8341f" stroke-width="3.5"/>
+
+      <line x1="80" y1="80" x2="180" y2="80" stroke="#aaa" stroke-dasharray="4,4"/>
+      <text x="40" y="85" font-family="JetBrains Mono" font-size="11">[R]₀</text>
+      <circle cx="180" cy="80" r="5" fill="#2a5d6b"/>
+
+      <line x1="80" y1="140" x2="280" y2="140" stroke="#aaa" stroke-dasharray="4,4"/>
+      <text x="30" y="145" font-family="JetBrains Mono" font-size="11">[R]₀/2</text>
+      <line x1="280" y1="140" x2="280" y2="300" stroke="#aaa" stroke-dasharray="4,4"/>
+      <text x="280" y="320" text-anchor="middle" font-family="JetBrains Mono" font-size="11">t₁/₂</text>
+      <circle cx="280" cy="140" r="5" fill="#2a5d6b"/>
+
+      <line x1="80" y1="200" x2="480" y2="200" stroke="#aaa" stroke-dasharray="4,4"/>
+      <text x="30" y="205" font-family="JetBrains Mono" font-size="11">[R]₀/4</text>
+      <line x1="480" y1="200" x2="480" y2="300" stroke="#aaa" stroke-dasharray="4,4"/>
+      <text x="480" y="320" text-anchor="middle" font-family="JetBrains Mono" font-size="11">2 t₁/₂</text>
+      <circle cx="480" cy="200" r="5" fill="#2a5d6b"/>
+
+      <line x1="80" y1="240" x2="680" y2="240" stroke="#aaa" stroke-dasharray="4,4"/>
+      <text x="30" y="245" font-family="JetBrains Mono" font-size="11">[R]₀/8</text>
+
+      <text x="40" y="180" font-family="Geist" font-size="12" transform="rotate(-90 40 180)">[R]</text>
+      <text x="380" y="345" text-anchor="middle" font-family="Geist" font-size="12">Time →</text>
+      <text x="400" y="100" font-family="Caveat" font-size="20" fill="#b8341f">Each half-life chops conc. in HALF — equal time intervals!</text>
+    </svg>
+    <div class="svg-caption">After 1 half-life: half left. After 2: quarter. After 3: one-eighth. Always equal time between each "halving"!</div>
+  </div>
+
+  <h3>Useful Half-Life Facts</h3>
+  <table>
+    <tr><th>Order</th><th>Half-Life Formula</th><th>Depends on [R]₀?</th><th>Units of t₁/₂</th></tr>
+    <tr><td>Zero</td><td>t₁/₂ = [R]₀ / 2k</td><td>YES (directly proportional)</td><td>seconds</td></tr>
+    <tr><td>First</td><td>t₁/₂ = 0.693 / k</td><td>NO (constant!)</td><td>seconds</td></tr>
+  </table>
+
+  <div class="memory">
+    "First order has FIXED first-class half-life" — t₁/₂ = 0.693/k 🚂<br>
+    "Zero order's t₁/₂ depends on what you started with"<br>
+    📌 0.693 = ln 2 = 2.303 × log 2 = 2.303 × 0.301
+  </div>
+</section>
+
+<section id="pseudo">
+  <div class="section-header"><span class="section-num">18</span><h2 class="sec-title">Pseudo First Order Reactions (Deep Dive)</h2></div>
+  <div class="definition">
+    <strong>Pseudo First Order Reaction:</strong> A reaction that is <strong>higher order theoretically</strong> but <strong>behaves like a first order reaction experimentally</strong>, because one reactant is present in such large excess that its concentration is virtually unchanged during the reaction.
+  </div>
+
+  <h3>Classic Example: Hydrolysis of Ester</h3>
+  <p>The reaction:</p>
+  <div class="formula">CH₃COOC₂H₅ + H₂O ──H⁺──→ CH₃COOH + C₂H₅OH</div>
+  <p>Theoretically: <code>Rate = k [ester][H₂O]</code> → Second order, right?</p>
+  <p>But look what happens experimentally:</p>
+  <table style="font-size:14px;">
+    <tr><th></th><th>CH₃COOC₂H₅</th><th>H₂O</th><th>CH₃COOH</th><th>C₂H₅OH</th></tr>
+    <tr><td>At t = 0</td><td>0.01 mol</td><td>10 mol</td><td>0 mol</td><td>0 mol</td></tr>
+    <tr><td>End of reaction</td><td>0 mol</td><td>9.99 mol</td><td>0.01 mol</td><td>0.01 mol</td></tr>
+  </table>
+  <p>See? [H₂O] went from 10 → 9.99. That's a change of only <strong>0.1%</strong>! For all practical purposes, water's concentration is <strong>constant</strong>.</p>
+  <p>So:</p>
+  <div class="formula">
+    Rate = k [ester][H₂O]<br>
+    Since [H₂O] is constant, let k' = k × [H₂O]<br>
+    <strong>Rate = k' [ester]</strong> ← LOOKS like first order!
+  </div>
+
+  <h3>Another Classic Example: Inversion of Cane Sugar</h3>
+  <div class="formula">C₁₂H₂₂O₁₁ + H₂O ──H⁺──→ C₆H₁₂O₆ (glucose) + C₆H₁₂O₆ (fructose)</div>
+  <p>Rate = k [C₁₂H₂₂O₁₁] — appears first order because water is in huge excess.</p>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 240" xmlns="http://www.w3.org/2000/svg">
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">Why Pseudo First Order? Look at the proportions!</text>
+      <rect x="80" y="60" width="60" height="150" fill="#b8341f" stroke="#1a1410" stroke-width="2"/>
+      <rect x="170" y="80" width="60" height="130" fill="#2a5d6b" stroke="#1a1410" stroke-width="2"/>
+      <text x="110" y="50" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13">Water</text>
+      <text x="200" y="50" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13">Water</text>
+      <text x="110" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="11">t=0: 10 mol</text>
+      <text x="200" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="11">t=end: 9.99 mol</text>
+
+      <text x="300" y="135" font-family="Caveat" font-size="20" fill="#e0a232">vs.</text>
+
+      <rect x="350" y="200" width="60" height="10" fill="#b8341f" stroke="#1a1410" stroke-width="2"/>
+      <rect x="440" y="210" width="60" height="0" fill="#2a5d6b" stroke="#1a1410" stroke-width="2"/>
+      <line x1="440" y1="210" x2="500" y2="210" stroke="#1a1410" stroke-width="2"/>
+      <text x="380" y="190" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13">Ester</text>
+      <text x="470" y="200" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13">Ester</text>
+      <text x="380" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="11">t=0: 0.01 mol</text>
+      <text x="470" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="11">t=end: 0 mol</text>
+
+      <text x="580" y="100" text-anchor="middle" font-family="Caveat" font-size="18" fill="#b8341f">Water hardly changed →</text>
+      <text x="580" y="125" text-anchor="middle" font-family="Caveat" font-size="18" fill="#b8341f">treat it as CONSTANT</text>
+      <text x="580" y="160" text-anchor="middle" font-family="Caveat" font-size="18" fill="#2a5d6b">Only ester's conc. matters →</text>
+      <text x="580" y="185" text-anchor="middle" font-family="Caveat" font-size="18" fill="#2a5d6b">looks like first order!</text>
+    </svg>
+    <div class="svg-caption">Water is in massive excess → its conc. is effectively constant → reaction appears first order in ester</div>
+  </div>
+
+  <div class="memory">
+    Pseudo = "fake" or "pretending" 🎭<br>
+    A pseudo first order reaction PRETENDS to be first order because water is in huge excess.<br>
+    Real order = 2 (or more); apparent order = 1
+  </div>
+
+  <div class="warning">
+    Don't confuse pseudo first order with TRUE first order. In pseudo, the actual mechanism has more reactants — but only one shows up in the simplified rate law.
+  </div>
+</section>
+
+<section id="master-table">
+  <div class="section-header"><span class="section-num">19</span><h2 class="sec-title">Master Comparison Table (Zero vs First Order)</h2></div>
+  <p>This is the table that summarizes literally <strong>everything</strong> from this section. Memorize it. It's all you need for the integrated-rate-law questions on boards.</p>
+  <table>
+    <tr><th>Feature</th><th>Zero Order</th><th>First Order</th></tr>
+    <tr><td>Differential rate law</td><td>–d[R]/dt = k</td><td>–d[R]/dt = k[R]</td></tr>
+    <tr><td>Integrated rate law</td><td>[R] = [R]₀ – kt</td><td>[R] = [R]₀ e^(–kt)</td></tr>
+    <tr><td>Or: equation for k</td><td>k = ([R]₀ – [R])/t</td><td>k = (2.303/t) log([R]₀/[R])</td></tr>
+    <tr><td>Straight line plot</td><td>[R] vs t (slope = –k)</td><td>ln[R] vs t (slope = –k) <br>OR log([R]₀/[R]) vs t (slope = k/2.303)</td></tr>
+    <tr><td>Half-life</td><td>t₁/₂ = [R]₀ / 2k</td><td>t₁/₂ = 0.693/k</td></tr>
+    <tr><td>t₁/₂ depends on [R]₀?</td><td>YES</td><td>NO (constant)</td></tr>
+    <tr><td>Units of k</td><td>mol L⁻¹ s⁻¹</td><td>s⁻¹</td></tr>
+    <tr><td>Examples</td><td>NH₃ decomp. on Pt; enzyme-catalysed</td><td>Radioactive decay; N₂O₅ decomp.; hydrogenation of ethene</td></tr>
+  </table>
+</section>
+
+<div class="chapter-divider"><span>~ Part III · Temperature, Arrhenius &amp; Catalysts ~</span></div>
+
+<section id="temperature">
+  <div class="section-header"><span class="section-num">20</span><h2 class="sec-title">Effect of Temperature on Rate of Reaction</h2></div>
+  <p>You already know from experience: <strong>hot reactions are fast, cold reactions are slow</strong>.</p>
+  <ul class="bulleted">
+    <li>Milk goes sour faster on a hot day than in the fridge 🥛</li>
+    <li>Pressure cooker (high temp) cooks food faster than open pot 🍲</li>
+    <li>KMnO₄ + oxalic acid (the classic titration) decolourises faster when warm 🧪</li>
+  </ul>
+
+  <div class="box">
+    <span class="box-tag">RULE OF THUMB</span>
+    For most chemical reactions, when temperature is raised by <strong>10°C</strong> (or 10 K), the <strong>rate constant nearly doubles</strong> (or even triples).<br><br>
+    The ratio of rate constants at temperatures differing by 10° is called the <strong>temperature coefficient</strong> (μ):<br>
+    <code>μ = k(T+10) / k(T) ≈ 2 to 3</code>
+  </div>
+
+  <h3>Real-World Magnitudes (NCERT data — N₂O₅ decomposition)</h3>
+  <table>
+    <tr><th>Temperature</th><th>Time for half decomposition</th></tr>
+    <tr><td>0°C</td><td>10 days 🐢</td></tr>
+    <tr><td>25°C (room temp)</td><td>5 hours</td></tr>
+    <tr><td>50°C</td><td>12 minutes 🏃</td></tr>
+  </table>
+  <p>Just a 50°C change makes the reaction <strong>~1200 times faster</strong>. Wow!</p>
+
+  <p>But the "10° rule" is just an approximation. The <em>exact</em> mathematical relation between rate constant and temperature is given by the <strong>Arrhenius equation</strong>, which we'll derive and use next.</p>
+</section>
+
+<section id="arrhenius">
+  <div class="section-header"><span class="section-num">21</span><h2 class="sec-title">The Arrhenius Equation</h2></div>
+  <p>First proposed by Dutch chemist <strong>J.H. van't Hoff</strong>, but the Swedish chemist <strong>Svante Arrhenius</strong> gave it the physical meaning (and got his name on it).</p>
+
+  <div class="definition">
+    <strong>Arrhenius Equation:</strong><br><br>
+    <div class="formula" style="background:#1a1410; color:#fff; margin-top:8px;">
+      k = A · e^(–Eₐ/RT)
+    </div>
+    where:
+    <ul class="bulleted" style="margin-top:8px;">
+      <li><strong>k</strong> = rate constant</li>
+      <li><strong>A</strong> = Arrhenius factor / <strong>frequency factor</strong> / pre-exponential factor (a constant unique to each reaction)</li>
+      <li><strong>Eₐ</strong> = activation energy (J/mol)</li>
+      <li><strong>R</strong> = gas constant = 8.314 J K⁻¹ mol⁻¹</li>
+      <li><strong>T</strong> = temperature in Kelvin (always Kelvin, never Celsius!)</li>
+      <li><strong>e</strong> = Euler's number ≈ 2.718</li>
+    </ul>
+  </div>
+
+  <h3>What does each piece MEAN?</h3>
+  <ul class="bulleted">
+    <li><strong>A (frequency factor):</strong> Roughly, the number of collisions per second between reactant molecules, times the probability of correct orientation. It represents "if every collision worked, how many reactions would happen per second?"</li>
+    <li><strong>e^(–Eₐ/RT):</strong> This is the <strong>fraction of molecules that have enough energy</strong> (≥ Eₐ) to actually react. It's always a number between 0 and 1.</li>
+  </ul>
+  <p>So Arrhenius equation says: <strong>Rate constant = (total collisions) × (fraction of collisions energetic enough to react)</strong>.</p>
+
+  <div class="memory">
+    Arrhenius equation in plain English:<br>
+    k = (how often molecules bump) × (how often the bumps are HARD enough)<br>
+    Higher T → more hard bumps → bigger k → faster reaction 🔥
+  </div>
+</section>
+
+<section id="activated">
+  <div class="section-header"><span class="section-num">22</span><h2 class="sec-title">Activated Complex & Activation Energy</h2></div>
+  <p>Imagine pushing a ball over a hill. The ball can't roll downhill (into the products' valley) unless you first push it OVER the top. That hill is the activation energy.</p>
+
+  <div class="definition">
+    <strong>Activation Energy (Eₐ):</strong> The <strong>minimum extra energy</strong> that reactant molecules must possess (above their average energy) to be able to react and form products. Measured in J/mol or kJ/mol.
+  </div>
+  <div class="definition">
+    <strong>Activated Complex (or Transition State):</strong> An <strong>unstable, high-energy intermediate</strong> formed momentarily when reactant molecules collide. It exists for a tiny fraction of a second and then either breaks down to form products or falls back to reactants.
+  </div>
+
+  <h3>The Classic Example: H₂ + I₂ → 2HI</h3>
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg">
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="15">Formation of HI through the activated complex</text>
+      <!-- Reactants -->
+      <g transform="translate(60,80)">
+        <circle cx="0" cy="0" r="20" fill="#b8341f" stroke="#1a1410" stroke-width="2"/>
+        <circle cx="40" cy="0" r="20" fill="#b8341f" stroke="#1a1410" stroke-width="2"/>
+        <text x="0" y="5" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">H</text>
+        <text x="40" y="5" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">H</text>
+        <circle cx="0" cy="60" r="20" fill="#784098" stroke="#1a1410" stroke-width="2"/>
+        <circle cx="40" cy="60" r="20" fill="#784098" stroke="#1a1410" stroke-width="2"/>
+        <text x="0" y="65" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">I</text>
+        <text x="40" y="65" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">I</text>
+        <text x="20" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="11">H₂ + I₂</text>
+      </g>
+
+      <text x="160" y="115" font-family="JetBrains Mono" font-size="20">→</text>
+
+      <!-- Activated complex -->
+      <g transform="translate(250,80)">
+        <circle cx="0" cy="0" r="20" fill="#b8341f" stroke="#1a1410" stroke-width="2" stroke-dasharray="3,2"/>
+        <circle cx="40" cy="0" r="20" fill="#b8341f" stroke="#1a1410" stroke-width="2" stroke-dasharray="3,2"/>
+        <text x="0" y="5" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">H</text>
+        <text x="40" y="5" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">H</text>
+        <line x1="0" y1="20" x2="0" y2="40" stroke="#1a1410" stroke-width="2" stroke-dasharray="3,2"/>
+        <line x1="40" y1="20" x2="40" y2="40" stroke="#1a1410" stroke-width="2" stroke-dasharray="3,2"/>
+        <circle cx="0" cy="60" r="20" fill="#784098" stroke="#1a1410" stroke-width="2" stroke-dasharray="3,2"/>
+        <circle cx="40" cy="60" r="20" fill="#784098" stroke="#1a1410" stroke-width="2" stroke-dasharray="3,2"/>
+        <text x="0" y="65" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">I</text>
+        <text x="40" y="65" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">I</text>
+        <text x="20" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="11">Activated complex</text>
+        <text x="20" y="115" text-anchor="middle" font-family="Caveat" font-size="14" fill="#b8341f">(unstable!)</text>
+      </g>
+
+      <text x="350" y="115" font-family="JetBrains Mono" font-size="20">→</text>
+
+      <!-- Products -->
+      <g transform="translate(450,80)">
+        <circle cx="0" cy="0" r="20" fill="#b8341f" stroke="#1a1410" stroke-width="2"/>
+        <line x1="20" y1="0" x2="40" y2="0" stroke="#1a1410" stroke-width="3"/>
+        <circle cx="60" cy="0" r="20" fill="#784098" stroke="#1a1410" stroke-width="2"/>
+        <text x="0" y="5" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">H</text>
+        <text x="60" y="5" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">I</text>
+        <circle cx="0" cy="60" r="20" fill="#b8341f" stroke="#1a1410" stroke-width="2"/>
+        <line x1="20" y1="60" x2="40" y2="60" stroke="#1a1410" stroke-width="3"/>
+        <circle cx="60" cy="60" r="20" fill="#784098" stroke="#1a1410" stroke-width="2"/>
+        <text x="0" y="65" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">H</text>
+        <text x="60" y="65" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">I</text>
+        <text x="30" y="100" text-anchor="middle" font-family="JetBrains Mono" font-size="11">2 HI</text>
+      </g>
+    </svg>
+    <div class="svg-caption">An H₂ molecule and I₂ molecule collide, forming an unstable 4-atom "activated complex", which then splits into 2 HI</div>
+  </div>
+
+  <h3>The Famous Energy-Profile Diagram</h3>
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg">
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">Potential Energy vs Reaction Coordinate</text>
+      <!-- Axes -->
+      <line x1="80" y1="50" x2="80" y2="320" stroke="#1a1410" stroke-width="2.5"/>
+      <line x1="80" y1="320" x2="680" y2="320" stroke="#1a1410" stroke-width="2.5"/>
+
+      <!-- Curve: reactants → peak → products -->
+      <path d="M 80 240 L 200 240 Q 320 60 440 220 L 580 280" fill="none" stroke="#b8341f" stroke-width="4"/>
+
+      <!-- Reactant level marker -->
+      <text x="160" y="230" font-family="JetBrains Mono" font-size="13">A: H₂ + I₂</text>
+      <circle cx="150" cy="240" r="5" fill="#1a1410"/>
+
+      <!-- Activated complex point C -->
+      <circle cx="320" cy="73" r="6" fill="#b8341f"/>
+      <text x="320" y="55" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#b8341f">C: Activated Complex</text>
+
+      <!-- Products level -->
+      <text x="580" y="260" font-family="JetBrains Mono" font-size="13">B: 2HI</text>
+      <circle cx="580" cy="280" r="5" fill="#1a1410"/>
+
+      <!-- Activation energy arrow -->
+      <line x1="200" y1="240" x2="200" y2="73" stroke="#2a5d6b" stroke-width="2" stroke-dasharray="4,3"/>
+      <line x1="200" y1="73" x2="320" y2="73" stroke="#2a5d6b" stroke-width="2" stroke-dasharray="4,3"/>
+      <text x="115" y="160" font-family="Geist" font-weight="700" font-size="14" fill="#2a5d6b">Eₐ (activation</text>
+      <text x="118" y="178" font-family="Geist" font-weight="700" font-size="14" fill="#2a5d6b">energy)</text>
+      <line x1="200" y1="160" x2="200" y2="80" stroke="#2a5d6b" stroke-width="3"/>
+      <polygon points="200,80 195,90 205,90" fill="#2a5d6b"/>
+
+      <!-- ΔH arrow -->
+      <line x1="600" y1="240" x2="600" y2="280" stroke="#e0a232" stroke-width="3"/>
+      <polygon points="600,280 595,270 605,270" fill="#e0a232"/>
+      <text x="620" y="265" font-family="Geist" font-weight="700" font-size="14" fill="#e0a232">ΔH (enthalpy change)</text>
+
+      <!-- Axis labels -->
+      <text x="40" y="180" font-family="Geist" font-weight="600" font-size="13" transform="rotate(-90 40 180)">Potential Energy</text>
+      <text x="380" y="355" text-anchor="middle" font-family="Geist" font-weight="600" font-size="13">Reaction Coordinate →</text>
+    </svg>
+    <div class="svg-caption">A → C: reactants climb the hill (need Eₐ). C → B: products roll down. ΔH depends on final vs initial heights.</div>
+  </div>
+
+  <ul class="bulleted">
+    <li>To get from A (reactants) to B (products), molecules MUST first reach C (the top of the hill).</li>
+    <li>The energy needed to reach C from A = <strong>Eₐ</strong> (activation energy).</li>
+    <li>The energy released when going from C to B depends on the products' stability.</li>
+    <li><strong>ΔH</strong> (enthalpy of reaction) = (energy of products) – (energy of reactants). Doesn't depend on the path taken.</li>
+  </ul>
+
+  <div class="memory">
+    Lower Eₐ → easier to climb the hill → faster reaction 🏃<br>
+    Higher Eₐ → harder to climb → slower reaction 🐢<br>
+    Catalysts work by giving a LOWER alternative hill to climb! 🧗
+  </div>
+</section>
+
+<section id="maxwell">
+  <div class="section-header"><span class="section-num">23</span><h2 class="sec-title">Maxwell-Boltzmann Distribution Curve</h2></div>
+  <p>Not every molecule in a sample moves at the same speed. Some are slow, some are fast, most are in the middle. Two scientists — <strong>Ludwig Boltzmann</strong> and <strong>James Clerk Maxwell</strong> — used statistics to describe this distribution.</p>
+
+  <div class="definition">
+    <strong>Maxwell-Boltzmann Distribution:</strong> A graph that shows the <strong>fraction of molecules</strong> having a particular <strong>kinetic energy</strong> at a given temperature.<br><br>
+    On the graph:
+    <ul class="bulleted" style="margin-top:8px;">
+      <li>X-axis: kinetic energy</li>
+      <li>Y-axis: fraction of molecules (N_E / N_T), where N_E = molecules with energy E, N_T = total molecules</li>
+      <li>The PEAK is the <strong>most probable kinetic energy</strong></li>
+    </ul>
+  </div>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg">
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">Maxwell-Boltzmann Curve — Effect of Temperature</text>
+      <!-- Axes -->
+      <line x1="80" y1="50" x2="80" y2="320" stroke="#1a1410" stroke-width="2.5"/>
+      <line x1="80" y1="320" x2="680" y2="320" stroke="#1a1410" stroke-width="2.5"/>
+
+      <!-- Lower temp curve (T) -->
+      <path d="M 80 320 Q 130 130 200 110 Q 260 100 320 180 Q 400 240 500 290 Q 580 310 680 318" fill="none" stroke="#2a5d6b" stroke-width="3"/>
+      <text x="220" y="100" font-family="JetBrains Mono" font-weight="700" font-size="13" fill="#2a5d6b">T (lower temp)</text>
+
+      <!-- Higher temp curve (T+10) -->
+      <path d="M 80 320 Q 140 220 220 180 Q 290 160 360 200 Q 450 240 540 285 Q 610 310 680 316" fill="none" stroke="#b8341f" stroke-width="3"/>
+      <text x="370" y="155" font-family="JetBrains Mono" font-weight="700" font-size="13" fill="#b8341f">T + 10 (higher temp)</text>
+
+      <!-- Eₐ vertical line -->
+      <line x1="480" y1="50" x2="480" y2="320" stroke="#1a1410" stroke-width="2.5" stroke-dasharray="6,4"/>
+      <text x="480" y="42" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13">Eₐ (activation energy)</text>
+
+      <!-- Shaded areas to right of Eₐ -->
+      <path d="M 480 320 Q 540 285 610 310 Q 645 318 680 316 L 680 320 Z" fill="#b8341f" opacity="0.35"/>
+      <path d="M 480 320 Q 500 290 580 310 Q 630 316 680 318 L 680 320 Z" fill="#2a5d6b" opacity="0.45"/>
+
+      <!-- Most probable KE arrows -->
+      <line x1="200" y1="320" x2="200" y2="110" stroke="#2a5d6b" stroke-width="1" stroke-dasharray="2,3"/>
+      <line x1="220" y1="320" x2="220" y2="180" stroke="#b8341f" stroke-width="1" stroke-dasharray="2,3"/>
+
+      <text x="540" y="360" text-anchor="middle" font-family="Caveat" font-size="18" fill="#b8341f">↑ shaded area = molecules that can react</text>
+      <text x="540" y="382" text-anchor="middle" font-family="Caveat" font-size="18" fill="#b8341f">DOUBLES on raising temp by 10°!</text>
+
+      <!-- Axis labels -->
+      <text x="40" y="180" font-family="Geist" font-weight="600" font-size="13" transform="rotate(-90 40 180)">Fraction of molecules</text>
+      <text x="380" y="395" text-anchor="middle" font-family="Geist" font-weight="600" font-size="13">Kinetic Energy →</text>
+    </svg>
+    <div class="svg-caption">Higher temp = curve flattens & shifts right. Area beyond Eₐ ≈ doubles for every 10° rise → rate doubles!</div>
+  </div>
+
+  <h3>Key Insights from the Curve</h3>
+  <ul class="bulleted">
+    <li>The <strong>total area under the curve</strong> = total fraction = 1 (always, at any temperature, since all molecules together = 100%).</li>
+    <li>At higher T: the PEAK shifts <strong>right</strong> (most probable KE increases) and the curve becomes <strong>flatter</strong> (wider spread).</li>
+    <li>The <strong>shaded area to the right of Eₐ</strong> represents the fraction of molecules with enough energy to react.</li>
+    <li>This shaded area approximately <strong>doubles when temperature rises by 10°C</strong> — which is why rate doubles!</li>
+  </ul>
+
+  <div class="memory">
+    Higher temp doesn't just make ALL molecules faster — it spreads them out so MANY MORE cross the activation energy barrier.<br>
+    More molecules over the hill = more successful collisions = higher rate 🏔
+  </div>
+</section>
+
+<section id="arr-graph">
+  <div class="section-header"><span class="section-num">24</span><h2 class="sec-title">Arrhenius Plots — Taking the Logarithm</h2></div>
+  <p>Starting from <code>k = A · e^(–Eₐ/RT)</code>, we take the natural logarithm of both sides:</p>
+
+  <div class="derivation">
+    <h5>Derivation of the logarithmic form</h5>
+    <div class="step"><span class="step-num">STEP 1</span> Start with Arrhenius equation:<br>
+      <code>k = A · e^(–Eₐ/RT)</code></div>
+    <div class="step"><span class="step-num">STEP 2</span> Take ln on both sides:<br>
+      <code>ln k = ln(A) + ln(e^(–Eₐ/RT))</code></div>
+    <div class="step"><span class="step-num">STEP 3</span> Since ln(e^x) = x:<br>
+      <strong style="font-size:18px;">ln k = ln A – Eₐ/(RT)</strong> &nbsp; ...(eq. 3.19)</div>
+    <div class="step"><span class="step-num">STEP 4</span> Rearrange in y = mx + c form:<br>
+      <code>ln k = (–Eₐ/R) × (1/T) + ln A</code><br><br>
+      If we plot <strong>ln k</strong> on Y-axis vs <strong>1/T</strong> on X-axis, we get a straight line!<br>
+      • <strong>Slope = –Eₐ/R</strong><br>
+      • <strong>Y-intercept = ln A</strong></div>
+  </div>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">Arrhenius Plot: ln k vs 1/T</text>
+      <!-- Axes -->
+      <line x1="80" y1="50" x2="80" y2="300" stroke="#1a1410" stroke-width="2.5"/>
+      <line x1="80" y1="300" x2="540" y2="300" stroke="#1a1410" stroke-width="2.5"/>
+      <polygon points="80,50 75,65 85,65" fill="#1a1410"/>
+      <polygon points="540,300 525,295 525,305" fill="#1a1410"/>
+
+      <!-- Straight decreasing line -->
+      <line x1="80" y1="60" x2="500" y2="280" stroke="#b8341f" stroke-width="3.5"/>
+      <circle cx="80" cy="60" r="5" fill="#1a1410"/>
+      <text x="35" y="65" font-family="JetBrains Mono" font-size="12">ln A</text>
+      <line x1="74" y1="60" x2="86" y2="60" stroke="#1a1410" stroke-width="2"/>
+
+      <!-- Slope label -->
+      <text x="300" y="155" font-family="Caveat" font-size="20" fill="#b8341f" transform="rotate(28 300 155)">slope = –Eₐ/R</text>
+
+      <!-- Axis labels -->
+      <text x="35" y="180" font-family="Geist" font-weight="600" font-size="14" transform="rotate(-90 35 180)">ln k</text>
+      <text x="305" y="335" text-anchor="middle" font-family="Geist" font-weight="600" font-size="14">1/T (K⁻¹) →</text>
+
+      <text x="430" y="160" font-family="Caveat" font-size="18" fill="#2a5d6b">Intercept = ln A</text>
+    </svg>
+    <div class="svg-caption">Straight-line graph! Slope gives you Eₐ; y-intercept gives you ln A.</div>
+  </div>
+
+  <h3>How to use the graph to find Eₐ and A</h3>
+  <ol class="bulleted">
+    <li>Measure k at several temperatures.</li>
+    <li>Compute 1/T (in K⁻¹) and ln k for each.</li>
+    <li>Plot ln k (y-axis) vs 1/T (x-axis).</li>
+    <li>Draw the best straight line.</li>
+    <li><strong>Slope = –Eₐ/R</strong> ⇒ Eₐ = – slope × R</li>
+    <li><strong>Y-intercept = ln A</strong> ⇒ A = e^(intercept)</li>
+  </ol>
+
+  <div class="memory">
+    For Arrhenius plot, the slope is ALWAYS NEGATIVE (because –Eₐ/R is negative). 📉<br>
+    Don't forget the minus sign when calculating Eₐ from slope!
+  </div>
+</section>
+
+<section id="twotemp">
+  <div class="section-header"><span class="section-num">25</span><h2 class="sec-title">Two-Temperature Form of Arrhenius Equation</h2></div>
+  <p>If you know k at two different temperatures, you can find Eₐ without drawing graphs. This is one of the most-used formulas in numerical problems.</p>
+
+  <div class="derivation">
+    <h5>Derivation (4-5 mark question!)</h5>
+    <div class="step"><span class="step-num">STEP 1</span> Write ln k = ln A – Eₐ/RT at two temperatures:<br>
+      At T₁: &nbsp; <code>ln k₁ = ln A – Eₐ/(RT₁)</code> &nbsp;...(eq. 3.20)<br>
+      At T₂: &nbsp; <code>ln k₂ = ln A – Eₐ/(RT₂)</code> &nbsp;...(eq. 3.21)</div>
+    <div class="step"><span class="step-num">STEP 2</span> Subtract eq.(3.20) from eq.(3.21):<br>
+      <code>ln k₂ – ln k₁ = – Eₐ/(RT₂) – (– Eₐ/(RT₁))</code><br>
+      <code>ln(k₂/k₁) = Eₐ/R × [1/T₁ – 1/T₂]</code></div>
+    <div class="step"><span class="step-num">STEP 3</span> Simplify the bracket:<br>
+      <code>1/T₁ – 1/T₂ = (T₂ – T₁)/(T₁ T₂)</code></div>
+    <div class="step"><span class="step-num">RESULT (natural log form)</span>
+      <strong style="font-size:17px;">ln(k₂/k₁) = (Eₐ/R) × (T₂ – T₁)/(T₁ T₂)</strong></div>
+    <div class="step"><span class="step-num">RESULT (log₁₀ form)</span>
+      <strong style="font-size:17px;">log(k₂/k₁) = (Eₐ / 2.303 R) × (T₂ – T₁)/(T₁ T₂)</strong></div>
+  </div>
+
+  <div class="warning">
+    Always make sure T₂ &gt; T₁ when applying this. Temperature must be in <strong>Kelvin</strong> — NOT Celsius. Convert with K = °C + 273.
+  </div>
+
+  <div class="example">
+    <strong>Quick illustration:</strong> If the rate constant doubles when T rises from 300 K to 310 K, find Eₐ.<br>
+    log(k₂/k₁) = log(2) = 0.301<br>
+    0.301 = (Eₐ / 2.303 × 8.314) × (310 – 300)/(300 × 310)<br>
+    0.301 = (Eₐ / 19.147) × (10/93000)<br>
+    0.301 = Eₐ × 5.61 × 10⁻⁶<br>
+    Eₐ = 0.301 / (5.61 × 10⁻⁶) ≈ <strong>53,654 J/mol ≈ 53.7 kJ/mol</strong>
+  </div>
+</section>
+
+<section id="catalyst">
+  <div class="section-header"><span class="section-num">26</span><h2 class="sec-title">Effect of a Catalyst</h2></div>
+
+  <div class="definition">
+    <strong>Catalyst:</strong> A substance that <strong>increases the rate of a chemical reaction</strong> without itself undergoing any <strong>permanent chemical change</strong>. It is recovered unchanged at the end of the reaction.
+  </div>
+  <div class="definition">
+    <strong>Inhibitor:</strong> A substance that <strong>decreases the rate</strong> of a reaction. (Note: do NOT call this a "negative catalyst" — modern terminology calls it an inhibitor.)
+  </div>
+
+  <h3>Classic Example</h3>
+  <div class="formula">2 KClO₃ ──MnO₂──→ 2 KCl + 3 O₂</div>
+  <p>Without MnO₂: this decomposition is extremely slow. With a small pinch of MnO₂ (manganese dioxide): the reaction proceeds rapidly. The MnO₂ is recovered unchanged at the end.</p>
+
+  <h3>How does a catalyst work? — Intermediate Complex Theory</h3>
+  <p>The catalyst <strong>doesn't take a shortcut around the hill</strong> — it provides a <strong>completely different, lower hill</strong>:</p>
+  <ol class="bulleted">
+    <li>Reactant(s) + Catalyst → form a temporary <strong>intermediate complex</strong> (loose bonds)</li>
+    <li>This intermediate complex falls apart easily, giving <strong>products + catalyst</strong> back unchanged</li>
+    <li>The new pathway has a <strong>lower activation energy</strong> → faster reaction</li>
+  </ol>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg">
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">Catalyst LOWERS the activation energy</text>
+      <line x1="80" y1="50" x2="80" y2="320" stroke="#1a1410" stroke-width="2.5"/>
+      <line x1="80" y1="320" x2="680" y2="320" stroke="#1a1410" stroke-width="2.5"/>
+
+      <!-- Without catalyst (taller hill) -->
+      <path d="M 80 240 L 200 240 Q 320 50 440 230 L 580 270" fill="none" stroke="#a23816" stroke-width="3.5"/>
+      <text x="320" y="40" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13" fill="#a23816">Without catalyst</text>
+
+      <!-- With catalyst (shorter hill, dashed) -->
+      <path d="M 80 240 L 200 240 Q 320 150 440 230 L 580 270" fill="none" stroke="#1f5a52" stroke-width="3.5" stroke-dasharray="6,4"/>
+      <text x="320" y="135" text-anchor="middle" font-family="Geist" font-weight="700" font-size="13" fill="#1f5a52">With catalyst</text>
+
+      <!-- Reactants & products labels -->
+      <text x="160" y="230" font-family="JetBrains Mono" font-size="13">Reactants</text>
+      <text x="600" y="265" font-family="JetBrains Mono" font-size="13">Products</text>
+
+      <!-- Eₐ without arrows -->
+      <line x1="220" y1="240" x2="220" y2="60" stroke="#a23816" stroke-width="2" stroke-dasharray="3,3"/>
+      <text x="160" y="155" font-family="Geist" font-weight="700" font-size="12" fill="#a23816">Eₐ (without)</text>
+      <line x1="220" y1="150" x2="220" y2="65" stroke="#a23816" stroke-width="3"/>
+      <polygon points="220,65 215,75 225,75" fill="#a23816"/>
+
+      <!-- Eₐ with arrows -->
+      <line x1="380" y1="240" x2="380" y2="160" stroke="#1f5a52" stroke-width="3"/>
+      <polygon points="380,160 375,170 385,170" fill="#1f5a52"/>
+      <text x="445" y="210" font-family="Geist" font-weight="700" font-size="12" fill="#1f5a52">Eₐ (with)</text>
+
+      <text x="40" y="180" font-family="Geist" font-weight="600" font-size="13" transform="rotate(-90 40 180)">Potential Energy</text>
+      <text x="380" y="355" text-anchor="middle" font-family="Geist" font-weight="600" font-size="13">Reaction Coordinate →</text>
+    </svg>
+    <div class="svg-caption">The catalyst provides an alternative path with a LOWER hill. Reactant and product energies stay the same.</div>
+  </div>
+
+  <h3>VERY important properties of a catalyst (board-question gold)</h3>
+  <table>
+    <tr><th>Property</th><th>Detail</th></tr>
+    <tr><td>Does catalyst change ΔG?</td><td><strong>NO.</strong> ΔG is fixed by reactants and products.</td></tr>
+    <tr><td>Does catalyst change ΔH?</td><td><strong>NO.</strong> Reactants and products are unchanged.</td></tr>
+    <tr><td>Does catalyst speed up a non-spontaneous reaction?</td><td><strong>NO.</strong> If ΔG &gt; 0, no amount of catalyst will help.</td></tr>
+    <tr><td>Does catalyst change Kc (equilibrium constant)?</td><td><strong>NO.</strong> It changes only the SPEED of reaching equilibrium.</td></tr>
+    <tr><td>Does it catalyse the forward reaction only?</td><td><strong>NO.</strong> It speeds up forward and backward reactions equally.</td></tr>
+    <tr><td>How does it speed things up?</td><td>By LOWERING the activation energy (Eₐ).</td></tr>
+    <tr><td>Amount needed?</td><td>Tiny! A small amount of catalyst can speed up huge amounts of reactant.</td></tr>
+  </table>
+
+  <div class="memory">
+    A catalyst is like a SHORTCUT TUNNEL through the hill 🛤<br>
+    Same start, same end — just an EASIER PATH.<br>
+    📌 Catalysts can't make impossible reactions happen — only speed up reactions that WERE already going to happen!
+  </div>
+
+  <div class="warning">
+    Memorize this 1-mark trick: <strong>Catalyst doesn't change Kc, ΔG, or ΔH. It ONLY lowers Eₐ.</strong> If a question asks "does catalyst increase yield?" — the answer is NO (Kc unchanged).
+  </div>
+</section>
+
+<section id="collision">
+  <div class="section-header"><span class="section-num">27</span><h2 class="sec-title">Collision Theory of Chemical Reactions</h2></div>
+  <p>Arrhenius equation works pretty well, but it doesn't TELL you <em>why</em> reactions happen. To understand the actual mechanics of molecules colliding, we use <strong>Collision Theory</strong>, developed by <strong>Max Trautz</strong> and <strong>William Lewis</strong> (around 1916–18). It's based on the kinetic theory of gases.</p>
+
+  <h3>The core idea</h3>
+  <p>Treat molecules as <strong>hard spheres</strong> (like little billiard balls). Reactions happen when they <strong>collide with each other</strong>. Simple, right?</p>
+
+  <div class="definition">
+    <strong>Collision Frequency (Z):</strong> The number of collisions per second per unit volume of the reaction mixture.
+  </div>
+
+  <h3>The Bimolecular Rate Equation</h3>
+  <p>For a simple bimolecular elementary reaction <strong>A + B → Products</strong>:</p>
+  <div class="formula">Rate = Z_AB × e^(–Eₐ/RT) &nbsp; ...(eq. 3.23)</div>
+  <p>where:</p>
+  <ul class="bulleted">
+    <li><strong>Z_AB</strong> = collision frequency between A and B molecules</li>
+    <li><strong>e^(–Eₐ/RT)</strong> = fraction of those collisions that have enough energy (≥ Eₐ)</li>
+  </ul>
+  <p>Comparing with Arrhenius equation (<code>k = A·e^(–Eₐ/RT)</code>), we see that the <strong>Arrhenius factor A is closely related to the collision frequency Z_AB</strong>.</p>
+
+  <div class="definition">
+    <strong>Threshold Energy:</strong> The minimum kinetic energy that reactant molecules must possess for an effective collision.<br><br>
+    <strong>Threshold Energy = Activation Energy (Eₐ) + Average energy of reactant molecules</strong>
+  </div>
+</section>
+
+<section id="orientation">
+  <div class="section-header"><span class="section-num">28</span><h2 class="sec-title">Orientation, Steric Factor & Effective Collisions</h2></div>
+  <p>Collision theory works great for atoms and simple molecules. But for big complex molecules, it overpredicts the rate! Why? Because <strong>not every "energetic-enough" collision actually leads to a reaction</strong>. The molecules also need to hit each other in the <strong>RIGHT way</strong>.</p>
+
+  <div class="definition">
+    <strong>Effective Collisions:</strong> Collisions in which molecules collide with (1) <strong>enough energy</strong> (≥ Eₐ) AND (2) <strong>proper orientation</strong> to break old bonds and form new ones. Only effective collisions lead to products.
+  </div>
+
+  <h3>The Famous Orientation Example: CH₃Br + OH⁻ → CH₃OH + Br⁻</h3>
+  <p>For methanol formation from bromomethane, the OH⁻ must attack from the side <strong>opposite</strong> to where Br⁻ leaves:</p>
+
+  <div class="svg-holder">
+    <svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg">
+      <text x="360" y="22" text-anchor="middle" font-family="Fraunces" font-weight="800" font-size="16">Orientation MATTERS — same molecules, different outcomes</text>
+
+      <!-- WRONG orientation -->
+      <g transform="translate(40,60)">
+        <text x="140" y="0" font-family="Geist" font-weight="700" font-size="13" fill="#a23816">❌ Wrong orientation</text>
+        <!-- OH on same side as Br -->
+        <circle cx="100" cy="50" r="14" fill="#1f5a52" stroke="#1a1410" stroke-width="2"/>
+        <text x="100" y="55" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="11">OH⁻</text>
+        <line x1="120" y1="50" x2="160" y2="50" stroke="#1a1410" stroke-width="2" stroke-dasharray="3,3"/>
+
+        <circle cx="180" cy="50" r="20" fill="#553a7a" stroke="#1a1410" stroke-width="2"/>
+        <text x="180" y="55" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">CH₃</text>
+        <line x1="200" y1="50" x2="220" y2="50" stroke="#1a1410" stroke-width="3"/>
+        <circle cx="240" cy="50" r="14" fill="#a23816" stroke="#1a1410" stroke-width="2"/>
+        <text x="240" y="55" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="12">Br</text>
+
+        <text x="180" y="110" text-anchor="middle" font-family="Caveat" font-size="16" fill="#a23816">OH⁻ comes from the WRONG side</text>
+        <text x="180" y="135" text-anchor="middle" font-family="Caveat" font-size="16" fill="#a23816">→ no reaction, just bounce!</text>
+      </g>
+
+      <!-- RIGHT orientation -->
+      <g transform="translate(380,60)">
+        <text x="140" y="0" font-family="Geist" font-weight="700" font-size="13" fill="#1f5a52">✅ Proper orientation</text>
+        <!-- OH on opposite side from Br -->
+        <circle cx="50" cy="50" r="14" fill="#1f5a52" stroke="#1a1410" stroke-width="2"/>
+        <text x="50" y="55" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="11">OH⁻</text>
+        <line x1="70" y1="50" x2="100" y2="50" stroke="#1a1410" stroke-width="2" stroke-dasharray="3,3"/>
+
+        <circle cx="120" cy="50" r="20" fill="#553a7a" stroke="#1a1410" stroke-width="2"/>
+        <text x="120" y="55" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="13">CH₃</text>
+        <line x1="140" y1="50" x2="170" y2="50" stroke="#1a1410" stroke-width="2" stroke-dasharray="3,3"/>
+
+        <circle cx="190" cy="50" r="14" fill="#a23816" stroke="#1a1410" stroke-width="2"/>
+        <text x="190" y="55" text-anchor="middle" font-family="Fraunces" font-weight="700" fill="#fff" font-size="12">Br</text>
+
+        <text x="120" y="110" text-anchor="middle" font-family="Caveat" font-size="16" fill="#1f5a52">OH⁻ attacks from BEHIND Br</text>
+        <text x="120" y="135" text-anchor="middle" font-family="Caveat" font-size="16" fill="#1f5a52">→ Br leaves, OH bonds → CH₃OH!</text>
+      </g>
+
+      <!-- Bottom note -->
+      <text x="360" y="240" text-anchor="middle" font-family="Fraunces" font-weight="700" font-size="14" fill="#1a1410">Even if both collisions have enough energy, only the RIGHT one makes a product!</text>
+      <text x="360" y="275" text-anchor="middle" font-family="Caveat" font-size="20" fill="#553a7a">This is why we need the steric factor P</text>
+    </svg>
+    <div class="svg-caption">Same energy, different orientation → different outcomes. That's why we need the "steric factor" P.</div>
+  </div>
+
+  <h3>The Modified Equation with Steric Factor (P)</h3>
+  <div class="definition">
+    <strong>Steric Factor / Probability Factor (P):</strong> A factor introduced to account for the requirement of <strong>proper orientation</strong> in a collision. It's the fraction of collisions that have the geometrically right setup.
+  </div>
+
+  <div class="formula">Rate = P × Z_AB × e^(–Eₐ/RT)</div>
+
+  <p>So now we have <strong>three conditions</strong> for a successful reaction:</p>
+  <ol class="bulleted">
+    <li>Molecules must <strong>collide</strong> (factor Z_AB).</li>
+    <li>Collision must have <strong>enough energy</strong> (factor e^(–Eₐ/RT)).</li>
+    <li>Collision must have <strong>correct orientation</strong> (factor P).</li>
+  </ol>
+
+  <h3>Drawbacks of Collision Theory</h3>
+  <ul class="bulleted">
+    <li>Treats molecules as hard spheres — ignores their actual shape and electronic structure.</li>
+    <li>Doesn't explain reactions in solution very well.</li>
+    <li>P is empirical — has to be measured, not predicted from first principles.</li>
+  </ul>
+
+  <div class="memory">
+    Successful reaction = Right COLLISION + Right ENERGY + Right ORIENTATION 🎯<br>
+    Like trying to throw a basketball through a hoop:<br>
+    1) You have to throw it (collision),<br>
+    2) Hard enough (energy),<br>
+    3) In the right direction (orientation)!
+  </div>
+</section>
+
+<div class="chapter-divider"><span>~ Part IV · Practice &amp; Mastery ~</span></div>
+
+<section id="solved-numericals">
+  <div class="section-header"><span class="section-num">29</span><h2 class="sec-title">Solved Numericals (Step-by-Step)</h2></div>
+  <p>The classic NCERT Example-style problems, fully worked. Build the muscle memory you need for the board exam.</p>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT Example 3.1</span><span>★ rate calculation</span></div>
+    <div class="q-body">From the concentrations of C₄H₉Cl at different times given below, calculate the average rate of the reaction:<br>
+    C₄H₉Cl + H₂O → C₄H₉OH + HCl<br>
+    during different intervals.<br>
+    t/s: 0, 50, 100, 150, 200, 300, 400, 700, 800<br>
+    [C₄H₉Cl]/mol L⁻¹: 0.100, 0.0905, 0.0820, 0.0741, 0.0671, 0.0549, 0.0439, 0.0210, 0.017
+    </div>
+    <div class="q-answer">
+      Average rate = – Δ[C₄H₉Cl]/Δt<br><br>
+      Between 0 and 50s: rate = – (0.0905 – 0.100)/50 = (0.0095)/50 = <strong>1.90 × 10⁻⁴ mol L⁻¹ s⁻¹</strong><br>
+      Between 50 and 100s: rate = – (0.0820 – 0.0905)/50 = 1.70 × 10⁻⁴ mol L⁻¹ s⁻¹<br>
+      Between 100 and 150s: rate = 1.58 × 10⁻⁴ mol L⁻¹ s⁻¹<br>
+      Notice: rate <strong>decreases</strong> with time as reactant gets consumed!
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT Example 3.2</span><span>★ rate via stoichiometry</span></div>
+    <div class="q-body">The decomposition of N₂O₅ in CCl₄ at 318 K has been studied by monitoring the concentration of N₂O₅. Initially [N₂O₅] = 2.33 mol L⁻¹ and after 184 minutes it is reduced to 2.08 mol L⁻¹. The reaction takes place as: 2N₂O₅ → 4NO₂ + O₂. Calculate the average rate in terms of hours, minutes, and seconds. What is the rate of production of NO₂ during this period?</div>
+    <div class="q-answer">
+      Average rate = – (1/2) × Δ[N₂O₅]/Δt = – (1/2) × (–0.25/184)<br>
+      = <strong>6.79 × 10⁻⁴ mol L⁻¹ min⁻¹</strong><br><br>
+      In seconds: 6.79 × 10⁻⁴ / 60 = <strong>1.13 × 10⁻⁵ mol L⁻¹ s⁻¹</strong><br>
+      In hours: 6.79 × 10⁻⁴ × 60 = <strong>4.07 × 10⁻² mol L⁻¹ h⁻¹</strong><br><br>
+      <strong>Rate of production of NO₂:</strong> rate of reaction = (1/4) × d[NO₂]/dt<br>
+      ⇒ d[NO₂]/dt = 4 × 6.79 × 10⁻⁴ = <strong>2.72 × 10⁻³ mol L⁻¹ min⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT Example 3.5</span><span>★★ zero order</span></div>
+    <div class="q-body">The decomposition of NH₃ on platinum surface at 800°C is a zero order reaction with k = 2.5 × 10⁻⁴ mol L⁻¹ s⁻¹. The rate of disappearance of NH₃ is 1.0 × 10⁻³ mol L⁻¹ s⁻¹. What is the rate of production of N₂ and H₂?</div>
+    <div class="q-answer">
+      2NH₃ → N₂ + 3H₂. Rate of reaction = (1/2) × rate of disappearance of NH₃ = 0.5 × 10⁻³ mol L⁻¹ s⁻¹<br><br>
+      Rate of production of N₂ = rate of reaction = <strong>0.5 × 10⁻³ mol L⁻¹ s⁻¹</strong><br>
+      Rate of production of H₂ = 3 × rate of reaction = <strong>1.5 × 10⁻³ mol L⁻¹ s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT Example 3.6</span><span>★★ first order time calc</span></div>
+    <div class="q-body">The first order rate constant for the decomposition of ethyl iodide at 600 K is 1.60 × 10⁻⁵ s⁻¹. Calculate the half-life. Also, calculate the time required for the concentration to be reduced to 1/10th of the initial concentration.</div>
+    <div class="q-answer">
+      <strong>Half-life:</strong> t₁/₂ = 0.693/k = 0.693/(1.60 × 10⁻⁵)<br>
+      = <strong>4.33 × 10⁴ s ≈ 12 hours</strong><br><br>
+      <strong>Time to reduce to 1/10:</strong> [R]₀/[R] = 10<br>
+      t = (2.303/k) × log(10) = (2.303/(1.60 × 10⁻⁵)) × 1<br>
+      = <strong>1.44 × 10⁵ s ≈ 40 hours</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT Example 3.7</span><span>★★★ data table — finding k</span></div>
+    <div class="q-body">From the rate constants found from given concentrations, show that the decomposition of H₂O₂ is first order.<br>
+    Time (min): 0, 10, 20<br>
+    [H₂O₂]/mol L⁻¹: 0.02, 0.01585, 0.01254
+    </div>
+    <div class="q-answer">
+      Test first-order using k = (2.303/t) × log([R]₀/[R]):<br><br>
+      At t = 10 min: k = (2.303/10) × log(0.02/0.01585) = 0.2303 × 0.1009 = 0.02325 min⁻¹<br>
+      At t = 20 min: k = (2.303/20) × log(0.02/0.01254) = 0.1152 × 0.2028 = 0.02335 min⁻¹<br><br>
+      Both k values nearly equal ⇒ <strong>The reaction is first order ✓</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT Example 3.8</span><span>★★★ first order gas phase</span></div>
+    <div class="q-body">The following data were obtained during the first order thermal decomposition of N₂O₅(g) at constant volume:<br>
+    2N₂O₅(g) → 2N₂O₄(g) + O₂(g)<br>
+    S.No. 1: t=0, p=0.5 atm; S.No. 2: t=100s, p=0.512 atm. Calculate the rate constant.</div>
+    <div class="q-answer">
+      Set up table (let pressure of N₂O₅ decrease by 2x):<br>
+      Total p at time t: p_t = (0.5 – 2x) + 2x + x = 0.5 + x ⇒ x = p_t – 0.5 = 0.012 atm<br>
+      p(N₂O₅) at t = 100 s: 0.5 – 2(0.012) = <strong>0.476 atm</strong><br><br>
+      k = (2.303/t) × log(p_i/p_A) = (2.303/100) × log(0.5/0.476)<br>
+      = 0.02303 × 0.0213 = <strong>4.98 × 10⁻⁴ s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT Example 3.9</span><span>★★★ classic Arrhenius two-temp</span></div>
+    <div class="q-body">The rate constants of a reaction at 500K and 700K are 0.02 s⁻¹ and 0.07 s⁻¹ respectively. Calculate Eₐ and A.</div>
+    <div class="q-answer">
+      <strong>Step 1: Find Eₐ.</strong><br>
+      log(k₂/k₁) = (Eₐ / 2.303 R) × (T₂ – T₁)/(T₁ T₂)<br>
+      log(0.07/0.02) = (Eₐ / 19.15) × (200/350000)<br>
+      0.544 = Eₐ × 5.714 × 10⁻⁴ / 19.15<br>
+      <strong>Eₐ = 18230.8 J/mol ≈ 18.23 kJ/mol</strong><br><br>
+      <strong>Step 2: Find A using k = A·e^(–Eₐ/RT) at T₁:</strong><br>
+      0.02 = A × e^(–18230.8/(8.314 × 500)) = A × e^(–4.387) = A × 0.01243<br>
+      <strong>A = 1.61 s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT Example 3.10</span><span>★★★ predicting k at new T</span></div>
+    <div class="q-body">For C₂H₅I(g) → C₂H₄(g) + HI(g), k at 600 K is 1.60 × 10⁻⁵ s⁻¹, and Eₐ = 209 kJ/mol. Find k at 700 K.</div>
+    <div class="q-answer">
+      log k₂ = log k₁ + (Eₐ/2.303R) × [1/T₁ – 1/T₂]<br>
+      log k₂ = log(1.60 × 10⁻⁵) + (209000/19.147) × [(700–600)/(600×700)]<br>
+      log k₂ = –4.796 + 10916 × (100/420000)<br>
+      log k₂ = –4.796 + 2.599 = –2.197<br>
+      <strong>k₂ = 6.36 × 10⁻³ s⁻¹</strong>
+    </div>
+  </div>
+</section>
+
+
+<section id="ncert-1-10">
+  <div class="section-header"><span class="section-num">30</span><h2 class="sec-title">NCERT Exercises 3.1 – 3.10 (Fully Solved)</h2></div>
+  <p>The official NCERT problems — these have the highest chance of appearing on your board (sometimes word-for-word!). Each is solved step-by-step.</p>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.1</span><span>order & units</span></div>
+    <div class="q-body">From the rate expressions, find the order of the reaction and dimensions of the rate constant:<br>
+      (i) 3NO(g) → N₂O(g); Rate = k[NO]²<br>
+      (ii) H₂O₂ + 3I⁻ + 2H⁺ → 2H₂O + I₃⁻; Rate = k[H₂O₂][I⁻]<br>
+      (iii) CH₃CHO → CH₄ + CO; Rate = k[CH₃CHO]^(3/2)<br>
+      (iv) C₂H₅Cl → C₂H₄ + HCl; Rate = k[C₂H₅Cl]
+    </div>
+    <div class="q-answer">
+      (i) Order = 2; units of k = <strong>mol⁻¹ L s⁻¹</strong><br>
+      (ii) Order = 1 + 1 = 2; units of k = <strong>mol⁻¹ L s⁻¹</strong><br>
+      (iii) Order = 3/2 = 1.5; units of k = (mol L⁻¹ s⁻¹)/(mol L⁻¹)^(3/2) = <strong>mol⁻¹/² L^(1/2) s⁻¹</strong><br>
+      (iv) Order = 1; units of k = <strong>s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.2</span><span>rate calculation</span></div>
+    <div class="q-body">For 2A + B → A₂B: Rate = k[A][B]², k = 2.0 × 10⁻⁶ mol⁻² L² s⁻¹. Calculate initial rate when [A] = 0.1 M, [B] = 0.2 M. Also find the rate when [A] is reduced to 0.06 M.</div>
+    <div class="q-answer">
+      <strong>Initial rate:</strong><br>
+      Rate = (2.0 × 10⁻⁶)(0.1)(0.2)² = (2.0 × 10⁻⁶)(0.1)(0.04) = <strong>8.0 × 10⁻⁹ mol L⁻¹ s⁻¹</strong><br><br>
+      <strong>When [A] drops from 0.1 to 0.06 M:</strong> Δ[A] = 0.04 M consumed.<br>
+      Since stoichiometry is 2A : 1B, B consumed = 0.04/2 = 0.02 M<br>
+      New [B] = 0.20 – 0.02 = 0.18 M<br>
+      New rate = (2.0 × 10⁻⁶)(0.06)(0.18)² = (2.0 × 10⁻⁶)(0.06)(0.0324)<br>
+      = <strong>3.89 × 10⁻⁹ mol L⁻¹ s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.3</span><span>zero order</span></div>
+    <div class="q-body">Decomposition of NH₃ on Pt surface is zero order. What is the rate of production of N₂ and H₂ if k = 2.5 × 10⁻⁴ mol L⁻¹ s⁻¹?</div>
+    <div class="q-answer">
+      2NH₃ → N₂ + 3H₂. Rate of reaction = k = 2.5 × 10⁻⁴ mol L⁻¹ s⁻¹<br>
+      Rate = –(1/2) d[NH₃]/dt = +d[N₂]/dt = +(1/3) d[H₂]/dt<br><br>
+      <strong>d[N₂]/dt = 2.5 × 10⁻⁴ mol L⁻¹ s⁻¹</strong><br>
+      <strong>d[H₂]/dt = 3 × 2.5 × 10⁻⁴ = 7.5 × 10⁻⁴ mol L⁻¹ s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.4</span><span>pressure units</span></div>
+    <div class="q-body">For dimethyl ether decomposition: Rate = k[CH₃OCH₃]^(3/2), measured via pressure in bar, time in minutes. What are the units of rate and k?</div>
+    <div class="q-answer">
+      Units of rate = <strong>bar min⁻¹</strong><br>
+      Units of k: from Rate = k (pressure)^(3/2)<br>
+      k = Rate/(pressure)^(3/2) = bar·min⁻¹ / bar^(3/2) = <strong>bar^(–1/2) min⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.5</span><span>theory</span></div>
+    <div class="q-body">Mention the factors that affect the rate of a chemical reaction.</div>
+    <div class="q-answer">
+      (1) <strong>Concentration</strong> of reactants — higher concentration → faster rate.<br>
+      (2) <strong>Temperature</strong> — rate ~doubles per 10°C rise.<br>
+      (3) <strong>Catalyst</strong> — lowers Eₐ, increases rate.<br>
+      (4) <strong>Surface area</strong> — finer powder = faster (more area exposed).<br>
+      (5) <strong>Pressure</strong> (for gases) — higher P = higher concentration = faster.<br>
+      (6) <strong>Nature of reactants</strong> — ionic reactions are much faster than covalent bond breakage.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.6</span><span>conceptual</span></div>
+    <div class="q-body">A reaction is second order with respect to a reactant. How is the rate affected if the concentration is (i) doubled (ii) reduced to half?</div>
+    <div class="q-answer">
+      Rate = k[A]². If [A] becomes 2[A]: new rate = k(2[A])² = <strong>4 × original rate</strong>.<br>
+      If [A] becomes [A]/2: new rate = k([A]/2)² = (1/4) × original rate ⇒ <strong>1/4 of original</strong>.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.7</span><span>theory</span></div>
+    <div class="q-body">What is the effect of temperature on the rate constant? Represent it quantitatively.</div>
+    <div class="q-answer">
+      Rate constant <strong>increases with temperature</strong>. Rule of thumb: k ~ doubles per 10°C rise. Quantitatively given by <strong>Arrhenius equation: k = A·e^(–Eₐ/RT)</strong>. Taking log: <strong>log k = log A – Eₐ/(2.303 RT)</strong>. Plot of log k vs 1/T is a straight line with slope = –Eₐ/(2.303 R).
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.8</span><span>pseudo first order</span></div>
+    <div class="q-body">For a pseudo first order reaction in water, data: t/s = 0, 30, 60, 90; [A] = 0.55, 0.31, 0.17, 0.085 mol L⁻¹. Calculate average rate between 30s and 60s.</div>
+    <div class="q-answer">
+      Average rate = –Δ[A]/Δt = –(0.17 – 0.31)/(60 – 30) = 0.14/30<br>
+      = <strong>4.67 × 10⁻³ mol L⁻¹ s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.9</span><span>order effects</span></div>
+    <div class="q-body">A reaction is first order in A and second order in B.<br>
+      (i) Differential rate equation. (ii) Rate change when [B] is tripled. (iii) Rate change when both [A] and [B] are doubled.</div>
+    <div class="q-answer">
+      (i) <strong>–d[A]/dt = k[A][B]²</strong><br>
+      (ii) [B] tripled: rate becomes k[A](3[B])² = <strong>9 × original rate</strong><br>
+      (iii) Both doubled: rate = k(2[A])(2[B])² = <strong>8 × original rate</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.10</span><span>finding order from data</span></div>
+    <div class="q-body">Data:<br>[A] = 0.20, 0.20, 0.40 mol L⁻¹; [B] = 0.30, 0.10, 0.05 mol L⁻¹; r₀ = 5.07×10⁻⁵, 5.07×10⁻⁵, 1.43×10⁻⁴ mol L⁻¹ s⁻¹. Find order in A and B.</div>
+    <div class="q-answer">
+      Compare Expt 1 & 2: [A] same, [B] changes (0.30→0.10), but rate is unchanged! ⇒ rate doesn't depend on [B] ⇒ <strong>Order in B = 0</strong>.<br><br>
+      Compare Expt 2 & 3: [A] doubles (0.20→0.40), [B] halves (0.10→0.05) — but since B has no effect, only A matters.<br>
+      Ratio: r₃/r₂ = (1.43×10⁻⁴)/(5.07×10⁻⁵) ≈ 2.82<br>
+      [A] doubled, rate became 2.82× ⇒ Since 2^(log₂2.82) = 2^1.495, the order ≈ 1.5.<br>
+      <strong>Order in A ≈ 1.5 (3/2), Order in B = 0; Overall order = 1.5</strong>
+    </div>
+  </div>
+</section>
+
+<section id="ncert-11-20">
+  <div class="section-header"><span class="section-num">31</span><h2 class="sec-title">NCERT Exercises 3.11 – 3.20 (Fully Solved)</h2></div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.11</span><span>★★★ rate law from data</span></div>
+    <div class="q-body">For 2A + B → C + D:<br>
+    I: [A]=0.1, [B]=0.1, rate=6.0×10⁻³<br>
+    II: [A]=0.3, [B]=0.2, rate=7.2×10⁻²<br>
+    III: [A]=0.3, [B]=0.4, rate=2.88×10⁻¹<br>
+    IV: [A]=0.4, [B]=0.1, rate=2.40×10⁻²<br>
+    Find rate law and k.</div>
+    <div class="q-answer">
+      Compare II & III: [A] same, [B] doubles (0.2→0.4), rate becomes 4× (7.2×10⁻² → 2.88×10⁻¹)<br>
+      ⇒ Order in B = 2<br><br>
+      Compare I & IV: [B] same, [A] becomes 4× (0.1→0.4), rate becomes 4× (6.0×10⁻³ → 2.40×10⁻²)<br>
+      ⇒ Order in A = 1<br><br>
+      <strong>Rate law: Rate = k[A][B]²</strong>; Overall order = 1+2 = 3<br><br>
+      Finding k from Expt I:<br>
+      6.0×10⁻³ = k(0.1)(0.1)² = k × 10⁻³<br>
+      <strong>k = 6.0 mol⁻² L² min⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.12</span><span>★★ filling in the blanks</span></div>
+    <div class="q-body">First order in A, zero order in B. Complete:<br>
+    I: [A]=0.1, [B]=0.1, rate=2.0×10⁻²<br>
+    II: [A]=?, [B]=0.2, rate=4.0×10⁻²<br>
+    III: [A]=0.4, [B]=0.4, rate=?<br>
+    IV: [A]=?, [B]=0.2, rate=2.0×10⁻²</div>
+    <div class="q-answer">
+      Rate law: Rate = k[A] (zero order in B means B doesn't matter)<br>
+      From I: 2.0×10⁻² = k × 0.1 ⇒ k = 0.2 min⁻¹<br><br>
+      <strong>II:</strong> [A] = rate/k = (4.0×10⁻²)/0.2 = <strong>0.2 mol L⁻¹</strong><br>
+      <strong>III:</strong> rate = k × [A] = 0.2 × 0.4 = <strong>0.08 = 8.0 × 10⁻² mol L⁻¹ min⁻¹</strong><br>
+      <strong>IV:</strong> [A] = rate/k = (2.0×10⁻²)/0.2 = <strong>0.1 mol L⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.13</span><span>half-life</span></div>
+    <div class="q-body">Calculate t₁/₂ for first order reactions with k = (i) 200 s⁻¹ (ii) 2 min⁻¹ (iii) 4 years⁻¹</div>
+    <div class="q-answer">
+      t₁/₂ = 0.693/k<br>
+      (i) t₁/₂ = 0.693/200 = <strong>3.46 × 10⁻³ s</strong><br>
+      (ii) t₁/₂ = 0.693/2 = <strong>0.347 min</strong> (≈ 20.8 s)<br>
+      (iii) t₁/₂ = 0.693/4 = <strong>0.173 years</strong> (≈ 63.3 days)
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.14</span><span>★★★ carbon dating!</span></div>
+    <div class="q-body">Half-life of ¹⁴C is 5730 years. An artifact has only 80% of the ¹⁴C of a living tree. Estimate its age.</div>
+    <div class="q-answer">
+      For first order: k = 0.693/t₁/₂ = 0.693/5730 = 1.21 × 10⁻⁴ year⁻¹<br><br>
+      Use: t = (2.303/k) × log([R]₀/[R])<br>
+      [R]/[R]₀ = 0.80 ⇒ [R]₀/[R] = 1.25<br>
+      t = (2.303/1.21×10⁻⁴) × log(1.25)<br>
+      = (19033) × 0.0969<br>
+      ≈ <strong>1845 years</strong> ✅<br><br>
+      That artifact is roughly 1845 years old!
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.15</span><span>★★★ multi-part data analysis</span></div>
+    <div class="q-body">Decomposition of N₂O₅ at 318 K — find: graphs, half-life, rate law, k.</div>
+    <div class="q-answer">
+      (i, iii) [N₂O₅] vs t: smooth decaying curve. log[N₂O₅] vs t: straight line (negative slope).<br><br>
+      (ii) Find time at which [N₂O₅] becomes half of initial 1.63 × 10⁻², i.e., 0.815 × 10⁻²:<br>
+      From data, this occurs between t = 1200 s ([N₂O₅] = 0.93×10⁻²) and t = 1600 s (0.78×10⁻²).<br>
+      Interpolating: t₁/₂ ≈ <strong>1440 s ≈ 24 min</strong><br><br>
+      (iv) Since log[N₂O₅] vs t is straight line ⇒ first order. <strong>Rate law: Rate = k[N₂O₅]</strong><br><br>
+      (v) Pick two data points, e.g. t=0 and t=400:<br>
+      k = (2.303/400) × log(1.63/1.36) = (2.303/400) × 0.0786<br>
+      ≈ <strong>4.52 × 10⁻⁴ s⁻¹</strong><br><br>
+      (vi) From k: t₁/₂ = 0.693/(4.52 × 10⁻⁴) ≈ <strong>1533 s ≈ 25.5 min</strong>. Matches part (ii) closely! ✅
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.16</span><span>fraction reduction</span></div>
+    <div class="q-body">First order: k = 60 s⁻¹. How long to reduce reactant to 1/16 of its initial value?</div>
+    <div class="q-answer">
+      t = (2.303/k) × log([R]₀/[R]) = (2.303/60) × log(16)<br>
+      = (2.303/60) × log(2⁴) = (2.303/60) × 4 × log(2)<br>
+      = (2.303/60) × 4 × 0.301<br>
+      = (2.303 × 1.204)/60<br>
+      = <strong>0.0462 s = 4.62 × 10⁻² s</strong><br><br>
+      <em>Quick check:</em> Going from 1 to 1/16 = 4 half-lives. t₁/₂ = 0.693/60 = 0.01155 s. So 4 × 0.01155 = 0.0462 s. ✅
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.17</span><span>★★★ radioactive decay</span></div>
+    <div class="q-body">⁹⁰Sr has t₁/₂ = 28.1 years. If 1 μg was absorbed into a baby's bones, how much remains after 10 years? After 60 years?</div>
+    <div class="q-answer">
+      k = 0.693/28.1 = 0.02466 year⁻¹<br><br>
+      <strong>After 10 years:</strong><br>
+      log([R]₀/[R]) = kt/2.303 = (0.02466 × 10)/2.303 = 0.1071<br>
+      [R]₀/[R] = 10^0.1071 = 1.28<br>
+      [R] = 1/1.28 = <strong>0.781 μg</strong><br><br>
+      <strong>After 60 years:</strong><br>
+      log([R]₀/[R]) = (0.02466 × 60)/2.303 = 0.6425<br>
+      [R]₀/[R] = 10^0.6425 = 4.39<br>
+      [R] = 1/4.39 = <strong>0.228 μg</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.18</span><span>★★★ derivation-style</span></div>
+    <div class="q-body">Show that for a first order reaction, time for 99% completion is twice that for 90% completion.</div>
+    <div class="q-answer">
+      For 90% completion: [R] = 0.10[R]₀<br>
+      t₉₀ = (2.303/k) × log([R]₀/0.10[R]₀) = (2.303/k) × log(10) = 2.303/k<br><br>
+      For 99% completion: [R] = 0.01[R]₀<br>
+      t₉₉ = (2.303/k) × log([R]₀/0.01[R]₀) = (2.303/k) × log(100) = (2.303/k) × 2 = 4.606/k<br><br>
+      Ratio: t₉₉/t₉₀ = (4.606/k)/(2.303/k) = <strong>2</strong> ✅
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.19</span><span>numerical</span></div>
+    <div class="q-body">A first order reaction takes 40 min for 30% decomposition. Calculate t₁/₂.</div>
+    <div class="q-answer">
+      30% decomposed ⇒ [R] = 0.70[R]₀<br>
+      k = (2.303/40) × log([R]₀/0.70[R]₀) = (2.303/40) × log(1.4286)<br>
+      = (2.303/40) × 0.1549<br>
+      = 8.92 × 10⁻³ min⁻¹<br><br>
+      t₁/₂ = 0.693/k = 0.693/(8.92 × 10⁻³) ≈ <strong>77.7 min</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.20</span><span>★★★ gas phase pressure</span></div>
+    <div class="q-body">Azoisopropane → hexane + N₂ at 543 K: t=0: 35.0 mmHg; t=360: 54.0; t=720: 63.0. Find k.</div>
+    <div class="q-answer">
+      Treating like A → B + C type, with p_i = 35.0 mmHg:<br>
+      p_A = 2p_i – p_t<br><br>
+      <strong>At t = 360 s:</strong> p_A = 2(35) – 54 = 16 mmHg<br>
+      k₁ = (2.303/360) × log(35/16) = (2.303/360) × log(2.1875)<br>
+      = (2.303/360) × 0.340 = <strong>2.175 × 10⁻³ s⁻¹</strong><br><br>
+      <strong>At t = 720 s:</strong> p_A = 2(35) – 63 = 7 mmHg<br>
+      k₂ = (2.303/720) × log(35/7) = (2.303/720) × log(5)<br>
+      = (2.303/720) × 0.6990 = <strong>2.235 × 10⁻³ s⁻¹</strong><br><br>
+      Both values are close → confirms first order. <strong>Average k ≈ 2.2 × 10⁻³ s⁻¹</strong>
+    </div>
+  </div>
+</section>
+
+<section id="ncert-21-30">
+  <div class="section-header"><span class="section-num">32</span><h2 class="sec-title">NCERT Exercises 3.21 – 3.30 (Fully Solved)</h2></div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.21</span><span>★★★ gas phase rate</span></div>
+    <div class="q-body">SO₂Cl₂ → SO₂ + Cl₂; t=0: p_t = 0.5 atm; t=100s: p_t = 0.6 atm. Find rate of reaction when total pressure = 0.65 atm.</div>
+    <div class="q-answer">
+      <strong>Step 1: Find k.</strong> Setup table:<br>
+      At t=0: p(SO₂Cl₂)=0.5, p(SO₂)=0, p(Cl₂)=0<br>
+      At time t: p(SO₂Cl₂)=0.5-x, p(SO₂)=x, p(Cl₂)=x<br>
+      Total p_t = 0.5 + x ⇒ x = p_t – 0.5<br>
+      So p(SO₂Cl₂) at time t = 0.5 – (p_t – 0.5) = 1.0 – p_t<br><br>
+      At t = 100: p(SO₂Cl₂) = 1.0 – 0.6 = 0.4 atm<br>
+      k = (2.303/100) × log(0.5/0.4) = (2.303/100) × log(1.25)<br>
+      = (2.303/100) × 0.0969 = <strong>2.23 × 10⁻³ s⁻¹</strong><br><br>
+      <strong>Step 2:</strong> At p_t = 0.65: p(SO₂Cl₂) = 1.0 – 0.65 = 0.35 atm<br>
+      Rate = k × p(SO₂Cl₂) = (2.23 × 10⁻³) × 0.35<br>
+      = <strong>7.80 × 10⁻⁴ atm s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.22</span><span>★★★★ Arrhenius graph (long Q)</span></div>
+    <div class="q-body">Decomposition of N₂O₅ at various T:<br>
+    T/°C: 0, 20, 40, 60, 80<br>
+    10⁵ × k/s⁻¹: 0.0787, 1.70, 25.7, 178, 2140<br>
+    Plot ln k vs 1/T, find A and Eₐ. Predict k at 30°C and 50°C.</div>
+    <div class="q-answer">
+      Convert: T(K) = 273, 293, 313, 333, 353<br>
+      1/T (K⁻¹): 3.66×10⁻³, 3.41×10⁻³, 3.19×10⁻³, 3.00×10⁻³, 2.83×10⁻³<br>
+      k: 7.87×10⁻⁷, 1.70×10⁻⁵, 2.57×10⁻⁴, 1.78×10⁻³, 2.14×10⁻²<br>
+      ln k: –14.05, –10.98, –8.27, –6.33, –3.84<br><br>
+      Plot ln k (y) vs 1/T (x). It's a straight line.<br>
+      <strong>Slope</strong> = (–14.05 – (–3.84))/((3.66 – 2.83) × 10⁻³) = –10.21/(8.3 × 10⁻⁴) ≈ –12300 K<br>
+      Eₐ = –slope × R = 12300 × 8.314 = <strong>Eₐ ≈ 102.27 kJ/mol</strong><br><br>
+      <strong>Intercept (ln A):</strong> Using point (1/T = 3×10⁻³, ln k = –6.33):<br>
+      ln A = ln k + Eₐ/RT = –6.33 + (102270/(8.314×333)) = –6.33 + 36.96 = 30.63<br>
+      <strong>A = e^30.63 ≈ 2.0 × 10¹³ s⁻¹</strong><br><br>
+      <strong>Predicting:</strong><br>
+      At 30°C (303 K): ln k = 30.63 – 102270/(8.314 × 303) = 30.63 – 40.61 = –9.98<br>
+      ⇒ k ≈ <strong>4.6 × 10⁻⁵ s⁻¹</strong><br><br>
+      At 50°C (323 K): ln k = 30.63 – 102270/(8.314 × 323) = 30.63 – 38.10 = –7.47<br>
+      ⇒ k ≈ <strong>5.7 × 10⁻⁴ s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.23</span><span>★★★ Finding A from k & Eₐ</span></div>
+    <div class="q-body">k = 2.418 × 10⁻⁵ s⁻¹ at 546 K; Eₐ = 179.9 kJ/mol. Find pre-exponential factor A.</div>
+    <div class="q-answer">
+      From k = A·e^(–Eₐ/RT):<br>
+      ln A = ln k + Eₐ/RT<br>
+      = ln(2.418 × 10⁻⁵) + (179900)/(8.314 × 546)<br>
+      = –10.63 + 39.63<br>
+      = 29.00<br><br>
+      <strong>A = e^29.00 ≈ 3.91 × 10¹² s⁻¹</strong> (~4 × 10¹²)
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.24</span><span>concentration after time</span></div>
+    <div class="q-body">A → Products with k = 2.0 × 10⁻² s⁻¹. Find [A] after 100 s if [A]₀ = 1.0 mol L⁻¹.</div>
+    <div class="q-answer">
+      Order is first (units of k are s⁻¹).<br>
+      Using [R] = [R]₀ · e^(–kt):<br>
+      [A] = 1.0 × e^(–0.02 × 100) = e^(–2)<br>
+      = <strong>0.135 mol L⁻¹</strong> (≈ 13.5% remains)
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.25</span><span>fraction left</span></div>
+    <div class="q-body">Sucrose hydrolysis is first order with t₁/₂ = 3.00 hours. What fraction of sucrose remains after 8 hours?</div>
+    <div class="q-answer">
+      k = 0.693/3.00 = 0.231 h⁻¹<br>
+      [R]/[R]₀ = e^(–kt) = e^(–0.231 × 8) = e^(–1.848)<br>
+      = <strong>0.158</strong><br>
+      So <strong>~15.8% of sucrose remains</strong> after 8 hours.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.26</span><span>★★ extracting Eₐ from formula</span></div>
+    <div class="q-body">For a hydrocarbon decomposition: k = (4.5 × 10¹¹ s⁻¹) × e^(–28000 K/T). Calculate Eₐ.</div>
+    <div class="q-answer">
+      Compare with standard Arrhenius: k = A · e^(–Eₐ/RT)<br>
+      The exponent –28000/T must equal –Eₐ/RT<br>
+      ⇒ Eₐ/R = 28000 K<br>
+      <strong>Eₐ = 28000 × R = 28000 × 8.314 = 232,792 J/mol ≈ 232.8 kJ/mol</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.27</span><span>★★★ Eₐ from log k formula</span></div>
+    <div class="q-body">For H₂O₂ decomposition: log k = 14.34 – (1.25 × 10⁴ K)/T. Find Eₐ and the temperature at which t₁/₂ = 256 min.</div>
+    <div class="q-answer">
+      <strong>Part 1: Find Eₐ.</strong> Compare with: log k = log A – Eₐ/(2.303 RT)<br>
+      ⇒ Eₐ/(2.303 R) = 1.25 × 10⁴<br>
+      Eₐ = 1.25 × 10⁴ × 2.303 × 8.314 = <strong>239,339 J/mol ≈ 239.34 kJ/mol</strong><br><br>
+      <strong>Part 2: Find T for t₁/₂ = 256 min = 15360 s.</strong><br>
+      k = 0.693/15360 = 4.51 × 10⁻⁵ s⁻¹<br>
+      log k = log(4.51 × 10⁻⁵) = –4.346<br><br>
+      Plug into formula: –4.346 = 14.34 – (1.25 × 10⁴)/T<br>
+      (1.25 × 10⁴)/T = 14.34 + 4.346 = 18.686<br>
+      T = 12500/18.686 = <strong>668.9 K (≈ 669 K)</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.28</span><span>★★★ Find T given k change</span></div>
+    <div class="q-body">k at 10°C = 4.5 × 10³ s⁻¹; Eₐ = 60 kJ/mol. At what T does k = 1.5 × 10⁴ s⁻¹?</div>
+    <div class="q-answer">
+      T₁ = 283 K; k₁ = 4500; k₂ = 15000; T₂ = ?<br><br>
+      log(k₂/k₁) = (Eₐ/2.303R) × (T₂–T₁)/(T₁T₂)<br>
+      log(15000/4500) = (60000/19.147) × (T₂–283)/(283·T₂)<br>
+      log(3.333) = 3133.5 × (T₂–283)/(283 T₂)<br>
+      0.523 = 3133.5 × (T₂–283)/(283 T₂)<br><br>
+      0.523 × 283 T₂ = 3133.5 × (T₂–283)<br>
+      148.0 T₂ = 3133.5 T₂ – 886760<br>
+      –2985.5 T₂ = –886760<br>
+      T₂ = 886760/2985.5<br>
+      <strong>T₂ ≈ 297 K ≈ 24°C</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.29</span><span>★★★★ tough multi-step</span></div>
+    <div class="q-body">Time for 10% completion at 298 K = time for 25% completion at 308 K. A = 4 × 10¹⁰ s⁻¹. Find k at 318 K and Eₐ.</div>
+    <div class="q-answer">
+      <strong>Step 1: Set up the equation.</strong><br>
+      Time for 10% (at 298 K): t₁ = (2.303/k₁) × log(1/0.90) = (2.303/k₁) × 0.0458<br>
+      Time for 25% (at 308 K): t₂ = (2.303/k₂) × log(1/0.75) = (2.303/k₂) × 0.1249<br>
+      Given t₁ = t₂: (2.303 × 0.0458)/k₁ = (2.303 × 0.1249)/k₂<br>
+      ⇒ k₂/k₁ = 0.1249/0.0458 = 2.728<br><br>
+      <strong>Step 2: Find Eₐ.</strong><br>
+      log(k₂/k₁) = log(2.728) = 0.4359<br>
+      log(k₂/k₁) = (Eₐ/2.303R) × (T₂–T₁)/(T₁T₂)<br>
+      0.4359 = (Eₐ/19.147) × (10/(298×308))<br>
+      0.4359 = (Eₐ/19.147) × (10/91784)<br>
+      0.4359 = Eₐ × 5.687 × 10⁻⁶<br>
+      <strong>Eₐ = 76,640 J/mol ≈ 76.64 kJ/mol</strong><br><br>
+      <strong>Step 3: Find k at 318 K.</strong><br>
+      log k = log A – Eₐ/(2.303 RT)<br>
+      log k = log(4 × 10¹⁰) – 76640/(2.303 × 8.314 × 318)<br>
+      log k = 10.602 – 76640/6088.5<br>
+      log k = 10.602 – 12.587 = –1.985<br>
+      <strong>k(318 K) = 10⁻¹·⁹⁸⁵ ≈ 1.035 × 10⁻² s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>NCERT 3.30</span><span>★★ rate quadruples</span></div>
+    <div class="q-body">Rate quadruples when T goes from 293 K to 313 K. Calculate Eₐ.</div>
+    <div class="q-answer">
+      k₂/k₁ = 4; T₁ = 293 K; T₂ = 313 K<br>
+      log(4) = (Eₐ/2.303R) × (T₂–T₁)/(T₁T₂)<br>
+      0.602 = (Eₐ/19.147) × (20/(293 × 313))<br>
+      0.602 = (Eₐ/19.147) × (20/91709)<br>
+      0.602 = Eₐ × 1.139 × 10⁻⁵<br>
+      <strong>Eₐ = 0.602/(1.139 × 10⁻⁵) ≈ 52,863 J/mol ≈ 52.86 kJ/mol</strong>
+    </div>
+  </div>
+</section>
+
+<section id="all-intext">
+  <div class="section-header"><span class="section-num">33</span><h2 class="sec-title">All Intext Questions (3.1 – 3.9)</h2></div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>Intext 3.1</span><span>★ rate calculation</span></div>
+    <div class="q-body">For the reaction R → P, the concentration of a reactant changes from 0.03 M to 0.02 M in 25 minutes. Calculate the average rate of reaction using units of time both in minutes and seconds.</div>
+    <div class="q-answer">
+      Average rate = – Δ[R]/Δt = –(0.02 – 0.03)/25 = 0.01/25 = <strong>4 × 10⁻⁴ M min⁻¹</strong><br>
+      In seconds: 4 × 10⁻⁴ /60 = <strong>6.66 × 10⁻⁶ M s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>Intext 3.2</span><span>★ stoichiometric rate</span></div>
+    <div class="q-body">In the reaction 2A → Products, the concentration of A decreases from 0.5 mol L⁻¹ to 0.4 mol L⁻¹ in 10 minutes. Calculate the rate during this interval.</div>
+    <div class="q-answer">
+      Rate of disappearance of A = –(0.4 – 0.5)/10 = 0.01 M min⁻¹<br>
+      Rate of reaction = (1/2) × rate of disappearance of A = (1/2)(0.01) = <strong>0.005 mol L⁻¹ min⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>Intext 3.3</span><span>★ order from rate law</span></div>
+    <div class="q-body">For a reaction, A + B → Product; the rate law is given by: r = k[A]^(1/2)[B]². What is the order of the reaction?</div>
+    <div class="q-answer">
+      Order = 1/2 + 2 = <strong>2.5 (five halves)</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>Intext 3.4</span><span>★★ rate change</span></div>
+    <div class="q-body">The conversion of molecules X to Y follows second order kinetics. If the concentration of X is increased to three times, how will it affect the rate of formation of Y?</div>
+    <div class="q-answer">
+      Rate = k[X]². If [X] → 3[X]: new rate = k(3[X])² = 9k[X]² = <strong>9× original rate</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>Intext 3.5</span><span>★★ first order calc</span></div>
+    <div class="q-body">A first order reaction has a rate constant 1.15 × 10⁻³ s⁻¹. How long will 5 g of this reactant take to reduce to 3 g?</div>
+    <div class="q-answer">
+      t = (2.303/k) × log([R]₀/[R]) = (2.303/1.15 × 10⁻³) × log(5/3)<br>
+      = 2002.6 × log(1.667) = 2002.6 × 0.2219<br>
+      ≈ <strong>444 s</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>Intext 3.6</span><span>★★ SO₂Cl₂ decomp</span></div>
+    <div class="q-body">Time required to decompose SO₂Cl₂ to half its initial amount is 60 minutes. If the decomposition is a first order reaction, calculate the rate constant of the reaction.</div>
+    <div class="q-answer">
+      t₁/₂ = 60 min = 3600 s<br>
+      k = 0.693/t₁/₂ = 0.693/3600<br>
+      ≈ <strong>1.925 × 10⁻⁴ s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>Intext 3.7</span><span>theory</span></div>
+    <div class="q-body">What will be the effect of temperature on rate constant?</div>
+    <div class="q-answer">
+      The rate constant <strong>increases</strong> with increase in temperature. Rule of thumb: k doubles per 10°C rise. Given quantitatively by Arrhenius: k = A·e^(–Eₐ/RT). As T increases, e^(–Eₐ/RT) increases ⇒ k increases.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>Intext 3.8</span><span>numerical</span></div>
+    <div class="q-body">The rate of a chemical reaction doubles for an increase of 10 K in absolute temperature from 298 K. Calculate Eₐ.</div>
+    <div class="q-answer">
+      log(2) = (Eₐ/19.147) × (10/(298×308))<br>
+      0.301 = Eₐ × 5.687 × 10⁻⁶<br>
+      <strong>Eₐ ≈ 52.897 kJ/mol</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header ncert"><span>Intext 3.9</span><span>fraction calculation</span></div>
+    <div class="q-body">For 2HI(g) → H₂ + I₂(g), Eₐ = 209.5 kJ/mol at 581 K. Find the fraction of molecules with energy ≥ Eₐ.</div>
+    <div class="q-answer">
+      Fraction = e^(–Eₐ/RT)<br>
+      Eₐ/RT = 209500/(8.314 × 581) ≈ 43.37<br>
+      log(fraction) = –43.37/2.303 = –18.83<br>
+      <strong>Fraction ≈ 1.471 × 10⁻¹⁹</strong> (incredibly tiny!)
+    </div>
+  </div>
+</section>
+
+
+
+<section id="pyq">
+  <div class="section-header"><span class="section-num">34</span><h2 class="sec-title">Previous Year Board Questions (CBSE)</h2></div>
+  <p>The questions that have appeared on actual board exams over the years. Master these and you'll recognize patterns instantly.</p>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2020) — 2 marks</span><span>★</span></div>
+    <div class="q-body">Define order of a reaction. How is it different from molecularity?</div>
+    <div class="q-answer">
+      <strong>Order:</strong> Sum of the powers of concentration terms in the experimentally determined rate law.<br>
+      <strong>Molecularity:</strong> Number of reacting species (atoms/ions/molecules) that collide simultaneously in an elementary reaction.<br><br>
+      <strong>Key differences:</strong> Order is experimental, can be 0/fraction/negative, applies to all reactions. Molecularity is theoretical, is a whole positive integer (1, 2, or 3), and only applies to elementary reactions.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2019) — 3 marks</span><span>★★</span></div>
+    <div class="q-body">For a reaction A → B, the rate becomes 27 times when the concentration of A is tripled. What is the order of the reaction?</div>
+    <div class="q-answer">
+      Let rate = k[A]ⁿ<br>
+      27 × rate = k(3[A])ⁿ = k × 3ⁿ × [A]ⁿ<br>
+      ⇒ 3ⁿ = 27 = 3³<br>
+      ⇒ <strong>n = 3 (third order)</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2018) — 3 marks</span><span>★★★ derivation</span></div>
+    <div class="q-body">Derive the integrated rate equation for a first order reaction.</div>
+    <div class="q-answer">
+      See Section 15. Full step-by-step derivation gives: <br>
+      <strong>k = (2.303/t) × log([R]₀/[R])</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2017) — 5 marks</span><span>★★★★ derivation</span></div>
+    <div class="q-body">(a) Derive the integrated rate equation for a zero order reaction.<br>(b) For a first order reaction, show that the time required for 99% completion is double the time required for 90% completion.</div>
+    <div class="q-answer">
+      <strong>(a)</strong> See Section 14. Final result: <strong>k = ([R]₀ – [R])/t</strong> and <strong>[R] = [R]₀ – kt</strong><br><br>
+      <strong>(b)</strong> See NCERT 3.18 solution: t₉₉/t₉₀ = log(100)/log(10) = 2/1 = <strong>2</strong> ✓
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2016) — 2 marks</span><span>★★</span></div>
+    <div class="q-body">A reaction is first order in A and second order in B. Write the differential rate equation. How is the rate affected when concentrations of both A and B are doubled?</div>
+    <div class="q-answer">
+      Rate = k[A][B]² (first order in A, second in B)<br>
+      When both doubled: new rate = k(2[A])(2[B])² = 8 × k[A][B]² = <strong>8 × original rate</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2020) — 3 marks</span><span>★★★ numerical</span></div>
+    <div class="q-body">The rate of a particular reaction triples when the temperature changes from 50°C to 100°C. Calculate the energy of activation. (R = 8.314 J K⁻¹ mol⁻¹)</div>
+    <div class="q-answer">
+      T₁ = 323 K, T₂ = 373 K, k₂/k₁ = 3<br>
+      log(3) = (Eₐ/19.147) × (50/(323×373))<br>
+      0.477 = (Eₐ/19.147) × (50/120479)<br>
+      0.477 = Eₐ × 2.167 × 10⁻⁵<br>
+      <strong>Eₐ ≈ 22014 J/mol ≈ 22.01 kJ/mol</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2015) — 5 marks</span><span>★★★ classic numerical</span></div>
+    <div class="q-body">A first order reaction takes 69.3 minutes for 50% completion. Calculate the time needed for 80% completion.</div>
+    <div class="q-answer">
+      For first order, t₁/₂ = 69.3 min ⇒ k = 0.693/69.3 = 0.01 min⁻¹<br><br>
+      For 80% completion: [R] = 0.20[R]₀<br>
+      t = (2.303/k) × log(1/0.20) = (2.303/0.01) × log(5)<br>
+      = 230.3 × 0.699<br>
+      ≈ <strong>161 minutes</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2019) — 2 marks</span><span>★★ Arrhenius</span></div>
+    <div class="q-body">Define activation energy. Why does a catalyst increase the rate of a reaction?</div>
+    <div class="q-answer">
+      <strong>Activation energy (Eₐ):</strong> The minimum extra energy reactant molecules need above their average energy to be able to react and form products.<br><br>
+      A catalyst increases rate by providing an <strong>alternative reaction path with a lower activation energy</strong>. From k = A·e^(–Eₐ/RT), lower Eₐ → larger k → faster reaction. Note: catalyst does NOT change ΔG, ΔH, or Kc.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2017) — 3 marks</span><span>★★★ collision theory</span></div>
+    <div class="q-body">What is collision theory? Explain the term "effective collisions" and the role of the steric factor (P).</div>
+    <div class="q-answer">
+      <strong>Collision theory</strong> (Trautz &amp; Lewis, 1916–18) treats reactant molecules as hard spheres reacting when they collide. Rate = Z_AB · e^(–Eₐ/RT), where Z_AB is collision frequency.<br><br>
+      <strong>Effective collisions</strong>: only those with (i) sufficient energy (≥ Eₐ) AND (ii) correct orientation lead to a reaction.<br><br>
+      <strong>Steric factor P</strong> accounts for the orientation requirement. Modified equation:<br>
+      <strong>Rate = P · Z_AB · e^(–Eₐ/RT)</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2018) — 1 mark</span><span>★</span></div>
+    <div class="q-body">Why does a catalyst not change the equilibrium constant of a reaction?</div>
+    <div class="q-answer">
+      A catalyst speeds up <strong>both the forward and the backward</strong> reactions to the <strong>same extent</strong>. So equilibrium is reached faster, but the ratio of forward to backward rates (which determines Kc) stays the same.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2020) — 2 marks</span><span>★★ Arrhenius rate ratio</span></div>
+    <div class="q-body">A catalyst lowers the activation energy of a reaction from 80 kJ/mol to 60 kJ/mol at 300 K. By what factor does the rate increase?</div>
+    <div class="q-answer">
+      Rate ratio = k_cat/k_uncat = e^[(80000 – 60000)/(8.314 × 300)]<br>
+      = e^[20000/2494] = e^8.02<br>
+      = <strong>≈ 3037 (about 3000 times faster!)</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2016) — 3 marks</span><span>★★★ threshold energy</span></div>
+    <div class="q-body">Define threshold energy. How does it differ from activation energy?</div>
+    <div class="q-answer">
+      <strong>Threshold energy:</strong> The minimum total kinetic energy that reactant molecules must possess to produce a successful collision (forming products).<br><br>
+      <strong>Activation energy (Eₐ):</strong> The EXTRA energy required by molecules above their average kinetic energy.<br><br>
+      Relation: <strong>Threshold energy = Eₐ + average energy of reactants</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header pyq"><span>PYQ (CBSE 2015) — 2 marks</span><span>★★ characteristics</span></div>
+    <div class="q-body">State two important characteristics of a catalyst.</div>
+    <div class="q-answer">
+      (1) A <strong>small amount</strong> of catalyst can speed up large amounts of reactant — not consumed.<br>
+      (2) A catalyst does not change ΔG, ΔH, or Kc — it only lowers Eₐ.
+    </div>
+  </div>
+</section>
+
+<section id="hots">
+  <div class="section-header"><span class="section-num">35</span><h2 class="sec-title">HOTS &amp; Theory Questions</h2></div>
+  <p>Higher Order Thinking Skills questions — the kind that test if you really UNDERSTAND, not just memorized.</p>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-1</span><span>conceptual</span></div>
+    <div class="q-body">Why is molecularity defined only for elementary reactions and not for complex reactions?</div>
+    <div class="q-answer">
+      Because in a complex reaction, the overall reaction happens through multiple elementary steps, each with its own molecularity. There's no single "number of colliding species" for the overall reaction — only for each step. So molecularity has no meaning for the overall complex reaction.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-2</span><span>conceptual</span></div>
+    <div class="q-body">Can a reaction have order 0 but molecularity greater than 0? Explain.</div>
+    <div class="q-answer">
+      <strong>Yes!</strong> Example: decomposition of NH₃ on hot Pt surface. It's molecularity 1 or 2 (one or two NH₃ molecules on the surface react), but order is 0 because the surface is saturated — rate doesn't depend on [NH₃]. Order ≠ molecularity in general.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-3</span><span>graphical reasoning</span></div>
+    <div class="q-body">A plot of log([R]₀/[R]) vs t gives a straight line passing through origin with slope = 1.92 × 10⁻³ s⁻¹. What is the order and rate constant?</div>
+    <div class="q-answer">
+      A straight line for log([R]₀/[R]) vs t means <strong>first order</strong>.<br>
+      Slope = k/2.303 ⇒ k = slope × 2.303 = 1.92 × 10⁻³ × 2.303 = <strong>4.42 × 10⁻³ s⁻¹</strong>
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-4</span><span>conceptual</span></div>
+    <div class="q-body">Why does the rate of a first order reaction decrease with time, even though the rate constant is, well, constant?</div>
+    <div class="q-answer">
+      The rate constant k is fixed (at a given temperature). But rate = k[R]. As reactant gets consumed, [R] keeps decreasing, so rate decreases too. k is unchanged — what changes is the concentration of available reactant.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-5</span><span>tricky</span></div>
+    <div class="q-body">The half-life of a first order reaction is 30 minutes. How much of a 5 g sample will be left after 90 minutes?</div>
+    <div class="q-answer">
+      90 min = 3 half-lives.<br>
+      After 1 half-life: 2.5 g; after 2: 1.25 g; after 3: <strong>0.625 g</strong> ✓<br>
+      Or formula: [R] = [R]₀ × (1/2)ⁿ = 5 × (1/2)³ = 0.625 g
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-6</span><span>conceptual</span></div>
+    <div class="q-body">Why is the activation energy of a reverse reaction usually different from that of the forward reaction?</div>
+    <div class="q-answer">
+      Forward Eₐ = (energy of activated complex) – (energy of reactants).<br>
+      Reverse Eₐ = (energy of activated complex) – (energy of products).<br>
+      Since reactants and products have different energies (that's ΔH), the two Eₐ values differ. In fact: <strong>Eₐ(forward) – Eₐ(reverse) = ΔH</strong>.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-7</span><span>conceptual</span></div>
+    <div class="q-body">A catalyst is added to a reaction that is at equilibrium. What happens?</div>
+    <div class="q-answer">
+      <strong>Nothing visible</strong> — the system stays at equilibrium! The catalyst speeds up BOTH forward and backward reactions equally. Since the system was already balanced, both rates speed up equally and the system remains balanced.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-8</span><span>conceptual</span></div>
+    <div class="q-body">Can a catalyst make a thermodynamically non-spontaneous reaction happen?</div>
+    <div class="q-answer">
+      <strong>No.</strong> A catalyst only changes Eₐ — it doesn't change ΔG. If ΔG &gt; 0 (non-spontaneous), no amount of catalyst can make it spontaneous. The catalyst only speeds up reactions that would have happened anyway.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-9</span><span>conceptual</span></div>
+    <div class="q-body">For a given temperature, would you expect a reaction with low A (frequency factor) to be faster or slower than one with high A, assuming same Eₐ?</div>
+    <div class="q-answer">
+      <strong>Slower.</strong> A measures how often molecules with proper orientation collide. Low A → fewer effective collisions → slower reaction (k = A × e^(–Eₐ/RT) is smaller).
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-10</span><span>conceptual</span></div>
+    <div class="q-body">Why do collision theory predictions match experimental rates for simple molecules but not for complex molecules?</div>
+    <div class="q-answer">
+      For simple molecules (atoms, small molecules), orientation isn't very important — any energetic collision works. For complex molecules, orientation MATTERS hugely — only collisions hitting the right reactive site work. Collision theory doesn't account for this without the empirical steric factor P.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-11</span><span>tricky math</span></div>
+    <div class="q-body">Two reactions have the same Eₐ. Reaction 1 has A = 10¹³; Reaction 2 has A = 10⁸. Which is faster, and by what factor?</div>
+    <div class="q-answer">
+      Since k ∝ A (with same Eₐ and T), Reaction 1 is faster. Factor = 10¹³/10⁸ = <strong>10⁵ times faster</strong>.
+    </div>
+  </div>
+
+  <div class="question">
+    <div class="q-header hots"><span>HOTS-12</span><span>conceptual</span></div>
+    <div class="q-body">If activation energy of a reaction is very low (close to 0), would the rate be very sensitive to temperature? Explain.</div>
+    <div class="q-answer">
+      <strong>No.</strong> If Eₐ ≈ 0, then e^(–Eₐ/RT) ≈ e⁰ ≈ 1 regardless of T, so k ≈ A — essentially temperature-independent. Reactions with very low Eₐ proceed at nearly the same rate at low and high temperatures.
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <div class="section-header"><span class="section-num">36</span><h2 class="sec-title">Whole-Chapter Cheat Sheet</h2></div>
+  <p>Print this. Stick it on your wall. The night before exam, read only this.</p>
+
+  <div class="box">
+    <span class="box-tag">FOUNDATIONS</span>
+    <ul class="bulleted">
+      <li><strong>Rate</strong> = change in concentration per unit time</li>
+      <li>Average rate = Δ[conc]/Δt &nbsp;|&nbsp; Instantaneous rate = d[conc]/dt</li>
+      <li>For aA + bB → cC + dD: Rate = –(1/a)·d[A]/dt = +(1/c)·d[C]/dt</li>
+      <li><strong>Rate Law:</strong> Rate = k[A]ˣ[B]ʸ (found by EXPERIMENT)</li>
+      <li><strong>Order</strong> = sum of powers (x + y); can be 0, fraction, negative</li>
+      <li><strong>Molecularity</strong> = number of species colliding; 1, 2, or 3 only</li>
+      <li><strong>RDS</strong> = slowest step in mechanism; decides overall rate</li>
+      <li>Order ≠ molecularity in general; same only for elementary reactions</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <span class="box-tag">INTEGRATED RATE LAWS</span>
+    <div class="formula" style="text-align:left; font-size:14px;">
+      <strong>Zero Order:</strong> [R] = [R]₀ – kt&nbsp; | &nbsp;t₁/₂ = [R]₀/2k &nbsp;|&nbsp; k in mol L⁻¹ s⁻¹<br><br>
+      <strong>First Order:</strong> k = (2.303/t)·log([R]₀/[R])&nbsp; | &nbsp;t₁/₂ = 0.693/k&nbsp; | &nbsp;k in s⁻¹<br><br>
+      <strong>First order gas:</strong> k = (2.303/t)·log[p_i/(2p_i – p_t)]<br><br>
+      <strong>Pseudo first order:</strong> apparently 1st order due to excess solvent
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="box-tag">TEMPERATURE DEPENDENCE</span>
+    <div class="formula" style="text-align:left; font-size:14px;">
+      <strong>Arrhenius:</strong> k = A·e^(–Eₐ/RT)<br>
+      <strong>Log form:</strong> ln k = ln A – Eₐ/RT &nbsp;|&nbsp; plot ln k vs 1/T → slope = –Eₐ/R<br>
+      <strong>Two temps:</strong> log(k₂/k₁) = (Eₐ/2.303R)·(T₂–T₁)/(T₁T₂)<br>
+      Rule: rate constant ~doubles per 10°C rise
+    </div>
+  </div>
+
+  <div class="box">
+    <span class="box-tag">CATALYSTS &amp; COLLISION THEORY</span>
+    <ul class="bulleted">
+      <li>Catalyst → provides alternative path with <strong>lower Eₐ</strong>; doesn't change ΔG, ΔH, or Kc</li>
+      <li>Collision Frequency Z = collisions per second per unit volume</li>
+      <li>Effective collisions need: energy + orientation</li>
+      <li>Modified rate: <strong>Rate = P × Z_AB × e^(–Eₐ/RT)</strong></li>
+      <li>Threshold energy = Eₐ + average energy of reactants</li>
+    </ul>
+  </div>
+
+  <div class="box" style="background: linear-gradient(180deg, #fff6a8 0%, #ffe060 100%);">
+    <span class="box-tag" style="background:#b8341f;">★ TOP-7 FORMULAS TO MEMORIZE ★</span>
+    <ol class="bulleted">
+      <li><strong>Rate = –(1/a)d[A]/dt = +(1/c)d[C]/dt</strong> (stoichiometric rate)</li>
+      <li><strong>k = (2.303/t) × log([R]₀/[R])</strong> (first order — most used!)</li>
+      <li><strong>t₁/₂ = 0.693/k</strong> (first order half-life)</li>
+      <li><strong>t₁/₂ = [R]₀/2k</strong> (zero order half-life)</li>
+      <li><strong>k = A·e^(–Eₐ/RT)</strong> (Arrhenius equation)</li>
+      <li><strong>log(k₂/k₁) = (Eₐ/2.303R)·(T₂–T₁)/(T₁T₂)</strong> (two-temperature Arrhenius)</li>
+      <li><strong>Rate = P·Z_AB·e^(–Eₐ/RT)</strong> (collision theory with orientation)</li>
+    </ol>
+  </div>
+</section>
+
+<section id="mistakes">
+  <div class="section-header"><span class="section-num">37</span><h2 class="sec-title">Top Exam Traps to Avoid</h2></div>
+  <div class="warning">❌ Using order = stoichiometric coefficient.<br>✅ Order must be found EXPERIMENTALLY. Coefficients are a coincidence at best.</div>
+  <div class="warning">❌ Reporting rate as a negative number.<br>✅ Rate is always POSITIVE. The minus sign for reactant rate is built into the formula.</div>
+  <div class="warning">❌ Forgetting to divide by stoichiometric coefficient when comparing reactant/product rates.<br>✅ Rate of reaction = (rate of disappearance of A) / a. Always.</div>
+  <div class="warning">❌ Confusing average rate with instantaneous rate.<br>✅ Average = over an interval. Instantaneous = at one moment. Different formulas!</div>
+  <div class="warning">❌ Forgetting units of k change with order.<br>✅ Zero: mol L⁻¹ s⁻¹. First: s⁻¹. Second: L mol⁻¹ s⁻¹.</div>
+  <div class="warning">❌ Saying first order t₁/₂ depends on [R]₀.<br>✅ It does NOT. Only zero (and other non-first) order half-lives depend on initial conc.</div>
+  <div class="warning">❌ Computing Arrhenius using Celsius.<br>✅ T must ALWAYS be in Kelvin. K = °C + 273.</div>
+  <div class="warning">❌ Saying catalyst increases yield of product.<br>✅ NO! Catalyst doesn't change Kc. Yield at equilibrium is the same. Only SPEED changes.</div>
+  <div class="warning">❌ Saying catalyst lowers ΔG.<br>✅ NO. ΔG depends only on initial and final states. Catalyst only lowers Eₐ.</div>
+  <div class="warning">❌ Confusing "negative catalyst" with "inhibitor".<br>✅ Modern terminology: use "inhibitor". "Negative catalyst" is outdated.</div>
+  <div class="warning">❌ Treating threshold energy and activation energy as the same.<br>✅ Threshold energy = Eₐ + average energy of molecules. They are NOT equal.</div>
+  <div class="warning">❌ Forgetting that orientation matters even when molecules have enough energy.<br>✅ Effective collision = enough energy AND correct orientation. BOTH required!</div>
+  <div class="warning">❌ Forgetting log vs ln in Arrhenius equations.<br>✅ ln(k₂/k₁) = Eₐ/R × (T₂–T₁)/(T₁T₂). With log₁₀, divide RHS by 2.303.</div>
+</section>
+
+<section id="final">
+  <div class="section-header"><span class="section-num">38</span><h2 class="sec-title">Final Words — You've Done It!</h2></div>
+  <div class="box" style="background: linear-gradient(180deg, #fff6a8 0%, #ffe060 100%); border: 3px solid #1a1410;">
+    <span class="box-tag" style="background:#b8341f;">🎓 CHAPTER MASTERED</span>
+    <p style="font-family:'Fraunces', serif; font-size:22px; line-height:1.4; margin-bottom:14px;">You have now studied <strong>EVERY</strong> single concept, formula, derivation, NCERT problem, and exam-trap of the entire Chemical Kinetics chapter.</p>
+
+    <h4>Your complete arsenal:</h4>
+    <ul class="bulleted">
+      <li>📚 <strong>38 sections</strong> covering every concept from definition to mastery</li>
+      <li>📝 <strong>30 NCERT exercise problems</strong> fully solved with steps</li>
+      <li>📖 All 9 intext questions covered</li>
+      <li>🎯 13+ Previous Year Board Questions answered</li>
+      <li>🧠 12 HOTS questions for deep thinking</li>
+      <li>🎨 Custom SVG diagrams for every key concept</li>
+      <li>⚡ Every derivation done line-by-line</li>
+    </ul>
+
+    <h4>Final advice from me to you:</h4>
+    <ul class="bulleted">
+      <li>Practice the derivations <strong>BY HAND</strong> on paper at least 3 times before exam — your hand needs to remember them too.</li>
+      <li>Memorize the units of k for orders 0, 1, 2 cold.</li>
+      <li>The formula <strong>k = (2.303/t) × log([R]₀/[R])</strong> is your most-used formula — write it 20 times.</li>
+      <li>Two-temp Arrhenius: <strong>log(k₂/k₁) = (Eₐ/2.303R)(T₂–T₁)/(T₁T₂)</strong> — second most-used.</li>
+      <li>If a numerical confuses you in the exam, write down what's given, what's asked, and which formula connects them. Then plug-and-chug.</li>
+      <li>Don't skip the warning boxes — those are the EXACT traps examiners set.</li>
+    </ul>
+
+    <p style="font-family:'Caveat', cursive; font-size:26px; text-align:center; margin:20px 0 0; color:#b8341f;">Walk into your board exam fearless. You OWN this chapter now. ⚡</p>
+  </div>
+</section>
+<div class="footer">
+  <p style="font-family: 'Caveat', cursive; font-size: 28px; color: var(--accent-2); margin-bottom:6px;">— Chapter 3 complete. Chemistry conquered. —</p>
+  <p style="font-size:13px; opacity:0.85;">Every word of the chapter, every formula, every derivation, every NCERT problem — all in one place.</p>
+  <hr style="border:0; border-top:1px solid var(--accent-2); margin:24px 0; opacity:0.4;">
+  <p>Prepared specially for</p>
+  <p class="name">Abilash V</p>
+  <p class="name-tag">CLASS XII • CHEMISTRY • UNIT 3 • CHEMICAL KINETICS</p>
+</div>
+
+</div>
+</body>
+</html>
