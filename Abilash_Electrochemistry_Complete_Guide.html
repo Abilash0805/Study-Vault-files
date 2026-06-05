@@ -209,7 +209,7 @@ em{color:var(--accent);font-style:normal;font-weight:700}
   <div class="cartoon">
     <div class="char">🧒</div>
     <div class="bubble">
-      <strong>Hey Student, imagine this:</strong>
+      <strong>Hey, imagine this:</strong>
       Your phone charges overnight (electricity → chemical reaction) and a lemon battery lights a small LED (chemical → electricity). BOTH are electrochemistry! It's the science of converting between chemical energy and electrical energy.
     </div>
   </div>
@@ -617,22 +617,48 @@ em{color:var(--accent);font-style:normal;font-weight:700}
   <h2>Standard Electrode Potential Table (Table 2.1)</h2>
   <div class="card">
     <table>
-      <tr><th>Half-Reaction</th><th>E° (V)</th><th>Trend</th></tr>
-      <tr><td>F₂ + 2e⁻ → 2F⁻</td><td>+2.87</td><td class="pill pill-r">Strongest Oxidizer</td></tr>
-      <tr><td>Cl₂ + 2e⁻ → 2Cl⁻</td><td>+1.36</td><td></td></tr>
-      <tr><td>O₂ + 4H⁺ + 4e⁻ → 2H₂O</td><td>+1.23</td><td></td></tr>
+      <tr><th>Half-Reaction (Oxidised form + ne⁻ → Reduced form)</th><th>E° (V)</th><th>Note</th></tr>
+      <tr><td>F₂(g) + 2e⁻ → 2F⁻</td><td style="color:#ef476f;font-weight:800">+2.87</td><td><span class="pill pill-r">Strongest Oxidizer ↑</span></td></tr>
+      <tr><td>Co³⁺ + e⁻ → Co²⁺</td><td>+1.81</td><td></td></tr>
+      <tr><td>H₂O₂ + 2H⁺ + 2e⁻ → 2H₂O</td><td>+1.78</td><td></td></tr>
+      <tr><td>MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O</td><td>+1.51</td><td><span class="pill pill-y">KMnO₄ — strong oxidizer</span></td></tr>
+      <tr><td>Au³⁺ + 3e⁻ → Au(s)</td><td>+1.40</td><td></td></tr>
+      <tr><td>Cl₂(g) + 2e⁻ → 2Cl⁻</td><td>+1.36</td><td></td></tr>
+      <tr><td>Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O</td><td>+1.33</td><td><span class="pill pill-y">K₂Cr₂O₇ — strong oxidizer</span></td></tr>
+      <tr><td>O₂(g) + 4H⁺ + 4e⁻ → 2H₂O</td><td>+1.23</td><td></td></tr>
+      <tr><td>MnO₂(s) + 4H⁺ + 2e⁻ → Mn²⁺ + 2H₂O</td><td>+1.23</td><td><span class="pill pill-y">Used in dry cell</span></td></tr>
+      <tr><td>Br₂ + 2e⁻ → 2Br⁻</td><td>+1.09</td><td></td></tr>
+      <tr><td>NO₃⁻ + 4H⁺ + 3e⁻ → NO(g) + 2H₂O</td><td>+0.97</td><td></td></tr>
+      <tr><td>2Hg²⁺ + 2e⁻ → Hg₂²⁺</td><td>+0.92</td><td></td></tr>
       <tr><td>Ag⁺ + e⁻ → Ag(s)</td><td>+0.80</td><td></td></tr>
-      <tr><td>Fe³⁺ + e⁻ → Fe²⁺</td><td>+0.77</td><td></td></tr>
-      <tr><td>Cu²⁺ + 2e⁻ → Cu(s)</td><td>+0.34</td><td></td></tr>
-      <tr><td><strong>2H⁺ + 2e⁻ → H₂(g)</strong></td><td><strong>0.00</strong></td><td><span class="pill pill-y">Reference SHE</span></td></tr>
+      <tr><td>Fe³⁺ + e⁻ → Fe²⁺</td><td>+0.77</td><td><span class="pill pill-b">Oxidizes Fe²⁺ → Fe³⁺</span></td></tr>
+      <tr><td>O₂(g) + 2H⁺ + 2e⁻ → H₂O₂</td><td>+0.68</td><td></td></tr>
+      <tr><td>I₂ + 2e⁻ → 2I⁻</td><td>+0.54</td><td></td></tr>
+      <tr><td>Cu⁺ + e⁻ → Cu(s)</td><td>+0.52</td><td></td></tr>
+      <tr><td>Cu²⁺ + 2e⁻ → Cu(s)</td><td>+0.34</td><td><span class="pill pill-b">Daniell cell cathode</span></td></tr>
+      <tr><td>AgCl(s) + e⁻ → Ag(s) + Cl⁻</td><td>+0.22</td><td></td></tr>
+      <tr><td>AgBr(s) + e⁻ → Ag(s) + Br⁻</td><td>+0.10</td><td></td></tr>
+      <tr style="background:rgba(249,199,79,0.1)"><td><strong>2H⁺ + 2e⁻ → H₂(g)</strong></td><td><strong>0.00</strong></td><td><span class="pill pill-y">⭐ SHE Reference</span></td></tr>
+      <tr><td>Pb²⁺ + 2e⁻ → Pb(s)</td><td>−0.13</td><td></td></tr>
+      <tr><td>Sn²⁺ + 2e⁻ → Sn(s)</td><td>−0.14</td><td></td></tr>
       <tr><td>Ni²⁺ + 2e⁻ → Ni(s)</td><td>−0.25</td><td></td></tr>
-      <tr><td>Fe²⁺ + 2e⁻ → Fe(s)</td><td>−0.44</td><td></td></tr>
-      <tr><td>Zn²⁺ + 2e⁻ → Zn(s)</td><td>−0.76</td><td></td></tr>
+      <tr><td>Fe²⁺ + 2e⁻ → Fe(s)</td><td>−0.44</td><td><span class="pill pill-b">Rusting anode</span></td></tr>
+      <tr><td>Cr³⁺ + 3e⁻ → Cr(s)</td><td>−0.74</td><td></td></tr>
+      <tr><td>Zn²⁺ + 2e⁻ → Zn(s)</td><td>−0.76</td><td><span class="pill pill-b">Daniell cell anode</span></td></tr>
+      <tr><td>2H₂O + 2e⁻ → H₂(g) + 2OH⁻(aq)</td><td>−0.83</td><td></td></tr>
       <tr><td>Al³⁺ + 3e⁻ → Al(s)</td><td>−1.66</td><td></td></tr>
       <tr><td>Mg²⁺ + 2e⁻ → Mg(s)</td><td>−2.36</td><td></td></tr>
       <tr><td>Na⁺ + e⁻ → Na(s)</td><td>−2.71</td><td></td></tr>
-      <tr><td>Li⁺ + e⁻ → Li(s)</td><td>−3.05</td><td class="pill pill-g">Strongest Reducer</td></tr>
+      <tr><td>Ca²⁺ + 2e⁻ → Ca(s)</td><td>−2.87</td><td></td></tr>
+      <tr><td>K⁺ + e⁻ → K(s)</td><td>−2.93</td><td></td></tr>
+      <tr><td>Li⁺ + e⁻ → Li(s)</td><td style="color:#06d6a0;font-weight:800">−3.05</td><td><span class="pill pill-g">Strongest Reducer ↓</span></td></tr>
     </table>
+    <div class="important">
+      <strong>⚠️ Two Key Rules from this Table:</strong><br>
+      1. A <strong>negative E°</strong> means the redox couple is a stronger reducing agent than H⁺/H₂.<br>
+      2. A <strong>positive E°</strong> means the redox couple is a weaker reducing agent than H⁺/H₂.<br>
+      Going ↓ the table: oxidizing power decreases, reducing power increases.
+    </div>
     <div class="memory">
       <strong>🧠 Pattern to remember:</strong>
       As you go DOWN the table: E° decreases → Oxidizing power decreases → Reducing power INCREASES.<br>
@@ -912,6 +938,58 @@ em{color:var(--accent);font-style:normal;font-weight:700}
     Molar conductivity is defined as the conductance of a solution containing one mole of electrolyte placed between two electrodes 1 cm apart with sufficient cross-sectional area to hold the entire solution. It is denoted by Λm and measured in S cm² mol⁻¹.
   </div>
 
+  <h2>Worked Examples — Conductivity Calculations</h2>
+
+  <div class="numerical">
+    <div class="n-tag">📐 NCERT Example 2.4 — Cell Constant &amp; Molar Conductivity</div>
+    <strong>Resistance of a conductivity cell filled with 0.1 mol L⁻¹ KCl = 100 Ω. When filled with 0.02 mol L⁻¹ KCl the resistance = 520 Ω. Conductivity of 0.1 mol L⁻¹ KCl = 1.29 S m⁻¹. Find conductivity and molar conductivity of 0.02 mol L⁻¹ KCl.</strong>
+    <div class="n-work">
+    STEP 1: Find Cell Constant
+    Cell constant (G*) = κ × R = 1.29 S m⁻¹ × 100 Ω = 129 m⁻¹ = 1.29 cm⁻¹
+
+    STEP 2: Conductivity of 0.02 mol L⁻¹ KCl
+    κ = G*/R = 129 m⁻¹ / 520 Ω = 0.248 S m⁻¹
+    (OR in cm units: κ = 1.29 cm⁻¹ / 520 = 0.00248 S cm⁻¹)
+
+    STEP 3: Molar Conductivity
+    c = 0.02 mol L⁻¹ = 0.02 × 1000 mol m⁻³ = 20 mol m⁻³
+    Λm = κ/c = 0.248 / 20 = 124 × 10⁻⁴ S m² mol⁻¹
+
+    OR: Λm = (κ × 1000)/c = (0.00248 × 1000)/0.02 = 124 S cm² mol⁻¹ ✅
+    </div>
+  </div>
+
+  <div class="numerical">
+    <div class="n-tag">📐 NCERT Example 2.5 — From Geometry (Resistivity → Conductivity → Λm)</div>
+    <strong>Resistance of a column of 0.05 mol L⁻¹ NaOH, diameter 1 cm, length 50 cm = 5.55 × 10³ Ω. Find resistivity, conductivity and molar conductivity.</strong>
+    <div class="n-work">
+    Given: l = 50 cm, radius r = 0.5 cm
+    Area A = πr² = 3.14 × (0.5)² = 0.785 cm²
+
+    STEP 1: Resistivity
+    ρ = R × A / l = (5550 × 0.785) / 50 = 87.135 Ω cm
+
+    STEP 2: Conductivity
+    κ = 1/ρ = 1/87.135 = 0.01148 S cm⁻¹
+
+    STEP 3: Molar Conductivity
+    Λm = (κ × 1000) / c = (0.01148 × 1000) / 0.05 = 229.6 S cm² mol⁻¹
+
+    KEY: Find ρ from geometry → flip to get κ → use Λm = (κ×1000)/c
+    </div>
+  </div>
+
+  <div class="numerical">
+    <div class="n-tag">📐 Cell Constant — Common Board Type (NCERT Exercise 2.9)</div>
+    <strong>The resistance of a conductivity cell containing 0.001 M KCl at 298 K is 1500 Ω. What is the cell constant if conductivity of 0.001 M KCl is 0.146 × 10⁻³ S cm⁻¹?</strong>
+    <div class="n-work">
+    Cell constant G* = κ × R = 0.146 × 10⁻³ × 1500 = 0.219 cm⁻¹
+
+    Remember: G* = κ × R  (cell constant calibrates the cell)
+    Then for any unknown: κ(unknown) = G* / R(unknown)
+    </div>
+  </div>
+
   <h2>Variation of Conductivity with Concentration</h2>
   <div class="card">
     <h3>Why conductivity (κ) DECREASES on dilution:</h3>
@@ -1041,7 +1119,31 @@ em{color:var(--accent);font-style:normal;font-weight:700}
           Ka = cα² / (1−α) ≈ cα² (if α &lt;&lt; 1)
         </div>
       </li>
-      <li><strong>Calculating solubility of sparingly soluble salts</strong> (like AgCl, BaSO₄)</li>
+      <li>
+        <strong>Calculating solubility and Ksp of sparingly soluble salts</strong> (like AgCl, BaSO₄):<br>
+        For a sparingly soluble salt, measure the conductivity of its saturated solution. Subtract the conductivity of pure water. Then:
+        <div class="formula">
+          Λm(salt) = κ(solution) − κ(water)<br><br>
+          Then use Kohlrausch: Λ°m = λ°(cation) + λ°(anion)<br><br>
+          Solubility (mol L⁻¹) = κ(salt) × 1000 / Λ°m<br><br>
+          Ksp = [cation] × [anion] (from solubility)
+        </div>
+        <div class="numerical" style="margin-top:10px">
+          <div class="n-tag">📐 Solubility of AgCl — Board-Level Example</div>
+          <strong>The conductivity of saturated AgCl solution is 3.40 × 10⁻⁶ S cm⁻¹ and that of water used is 1.60 × 10⁻⁶ S cm⁻¹. Given λ°(Ag⁺) = 62.0 and λ°(Cl⁻) = 76.3 S cm² mol⁻¹. Find solubility and Ksp.</strong>
+          <div class="n-work">
+          κ(AgCl) = 3.40×10⁻⁶ − 1.60×10⁻⁶ = 1.80×10⁻⁶ S cm⁻¹
+
+          Λ°m(AgCl) = 62.0 + 76.3 = 138.3 S cm² mol⁻¹
+
+          Solubility = (κ × 1000) / Λ°m
+                     = (1.80×10⁻⁶ × 1000) / 138.3
+                     = 1.30×10⁻⁵ mol L⁻¹
+
+          Ksp = [Ag⁺][Cl⁻] = (1.30×10⁻⁵)² = 1.69×10⁻¹⁰ mol² L⁻²
+          </div>
+        </div>
+      </li>
     </ol>
   </div>
 
@@ -1136,9 +1238,40 @@ em{color:var(--accent);font-style:normal;font-weight:700}
     </ul>
   </div>
 
-  <div class="numerical">
-    <div class="n-tag">📐 Solved Numerical</div>
-    <strong>Q: How much copper is deposited when 1.5A current is passed through CuSO₄ solution for 30 min? (M of Cu = 63.5, n = 2)</strong>
+  <h2>Electrolysis of Aqueous H₂SO₄ (with Pt Electrodes)</h2>
+  <div class="card">
+    <p>Two oxidation reactions are possible at the anode:</p>
+    <div class="reaction">
+    (i)  2H₂O(l) → O₂(g) + 4H⁺(aq) + 4e⁻       E°cell = +1.23 V  ...(i)
+    (ii) 2SO₄²⁻(aq) → S₂O₈²⁻(aq) + 2e⁻           E°cell = +1.96 V  ...(ii)
+    </div>
+    <div class="compare">
+      <div class="c-head"><div>Condition</div><div>Anode Reaction</div><div>Reason</div></div>
+      <div class="c-row"><div>Dilute H₂SO₄</div><div>Water oxidized → O₂ (reaction i)</div><div>Lower E° preferred at anode (less energy needed)</div></div>
+      <div class="c-row"><div>Concentrated H₂SO₄</div><div>SO₄²⁻ oxidized → S₂O₈²⁻ (reaction ii)</div><div>High SO₄²⁻ concentration drives reaction ii</div></div>
+    </div>
+    <div class="important">
+      <strong>⚠️ Anode Rule for Electrolysis:</strong><br>
+      At the anode, the reaction with <strong>LOWER E°</strong> is preferred (it requires less energy to oxidize). Exception: overpotential effects can override this (like in NaCl electrolysis where Cl⁻ is preferred over water despite lower E°).
+    </div>
+  </div>
+
+  <h2>Summary: Products of Electrolysis (Key Exam Table)</h2>
+  <div class="compare">
+    <div class="c-head"><div>Electrolyte</div><div>Cathode Product</div><div>Anode Product</div></div>
+    <div class="c-row"><div>Molten NaCl</div><div>Na (metal)</div><div>Cl₂ (gas)</div></div>
+    <div class="c-row"><div>Aqueous NaCl (brine)</div><div>H₂ (gas) + NaOH</div><div>Cl₂ (gas)</div></div>
+    <div class="c-row"><div>Dilute H₂SO₄ (Pt)</div><div>H₂ (gas)</div><div>O₂ (gas)</div></div>
+    <div class="c-row"><div>Conc H₂SO₄ (Pt)</div><div>H₂ (gas)</div><div>S₂O₈²⁻ (peroxodisulfate)</div></div>
+    <div class="c-row"><div>CuSO₄ (Pt)</div><div>Cu (metal)</div><div>O₂ (gas)</div></div>
+    <div class="c-row"><div>CuSO₄ (Cu anode)</div><div>Cu (metal)</div><div>Cu dissolves (Cu → Cu²⁺)</div></div>
+    <div class="c-row"><div>AgNO₃ (Ag anode)</div><div>Ag (metal)</div><div>Ag dissolves</div></div>
+    <div class="c-row"><div>AgNO₃ (Pt anode)</div><div>Ag (metal)</div><div>O₂ (gas)</div></div>
+  </div>
+  <div class="memory">
+    <strong>🧠 Trick for cathode products:</strong> The ion with HIGHER (more positive) E° gets reduced first.<br>
+    <strong>🧠 Trick for anode products:</strong> The species with LOWER E° gets oxidized first (unless overpotential interferes).
+  </div> (M of Cu = 63.5, n = 2)</strong>
     <div class="n-work">
     m = (M × I × t) / (n × F)
     I = 1.5 A
